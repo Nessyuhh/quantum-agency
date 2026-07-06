@@ -99,6 +99,13 @@ footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);disp
 footer p{color:rgba(148,163,184,.45);font-size:.76rem}
 footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
 footer a:hover{color:var(--muted)}
+/* ── Scroll reveal ── */
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}
+[data-v][data-d="2"]{transition-delay:.2s}
+[data-v][data-d="3"]{transition-delay:.3s}
+[data-v][data-d="4"]{transition-delay:.4s}
 </style>
 </head>
 <body>
@@ -117,7 +124,7 @@ footer a:hover{color:var(--muted)}
           <a href="index.html#formations">Voir toutes les formations →</a>
         </div>
       </div>
-      <a href="consulting-ia.html">Consulting</a>
+      <a href="consulting-ia.html" style="color:#fff;background:rgba(255,255,255,.1)">Consulting</a>
       <a href="index.html#why">Approche</a>
     </div>
     <a href="contact.html" class="n-cta">Prendre RDV</a>
@@ -153,22 +160,22 @@ footer a:hover{color:var(--muted)}
 <article class="content">
 
   <section>
-    <h2>Pourquoi le consulting IA et pas seulement la formation ?</h2>
+    <h2 data-v>Pourquoi le consulting IA et pas seulement la formation ?</h2>
     <p>La formation donne à vos équipes les compétences pour utiliser l'IA. Le consulting, lui, répond à des questions stratégiques que votre équipe n'a pas forcément le temps ou le recul pour trancher : <strong>où investir en priorité ? Quel outil choisir ? Comment mesurer le retour ?</strong></p>
     <p>Nos missions de consulting IA interviennent à des moments précis du cycle de transformation : l'audit initial pour cartographier vos opportunités, l'implémentation pour déployer les solutions rapidement et sans erreur, et l'accompagnement stratégique récurrent pour maintenir le cap et capter les nouvelles opportunités au fil des évolutions du marché.</p>
     <p>Contrairement aux grands cabinets de conseil, nous ne livrons pas des décks PowerPoint. Nous faisons le travail. Nos consultants implémentent eux-mêmes les solutions dans vos outils, forment vos équipes sur le terrain et ne partent pas avant que ça fonctionne.</p>
   </section>
 
   <div class="stat-row">
-    <div class="stat-box"><span class="stat-v g-text">15k€</span><div class="stat-l">D'économies moyennes identifiées lors d'un audit</div></div>
-    <div class="stat-box"><span class="stat-v g-text">4 sem.</span><div class="stat-l">De l'audit aux premiers résultats concrets</div></div>
-    <div class="stat-box"><span class="stat-v g-text">100%</span><div class="stat-l">Des clients renouvellent l'accompagnement</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">15k€</span><div class="stat-l">D'économies moyennes identifiées lors d'un audit</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">4 sem.</span><div class="stat-l">De l'audit aux premiers résultats concrets</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">100%</span><div class="stat-l">Des clients renouvellent l'accompagnement</div></div>
   </div>
 
   <section>
-    <h2>Nos trois offres de consulting IA</h2>
+    <h2 data-v>Nos trois offres de consulting IA</h2>
     <div class="three-col">
-      <div class="card">
+      <div class="card" data-v>
         <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--purple-l)" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></span>
         <h3>Audit IA Express</h3>
         <p>Une analyse de 2 à 3 jours de vos processus clés pour identifier les 3 à 5 opportunités IA à fort ROI.</p>
@@ -180,7 +187,7 @@ footer a:hover{color:var(--muted)}
           <li>Session de restitution dirigeant</li>
         </ul>
       </div>
-      <div class="card" id="implementation">
+      <div class="card" data-v id="implementation">
         <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
         <h3>Mission Implémentation</h3>
         <p>On ne recommande pas on fait. Nos consultants déploient directement les solutions IA dans vos outils et forment vos équipes en parallèle.</p>
@@ -192,7 +199,7 @@ footer a:hover{color:var(--muted)}
           <li>Suivi 30 jours post-déploiement</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
         <h3>Retainer Stratégique</h3>
         <p>Un expert IA dédié à votre entreprise sur 6 à 12 mois. Pilotage de votre roadmap, veille IA, nouvelles opportunités et formation continue.</p>
@@ -208,37 +215,37 @@ footer a:hover{color:var(--muted)}
   </section>
 
   <section>
-    <h2>Comment se déroule une mission type</h2>
+    <h2 data-v>Comment se déroule une mission type</h2>
     <div class="step-list">
-      <div class="step-row">
+      <div class="step-row" data-v>
         <div class="step-n">1</div>
         <div class="step-body">
           <h4>Appel de cadrage (gratuit 30 min)</h4>
           <p>On commence par comprendre votre situation, vos enjeux prioritaires et ce que vous avez déjà essayé. À l'issue de cet appel, vous savez exactement si et comment on peut vous aider.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row" data-v>
         <div class="step-n">2</div>
         <div class="step-body">
           <h4>Audit &amp; diagnostic</h4>
           <p>Analyse de vos processus, entretiens avec les équipes clés, cartographie des flux de données. Livrable : rapport structuré avec priorités et estimation ROI pour chaque opportunité identifiée.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row" data-v>
         <div class="step-n">3</div>
         <div class="step-body">
           <h4>Proposition &amp; validation</h4>
           <p>Présentation des recommandations en session avec votre direction. Validation des priorités, budget et planning. Démarrage sous 2 semaines après signature.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row" data-v>
         <div class="step-n">4</div>
         <div class="step-body">
           <h4>Implémentation &amp; formation</h4>
           <p>Déploiement des solutions sélectionnées, intégration dans vos outils, formation des équipes utilisatrices. Points de suivi hebdomadaires. Documentation remise à chaque étape.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row" data-v>
         <div class="step-n">5</div>
         <div class="step-body">
           <h4>Mesure du ROI &amp; suivi</h4>
@@ -248,19 +255,19 @@ footer a:hover{color:var(--muted)}
     </div>
   </section>
 
-  <div class="hl-box">
+  <div class="hl-box" data-v>
     <h3>✦ Secteurs dans lesquels nous intervenons</h3>
     <p>Commerce et distribution · Services B2B · Industrie et production · Santé et paramédical · Immobilier et construction · Finance et comptabilité · Communication et marketing · Juridique et RH · Artisanat et BTP · Hôtellerie-restauration. Notre approche s'adapte à chaque secteur : les cas d'usage, les outils recommandés et les métriques de succès sont différents selon votre métier.</p>
   </div>
 
   <section>
-    <h2>Questions fréquentes sur nos missions</h2>
+    <h2 data-v>Questions fréquentes sur nos missions</h2>
     <div class="two-col">
-      <div class="card">
+      <div class="card" data-v>
         <h3>Combien coûte un audit IA ?</h3>
         <p>Nos tarifs dépendent de la taille de l'entreprise et du périmètre de l'audit. Ils commencent à 2 500€ HT pour un audit ciblé sur 2 processus et vont jusqu'à 8 000€ HT pour un audit complet multi-services. Toutes nos missions incluent un devis transparent avant démarrage.</p>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <h3>Et si on ne veut pas de formation associée ?</h3>
         <p>Nos missions de consulting IA sont indépendantes des formations. Vous pouvez nous mandater uniquement pour implémenter des solutions sans formation associée bien que nous conseillions toujours un accompagnement minimal des équipes pour maximiser l'adoption.</p>
       </div>
@@ -271,19 +278,38 @@ footer a:hover{color:var(--muted)}
 </main>
 
 <section class="cta-sec">
-  <h2>Commencez par un appel gratuit</h2>
+  <h2 data-v>Commencez par un appel gratuit</h2>
   <p>30 minutes pour analyser votre situation, identifier vos priorités IA et comprendre comment nous pouvons vous aider sans engagement.</p>
   <a href="contact.html" class="btn">Réserver l'appel de cadrage →</a>
 </section>
 
 <footer role="contentinfo">
-  <p>© 2026 Quantum Consulting Formation IA &amp; Consulting pour entreprises</p>
-  <div style="display:flex;gap:1.5rem">
+  <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
     <a href="index.html">Accueil</a>
-    <a href="formation-initiation-ia.html">Formation Niveau 1</a>
-    <a href="formation-expert-ia.html">Formation Niveau 3</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="formation-expert-ia.html">Formation Niv.3</a>
+    <a href="consulting-ia.html">Consulting IA</a>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
+<script>
+/* Scroll reveal */
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length) return;
+  function check(){
+    var vh=window.innerHeight;
+    els.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<vh-40&&r.bottom>40) el.classList.add('in-view');
+      else el.classList.remove('in-view');
+    });
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
+</script>
 </body>
 </html>

@@ -97,6 +97,13 @@ footer{background:#f3f3f8;padding:2.5rem 5%;border-top:1px solid var(--border);d
 footer p{color:rgba(10,10,20,.4);font-size:.76rem}
 footer a{color:rgba(10,10,20,.4);text-decoration:none;font-size:.76rem}
 footer a:hover{color:var(--muted)}
+/* ── Scroll reveal ── */
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}
+[data-v][data-d="2"]{transition-delay:.2s}
+[data-v][data-d="3"]{transition-delay:.3s}
+[data-v][data-d="4"]{transition-delay:.4s}
 </style>
 </head>
 <body>
@@ -152,20 +159,20 @@ footer a:hover{color:var(--muted)}
 <article class="content">
 
   <section>
-    <h2>De l'utilisation à la maîtrise : franchir le palier suivant</h2>
+    <h2 data-v>De l'utilisation à la maîtrise : franchir le palier suivant</h2>
     <p>Après une formation initiation ou quelques semaines d'utilisation autonome, beaucoup de collaborateurs atteignent un plafond. Ils savent utiliser ChatGPT pour rédiger un email, mais <strong>ils n'ont pas encore exploité 10% du potentiel réel de l'IA</strong> pour leur entreprise.</p>
     <p>La formation Maîtrise &amp; Automatisation IA est conçue pour franchir ce palier. En 2 à 3 jours intensifs, vos équipes apprennent à construire des workflows automatisés, créer des assistants IA sur mesure, et intégrer l'IA directement dans leurs outils du quotidien CRM, Drive, messagerie, ERP.</p>
     <p>L'objectif n'est pas de "faire des choses avec l'IA". C'est de <strong>transformer durablement la façon dont votre équipe travaille</strong>, en substituant les tâches chronophages et répétitives par des processus automatisés intelligents.</p>
   </section>
 
   <div class="stat-row">
-    <div class="stat-box"><span class="stat-v g-text">-40%</span><div class="stat-l">Temps sur tâches répétitives en moyenne</div></div>
-    <div class="stat-box"><span class="stat-v g-text">5x</span><div class="stat-l">Plus rapide que ChatGPT basique sur les workflows</div></div>
-    <div class="stat-box"><span class="stat-v g-text">3h</span><div class="stat-l">Automatisées par jour par participant actif</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">-40%</span><div class="stat-l">Temps sur tâches répétitives en moyenne</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">5x</span><div class="stat-l">Plus rapide que ChatGPT basique sur les workflows</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">3h</span><div class="stat-l">Automatisées par jour par participant actif</div></div>
   </div>
 
   <section>
-    <h2>Programme détaillé (3 jours)</h2>
+    <h2 data-v>Programme détaillé (3 jours)</h2>
 
     <div class="program">
       <div class="program-item">
@@ -206,16 +213,16 @@ footer a:hover{color:var(--muted)}
     </div>
   </section>
 
-  <div class="hl-box">
+  <div class="hl-box" data-v>
     <h3>✦ Cas d'usage automatisés lors de la formation</h3>
     <p>Qualification automatique des leads entrants → CRM. Synthèse automatique des comptes-rendus de réunion. Génération de propositions commerciales adaptées. Traitement et classification des tickets support. Reporting hebdomadaire automatisé avec insights IA. Newsletter interne générée depuis plusieurs sources. Chaque cas est adapté à votre secteur.</p>
   </div>
 
   <section>
-    <h2>Prérequis et à qui s'adresse cette formation</h2>
+    <h2 data-v>Prérequis et à qui s'adresse cette formation</h2>
     <p>Le Niveau 2 s'adresse aux profils qui <strong>utilisent déjà des outils IA au quotidien</strong> et veulent passer à un usage avancé et automatisé. Les prérequis sont légers : avoir suivi notre Niveau 1 ou avoir utilisé ChatGPT / Claude pendant au moins 4 semaines en conditions réelles.</p>
     <div class="two-col">
-      <div class="card">
+      <div class="card" data-v>
         <h3>Profils cibles</h3>
         <ul>
           <li>Responsables marketing et growth</li>
@@ -225,7 +232,7 @@ footer a:hover{color:var(--muted)}
           <li>Responsables commerciaux et ADV</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <h3>Outils couverts</h3>
         <ul>
           <li>ChatGPT (API) + Claude Pro</li>
@@ -239,12 +246,12 @@ footer a:hover{color:var(--muted)}
   </section>
 
   <section style="margin-top:3rem">
-    <h2>Questions fréquentes</h2>
-    <div class="card" style="margin-bottom:1rem">
+    <h2 data-v>Questions fréquentes</h2>
+    <div class="card" data-v style="margin-bottom:1rem">
       <h3>Faut-il avoir des notions de code ou de développement ?</h3>
       <p>Non. La formation est 100% no-code. Make et Zapier permettent de construire des automatisations avancées sans écrire une ligne de code. Seule la logique processus est requise et ça, vos équipes l'ont déjà.</p>
     </div>
-    <div class="card">
+    <div class="card" data-v>
       <h3>Peut-on connecter nos propres outils pendant la formation ?</h3>
       <p>Oui, c'est même l'objectif. Nous vous demandons en amont de lister vos outils principaux pour adapter les exercices. Chaque participant repart avec un workflow fonctionnel sur ses vrais outils, pas sur des exemples fictifs.</p>
     </div>
@@ -254,20 +261,38 @@ footer a:hover{color:var(--muted)}
 </main>
 
 <section class="cta-sec">
-  <h2>Passez à l'automatisation IA</h2>
+  <h2 data-v>Passez à l'automatisation IA</h2>
   <p>Échangeons sur vos process actuels et construisons ensemble le programme qui va transformer votre façon de travailler.</p>
   <a href="contact.html" class="btn">Réserver un appel gratuit →</a>
 </section>
 
 <footer role="contentinfo">
-  <p>© 2026 Quantum Consulting Formation IA &amp; Consulting pour entreprises</p>
-  <div style="display:flex;gap:1.5rem">
+  <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
     <a href="index.html">Accueil</a>
-    <a href="formation-initiation-ia.html">Niveau 1</a>
-    <a href="formation-expert-ia.html">Niveau 3</a>
-    <a href="consulting-ia.html">Consulting</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="formation-expert-ia.html">Formation Niv.3</a>
+    <a href="consulting-ia.html">Consulting IA</a>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
+<script>
+/* Scroll reveal */
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length) return;
+  function check(){
+    var vh=window.innerHeight;
+    els.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<vh-40&&r.bottom>40) el.classList.add('in-view');
+      else el.classList.remove('in-view');
+    });
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
+</script>
 </body>
 </html>

@@ -97,6 +97,13 @@ footer{background:#f3f3f8;padding:2.5rem 5%;border-top:1px solid var(--border);d
 footer p{color:rgba(148,163,184,.45);font-size:.76rem}
 footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
 footer a:hover{color:var(--muted)}
+/* ── Scroll reveal ── */
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}
+[data-v][data-d="2"]{transition-delay:.2s}
+[data-v][data-d="3"]{transition-delay:.3s}
+[data-v][data-d="4"]{transition-delay:.4s}
 </style>
 </head>
 <body>
@@ -152,20 +159,20 @@ footer a:hover{color:var(--muted)}
 <article class="content">
 
   <section>
-    <h2>La stratégie IA : un enjeu de survie pour les dirigeants de PME</h2>
+    <h2 data-v>La stratégie IA : un enjeu de survie pour les dirigeants de PME</h2>
     <p>En 2025, les entreprises qui n'ont pas encore de stratégie IA structurée accumulent un retard compétitif. Ce n'est pas une exagération : <strong>les early adopters réduisent leurs coûts de 30 à 50%</strong> sur certains processus, accélèrent leur time-to-market et libèrent leurs équipes pour des missions à valeur ajoutée.</p>
     <p>Pourtant, la majorité des dirigeants de TPE et PME se retrouvent désorientés face à la vitesse des évolutions. Ils voient leurs équipes utiliser ChatGPT "en ordre dispersé", entendent parler d'IA chaque semaine mais ne savent pas comment <strong>traduire cette technologie en avantage concurrentiel durable</strong>.</p>
     <p>Le programme Expert &amp; Stratégie IA est conçu pour répondre à cette question : comment construire, arbitrer et piloter une stratégie IA adaptée à votre taille, votre secteur et vos objectifs avec des résultats mesurables à 6 et 12 mois ?</p>
   </section>
 
   <div class="stat-row">
-    <div class="stat-box"><span class="stat-v g-text">12</span><div class="stat-l">Mois de suivi et d'accompagnement</div></div>
-    <div class="stat-box"><span class="stat-v g-text">3x</span><div class="stat-l">Sessions de coaching dirigeant individuel</div></div>
-    <div class="stat-box"><span class="stat-v g-text">ROI</span><div class="stat-l">Mesuré et documenté à 6 et 12 mois</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">12</span><div class="stat-l">Mois de suivi et d'accompagnement</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">3x</span><div class="stat-l">Sessions de coaching dirigeant individuel</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">ROI</span><div class="stat-l">Mesuré et documenté à 6 et 12 mois</div></div>
   </div>
 
   <section>
-    <h2>Le programme sur 12 mois</h2>
+    <h2 data-v>Le programme sur 12 mois</h2>
 
     <div class="timeline">
       <div class="tl-item">
@@ -206,16 +213,16 @@ footer a:hover{color:var(--muted)}
     </div>
   </section>
 
-  <div class="hl-box">
+  <div class="hl-box" data-v>
     <h3>✦ Gouvernance, éthique &amp; conformité RGPD</h3>
     <p>Une stratégie IA sans gouvernance est une bombe à retardement. Notre programme intègre systématiquement les aspects réglementaires : conformité RGPD dans les usages IA, politique d'usage acceptable pour vos équipes, gestion des données sensibles, risques liés aux hallucinations et aux biais. Vous repartez avec une charte IA interne prête à déployer.</p>
   </div>
 
   <section>
-    <h2>À qui s'adresse ce programme ?</h2>
+    <h2 data-v>À qui s'adresse ce programme ?</h2>
     <p>Le Niveau 3 est conçu exclusivement pour les <strong>dirigeants, DG, DGA et comités de direction</strong> qui veulent prendre en main la transformation IA de leur organisation. Il n'est pas adapté aux profils opérationnels pour eux, les Niveaux 1 et 2 sont plus appropriés.</p>
     <div class="two-col">
-      <div class="card">
+      <div class="card" data-v>
         <h3>Profils adaptés</h3>
         <ul>
           <li>PDG, DG et co-fondateurs de PME</li>
@@ -225,7 +232,7 @@ footer a:hover{color:var(--muted)}
           <li>Directions financières stratèges</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <h3>Tailles d'entreprise ciblées</h3>
         <ul>
           <li>TPE de 5 à 20 personnes</li>
@@ -242,20 +249,38 @@ footer a:hover{color:var(--muted)}
 </main>
 
 <section class="cta-sec">
-  <h2>Construisons votre stratégie IA</h2>
+  <h2 data-v>Construisons votre stratégie IA</h2>
   <p>Un premier appel de 45 minutes pour comprendre votre contexte, vos objectifs et vous proposer un programme adapté à votre entreprise.</p>
   <a href="contact.html" class="btn">Réserver mon appel dirigeant →</a>
 </section>
 
 <footer role="contentinfo">
-  <p>© 2026 Quantum Consulting Formation IA &amp; Consulting pour entreprises</p>
-  <div style="display:flex;gap:1.5rem">
+  <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
     <a href="index.html">Accueil</a>
-    <a href="formation-initiation-ia.html">Niveau 1</a>
-    <a href="formation-maitrise-ia.html">Niveau 2</a>
-    <a href="consulting-ia.html">Consulting</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="formation-expert-ia.html">Formation Niv.3</a>
+    <a href="consulting-ia.html">Consulting IA</a>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
+<script>
+/* Scroll reveal */
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length) return;
+  function check(){
+    var vh=window.innerHeight;
+    els.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<vh-40&&r.bottom>40) el.classList.add('in-view');
+      else el.classList.remove('in-view');
+    });
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
+</script>
 </body>
 </html>

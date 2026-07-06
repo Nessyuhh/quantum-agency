@@ -101,7 +101,10 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 .island-burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 .island-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .island-burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-@media(max-width:640px){.island-links,.island-cta{display:none!important}.island-burger{display:flex}}
+@media(max-width:640px){.island-links,.island-cta,.island-dd{display:none!important}.island-burger{display:flex}}
+/* island-dd : dropdown sorti de island-links pour éviter le clipping overflow:hidden */
+.island-dd{overflow:visible;transition:max-width .45s cubic-bezier(.4,0,.2,1),opacity .35s}
+#island.compact .island-dd{max-width:0;opacity:0;pointer-events:none;overflow:hidden}
 
 /* ── Nav dropdown (Formations) ── */
 .nav-dd{position:relative;display:inline-flex;align-items:center}
@@ -646,17 +649,17 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <nav id="island" role="navigation" aria-label="Navigation principale">
   <div class="island-inner">
     <a href="/" class="island-logo">Quantum<span style="color:inherit"> Consulting</span></a>
-    <div class="island-links">
-      <div class="nav-dd">
-        <button class="nav-dd-trigger">Formations <span class="nav-dd-caret">▼</span></button>
-        <div class="nav-dd-menu">
-          <a href="formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
-          <a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
-          <a href="formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
-          <div class="dd-divider"></div>
-          <a href="#formations">Voir toutes les formations →</a>
-        </div>
+    <div class="nav-dd island-dd">
+      <button class="nav-dd-trigger">Formations <span class="nav-dd-caret">▼</span></button>
+      <div class="nav-dd-menu">
+        <a href="formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
+        <a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
+        <a href="formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
+        <div class="dd-divider"></div>
+        <a href="#formations">Voir toutes les formations →</a>
       </div>
+    </div>
+    <div class="island-links">
       <a href="consulting-ia.html">Consulting</a>
       <a href="#why">Approche</a>
       <a href="#faq">FAQ</a>

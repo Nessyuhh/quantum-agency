@@ -118,6 +118,13 @@ footer{background:#f3f3f8;padding:2.5rem 5%;border-top:1px solid var(--border);d
 footer p{color:rgba(10,10,20,.4);font-size:.76rem}
 footer a{color:rgba(10,10,20,.4);text-decoration:none;font-size:.76rem}
 footer a:hover{color:var(--muted)}
+/* ── Scroll reveal ── */
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}
+[data-v][data-d="2"]{transition-delay:.2s}
+[data-v][data-d="3"]{transition-delay:.3s}
+[data-v][data-d="4"]{transition-delay:.4s}
 </style>
 </head>
 <body>
@@ -175,20 +182,20 @@ footer a:hover{color:var(--muted)}
 <article class="content">
 
   <section>
-    <h2>Pourquoi former vos équipes à l'IA maintenant ?</h2>
+    <h2 data-v>Pourquoi former vos équipes à l'IA maintenant ?</h2>
     <p>L'intelligence artificielle n'est plus une technologie du futur. En 2025, <strong>73 % des employés en France</strong> utilisent déjà des outils IA dans leur travail souvent sans formation ni cadre. Le résultat : des usages en silo, des gains de productivité manqués et des risques ignorés (RGPD, hallucinations, confidentialité des données).</p>
     <p>Notre formation initiation IA d'entreprise répond à une question simple : comment passer d'une utilisation naïve et dispersée à une maîtrise collective, cadrée et immédiatement productive ? En une journée, vos collaborateurs qu'ils soient commerciaux, assistants, managers ou cadres repartent avec des méthodes et des outils qu'ils utilisent dès le lendemain.</p>
     <p>Ce n'est pas une formation théorique sur "ce qu'est l'IA". C'est un atelier pratique orienté résultats, calibré sur les réalités de votre métier.</p>
   </section>
 
   <div class="stat-row">
-    <div class="stat-box"><span class="stat-v g-text">2h</span><div class="stat-l">Gagnées en moyenne par jour par participant</div></div>
-    <div class="stat-box"><span class="stat-v g-text">92%</span><div class="stat-l">Taux d'application dès la première semaine</div></div>
-    <div class="stat-box"><span class="stat-v g-text">J+1</span><div class="stat-l">Résultats applicables dès le lendemain</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">2h</span><div class="stat-l">Gagnées en moyenne par jour par participant</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">92%</span><div class="stat-l">Taux d'application dès la première semaine</div></div>
+    <div class="stat-box" data-v><span class="stat-v g-text">J+1</span><div class="stat-l">Résultats applicables dès le lendemain</div></div>
   </div>
 
   <section>
-    <h2>Ce que couvre la formation</h2>
+    <h2 data-v>Ce que couvre la formation</h2>
     <p>La journée est divisée en quatre modules progressifs, avec une alternance constante entre théorie courte (20%) et pratique intense (80%). Chaque module se termine par un exercice appliqué à votre secteur d'activité.</p>
 
     <div class="program">
@@ -223,17 +230,17 @@ footer a:hover{color:var(--muted)}
     </div>
   </section>
 
-  <div class="hl-box">
+  <div class="hl-box" data-v>
     <h3>✦ Ce que vos équipes repartent avec</h3>
     <p>Un accès à notre bibliothèque de 50+ prompts prêts à l'emploi. Un guide "Bonnes pratiques IA" adapté à votre secteur. Un plan d'action personnalisé sur 30 jours. Un accès au groupe Slack des participants Quantum pour poser des questions après la formation. Et surtout : la confiance pour utiliser l'IA au quotidien.</p>
   </div>
 
   <section>
-    <h2>À qui s'adresse cette formation ?</h2>
+    <h2 data-v>À qui s'adresse cette formation ?</h2>
     <p>La formation initiation IA est conçue pour <strong>tout profil non technique</strong> qui veut utiliser l'IA dans son travail sans avoir besoin de comprendre le code ou les algorithmes. Elle est particulièrement adaptée aux :</p>
 
     <div class="two-col">
-      <div class="card">
+      <div class="card" data-v>
         <h3>Profils commerciaux &amp; marketing</h3>
         <ul>
           <li>Commerciaux et responsables comptes</li>
@@ -242,7 +249,7 @@ footer a:hover{color:var(--muted)}
           <li>Chargés de développement</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <h3>Profils administratifs &amp; management</h3>
         <ul>
           <li>Assistants de direction et office managers</li>
@@ -257,9 +264,9 @@ footer a:hover{color:var(--muted)}
   </section>
 
   <section style="margin-top:3.5rem">
-    <h2>Modalités pratiques</h2>
+    <h2 data-v>Modalités pratiques</h2>
     <div class="two-col">
-      <div class="card">
+      <div class="card" data-v>
         <h3>Format &amp; organisation</h3>
         <ul>
           <li>Durée : 1 journée (7h de formation effective)</li>
@@ -269,7 +276,7 @@ footer a:hover{color:var(--muted)}
           <li>Langue : français uniquement</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-v>
         <h3>Financement &amp; tarifs</h3>
         <ul>
           <li>Devis personnalisé selon le groupe</li>
@@ -283,16 +290,16 @@ footer a:hover{color:var(--muted)}
   </section>
 
   <section style="margin-top:3.5rem">
-    <h2>Questions fréquentes sur la formation initiation IA</h2>
-    <div class="card" style="margin-bottom:1rem">
+    <h2 data-v>Questions fréquentes sur la formation initiation IA</h2>
+    <div class="card" data-v style="margin-bottom:1rem">
       <h3>Nos collaborateurs ont-ils besoin de créer des comptes sur ChatGPT ?</h3>
       <p>Un compte gratuit ChatGPT suffit pour la plupart des exercices. Nous recommandons cependant l'abonnement Claude Pro ou ChatGPT Plus (20€/mois) pour une expérience optimale l'investissement est récupéré en quelques heures de travail économisées.</p>
     </div>
-    <div class="card" style="margin-bottom:1rem">
+    <div class="card" data-v style="margin-bottom:1rem">
       <h3>Peut-on faire la formation pour une équipe de 3 personnes seulement ?</h3>
       <p>Oui. Nous adaptons le format pour des petits groupes dès 3 participants. La dynamique est différente mais souvent plus intensive les exercices sont encore plus personnalisés.</p>
     </div>
-    <div class="card">
+    <div class="card" data-v>
       <h3>Quelle est la différence avec une formation en ligne (MOOC) sur l'IA ?</h3>
       <p>Un MOOC générique n'adapte pas les exercices à votre secteur, ne répond pas à vos questions spécifiques et ne crée pas la dynamique de groupe qui ancre les habitudes. Notre formation en présentiel génère des usages concrets que votre équipe continue après la journée le taux d'application est 4 à 5 fois supérieur.</p>
     </div>
@@ -308,13 +315,32 @@ footer a:hover{color:var(--muted)}
 </section>
 
 <footer role="contentinfo">
-  <p>© 2026 Quantum Consulting Formation IA &amp; Consulting pour entreprises</p>
-  <div style="display:flex;gap:1.5rem">
+  <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
     <a href="index.html">Accueil</a>
-    <a href="formation-maitrise-ia.html">Formation Maîtrise</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="formation-expert-ia.html">Formation Niv.3</a>
     <a href="consulting-ia.html">Consulting IA</a>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
+<script>
+/* Scroll reveal */
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length) return;
+  function check(){
+    var vh=window.innerHeight;
+    els.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<vh-40&&r.bottom>40) el.classList.add('in-view');
+      else el.classList.remove('in-view');
+    });
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
+</script>
 </body>
 </html>
