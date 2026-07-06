@@ -26,7 +26,8 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;line-height:1.6;overflow-x:hidden}
 :root{--bg:#ffffff;--bg2:#f3f3f8;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--text:#0a0a14;--muted:#4a5568;--border:rgba(0,0,0,.08)}
 :focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
-.g-text{background:linear-gradient(130deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShimmer 6s ease infinite}
+@keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
 .n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
 .n-logo{font-weight:900;font-size:14px;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
@@ -34,7 +35,7 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
 .n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
 .n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .nav-dd{position:relative;display:inline-flex;align-items:center}
-.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:default;user-select:none}
+.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
 .nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
 .nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
 .nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}

@@ -164,7 +164,10 @@ h1{font-size:clamp(2.6rem,6.5vw,5.4rem);font-weight:900;line-height:1.03;letter-
 @keyframes wReveal{to{opacity:1;transform:translateY(0)}}
 .w1{animation-delay:.05s}.w2{animation-delay:.14s}.w3{animation-delay:.23s}.w4{animation-delay:.32s}.w5{animation-delay:.41s}.w6{animation-delay:.50s}.w7{animation-delay:.59s}
 
-.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* Shimmer on gradient text — exclude .word (hero h1 reveal animation) */
+.g-text:not(.word){animation:gShimmer 6s ease infinite}
+@keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
 .hero-sub{font-size:clamp(1rem,1.9vw,1.22rem);color:var(--muted);max-width:580px;margin:0 auto 2.5rem;opacity:0;animation:fadeUp .7s ease .75s both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -188,7 +191,8 @@ h1{font-size:clamp(2.6rem,6.5vw,5.4rem);font-weight:900;line-height:1.03;letter-
 
 /* ══ HERO VISUAL PANEL ══ */
 .hero-vis{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:clamp(320px,32vw,420px);pointer-events:none;z-index:1}
-.hv-chat{width:100%;border-radius:16px;background:#12121e;border:1px solid rgba(255,255,255,.08);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.2),0 0 0 1px rgba(168,85,247,.06);animation:hvcFloat 6s ease-in-out infinite}
+.hv-chat{width:100%;border-radius:16px;background:#12121e;border:1px solid rgba(255,255,255,.08);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.2),0 0 0 1px rgba(168,85,247,.06);animation:hvcFloat 6s ease-in-out infinite,chatGlow 5s ease-in-out 2s infinite}
+@keyframes chatGlow{0%,100%{box-shadow:0 24px 80px rgba(0,0,0,.2),0 0 0 1px rgba(168,85,247,.06)}50%{box-shadow:0 24px 80px rgba(0,0,0,.25),0 0 0 1px rgba(168,85,247,.22),0 0 28px rgba(168,85,247,.1)}}
 @keyframes hvcFloat{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-14px) rotate(.4deg)}}
 .hv-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05)}
 .hv-title{font-size:.72rem;color:rgba(255,255,255,.4);margin-left:.4rem;font-weight:500}
@@ -402,16 +406,25 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.03em;li
 .proc-card p{color:var(--muted);font-size:.84rem;margin-bottom:1.6rem}
 .steps{display:flex;flex-direction:column;gap:.55rem}
 .step{display:flex;align-items:center;gap:.9rem;padding:.75rem .9rem;background:rgba(0,0,0,.04);border-radius:10px;border:1px solid rgba(0,0,0,.07);transition:background .2s,border-color .2s,transform .2s;text-decoration:none;color:inherit}
-.step:hover{background:rgba(124,58,237,.06);border-color:rgba(168,85,247,.15);transform:translateX(4px)}
+.step:hover,a.step:hover{background:rgba(124,58,237,.06);border-color:rgba(168,85,247,.15);transform:translateX(4px)}
+a.step{text-decoration:none;color:inherit}
 .step-n{width:24px;height:24px;background:linear-gradient(135deg,var(--purple),var(--purple-l));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:800;flex-shrink:0;box-shadow:0 0 10px rgba(124,58,237,.4)}
 .step span{font-size:.82rem;color:var(--muted)}
 
 /* ══ WHY US ══ */
 #why{background:var(--bg2)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1100px;margin:0 auto}
-@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+/* Bento layout — alternating wide/narrow cards */
+.why-card:nth-child(1){grid-column:1/3}
+.why-card:nth-child(4){grid-column:2/4}
+.why-card:nth-child(5){grid-column:1/3}
+.why-card:nth-child(1),.why-card:nth-child(4),.why-card:nth-child(5){padding:2rem 2.4rem;display:grid;grid-template-columns:auto 1fr;gap:0 1.4rem;align-content:start}
+.why-card:nth-child(1) .ico-svg,.why-card:nth-child(4) .ico-svg,.why-card:nth-child(5) .ico-svg{width:52px;height:52px;border-radius:16px;grid-row:1/3}
+.why-card:nth-child(1) .why-ttl,.why-card:nth-child(4) .why-ttl,.why-card:nth-child(5) .why-ttl{align-self:end;font-size:1rem}
+.why-card:nth-child(1) .why-dsc,.why-card:nth-child(4) .why-dsc,.why-card:nth-child(5) .why-dsc{grid-column:2;font-size:.86rem}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}.why-card:nth-child(1),.why-card:nth-child(4),.why-card:nth-child(5){grid-column:1;display:block;padding:1.6rem}}
 .why-card{background:rgba(0,0,0,.025);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:border-color .35s,background .35s,transform .35s}
-.why-card:hover{border-color:rgba(168,85,247,.25);background:rgba(124,58,237,.05);transform:translateY(-5px)}
+.why-card:hover{border-color:rgba(168,85,247,.3);background:rgba(124,58,237,.06);transform:translateY(-6px);box-shadow:0 20px 44px rgba(124,58,237,.1),0 0 0 1px rgba(168,85,247,.15)}
 
 /* SVG icons */
 .ico-svg{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
@@ -491,6 +504,27 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 
 /* ══ content-visibility ══ */
 #consulting,#why,#temoignages,#faq,#contact{content-visibility:auto;contain-intrinsic-size:0 600px}
+
+/* ══ GRAIN NOISE OVERLAY ══ */
+.grain-overlay{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9001;opacity:.038;animation:grainPan 8s steps(2) infinite}
+@keyframes grainPan{0%{transform:translate(0,0)}25%{transform:translate(-5%,-8%)}50%{transform:translate(6%,4%)}75%{transform:translate(-4%,7%)}100%{transform:translate(0,0)}}
+
+/* ══ HERO SPOTLIGHT ══ */
+.hero-spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(700px circle at var(--mx,70%) var(--my,45%),rgba(168,85,247,.09),transparent 60%);transition:background .08s linear}
+
+/* ══ MOCKUP SCANLINE (subtle CRT texture) ══ */
+.mock-win{position:relative}
+.mock-win::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.018) 3px,rgba(255,255,255,.018) 4px);border-radius:14px}
+
+/* ══ IMPROVED BTN-PRIMARY HOVER RING ══ */
+.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 52px rgba(124,58,237,.7),0 0 100px rgba(168,85,247,.25),0 0 0 1px rgba(168,85,247,.5)!important;animation:none}
+
+/* ══ STEP HOVER LINK ══ */
+.step-link{text-decoration:none;color:inherit;display:flex;align-items:center;gap:.9rem;padding:.75rem .9rem;background:rgba(0,0,0,.04);border-radius:10px;border:1px solid rgba(0,0,0,.07);transition:background .2s,border-color .2s,transform .2s}
+.step-link:hover{background:rgba(124,58,237,.06);border-color:rgba(168,85,247,.15);transform:translateX(4px)}
+
+/* ══ IMPROVED TCARD HOVER ══ */
+.tcard:hover{transform:translateY(-7px);filter:brightness(1.04)}
 
 /* ══ BOTTOM TAB BAR Desktop hidden ══ */
 #bottom-bar{display:none}
@@ -625,6 +659,11 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="cursor" aria-hidden="true"></div>
 <div id="progress-bar" aria-hidden="true"></div>
+<!-- Grain noise overlay -->
+<svg class="grain-overlay" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grain-f"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#grain-f)"/>
+</svg>
 
 <!-- BOTTOM TAB BAR (mobile only) -->
 <nav id="bottom-bar" role="navigation" aria-label="Navigation mobile">
@@ -691,6 +730,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   <div class="b1" aria-hidden="true"></div>
   <div class="b2" aria-hidden="true"></div>
   <div class="b3" aria-hidden="true"></div>
+  <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
   <div class="hero-scroll-layer">
     <div class="hero-content">
       <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Formation &amp; Consulting IA pour entreprises</div>
@@ -956,12 +996,12 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
       <div class="stat-lbl">Taux de satisfaction</div>
     </div>
     <div data-v data-d="2">
-      <span class="stat-num g-text" data-count="40" data-prefix="-" data-suffix="%">-40%</span>
+      <div class="stat-num g-text" style="display:flex;align-items:baseline;justify-content:center;gap:.05em"><span aria-hidden="true">−</span><span data-count="40" data-suffix="%">40%</span></div>
       <div class="stat-bar-wrap"><div class="stat-bar" style="width:80%"></div></div>
       <div class="stat-lbl">Temps sur tâches répétitives</div>
     </div>
     <div data-v data-d="3">
-      <span class="stat-num g-text">3</span>
+      <span class="stat-num g-text" data-count="3" data-suffix=" niv.">3 niv.</span>
       <div class="stat-bar-wrap"><div class="stat-bar" style="width:60%"></div></div>
       <div class="stat-lbl">Niveaux de formation</div>
     </div>
@@ -1006,7 +1046,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
           <h3>Notre processus</h3>
           <p>Un accompagnement structuré pour des résultats mesurables</p>
           <div class="steps">
-            <div class="step"><div class="step-n">1</div><span>Appel de découverte gratuit (30 min)</span></div>
+            <a href="contact.html" class="step"><div class="step-n">1</div><span>Appel de découverte gratuit (30 min) →</span></a>
             <div class="step"><div class="step-n">2</div><span>Audit de vos processus et potentiel IA</span></div>
             <div class="step"><div class="step-n">3</div><span>Plan d'action personnalisé &amp; devis</span></div>
             <div class="step"><div class="step-n">4</div><span>Mise en oeuvre et formation des équipes</span></div>
@@ -1195,8 +1235,8 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
       <h4>Contact</h4>
       <ul>
         <li><a href="contact.html">Prendre RDV</a></li>
-        <li><span>contact@quantum-agency.fr</span></li>
-        <li><span>+33 6 49 10 35 02</span></li>
+        <li><a href="mailto:contact@quantum-agency.fr">contact@quantum-agency.fr</a></li>
+        <li><a href="tel:+33649103502">+33 6 49 10 35 02</a></li>
         <li><span>Paris, France</span></li>
       </ul>
     </div>
@@ -1395,6 +1435,59 @@ window.addEventListener('scroll',()=>{
   }
   window.addEventListener('scroll',check,{passive:true});
   check();
+})();
+
+/* ── Hero spotlight (mouse parallax) ── */
+(function(){
+  const hero=document.getElementById('hero');
+  const spot=document.getElementById('hero-spotlight');
+  if(!hero||!spot)return;
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    const x=e.clientX-r.left;
+    const y=e.clientY-r.top;
+    spot.style.background=`radial-gradient(700px circle at ${x}px ${y}px,rgba(168,85,247,.12),transparent 60%)`;
+  },{passive:true});
+  hero.addEventListener('mouseleave',()=>{
+    spot.style.background='radial-gradient(700px circle at 70% 45%,rgba(168,85,247,.07),transparent 60%)';
+  },{passive:true});
+})();
+
+/* ── Escape key — close mobile menu & nav dropdown ── */
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  const m=document.getElementById('mobile-menu');
+  if(m&&m.classList.contains('open'))closeMenu();
+});
+
+/* ── Magnetic hover on .btn-primary ── */
+(function(){
+  document.querySelectorAll('.btn-primary').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const x=(e.clientX-r.left-r.width/2)*0.12;
+      const y=(e.clientY-r.top-r.height/2)*0.12;
+      btn.style.transform=`translate(${x}px,${y}px) scale(1.05)`;
+    },{passive:true});
+    btn.addEventListener('mouseleave',()=>{
+      btn.style.transform='';
+    },{passive:true});
+  });
+})();
+
+/* ── Stat bars IntersectionObserver fallback (non-scroll-timeline browsers) ── */
+(function(){
+  if(CSS.supports('animation-timeline','scroll()'))return;
+  const bars=document.querySelectorAll('.stat-bar');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      e.target.style.transition='transform .9s cubic-bezier(.22,1,.36,1)';
+      e.target.style.transform='scaleX(1)';
+      obs.unobserve(e.target);
+    });
+  },{threshold:.4});
+  bars.forEach(b=>obs.observe(b));
 })();
 </script>
 </body>
