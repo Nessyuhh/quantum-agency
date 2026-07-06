@@ -494,6 +494,21 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 @media(max-width:960px){.consulting-split{grid-template-columns:1fr;gap:3rem}.spin-ring,.spin-ring-2{display:none}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){section{padding:4.5rem 5%}.btn-group{flex-direction:column;align-items:center}.footer-grid{grid-template-columns:1fr}.cta-glass{padding:2.5rem 1.5rem}}
 
+/* ══ PAGE LOAD FADE ══ */
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+
+/* ══ BACK TO TOP ══ */
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(10,5,28,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:none;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.25);box-shadow:0 0 18px rgba(124,58,237,.4);transform:translateY(-3px)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
+
+/* ══ PROCESS TIMELINE LINE ══ */
+.steps{position:relative}
+.steps::before{content:'';position:absolute;left:11px;top:12px;bottom:12px;width:1px;background:linear-gradient(to bottom,rgba(168,85,247,.3),rgba(6,182,212,.2));pointer-events:none}
+.step,.step-link{position:relative}
+
 /* ══ prefers-reduced-motion ══ */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -686,6 +701,9 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   </a>
 </nav>
 
+<!-- Back to top -->
+<a href="#main-content" id="back-top" aria-label="Retour en haut">↑</a>
+
 <!-- NAV -->
 <nav id="island" role="navigation" aria-label="Navigation principale">
   <div class="island-inner">
@@ -785,26 +803,28 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 </section>
 
 <!-- TRUST BAR -->
-<div id="trust-bar" role="region" aria-label="Secteurs d'intervention">
+<div id="trust-bar" role="region" aria-label="Résultats & secteurs">
   <div class="trust-track" aria-hidden="true">
+    <div class="trust-item"><span class="trust-dot"></span>+2h/jour par collaborateur</div>
     <div class="trust-item"><span class="trust-dot"></span>Commerce &amp; Distribution</div>
+    <div class="trust-item"><span class="trust-dot"></span>ROI moyen en 6 semaines</div>
     <div class="trust-item"><span class="trust-dot"></span>Industrie &amp; Production</div>
+    <div class="trust-item"><span class="trust-dot"></span>−40% tâches répétitives</div>
     <div class="trust-item"><span class="trust-dot"></span>Santé &amp; Médical</div>
-    <div class="trust-item"><span class="trust-dot"></span>Services B2B</div>
+    <div class="trust-item"><span class="trust-dot"></span>95% de satisfaction client</div>
     <div class="trust-item"><span class="trust-dot"></span>Finance &amp; Comptabilité</div>
-    <div class="trust-item"><span class="trust-dot"></span>Immobilier</div>
-    <div class="trust-item"><span class="trust-dot"></span>Communication &amp; Marketing</div>
-    <div class="trust-item"><span class="trust-dot"></span>Ressources Humaines</div>
+    <div class="trust-item"><span class="trust-dot"></span>15k€ d'économies identifiés/audit</div>
     <div class="trust-item"><span class="trust-dot"></span>Juridique &amp; Conseil</div>
     <!-- duplicate for seamless loop -->
+    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>+2h/jour par collaborateur</div>
     <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Commerce &amp; Distribution</div>
+    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>ROI moyen en 6 semaines</div>
     <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Industrie &amp; Production</div>
+    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>−40% tâches répétitives</div>
     <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Santé &amp; Médical</div>
-    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Services B2B</div>
+    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>95% de satisfaction client</div>
     <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Finance &amp; Comptabilité</div>
-    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Immobilier</div>
-    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Communication &amp; Marketing</div>
-    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Ressources Humaines</div>
+    <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>15k€ d'économies identifiés/audit</div>
     <div class="trust-item" aria-hidden="true"><span class="trust-dot"></span>Juridique &amp; Conseil</div>
   </div>
 </div>
@@ -1473,6 +1493,15 @@ document.addEventListener('keydown',e=>{
       btn.style.transform='';
     },{passive:true});
   });
+})();
+
+/* ── Back to top visibility ── */
+(function(){
+  const bt=document.getElementById('back-top');
+  if(!bt)return;
+  window.addEventListener('scroll',()=>bt.classList.toggle('visible',scrollY>500),{passive:true});
+  bt.addEventListener('mouseenter',()=>cur&&cur.classList.add('hover'));
+  bt.addEventListener('mouseleave',()=>cur&&cur.classList.remove('hover'));
 })();
 
 /* ── Stat bars IntersectionObserver fallback (non-scroll-timeline browsers) ── */

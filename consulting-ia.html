@@ -109,6 +109,12 @@ footer a:hover{color:var(--muted)}
 [data-v][data-d="2"]{transition-delay:.2s}
 [data-v][data-d="3"]{transition-delay:.3s}
 [data-v][data-d="4"]{transition-delay:.4s}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(5,5,10,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.25);box-shadow:0 0 18px rgba(124,58,237,.4);transform:translateY(-3px)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
 </style>
 </head>
 <body>
@@ -286,6 +292,7 @@ footer a:hover{color:var(--muted)}
   <a href="contact.html" class="btn">Réserver l'appel de cadrage →</a>
 </section>
 
+<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <footer role="contentinfo">
   <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
   <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
@@ -323,6 +330,8 @@ document.querySelectorAll('.btn').forEach(function(btn){
   });
   btn.addEventListener('mouseleave',function(){btn.style.transform='';});
 });
+var bt=document.getElementById('back-top');
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
 </script>
 </body>
 </html>

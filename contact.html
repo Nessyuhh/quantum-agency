@@ -130,6 +130,12 @@ footer{background:#f3f3f8;padding:2.5rem 5%;border-top:1px solid var(--border);d
 footer p{color:rgba(10,10,20,.4);font-size:.76rem}
 footer a{color:rgba(10,10,20,.4);text-decoration:none;font-size:.76rem}
 footer a:hover{color:var(--muted)}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(255,255,255,.9);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.1);box-shadow:0 0 18px rgba(124,58,237,.2);transform:translateY(-3px)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
 </style>
 </head>
 <body>
@@ -285,6 +291,7 @@ footer a:hover{color:var(--muted)}
 </div>
 </main>
 
+<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <footer role="contentinfo">
   <p>© 2026 Quantum Consulting &nbsp;·&nbsp; Formation IA &amp; Consulting pour entreprises &nbsp;·&nbsp; Paris, France</p>
   <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
@@ -347,6 +354,8 @@ async function submitForm(e){
     showError('Une erreur est survenue. Contactez-nous directement à contact@quantum-agency.fr');
   }
 }
+var bt=document.getElementById('back-top');
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
 </script>
 </body>
 </html>
