@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable | Quantum Consulting</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=optional" media="print" onload="this.media='all'">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+:root{--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4}
+.bg-glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(124,58,237,.12),transparent 70%)}
+.logo{font-weight:900;font-size:16px;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;display:inline-block;margin-bottom:4rem}
+.num{font-size:clamp(6rem,20vw,10rem);font-weight:900;letter-spacing:-.06em;line-height:1;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem}
+.sub{color:#64748b;font-size:.95rem;max-width:420px;line-height:1.7;margin:0 auto 2.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 0 28px rgba(124,58,237,.4);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 52px rgba(124,58,237,.7)}
+.links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.links a{color:#64748b;text-decoration:none;font-size:.84rem;transition:color .2s}
+.links a:hover{color:#f1f5f9}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+main{animation:pageIn .45s ease both;position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="bg-glow" aria-hidden="true"></div>
+<main>
+  <a href="index.html" class="logo">Quantum Consulting</a>
+  <div class="num" aria-hidden="true">404</div>
+  <h1>Page introuvable</h1>
+  <p class="sub">Cette page n'existe pas ou a été déplacée. Retournez à l'accueil pour trouver ce que vous cherchez.</p>
+  <a href="index.html" class="btn">Retour à l'accueil →</a>
+  <nav class="links" aria-label="Liens rapides">
+    <a href="formation-initiation-ia.html">Formation Niv. 1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv. 2</a>
+    <a href="formation-expert-ia.html">Formation Niv. 3</a>
+    <a href="consulting-ia.html">Consulting IA</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</main>
+</body>
+</html>
