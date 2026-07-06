@@ -146,10 +146,12 @@ body{animation:pageIn .45s ease both}
 @media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
 </style>
 </head>
 <body>
-
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <nav aria-label="Navigation principale">
   <div class="n-inner">
     <a href="index.html" class="n-logo">Quantum Consulting</a>
@@ -179,7 +181,7 @@ body{animation:pageIn .45s ease both}
   <a href="index.html#faq" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg></span><span>FAQ</span></a>
 </nav>
 
-<main>
+<main id="main-content">
 <div class="contact-wrap">
   <div class="contact-grid">
 
