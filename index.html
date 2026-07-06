@@ -372,7 +372,7 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.03em;li
 .svc-dsc{font-size:.84rem;color:var(--muted);line-height:1.7}
 
 /* Process glass card */
-.proc-card{border-radius:20px;padding:2.2rem;background:linear-gradient(145deg,rgba(168,85,247,.07),rgba(6,182,212,.04));border:1px solid rgba(124,58,237,.12);box-shadow:0 4px 32px rgba(124,58,237,.08),0 1px 0 rgba(255,255,255,.6) inset;position:relative}
+.proc-card{border-radius:20px;padding:2.2rem;background:linear-gradient(145deg,rgba(168,85,247,.1) 0%,rgba(6,182,212,.06) 100%);backdrop-filter:blur(28px) saturate(180%) brightness(1.05);-webkit-backdrop-filter:blur(28px) saturate(180%) brightness(1.05);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.09);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(0,0,0,.12);box-shadow:0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(0,0,0,.05);position:relative}
 .spin-ring{position:absolute;width:440px;height:440px;border-radius:50%;border:1px dashed rgba(168,85,247,.12);top:50%;left:50%;transform:translate(-50%,-50%);animation:spinCW 80s linear infinite;pointer-events:none;z-index:0}
 .spin-ring-2{width:340px;height:340px;border:1px dashed rgba(6,182,212,.08);animation:spinCCW 55s linear infinite}
 @keyframes spinCW{to{transform:translate(-50%,-50%) rotate(360deg)}}
@@ -427,7 +427,7 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.03em;li
 #faq{background:var(--bg2)}
 .faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
 .faq-item{border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,.02);overflow:hidden;transition:border-color .3s}
-.faq-item.active{border:1px solid rgba(124,58,237,.18);background:linear-gradient(145deg,rgba(168,85,247,.06),rgba(6,182,212,.03));}
+.faq-item.active{background:linear-gradient(145deg,rgba(168,85,247,.1) 0%,rgba(6,182,212,.06) 100%);backdrop-filter:blur(28px) saturate(180%) brightness(1.05);-webkit-backdrop-filter:blur(28px) saturate(180%) brightness(1.05);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.09);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(0,0,0,.12);box-shadow:0 4px 24px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.1);}
 .faq-btn{display:flex;align-items:flex-start;gap:1rem;width:100%;padding:1.15rem 1.3rem;background:none;border:none;color:var(--text);cursor:none;text-align:left;font-family:inherit}
 .faq-num{font-size:.63rem;font-weight:800;letter-spacing:.1em;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding-top:3px;flex-shrink:0}
 .faq-q{flex:1;font-size:.88rem;font-weight:600;line-height:1.55}
@@ -440,14 +440,14 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.03em;li
 /* ══ CTA ══ */
 #contact{text-align:center;padding:9rem 5%;position:relative;overflow:hidden}
 .cta-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.cta-glass{position:relative;max-width:680px;margin:0 auto;border-radius:28px;padding:4rem 3rem;background:linear-gradient(145deg,rgba(168,85,247,.08),rgba(6,182,212,.05));border:1px solid rgba(124,58,237,.14);box-shadow:0 20px 60px rgba(124,58,237,.1),0 1px 0 rgba(255,255,255,.8) inset}
+.cta-glass{position:relative;max-width:680px;margin:0 auto;border-radius:28px;padding:4rem 3rem;background:linear-gradient(145deg,rgba(168,85,247,.1) 0%,rgba(6,182,212,.06) 100%);backdrop-filter:blur(28px) saturate(180%) brightness(1.05);-webkit-backdrop-filter:blur(28px) saturate(180%) brightness(1.05);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.09);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(0,0,0,.12);box-shadow:0 20px 60px rgba(124,58,237,.1),0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(0,0,0,.05)}
 #contact h2{margin-bottom:1rem}
 #contact p{color:var(--muted);font-size:1rem;margin-bottom:2.5rem;line-height:1.75}
 
 /* ══ FOOTER ══ */
 footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
-.foot-logo{font-size:1.05rem;font-weight:900;color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.foot-logo{font-size:1.05rem;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-.02em}
 .foot-logo span{color:var(--purple-l)}
 .foot-desc{color:var(--muted);font-size:.83rem;margin-top:.7rem;line-height:1.75;max-width:250px}
 .foot-col h4{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.9rem}
@@ -631,7 +631,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <!-- NAV -->
 <nav id="island" role="navigation" aria-label="Navigation principale">
   <div class="island-inner">
-    <a href="/" class="island-logo">Quantum<span style="color:inherit">Agency</span></a>
+    <a href="/" class="island-logo">Quantum<span style="color:inherit"> Consulting</span></a>
     <div class="island-links">
       <a href="#formations">Formations</a>
       <a href="#consulting">Consulting</a>
@@ -1141,7 +1141,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <footer role="contentinfo">
   <div class="footer-grid">
     <div>
-      <a href="/" class="foot-logo">Quantum<span>Agency</span></a>
+      <a href="/" class="foot-logo">Quantum<span> Consulting</span></a>
       <p class="foot-desc">Formation et consulting en intelligence artificielle pour TPE/PME. Transformez vos équipes, automatisez vos processus, boostez vos résultats.</p>
     </div>
     <div class="foot-col">
