@@ -67,6 +67,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 }
 
 /* ══ CUSTOM CURSOR ══ */
+/* Override UA stylesheet which reapplies cursor on a/button */
+a,button,input,select,textarea,[role="button"]{cursor:none}
 #cursor{
   position:fixed;width:8px;height:8px;
   background:var(--purple-l);border-radius:50%;
