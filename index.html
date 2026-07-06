@@ -1223,7 +1223,7 @@ body{animation:pageIn .45s ease both}
     <p>Réservez un appel de découverte gratuit de 30 minutes. On analyse ensemble votre situation et on vous propose le parcours le mieux adapté sans engagement.</p>
     <div class="btn-group">
       <a href="contact.html" class="btn-primary">Réserver un appel gratuit →</a>
-      <a href="mailto:contact@quantum-agency.fr" class="btn-outline">✉️ Nous écrire</a>
+      <a href="mailto:contact@quantum-agency.fr" class="btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg> Nous écrire</a>
     </div>
   </div>
 </section>
@@ -1290,11 +1290,13 @@ document.querySelectorAll('a,button').forEach(el=>{
 /* ── Nav compact ── */
 const island=document.getElementById('island');
 const navLinks=document.querySelectorAll('.island-links a');
+const tabItems=document.querySelectorAll('#bottom-bar .tab-item');
 window.addEventListener('scroll',()=>{
   island.classList.toggle('compact',scrollY>400);
   let cur2='';
   document.querySelectorAll('section[id],div[id]').forEach(s=>{if(scrollY>=s.offsetTop-160)cur2=s.id});
   navLinks.forEach(a=>{const on=a.getAttribute('href')==='#'+cur2;a.classList.toggle('active',on)});
+  tabItems.forEach(a=>{const on=a.getAttribute('href')==='#'+cur2;a.classList.toggle('active',on)});
 },{passive:true});
 
 /* ── Mobile menu ── */
