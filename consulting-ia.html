@@ -129,10 +129,13 @@ body{animation:pageIn .45s ease both}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 .skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
 .skip-link:focus{top:0}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4);transform:scaleX(0);z-index:400;pointer-events:none}
+@supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<div id="progress-bar" aria-hidden="true"></div>
 <nav aria-label="Navigation principale">
   <div class="n-inner">
     <a href="index.html" class="n-logo">Quantum Consulting</a>
