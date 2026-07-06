@@ -274,25 +274,26 @@ body{animation:pageIn .45s ease both}
               <option value="200+">Plus de 200 personnes</option>
             </select>
           </div>
-          <div class="field">
-            <label>Votre besoin principal *</label>
+          <fieldset class="field" style="border:none;padding:0;margin:0">
+            <legend style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.6rem">Votre besoin principal *</legend>
             <div class="radio-group">
               <label class="radio-opt"><input type="radio" name="besoin" value="formation" required><span>Formation équipe</span></label>
               <label class="radio-opt"><input type="radio" name="besoin" value="consulting"><span>Consulting IA</span></label>
               <label class="radio-opt"><input type="radio" name="besoin" value="strategie"><span>Stratégie IA</span></label>
               <label class="radio-opt"><input type="radio" name="besoin" value="autre"><span>Autre</span></label>
             </div>
-          </div>
+          </fieldset>
           <div class="field">
             <label for="message">Décrivez votre situation (optionnel)</label>
             <textarea id="message" name="message" placeholder="Contexte, objectifs, contraintes — plus vous nous donnez d'informations, plus notre appel sera productif..." rows="4"></textarea>
           </div>
+          <p id="form-error" role="alert" aria-live="polite" style="color:#ef4444;font-size:.8rem;margin-top:.5rem;font-weight:600;min-height:1.2em"></p>
           <button type="submit" class="submit-btn">Envoyer ma demande →</button>
           <p class="form-note">Pas de démarchage, pas de newsletter non souhaitée. Vos données ne sont pas revendues.</p>
         </form>
       </div>
 
-      <div id="form-success">
+      <div id="form-success" tabindex="-1" aria-live="polite">
         <span class="success-ico"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
         <h3>Message envoyé !</h3>
         <p>On revient vers vous sous 24h ouvrées pour caler un créneau. En attendant, n'hésitez pas à consulter nos <a href="formation-initiation-ia.html" style="color:var(--purple-l);text-decoration:none">pages de formation</a>.</p>
@@ -321,12 +322,8 @@ body{animation:pageIn .45s ease both}
 // Replace YOUR_FORM_ID with your Formspree form ID after creating a free account at formspree.io
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-function showError(msg){
-  let el=document.getElementById('form-error');
-  if(!el){el=document.createElement('p');el.id='form-error';el.style.cssText='color:#ef4444;font-size:.8rem;margin-top:.5rem;font-weight:600';document.querySelector('.submit-btn').after(el)}
-  el.textContent=msg;
-}
-function clearError(){const el=document.getElementById('form-error');if(el)el.textContent=''}
+function showError(msg){document.getElementById('form-error').textContent=msg;}
+function clearError(){document.getElementById('form-error').textContent='';}
 
 async function submitForm(e){
   e.preventDefault();
@@ -358,7 +355,7 @@ async function submitForm(e){
     });
     if(res.ok||res.status===200){
       document.getElementById('form-area').style.display='none';
-      document.getElementById('form-success').style.display='block';
+      const s=document.getElementById('form-success');s.style.display='block';s.focus();
     } else {
       throw new Error('server');
     }

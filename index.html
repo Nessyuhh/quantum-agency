@@ -1308,12 +1308,14 @@ function toggleMenu(){
   b.setAttribute('aria-expanded',open);
   b.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
   document.body.style.overflow=open?'hidden':'';
+  if(open)requestAnimationFrame(()=>{const f=m.querySelector('a,button');if(f)f.focus();});
 }
 function closeMenu(){
   const m=document.getElementById('mobile-menu'),b=document.getElementById('burger');
   m.classList.remove('open');m.setAttribute('aria-hidden','true');
   b.classList.remove('open');b.setAttribute('aria-expanded','false');
   b.setAttribute('aria-label','Ouvrir le menu');document.body.style.overflow='';
+  b.focus();
 }
 
 /* ── FAQ ── */
@@ -1478,11 +1480,18 @@ window.addEventListener('scroll',()=>{
   },{passive:true});
 })();
 
-/* ── Escape key — close mobile menu & nav dropdown ── */
+/* ── Escape key + focus trap for mobile menu ── */
 document.addEventListener('keydown',e=>{
-  if(e.key!=='Escape')return;
   const m=document.getElementById('mobile-menu');
-  if(m&&m.classList.contains('open'))closeMenu();
+  const open=m&&m.classList.contains('open');
+  if(e.key==='Escape'&&open){closeMenu();return;}
+  if(e.key==='Tab'&&open){
+    const els=[...m.querySelectorAll('a,button')].filter(el=>!el.disabled);
+    if(!els.length)return;
+    const first=els[0],last=els[els.length-1];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus();}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus();}}
+  }
 });
 
 /* ── Magnetic hover on .btn-primary ── */
