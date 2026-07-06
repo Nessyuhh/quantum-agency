@@ -95,7 +95,7 @@ input,select,textarea{
   background:rgba(0,0,0,.04);
   border:1px solid rgba(0,0,0,.12);
   border-radius:10px;padding:.85rem 1rem;
-  color:var(--text);font-size:.88rem;font-family:inherit;
+  color:var(--text);font-size:1rem;font-family:inherit;
   outline:none;transition:border-color .2s,background .2s;
   width:100%;
 }
@@ -136,6 +136,8 @@ body{animation:pageIn .45s ease both}
 #back-top.visible{opacity:1;transform:translateY(0)}
 #back-top:hover{background:rgba(124,58,237,.1);box-shadow:0 0 18px rgba(124,58,237,.2);transform:translateY(-3px)}
 @media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
