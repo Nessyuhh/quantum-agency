@@ -514,9 +514,11 @@ body{animation:pageIn .45s ease both}
 /* ══ prefers-reduced-motion ══ */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .trust-track{animation:none!important;transform:none}
   .mq-track{animation:none!important}
   .b1,.b2,.b3{animation:none!important}
   .spin-ring,.spin-ring-2{animation:none!important}
+  #cursor{display:none}
 }
 
 /* ══ content-visibility ══ */
