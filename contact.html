@@ -320,9 +320,6 @@ body{animation:pageIn .45s ease both}
 </footer>
 
 <script>
-// Replace YOUR_FORM_ID with your Formspree form ID after creating a free account at formspree.io
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-
 function showError(msg){document.getElementById('form-error').textContent=msg;}
 function clearError(){document.getElementById('form-error').textContent='';}
 
@@ -331,6 +328,7 @@ async function submitForm(e){
   clearError();
   const form=document.getElementById('contact-form');
   const prenom=form.querySelector('[name="prenom"]').value.trim();
+  const nom=form.querySelector('[name="nom"]').value.trim();
   const email=form.querySelector('[name="email"]').value.trim();
   const besoin=form.querySelector('[name="besoin"]:checked');
   if(!prenom){showError('Veuillez indiquer votre prénom.');return;}
@@ -341,20 +339,20 @@ async function submitForm(e){
   btn.disabled=true;btn.textContent='Envoi en cours…';
 
   try{
-    const res=await fetch(FORMSPREE_ENDPOINT,{
+    const res=await fetch('https://formsubmit.co/ajax/contact@quantum-agency.fr',{
       method:'POST',
-      headers:{'Accept':'application/json','Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({
-        prenom,
-        nom:form.querySelector('[name="nom"]').value.trim(),
-        email,
+        _subject:'Nouvelle demande — '+besoin.value+' | '+prenom+' '+nom,
+        prenom,nom,email,
         societe:form.querySelector('[name="societe"]').value.trim(),
         effectif:form.querySelector('[name="effectif"]').value,
         besoin:besoin.value,
         message:form.querySelector('[name="message"]').value.trim()
       })
     });
-    if(res.ok||res.status===200){
+    const data=await res.json();
+    if(data.success==='true'||data.success===true){
       document.getElementById('form-area').style.display='none';
       const s=document.getElementById('form-success');s.style.display='block';s.focus();
     } else {
