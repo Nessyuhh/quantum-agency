@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Comparatif Modèles LLM 2026 — Claude, GPT-4o, Mistral, Gemini, Llama | Quantum Agency</title>
+<meta name="description" content="Comparatif complet des modèles LLM 2026 : Claude (Anthropic), GPT-4o (OpenAI), Mistral Large, Gemini 1.5 Pro, Meta Llama 3, DeepSeek R1, Perplexity. Quelle IA pour quel usage ?">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.quantum-agency.fr/modeles-ia.html">
+<meta property="og:title" content="Comparatif LLM 2026 — Claude, GPT-4o, Mistral, Gemini, Llama | Quantum Agency">
+<meta property="og:description" content="Comparatif des modèles IA pour les entreprises : Claude, GPT-4o, Mistral, Gemini 1.5 Pro, Llama 3, DeepSeek R1. Zones d'excellence, coûts, souveraineté, cas d'usage.">
+<meta property="og:url" content="https://www.quantum-agency.fr/modeles-ia.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.quantum-agency.fr/og-image.svg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Quantum Agency">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Comparatif LLM 2026 — Claude, GPT-4o, Mistral, Gemini | Quantum Agency">
+<meta name="twitter:description" content="Comparatif modèles IA 2026 : Claude, GPT-4o, Mistral, Gemini, Llama, DeepSeek. Quelle IA pour quel usage en entreprise ?">
+<meta name="twitter:image" content="https://www.quantum-agency.fr/og-image.svg">
+<meta name="theme-color" content="#05050a">
+<meta name="author" content="Quantum Agency">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
+<noscript><style>[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Comparatif des modèles LLM pour les entreprises en 2026","description":"Guide comparatif des principaux modèles d'intelligence artificielle pour les entreprises : Claude (Anthropic), GPT-4o (OpenAI), Mistral Large (Mistral AI), Gemini 1.5 Pro (Google), Meta Llama 3, DeepSeek R1.","author":{"@type":"Organization","name":"Quantum Agency"},"publisher":{"@type":"Organization","name":"Quantum Agency","url":"https://www.quantum-agency.fr/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Comparatif modèles LLM","item":"https://www.quantum-agency.fr/modeles-ia.html"}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
+:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--green:#22c55e;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
+:focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
+.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShimmer 6s ease infinite}
+@keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
+.n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.n-logo{font-weight:900;font-size:14px;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.n-links{display:flex;gap:4px}
+.n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
+.nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
+.nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(8,4,22,.97);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:6px;min-width:240px;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.22,1,.36,1),transform .25s cubic-bezier(.22,1,.36,1);z-index:300;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:rgba(255,255,255,.65);font-size:12.5px;font-weight:500;text-decoration:none;padding:9px 14px;border-radius:10px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-dd-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-badge{font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:#a855f7;padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2);flex-shrink:0}
+.nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
+.n-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none}
+@media(max-width:640px){nav{display:none}}
+#bb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(6,4,18,.93);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.07);padding:4px 4px env(safe-area-inset-bottom);gap:0}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(148,163,184,.5);padding:6px 2px;min-height:48px;border-radius:10px;-webkit-tap-highlight-color:transparent}
+.ti span:first-child{font-size:18px;line-height:1}
+.ti span:last-child{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.ti.active,.ti:hover{color:var(--purple-l)}
+.tc{flex:0 0 auto;background:linear-gradient(135deg,var(--purple),var(--purple-l));border-radius:22px;padding:0 18px;height:40px;display:flex;align-items:center;color:#fff;font-size:11px;font-weight:800;text-decoration:none;margin:0 5px;box-shadow:0 4px 18px rgba(124,58,237,.45);-webkit-tap-highlight-color:transparent}
+@media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
+.pg-hero{padding:140px 5% 80px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(124,58,237,.15),transparent 70%),radial-gradient(rgba(124,58,237,.12) 1px,transparent 1px);background-size:auto,36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);pointer-events:none}
+.hero-spot{position:absolute;inset:0;pointer-events:none;z-index:0;transition:background .08s linear}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;justify-content:center;font-size:.74rem;color:var(--muted);margin-bottom:1.2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--text)}
+.breadcrumb span{color:rgba(148,163,184,.3)}
+.pg-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:100px;padding:.35rem 1.1rem;font-size:.68rem;font-weight:800;color:var(--purple-l);margin-bottom:1rem;letter-spacing:.07em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;max-width:800px;margin:0 auto 1.2rem}
+.pg-sub{color:var(--muted);font-size:clamp(.95rem,1.6vw,1.1rem);max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 0 28px rgba(124,58,237,.4);transition:transform .2s,box-shadow .2s;animation:btnGlow 3s ease-in-out infinite}
+@keyframes btnGlow{0%,100%{box-shadow:0 0 28px rgba(124,58,237,.4)}50%{box-shadow:0 0 52px rgba(124,58,237,.7),0 0 80px rgba(168,85,247,.2)}}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 52px rgba(124,58,237,.7),0 0 0 1px rgba(168,85,247,.4)!important;animation:none}
+.content{max-width:1050px;margin:0 auto;padding:5rem 5%}
+.content h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:.75rem}
+.content p{color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-size:.96rem}
+.content p strong{color:var(--text)}
+
+/* Model cards */
+.model-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;margin:2rem 0;transition:border-color .3s,box-shadow .3s}
+.model-card:hover{border-color:rgba(168,85,247,.25);box-shadow:0 8px 32px rgba(124,58,237,.08)}
+.model-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.model-logo{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;font-weight:900}
+.model-info{flex:1}
+.model-name{font-size:1.15rem;font-weight:900;margin-bottom:.15rem}
+.model-maker{font-size:.76rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.model-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
+.model-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.2rem .65rem;border-radius:100px}
+.tag-purple{background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.2);color:#c084fc}
+.tag-cyan{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2);color:#22d3ee}
+.tag-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#4ade80}
+.tag-amber{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#fbbf24}
+.tag-red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem}
+@media(max-width:640px){.model-grid{grid-template-columns:1fr}}
+.model-section-title{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.6rem}
+.model-pros{list-style:none;display:flex;flex-direction:column;gap:.4rem;padding:0}
+.model-pros li{font-size:.84rem;color:var(--muted);line-height:1.6;padding-left:1.2rem;position:relative}
+.model-pros li::before{content:'✓';color:var(--green);font-weight:700;position:absolute;left:0;font-size:.8rem}
+.model-limits{list-style:none;display:flex;flex-direction:column;gap:.4rem;padding:0}
+.model-limits li{font-size:.84rem;color:var(--muted);line-height:1.6;padding-left:1.2rem;position:relative}
+.model-limits li::before{content:'—';color:var(--amber);font-weight:700;position:absolute;left:0;font-size:.8rem}
+.model-use{font-size:.84rem;color:var(--muted);line-height:1.7;padding:.9rem 1rem;background:rgba(168,85,247,.05);border-left:3px solid rgba(168,85,247,.3);border-radius:0 8px 8px 0;margin-top:1rem}
+.model-use strong{color:var(--purple-l)}
+
+/* Comparison table */
+.cmp-wrap{overflow-x:auto;margin:3rem 0;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:700px}
+.cmp-table th{padding:.85rem 1rem;text-align:left;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.08)}
+.cmp-table td{padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);color:var(--muted);vertical-align:middle}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table td:first-child{color:var(--text);font-weight:700}
+.cmp-table tr:hover td{background:rgba(168,85,247,.03)}
+.dot-green{color:var(--green)}
+.dot-amber{color:var(--amber)}
+.dot-red{color:#f87171}
+
+.cta-sec{text-align:center;padding:5rem 5%;background:var(--bg2);border-top:1px solid var(--border)}
+.cta-sec h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:1rem}
+.cta-sec p{color:var(--muted);max-width:500px;margin:0 auto 2rem;font-size:.95rem}
+footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer p{color:rgba(148,163,184,.45);font-size:.76rem}
+footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
+footer a:hover{color:var(--muted)}
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}[data-v][data-d="2"]{transition-delay:.2s}[data-v][data-d="3"]{transition-delay:.3s}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(5,5,10,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.25);box-shadow:0 0 18px rgba(124,58,237,.4);transform:translateY(-3px)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4);transform:scaleX(0);z-index:400;pointer-events:none}
+@supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<div id="progress-bar" aria-hidden="true"></div>
+<nav aria-label="Navigation principale">
+  <div class="n-inner">
+    <a href="index.html" class="n-logo">Quantum Agency</a>
+    <div class="n-links">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Services <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="audit-ia.html">Audit IA <span class="nav-dd-badge">Diagnostic</span></a>
+          <a href="integration-ia.html">Intégration IA</a>
+          <a href="automatisation-ia.html">Automatisation</a>
+          <a href="agents-ia.html">Agents IA <span class="nav-dd-badge">LLM privé</span></a>
+          <div class="dd-divider"></div>
+          <a href="consulting-ia.html">Conseil stratégique →</a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
+          <a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
+          <a href="formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
+          <div class="dd-divider"></div>
+          <a href="index.html#formations">Voir toutes les formations →</a>
+        </div>
+      </div>
+      <a href="index.html#approche">Approche</a>
+    </div>
+    <a href="contact.html" class="n-cta">Prendre RDV</a>
+  </div>
+</nav>
+
+<nav id="bb" aria-label="Navigation mobile">
+  <a href="index.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span><span>Accueil</span></a>
+  <a href="consulting-ia.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg></span><span>Services</span></a>
+  <a href="contact.html" class="tc">RDV gratuit →</a>
+  <a href="index.html#formations" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span><span>Formations</span></a>
+  <a href="contact.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span><span>Contact</span></a>
+</nav>
+
+<main id="main-content">
+<header class="pg-hero" id="modeles-hero">
+  <div class="hero-spot" id="hero-spot" aria-hidden="true"></div>
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="index.html">Accueil</a><span>›</span>
+    <span aria-current="page">Comparatif modèles LLM</span>
+  </nav>
+  <div class="pg-tag">Guide indépendant 2026</div>
+  <h1>Comparatif des modèles LLM — <span class="g-text">Quel IA pour quel usage</span> en entreprise ?</h1>
+  <p class="pg-sub">Claude, GPT-4o, Mistral, Gemini, Llama, DeepSeek, Perplexity — notre analyse indépendante par zone d'excellence pour vous aider à choisir sans biais commercial.</p>
+</header>
+
+<article class="content">
+
+  <section data-v>
+    <h2>Notre approche — Neutralité et pragmatisme</h2>
+    <p>Il n'existe pas de modèle LLM universellement supérieur à tous les autres. Chaque modèle a des zones d'excellence, des contraintes de coût, des politiques de données et des écosystèmes d'intégration différents. <strong>Nous ne percevons aucune commission d'aucun fournisseur IA.</strong> Ce comparatif reflète notre expérience terrain — non une affiliation commerciale.</p>
+    <p>Notre recommandation finale variera toujours selon votre secteur, votre stack existant, vos contraintes RGPD et votre volume de traitement. Ce guide est un point de départ, pas une conclusion.</p>
+  </section>
+
+  <!-- CLAUDE -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(168,85,247,.15);color:#a855f7">✦</div>
+      <div class="model-info">
+        <div class="model-name">Claude 3.5 Sonnet / Claude 3 Opus</div>
+        <div class="model-maker">Anthropic · San Francisco, USA</div>
+        <div class="model-tags">
+          <span class="model-tag tag-purple">Raisonnement complexe</span>
+          <span class="model-tag tag-cyan">Agents autonomes</span>
+          <span class="model-tag tag-purple">Analyse longue</span>
+          <span class="model-tag tag-cyan">Écriture</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Raisonnement multi-étapes le plus fiable pour les agents autonomes</li>
+          <li>Analyse nuancée de documents longs et complexes</li>
+          <li>Excellente fenêtre de contexte (200k tokens)</li>
+          <li>Comportement prévisible et instructions fidèlement suivies</li>
+          <li>Capacités de codage avancées (agents de développement)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Pas de génération d'images native (contrairement à GPT-4o)</li>
+          <li>Données hébergées chez Anthropic (AWS, USA) — DPA disponible</li>
+          <li>Coût API supérieur à DeepSeek pour les traitements en volume</li>
+          <li>Pas de recherche web en temps réel (contrairement à Perplexity)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> agents IA autonomes, analyse de contrats et documents longs, rédaction structurée, raisonnement stratégique, tâches où la précision prime sur le coût. Notre premier choix pour les agents multi-étapes.</div>
+  </div>
+
+  <!-- GPT-4o -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(34,197,94,.12);color:#22c55e">⬡</div>
+      <div class="model-info">
+        <div class="model-name">GPT-4o / GPT-4o mini</div>
+        <div class="model-maker">OpenAI · San Francisco, USA · via Microsoft Azure</div>
+        <div class="model-tags">
+          <span class="model-tag tag-green">Multimodal natif</span>
+          <span class="model-tag tag-green">Vision &amp; images</span>
+          <span class="model-tag tag-cyan">Intégrations Microsoft</span>
+          <span class="model-tag tag-amber">Large écosystème</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Multimodal natif : texte, images, audio dans un seul appel API</li>
+          <li>Analyse de documents hétérogènes (PDF + images + tableaux)</li>
+          <li>Intégration native Microsoft Copilot via Azure OpenAI Service</li>
+          <li>GPT-4o mini : excellent rapport performance/coût pour les volumes</li>
+          <li>Écosystème d'intégrations le plus large (OpenAI plugins, Assistants API)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Données hébergées chez OpenAI / Microsoft (USA) — EU Data Boundary via Azure</li>
+          <li>Raisonnement long moins fiable que Claude sur les tâches très complexes</li>
+          <li>Coût API élevé pour GPT-4o full (GPT-4o mini = alternative coût réduit)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> extraction de données depuis des documents PDF et images, intégrations Microsoft 365 et Teams via Azure, analyse visuelle, cas d'usage nécessitant multimodalité native.</div>
+  </div>
+
+  <!-- MISTRAL -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(245,158,11,.12);color:#f59e0b">⟡</div>
+      <div class="model-info">
+        <div class="model-name">Mistral Large / Mistral Small / Codestral</div>
+        <div class="model-maker">Mistral AI · Paris, France — hébergement européen disponible</div>
+        <div class="model-tags">
+          <span class="model-tag tag-amber">Souveraineté européenne</span>
+          <span class="model-tag tag-amber">On-premise France</span>
+          <span class="model-tag tag-green">RGPD natif</span>
+          <span class="model-tag tag-cyan">Code (Codestral)</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Seul grand modèle fondateur 100% européen (HQ Paris)</li>
+          <li>Déploiement on-premise sur OVHcloud ou infra française</li>
+          <li>Mistral Small : coût très réduit pour les tâches simples</li>
+          <li>Codestral : modèle spécialisé code, performances top pour les scripts</li>
+          <li>La Plateforme : DPA RGPD robuste, localisation données UE</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Performances légèrement inférieures à Claude/GPT-4o sur les tâches de raisonnement très complexes</li>
+          <li>Écosystème de plugins et intégrations moins développé</li>
+          <li>Pas de capacité multimodale native sur les versions actuelles</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> secteurs réglementés (santé, finance, défense, collectivités), toute organisation soumise à des exigences RGPD strictes sur la localisation des données, automatisations de code via Codestral, volumes importants avec Mistral Small.</div>
+  </div>
+
+  <!-- GEMINI -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(6,182,212,.12);color:#06b6d4">◈</div>
+      <div class="model-info">
+        <div class="model-name">Gemini 1.5 Pro / Gemini 2.0 Flash</div>
+        <div class="model-maker">Google DeepMind · Mountain View, USA · Vertex AI</div>
+        <div class="model-tags">
+          <span class="model-tag tag-cyan">RAG documentaire</span>
+          <span class="model-tag tag-cyan">1M tokens contexte</span>
+          <span class="model-tag tag-green">Google Workspace</span>
+          <span class="model-tag tag-amber">Multimodal</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Fenêtre de contexte 1M tokens — inégalée pour les RAG à grande échelle</li>
+          <li>Intégration native Google Workspace (Drive, Docs, Gmail, Sheets)</li>
+          <li>NotebookLM : outil RAG prêt à l'emploi sur vos documents Google</li>
+          <li>Gemini 2.0 Flash : excellent rapport vitesse/coût pour les workflows temps réel</li>
+          <li>Vertex AI : infrastructure GCP robuste pour les déploiements enterprise</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Données hébergées chez Google (USA) — clauses RGPD via GCP disponibles</li>
+          <li>Raisonnement complexe légèrement en retrait par rapport à Claude sur les tâches très nuancées</li>
+          <li>Moins adapté si votre organisation est sur Microsoft 365</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> RAG sur de très grandes bases documentaires, intégrations Google Workspace natives, recherche dans Google Drive, cas d'usage avec de très longs contextes (livres, transcriptions longues, jeux de données étendus).</div>
+  </div>
+
+  <!-- LLAMA -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(99,102,241,.15);color:#818cf8">Λ</div>
+      <div class="model-info">
+        <div class="model-name">Meta Llama 3.1 / Llama 3.2</div>
+        <div class="model-maker">Meta AI · Open-source — déploiement privé</div>
+        <div class="model-tags">
+          <span class="model-tag tag-green">100% on-premise</span>
+          <span class="model-tag tag-green">Open-source</span>
+          <span class="model-tag tag-amber">Coût marginal nul</span>
+          <span class="model-tag tag-purple">Fine-tuning possible</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Entièrement open-source — déployé sur votre infrastructure, vos données ne sortent jamais</li>
+          <li>Coût marginal d'inférence nul (vous payez uniquement le compute)</li>
+          <li>Fine-tuning complet possible sur vos données propriétaires</li>
+          <li>Llama 3.1 405B : performances proches des meilleurs modèles propriétaires</li>
+          <li>Idéal pour les volumes importants où le coût API deviendrait prohibitif</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Nécessite une infrastructure serveur dédiée (GPU) — coût initial d'infrastructure</li>
+          <li>Déploiement et maintenance plus complexes qu'une API cloud</li>
+          <li>Performances légèrement inférieures aux meilleurs modèles propriétaires sur certaines tâches</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> organisations avec des données hautement sensibles (secret défense, données de santé critiques, IP propriétaire), volumes importants où le coût API est un problème, fine-tuning sectoriel sur données internes.</div>
+  </div>
+
+  <!-- DEEPSEEK -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(34,197,94,.1);color:#4ade80">R1</div>
+      <div class="model-info">
+        <div class="model-name">DeepSeek R1 / DeepSeek V3</div>
+        <div class="model-maker">DeepSeek · Chine — API internationale disponible</div>
+        <div class="model-tags">
+          <span class="model-tag tag-green">Coût très réduit</span>
+          <span class="model-tag tag-green">Raisonnement structuré</span>
+          <span class="model-tag tag-amber">Analyse financière</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Rapport performance/coût exceptionnel — 10 à 30× moins cher que GPT-4o sur certaines tâches</li>
+          <li>DeepSeek R1 : raisonnement structuré et mathématique de très haut niveau</li>
+          <li>Excellentes performances sur l'analyse financière et les problèmes structurés</li>
+          <li>Disponible open-source — peut être déployé on-premise</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>API principale hébergée en Chine — problème potentiel pour les données sensibles</li>
+          <li>Recommandé uniquement via déploiement on-premise ou hébergeur tiers pour les données d'entreprise</li>
+          <li>Moins polyvalent que Claude ou GPT-4o sur les tâches très ouvertes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> automatisations à fort volume où le coût marginal est critique, analyse financière et raisonnement structuré, déploiement on-premise via un hébergeur européen pour éviter les questions de souveraineté.</div>
+  </div>
+
+  <!-- PERPLEXITY -->
+  <div class="model-card" data-v>
+    <div class="model-header">
+      <div class="model-logo" style="background:rgba(6,182,212,.1);color:#22d3ee">⊕</div>
+      <div class="model-info">
+        <div class="model-name">Perplexity AI</div>
+        <div class="model-maker">Perplexity AI · San Francisco, USA — API Enterprise</div>
+        <div class="model-tags">
+          <span class="model-tag tag-cyan">Recherche temps réel</span>
+          <span class="model-tag tag-cyan">Sources vérifiées</span>
+          <span class="model-tag tag-amber">Veille automatique</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="model-section-title">Points forts</div>
+        <ul class="model-pros">
+          <li>Accès à l'actualité en temps réel — contourne la limite de date de formation</li>
+          <li>Réponses sourcées et vérifiables avec liens vers les sources</li>
+          <li>Idéal pour la veille concurrentielle et sectorielle automatisée</li>
+          <li>API disponible pour intégration dans des workflows de veille automatique</li>
+        </ul>
+      </div>
+      <div>
+        <div class="model-section-title">Limites à connaître</div>
+        <ul class="model-limits">
+          <li>Moins adapté aux tâches de raisonnement complexe ou de génération longue</li>
+          <li>Dépend de la qualité des sources web disponibles</li>
+          <li>Pas conçu pour les tâches d'automatisation ou d'agent autonome</li>
+        </ul>
+      </div>
+    </div>
+    <div class="model-use"><strong>Idéal pour :</strong> veille concurrentielle automatisée, recherche documentaire sourçée, suivi des tendances sectorielles, benchmarking marché en temps réel.</div>
+  </div>
+
+  <section data-v>
+    <h2>Tableau comparatif synthétique</h2>
+  </section>
+
+  <div class="cmp-wrap" data-v>
+    <table class="cmp-table" aria-label="Comparatif des modèles LLM pour l'entreprise">
+      <thead>
+        <tr>
+          <th>Modèle</th>
+          <th>Raisonnement</th>
+          <th>Multimodal</th>
+          <th>RAG</th>
+          <th>Souveraineté</th>
+          <th>Coût API</th>
+          <th>Idéal pour</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude 3.5 Sonnet (Anthropic)</td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-amber">●●○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-amber">DPA USA</span></td>
+          <td>Moyen-élevé</td>
+          <td>Agents, analyse, rédaction</td>
+        </tr>
+        <tr>
+          <td>GPT-4o (OpenAI)</td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-amber">EU Boundary</span></td>
+          <td>Élevé</td>
+          <td>Multimodal, intégs Microsoft</td>
+        </tr>
+        <tr>
+          <td>Mistral Large (Mistral AI)</td>
+          <td><span class="dot-green">●●○</span></td>
+          <td><span class="dot-red">●○○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">France/UE</span></td>
+          <td>Moyen</td>
+          <td>Souveraineté, RGPD strict</td>
+        </tr>
+        <tr>
+          <td>Gemini 1.5 Pro (Google)</td>
+          <td><span class="dot-green">●●○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-amber">GCP clauses EU</span></td>
+          <td>Moyen</td>
+          <td>RAG 1M tokens, G Workspace</td>
+        </tr>
+        <tr>
+          <td>Meta Llama 3.1 (Meta)</td>
+          <td><span class="dot-green">●●○</span></td>
+          <td><span class="dot-amber">●●○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">100% privé</span></td>
+          <td>Infrastructure</td>
+          <td>On-premise, volumes, fine-tuning</td>
+        </tr>
+        <tr>
+          <td>DeepSeek R1 (DeepSeek)</td>
+          <td><span class="dot-green">●●○</span></td>
+          <td><span class="dot-red">●○○</span></td>
+          <td><span class="dot-amber">●●○</span></td>
+          <td><span class="dot-red">Chine*</span></td>
+          <td>Très faible</td>
+          <td>Analyse structurée, volumes</td>
+        </tr>
+        <tr>
+          <td>Perplexity AI</td>
+          <td><span class="dot-amber">●○○</span></td>
+          <td><span class="dot-amber">●●○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-amber">USA</span></td>
+          <td>Moyen</td>
+          <td>Veille temps réel, sourcing</td>
+        </tr>
+        <tr>
+          <td>Microsoft Copilot (OpenAI)</td>
+          <td><span class="dot-green">●●○</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">●●●</span></td>
+          <td><span class="dot-green">M365 DPA EU</span></td>
+          <td>Licence M365</td>
+          <td>Environnements Microsoft</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.74rem;color:rgba(148,163,184,.4);margin-top:.5rem">* DeepSeek on-premise via hébergeur européen résout le problème de souveraineté.</p>
+
+</article>
+</main>
+
+<section class="cta-sec" aria-labelledby="cta-h">
+  <h2 id="cta-h" data-v>Quel modèle pour votre cas d'usage ?</h2>
+  <p data-v data-d="1">Un benchmark sur vos données réelles vaut mieux que n'importe quel comparatif générique. En 30 minutes, nous identifions le modèle qui vous donnera les meilleurs résultats.</p>
+  <a href="contact.html" class="btn" data-v data-d="2">Discuter de mon cas d'usage →</a>
+</section>
+
+<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
+<footer role="contentinfo">
+  <p>© 2026 Quantum Agency · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
+    <a href="index.html">Accueil</a>
+    <a href="audit-ia.html">Audit IA</a>
+    <a href="integration-ia.html">Intégration IA</a>
+    <a href="automatisation-ia.html">Automatisation</a>
+    <a href="agents-ia.html">Agents IA</a>
+    <a href="consulting-ia.html">Conseil stratégique</a>
+    <a href="modeles-ia.html">Comparatif modèles</a>
+    <a href="cas-usage.html">Cas d'usage</a>
+    <a href="faq-ia.html">FAQ IA</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/company/quantum-consulting-paris" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length)return;
+  function check(){var vh=window.innerHeight;els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<vh-40&&r.bottom>40)el.classList.add('in-view');else el.classList.remove('in-view');});}
+  window.addEventListener('scroll',check,{passive:true});check();
+})();
+document.querySelectorAll('.btn').forEach(function(btn){
+  btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect();var x=(e.clientX-r.left-r.width/2)*0.1;var y=(e.clientY-r.top-r.height/2)*0.1;btn.style.transform='translate('+x+'px,'+y+'px) scale(1.05)';});
+  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+});
+var bt=document.getElementById('back-top');
+if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
+var hero=document.getElementById('modeles-hero'),spot=document.getElementById('hero-spot');
+if(hero&&spot){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();spot.style.background='radial-gradient(600px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(168,85,247,.1),transparent 60%)';});hero.addEventListener('mouseleave',function(){spot.style.background='';});}
+</script>
+</body>
+</html>

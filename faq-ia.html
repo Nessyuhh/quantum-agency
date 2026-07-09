@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FAQ Intelligence Artificielle en Entreprise — 40 Questions &amp; Réponses | Quantum Agency</title>
+<meta name="description" content="FAQ complète sur l'IA en entreprise : audit IA, modèles LLM (Claude, GPT-4o, Mistral, Llama), automatisation, agents, RGPD, ROI. 40 questions-réponses par nos consultants.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.quantum-agency.fr/faq-ia.html">
+<meta property="og:title" content="FAQ IA en Entreprise — 40 Questions &amp; Réponses | Quantum Agency">
+<meta property="og:description" content="FAQ complète sur l'IA en entreprise : audit, modèles LLM (Claude, GPT-4o, Mistral), automatisation, agents autonomes, RGPD, ROI. 40 Q&R par nos consultants.">
+<meta property="og:url" content="https://www.quantum-agency.fr/faq-ia.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.quantum-agency.fr/og-image.svg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Quantum Agency">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FAQ IA en Entreprise — 40 Questions &amp; Réponses | Quantum Agency">
+<meta name="twitter:description" content="FAQ IA complète : audit, Claude, GPT-4o, Mistral, automatisation, agents, RGPD, ROI. 40 Q&R par les consultants Quantum Agency.">
+<meta name="twitter:image" content="https://www.quantum-agency.fr/og-image.svg">
+<meta name="theme-color" content="#05050a">
+<meta name="author" content="Quantum Agency">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
+<noscript><style>[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Qu'est-ce qu'un audit IA et pourquoi commencer par là ?","acceptedAnswer":{"@type":"Answer","text":"Un audit IA est une analyse structurée de vos processus métier pour identifier les opportunités d'automatisation à fort ROI. Il cartographie vos flux, évalue le potentiel d'IA pour chaque tâche, benchmark les modèles adaptés (Claude, GPT-4o, Mistral) et produit une feuille de route priorisée. C'est le point de départ indispensable pour éviter d'investir dans la mauvaise direction."}},
+{"@type":"Question","name":"Quelle différence entre Claude (Anthropic) et GPT-4o (OpenAI) ?","acceptedAnswer":{"@type":"Answer","text":"Claude 3.5 Sonnet (Anthropic) excelle dans le raisonnement complexe, l'analyse nuancée et les tâches longues multi-étapes — c'est le modèle préféré pour les agents autonomes et les analyses documentaires profondes. GPT-4o (OpenAI) est multimodal natif : il gère nativement les images, PDF et documents hétérogènes. Pour les intégrations Microsoft, GPT-4o via Azure est souvent le choix le plus cohérent."}},
+{"@type":"Question","name":"Qu'est-ce que Mistral AI et pourquoi choisir un modèle européen ?","acceptedAnswer":{"@type":"Answer","text":"Mistral AI est une startup française qui développe des modèles LLM de haut niveau. Mistral Large est disponible en déploiement on-premise sur infrastructure française, ce qui le rend particulièrement adapté aux secteurs réglementés (santé, finance, défense) ou aux entreprises soumises à des exigences RGPD strictes sur la localisation des données."}},
+{"@type":"Question","name":"Combien de temps prend une mission de consulting IA ?","acceptedAnswer":{"@type":"Answer","text":"Un audit Flash se déroule en 48 heures. Un audit complet prend 2 semaines. Les missions d'intégration et d'automatisation durent généralement 4 à 12 semaines selon la complexité. Les retainers stratégiques couvrent 6 à 12 mois avec 2 à 4 jours de présence mensuelle. Les premiers résultats concrets sont généralement mesurables dans les 6 semaines suivant le début d'une mission d'implémentation."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
+:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
+:focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
+.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShimmer 6s ease infinite}
+@keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
+.n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.n-logo{font-weight:900;font-size:14px;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.n-links{display:flex;gap:4px}
+.n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
+.nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
+.nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(8,4,22,.97);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:6px;min-width:240px;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.22,1,.36,1),transform .25s cubic-bezier(.22,1,.36,1);z-index:300;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:rgba(255,255,255,.65);font-size:12.5px;font-weight:500;text-decoration:none;padding:9px 14px;border-radius:10px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-dd-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-badge{font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:#a855f7;padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2);flex-shrink:0}
+.nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
+.n-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none}
+@media(max-width:640px){nav{display:none}}
+#bb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(6,4,18,.93);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.07);padding:4px 4px env(safe-area-inset-bottom);gap:0}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(148,163,184,.5);padding:6px 2px;min-height:48px;border-radius:10px;-webkit-tap-highlight-color:transparent}
+.ti span:first-child{font-size:18px;line-height:1}
+.ti span:last-child{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.ti.active,.ti:hover{color:var(--purple-l)}
+.tc{flex:0 0 auto;background:linear-gradient(135deg,var(--purple),var(--purple-l));border-radius:22px;padding:0 18px;height:40px;display:flex;align-items:center;color:#fff;font-size:11px;font-weight:800;text-decoration:none;margin:0 5px;box-shadow:0 4px 18px rgba(124,58,237,.45);-webkit-tap-highlight-color:transparent}
+@media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
+.pg-hero{padding:140px 5% 80px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(124,58,237,.15),transparent 70%),radial-gradient(rgba(124,58,237,.12) 1px,transparent 1px);background-size:auto,36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);pointer-events:none}
+.hero-spot{position:absolute;inset:0;pointer-events:none;z-index:0;transition:background .08s linear}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;justify-content:center;font-size:.74rem;color:var(--muted);margin-bottom:1.2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--text)}
+.breadcrumb span{color:rgba(148,163,184,.3)}
+.pg-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:100px;padding:.35rem 1.1rem;font-size:.68rem;font-weight:800;color:var(--purple-l);margin-bottom:1rem;letter-spacing:.07em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;max-width:760px;margin:0 auto 1.2rem}
+.pg-sub{color:var(--muted);font-size:clamp(.95rem,1.6vw,1.1rem);max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 0 28px rgba(124,58,237,.4);transition:transform .2s,box-shadow .2s;animation:btnGlow 3s ease-in-out infinite}
+@keyframes btnGlow{0%,100%{box-shadow:0 0 28px rgba(124,58,237,.4)}50%{box-shadow:0 0 52px rgba(124,58,237,.7),0 0 80px rgba(168,85,247,.2)}}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 52px rgba(124,58,237,.7),0 0 0 1px rgba(168,85,247,.4)!important;animation:none}
+.faq-content{max-width:820px;margin:0 auto;padding:4rem 5%}
+.faq-cat{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin:3rem 0 1.2rem;padding-bottom:.5rem;border-bottom:1px solid rgba(168,85,247,.15)}
+.faq-cat:first-child{margin-top:0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+.faq-item summary{list-style:none;cursor:pointer;padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.96rem;font-weight:700;color:var(--text);transition:color .2s}
+.faq-item summary:hover{color:var(--purple-l)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-arrow{font-size:.7rem;color:var(--muted);flex-shrink:0;transition:transform .3s}
+.faq-item[open] .faq-arrow{transform:rotate(180deg)}
+.faq-item[open] summary{color:var(--purple-l)}
+.faq-body{padding:.1rem 0 1.4rem;color:var(--muted);font-size:.88rem;line-height:1.8}
+.faq-body strong{color:var(--text)}
+.faq-body a{color:var(--purple-l);text-decoration:none}
+.faq-body a:hover{text-decoration:underline}
+.cta-sec{text-align:center;padding:5rem 5%;background:var(--bg2);border-top:1px solid var(--border)}
+.cta-sec h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:1rem}
+.cta-sec p{color:var(--muted);max-width:500px;margin:0 auto 2rem;font-size:.95rem}
+footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer p{color:rgba(148,163,184,.45);font-size:.76rem}
+footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
+footer a:hover{color:var(--muted)}
+[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(5,5,10,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.25);box-shadow:0 0 18px rgba(124,58,237,.4);transform:translateY(-3px)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4);transform:scaleX(0);z-index:400;pointer-events:none}
+@supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<div id="progress-bar" aria-hidden="true"></div>
+<nav aria-label="Navigation principale">
+  <div class="n-inner">
+    <a href="index.html" class="n-logo">Quantum Agency</a>
+    <div class="n-links">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Services <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="audit-ia.html">Audit IA <span class="nav-dd-badge">Diagnostic</span></a>
+          <a href="integration-ia.html">Intégration IA</a>
+          <a href="automatisation-ia.html">Automatisation</a>
+          <a href="agents-ia.html">Agents IA <span class="nav-dd-badge">LLM privé</span></a>
+          <div class="dd-divider"></div>
+          <a href="consulting-ia.html">Conseil stratégique →</a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
+          <a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
+          <a href="formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
+          <div class="dd-divider"></div>
+          <a href="index.html#formations">Voir toutes les formations →</a>
+        </div>
+      </div>
+      <a href="index.html#approche">Approche</a>
+      <a href="faq-ia.html" style="color:#fff;background:rgba(255,255,255,.1)" aria-current="page">FAQ</a>
+    </div>
+    <a href="contact.html" class="n-cta">Prendre RDV</a>
+  </div>
+</nav>
+
+<nav id="bb" aria-label="Navigation mobile">
+  <a href="index.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span><span>Accueil</span></a>
+  <a href="consulting-ia.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg></span><span>Services</span></a>
+  <a href="contact.html" class="tc">RDV gratuit →</a>
+  <a href="index.html#formations" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span><span>Formations</span></a>
+  <a href="contact.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span><span>Contact</span></a>
+</nav>
+
+<main id="main-content">
+<header class="pg-hero" id="faq-hero">
+  <div class="hero-spot" id="hero-spot" aria-hidden="true"></div>
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="index.html">Accueil</a><span>›</span>
+    <span aria-current="page">FAQ IA</span>
+  </nav>
+  <div class="pg-tag">40 questions — réponses d'experts</div>
+  <h1>FAQ — Tout comprendre sur <span class="g-text">l'IA en entreprise</span></h1>
+  <p class="pg-sub">Nos consultants répondent aux 40 questions les plus fréquentes sur l'audit IA, les modèles LLM, l'automatisation, les agents, la conformité RGPD et le ROI.</p>
+</header>
+
+<main id="main-content">
+<div class="faq-content">
+
+  <div class="faq-cat">Comprendre l'IA en entreprise</div>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que l'intelligence artificielle générative et en quoi est-elle différente de l'IA classique ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">L'IA classique suit des règles prédéfinies ou des modèles statistiques pour des tâches précises (reconnaissance d'image, détection de fraude). L'IA générative — comme <strong>Claude (Anthropic)</strong>, <strong>GPT-4o (OpenAI)</strong> ou <strong>Mistral (Mistral AI)</strong> — produit du nouveau contenu : texte, code, analyse, plan d'action. Elle comprend le langage naturel et peut raisonner sur des problèmes ouverts. C'est ce qui en fait un outil transversal applicable à presque tous les processus métier.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Mon entreprise est-elle prête pour l'IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Il n'y a pas de seuil minimum. La plupart des entreprises peuvent démarrer avec un projet pilote sur 1 à 2 processus, indépendamment de leur taille ou de leur maturité technologique. Ce qui compte, c'est d'identifier le bon point d'entrée — c'est précisément le rôle d'un <a href="audit-ia.html">audit IA</a>. Nous avons accompagné des artisans comme des groupes industriels.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>L'IA va-t-elle remplacer des emplois dans mon entreprise ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">L'IA automatise des tâches, pas des postes. Dans la grande majorité des cas, elle libère vos collaborateurs des tâches répétitives à faible valeur pour qu'ils se concentrent sur les interactions humaines, la créativité et la prise de décision complexe. Notre approche est de coconstruire avec vos équipes les nouveaux workflows — jamais de déployer une solution contre elles.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Combien de temps faut-il pour voir des résultats concrets ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Pour un premier résultat mesurable : 4 à 6 semaines après le démarrage d'une mission. Les quick wins (automatisation d'un email entrant, résumé automatique de réunions, rédaction assistée) peuvent être opérationnels en moins de 2 semaines. Les projets structurants (déploiement d'un agent autonome, LLM privé) demandent 2 à 4 mois. Le ROI est défini et mesuré dès le départ.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Faut-il des compétences techniques en interne pour utiliser l'IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Non. La plupart des solutions que nous déployons sont conçues pour être utilisées par des non-techniciens via une interface conversationnelle ou un outil métier existant. Nous formons vos équipes sur les nouveaux workflows, pas sur la technique. Si votre organisation souhaite développer une autonomie technique, nous proposons également des <a href="formation-expert-ia.html">formations expert</a> adaptées.</div>
+  </details>
+
+  <div class="faq-cat">Audit IA</div>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce qu'un audit IA et pourquoi commencer par là ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Un <a href="audit-ia.html">audit IA</a> est une analyse structurée de vos processus métier pour identifier les opportunités d'automatisation à fort ROI. Il cartographie vos flux, évalue le potentiel d'IA pour chaque tâche, benchmark les modèles adaptés et produit une feuille de route priorisée. C'est le seul moyen d'éviter d'investir dans la mauvaise direction — et d'avoir des chiffres défendables pour convaincre votre direction ou conseil d'administration.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Combien coûte un audit IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Un Audit Flash (2 jours, 2 processus ciblés) commence à 2 500€ HT. Un audit complet pour une PME de 20 à 100 personnes se situe entre 5 000€ et 10 000€ HT selon le nombre de processus analysés. Chaque mission inclut un devis transparent avant démarrage. Des dispositifs de financement régionaux (aide au conseil aux entreprises) peuvent couvrir 50 à 70% du coût selon votre département.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Que nous remet-on à l'issue d'un audit ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Trois livrables : (1) un rapport structuré listant toutes les opportunités IA identifiées avec leur potentiel de ROI estimé, (2) une feuille de route priorisée sur 12 mois avec budget indicatif par étape, (3) une session de restitution avec votre comité de direction pour valider les priorités et construire le plan d'implémentation. Le rapport est votre propriété — vous pouvez le faire implémenter par n'importe quel prestataire.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Faut-il donner accès à nos systèmes pour un audit ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Non. L'audit repose principalement sur des entretiens avec vos équipes, l'observation de vos processus et l'analyse de vos outils existants. Nous n'avons pas besoin d'accès à vos données ou à votre SI. Si vous souhaitez que nous analysions des volumes de données (pour affiner les estimations de ROI), nous utilisons des échantillons anonymisés sur des environnements isolés.</div>
+  </details>
+
+  <div class="faq-cat">Modèles LLM — Choisir le bon modèle IA</div>
+
+  <details class="faq-item" data-v>
+    <summary>Quelle différence entre Claude (Anthropic) et GPT-4o (OpenAI) ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Claude 3.5 Sonnet (Anthropic)</strong> excelle dans le raisonnement complexe, l'analyse nuancée et les tâches longues multi-étapes — c'est le modèle préféré pour les <a href="agents-ia.html">agents autonomes</a> et les analyses documentaires profondes. <strong>GPT-4o (OpenAI)</strong> est multimodal natif : il gère nativement les images, captures d'écran et documents hétérogènes. Pour les intégrations Microsoft, GPT-4o via Azure OpenAI Service est souvent le choix le plus cohérent en termes de conformité et de DPA.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que Mistral AI et pourquoi choisir un modèle européen ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Mistral AI</strong> est une startup française fondée en 2023 qui développe des modèles LLM performants et ouverts. <strong>Mistral Large</strong> est disponible en déploiement on-premise sur infrastructure française via <a href="https://www.ovhcloud.com" target="_blank" rel="noopener">OVHcloud</a>, sans transfert de données hors UE. C'est la solution de référence pour les secteurs réglementés (santé, finance, défense, collectivités) soumis à des exigences RGPD strictes sur la localisation des données.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que Meta Llama et pourquoi l'utiliser ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Meta Llama 3.1</strong> (Meta AI) est un modèle open-source qui peut être déployé entièrement sur votre infrastructure privée — cloud dédié ou on-premise. Son principal avantage : coût marginal nul à l'usage (vous payez uniquement l'infrastructure) et personnalisation complète via fine-tuning sur vos propres données. Idéal pour les volumes importants ou les données hautement sensibles.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>À quoi sert Google Gemini et quand le choisir ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Google Gemini 1.5 Pro</strong> se distingue par sa fenêtre de contexte exceptionnelle (jusqu'à 1 million de tokens), ce qui en fait le modèle de référence pour les cas d'usage RAG (Retrieval-Augmented Generation) sur de très grandes bases documentaires. Si votre organisation utilise Google Workspace (Drive, Docs, Gmail), Gemini for Google Workspace est l'intégration la plus naturelle et la mieux supportée nativement.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que DeepSeek R1 et dans quels cas l'utiliser ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>DeepSeek R1</strong> (DeepSeek) est un modèle de raisonnement structuré disponible à des coûts très inférieurs aux modèles OpenAI ou Anthropic. Il excelle dans l'analyse financière, le raisonnement mathématique et les tâches d'analyse structurée. Son rapport performance/coût en fait un excellent choix pour les automatisations à volume important où le coût par requête est critique.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que Perplexity et comment l'intégrer en entreprise ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Perplexity AI</strong> combine un moteur de recherche web en temps réel avec un modèle de langage. Contrairement à Claude ou GPT-4o qui s'appuient sur des connaissances entraînées jusqu'à une date butoir, Perplexity accède à l'actualité en temps réel. Il est particulièrement utile pour la veille concurrentielle automatisée, le suivi des tendances sectorielles et la recherche documentaire sourçée et vérifiable.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Comment choisir le bon modèle IA pour mon cas d'usage ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Le choix dépend de 4 critères : (1) la nature de la tâche (raisonnement, vision, recherche, code), (2) vos contraintes RGPD et de souveraineté, (3) le volume de traitement et le coût marginal acceptable, (4) les intégrations existantes dans votre stack. Nous ne recommandons jamais un modèle unique — nous benchmarkons sur votre cas d'usage réel et choisissons le plus adapté. Consultez notre <a href="modeles-ia.html">comparatif complet des modèles LLM</a>.</div>
+  </details>
+
+  <div class="faq-cat">Automatisation et agents IA</div>
+
+  <details class="faq-item" data-v>
+    <summary>Quelle différence entre automatisation RPA et automatisation IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">La <strong>RPA</strong> (Robotic Process Automation) automatise des séquences fixes et prédéfinies — elle échoue dès qu'un format change ou qu'une décision contextuelle est requise. L'<strong>automatisation IA</strong> comprend le contenu, s'adapte au contexte et prend des micro-décisions. Un workflow Make ou n8n enrichi de Claude peut lire un email quelle que soit sa formulation, comprendre l'intention et agir en conséquence — là où une RPA aurait renvoyé une erreur.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce qu'un agent IA autonome ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Un <a href="agents-ia.html">agent IA autonome</a> est un système qui reçoit un objectif et l'exécute de bout en bout en prenant ses propres décisions à chaque étape : il peut appeler des APIs, consulter des bases de données, rédiger des documents et envoyer des messages sans intervention humaine sur les cas standards. Claude 3.5 Sonnet (Anthropic) et GPT-4o (OpenAI) sont les modèles les plus capables pour les agents multi-étapes complexes.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce que le RAG (Retrieval-Augmented Generation) ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Le RAG est une technique qui connecte un modèle IA à votre base documentaire interne. Quand vous posez une question, le système recherche d'abord les documents pertinents dans votre base, les injecte dans le contexte du modèle, et génère une réponse sourcée. Résultat : un assistant IA qui répond en citant vos propres procédures, contrats et rapports — pas des informations génériques. Google Gemini 1.5 Pro excelle dans les RAG à grande échelle grâce à sa fenêtre de contexte de 1M tokens.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Mes automatisations IA sont-elles fiables ? Comment gérer les erreurs ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Toutes nos automatisations intègrent des mécanismes de fiabilité : (1) fallback humain configurable si l'IA est incertaine, (2) logs complets de chaque action pour audit, (3) seuils d'alerte qui notifient vos équipes dès que le taux d'erreur dépasse un niveau prédéfini, (4) tests extensifs sur données réelles avant déploiement. Aucune automatisation ne passe en production sans avoir été validée sur des cas aux limites.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Make, n8n ou Zapier — lequel choisir pour l'automatisation IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><strong>Make (ex-Integromat)</strong> offre la meilleure granularité pour les workflows complexes avec de nombreuses conditions et branches — notre recommandation pour les PME. <strong>n8n</strong> est open-source et peut être auto-hébergé pour les organisations qui veulent garder leurs workflows sur leur infrastructure. <strong>Zapier</strong> est le plus simple d'utilisation pour des automatisations simples à peu d'étapes, mais manque de flexibilité pour les cas complexes.</div>
+  </details>
+
+  <div class="faq-cat">RGPD, souveraineté et sécurité IA</div>
+
+  <details class="faq-item" data-v>
+    <summary>L'utilisation de l'IA est-elle compatible avec le RGPD ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Oui, sous conditions. L'utilisation de modèles IA cloud (Claude API, GPT-4o API) nécessite la signature d'un DPA (Data Processing Agreement) avec chaque fournisseur — ces accords existent et sont disponibles. Pour les données hautement sensibles (données de santé, données personnelles à risque), nous recommandons soit des modèles on-premise (Mistral AI, Meta Llama 3) soit des déploiements Azure OpenAI avec clauses EU Data Boundary. Chaque mission inclut une analyse des risques RGPD.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Mes données d'entreprise sont-elles utilisées pour entraîner les modèles IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Non, si vous utilisez les APIs professionnelles. Anthropic (Claude API), OpenAI (API avec DPA), Mistral AI (API) et Google (Vertex AI) ne réutilisent pas vos données de prompt pour entraîner leurs modèles dans le cadre de leurs contrats entreprise. Les interfaces grand public (Claude.ai gratuit, ChatGPT gratuit) ont des politiques différentes — nous ne les recommandons jamais pour des usages professionnels avec données sensibles.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Qu'est-ce qu'un LLM privé ou on-premise et quand en avez-vous besoin ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Un <strong>LLM privé</strong> est un modèle IA déployé sur votre propre infrastructure (serveurs dédiés ou cloud privé) — vos données n'en sortent jamais. Les solutions courantes : <strong>Mistral Large</strong> sur OVHcloud ou autre infra française, <strong>Meta Llama 3.1</strong> sur vos propres serveurs. Vous en avez besoin si votre secteur l'exige (santé, défense, finance réglementée), si vos données sont couvertes par le secret des affaires ou si votre volume de traitement rend le coût API prohibitif.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Comment sécuriser les accès à nos outils IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Nos déploiements incluent systématiquement : gestion des clés API en vault sécurisé, rotation des secrets, authentification SSO intégrée à votre annuaire d'entreprise (Active Directory, Google Workspace), chiffrement des communications, logs d'accès et d'usage. Nous documentons chaque accès dans un plan de sécurité remis à votre RSSI avant déploiement.</div>
+  </details>
+
+  <div class="faq-cat">ROI et financement</div>
+
+  <details class="faq-item" data-v>
+    <summary>Comment calculer le ROI d'un projet IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Notre méthode : (1) mesurer le temps actuel passé sur les tâches ciblées × coût horaire moyen, (2) estimer le temps économisé après automatisation, (3) soustraire les coûts de déploiement et de maintenance IA (souvent 50 à 200€/mois pour les APIs). Un ROI typique : automatiser 5h/semaine de travail à 40€/h = 10 400€/an économisés, pour un déploiement à 8 000€ → ROI positif en moins de 10 mois.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Quels dispositifs de financement existent pour les projets IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Plusieurs options selon votre situation : (1) <strong>France 2030</strong> : subventions pour la transformation numérique des PME industrielles, (2) <strong>Aide au conseil numérique</strong> des régions : jusqu'à 50% de prise en charge des missions de conseil (dont audit IA), (3) <strong>Crédit d'impôt innovation</strong> pour les entreprises qui développent des solutions IA propriétaires, (4) <strong>Prêts BPI</strong> pour les projets de transformation digitale. Contactez-nous pour une analyse de votre éligibilité.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Quel budget prévoir pour une transformation IA complète ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Les budgets varient beaucoup selon le périmètre. À titre indicatif : un premier projet pilote (audit + implémentation d'une automatisation) : 8 000 à 20 000€. Une transformation complète sur 12 mois (audit, 3 à 5 automatisations, agent IA, formation équipes) : 30 000 à 80 000€ pour une PME de 20 à 100 personnes. Les coûts récurrents d'APIs sont généralement de 200 à 2 000€/mois selon le volume.</div>
+  </details>
+
+  <div class="faq-cat">Nos formations IA</div>
+
+  <details class="faq-item" data-v>
+    <summary>Quelle est la différence entre vos 3 niveaux de formation ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body"><a href="formation-initiation-ia.html"><strong>Initiation (Niv. 1)</strong></a> : 1 journée pour comprendre l'IA et utiliser les outils du quotidien (ChatGPT, Claude, Gemini) dès le lendemain. <a href="formation-maitrise-ia.html"><strong>Maîtrise (Niv. 2)</strong></a> : 2 à 3 jours pour automatiser ses workflows, maîtriser le prompt engineering avancé et intégrer l'IA dans ses outils métier. <a href="formation-expert-ia.html"><strong>Expert (Niv. 3)</strong></a> : programme sur mesure pour dirigeants et DSI, construction d'une roadmap IA complète avec KPIs et gouvernance.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Les formations sont-elles finançables par l'OPCO ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Oui, nos formations sont organisées en partenariat avec des organismes de formation certifiés Qualiopi, ce qui permet la prise en charge par votre OPCO. La procédure : nous établissons un devis, votre OPCO valide le financement avant le début de la formation. Le délai de traitement est généralement de 2 à 4 semaines. Contactez-nous pour un dossier de financement.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Peut-on adapter le contenu des formations à notre secteur ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Oui, systématiquement. Toutes nos formations intra-entreprise sont personnalisées avec des cas d'usage tirés de votre secteur d'activité. Un atelier pour une équipe commerciale ne ressemble pas à une formation pour une équipe juridique ou une équipe de production. L'adaptation sectorielle est incluse dans toutes nos formations intra, sans surcoût.</div>
+  </details>
+
+  <div class="faq-cat">Notre approche et nos missions</div>
+
+  <details class="faq-item" data-v>
+    <summary>Combien de temps prend une mission de consulting IA ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Un audit Flash : 48 heures. Un audit complet : 2 semaines. Les missions d'intégration et d'automatisation : 4 à 12 semaines selon la complexité. Les retainers stratégiques : 6 à 12 mois avec 2 à 4 jours de présence mensuelle. Les premiers résultats mesurables sont généralement disponibles dans les 6 semaines suivant le démarrage d'une mission d'implémentation.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Êtes-vous liés à un fournisseur IA spécifique ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Non. Nous ne sommes partenaires commerciaux d'aucun fournisseur d'IA. Nous ne percevons aucune commission sur les licences Claude, GPT-4o, Mistral ou autres. Nous sélectionnons toujours le modèle le plus adapté à votre cas d'usage et à vos contraintes — c'est la condition sine qua non d'un conseil objectif. Vous pouvez le vérifier : notre recommandation varie systématiquement selon le contexte client.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Dans quels secteurs intervenez-vous ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Nous intervenons dans tous les secteurs : commerce et distribution, services B2B, industrie, santé et paramédical, immobilier et construction, finance et comptabilité, communication et marketing, juridique et RH, artisanat et BTP, hôtellerie-restauration. Notre approche s'adapte à chaque secteur : les cas d'usage IA, les outils recommandés et les métriques de succès sont toujours contextualisés.</div>
+  </details>
+
+  <details class="faq-item" data-v>
+    <summary>Comment démarrer une mission avec Quantum Agency ? <span class="faq-arrow">▼</span></summary>
+    <div class="faq-body">Trois étapes : (1) <a href="contact.html">remplissez notre formulaire de contact</a> ou appelez-nous directement, (2) nous planifions un appel de cadrage de 30 minutes (gratuit, sans engagement) pour comprendre votre situation et vos enjeux, (3) nous vous remettons une proposition sous 48 heures avec le type de mission recommandé, le planning et le budget. Le démarrage est possible sous 2 semaines après signature.</div>
+  </details>
+
+</div>
+</main>
+
+<section class="cta-sec" aria-labelledby="cta-h">
+  <h2 id="cta-h" data-v>Votre question n'est pas ici ?</h2>
+  <p data-v data-d="1">Parlez-nous de votre situation — 30 minutes pour une réponse personnalisée à votre contexte précis, sans engagement.</p>
+  <a href="contact.html" class="btn" data-v data-d="2">Poser ma question →</a>
+</section>
+
+<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
+<footer role="contentinfo">
+  <p>© 2026 Quantum Agency · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
+    <a href="index.html">Accueil</a>
+    <a href="audit-ia.html">Audit IA</a>
+    <a href="integration-ia.html">Intégration IA</a>
+    <a href="automatisation-ia.html">Automatisation</a>
+    <a href="agents-ia.html">Agents IA</a>
+    <a href="consulting-ia.html">Conseil stratégique</a>
+    <a href="modeles-ia.html">Comparatif modèles</a>
+    <a href="cas-usage.html">Cas d'usage</a>
+    <a href="formation-initiation-ia.html">Formation Niv.1</a>
+    <a href="formation-maitrise-ia.html">Formation Niv.2</a>
+    <a href="formation-expert-ia.html">Formation Niv.3</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/company/quantum-consulting-paris" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-v]');
+  if(!els.length)return;
+  function check(){var vh=window.innerHeight;els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<vh-40&&r.bottom>40)el.classList.add('in-view');else el.classList.remove('in-view');});}
+  window.addEventListener('scroll',check,{passive:true});check();
+})();
+document.querySelectorAll('.btn').forEach(function(btn){
+  btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect();var x=(e.clientX-r.left-r.width/2)*0.1;var y=(e.clientY-r.top-r.height/2)*0.1;btn.style.transform='translate('+x+'px,'+y+'px) scale(1.05)';});
+  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+});
+var bt=document.getElementById('back-top');
+if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
+var hero=document.getElementById('faq-hero'),spot=document.getElementById('hero-spot');
+if(hero&&spot){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();spot.style.background='radial-gradient(600px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(168,85,247,.1),transparent 60%)';});hero.addEventListener('mouseleave',function(){spot.style.background='';});}
+</script>
+</body>
+</html>
