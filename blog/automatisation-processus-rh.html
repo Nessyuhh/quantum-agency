@@ -17,7 +17,7 @@
 <meta property="article:published_time" content="2025-07-01">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="IA et RH : 5 processus à automatiser dès maintenant">
-<meta name="theme-color" content="#05050a">
+<meta name="theme-color" content="#7c3aed">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,8 +32,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
-:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
+body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#1e293b;line-height:1.6;overflow-x:hidden}
+:root{--bg:#ffffff;--bg2:#f8fafc;--purple:#7c3aed;--purple-l:#7c3aed;--cyan:#0891b2;--text:#1e293b;--muted:#64748b;--border:rgba(0,0,0,.08)}
 :focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
 nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
 .n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
@@ -63,7 +63,7 @@ nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)
 @media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
 .breadcrumb{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.74rem;color:var(--muted);margin-bottom:1.4rem}
 .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--text)}
-.breadcrumb span{color:rgba(148,163,184,.3)}
+.breadcrumb span{color:rgba(0,0,0,.25)}
 footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer p{color:rgba(148,163,184,.45);font-size:.76rem}
 footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
@@ -82,24 +82,33 @@ body{animation:pageIn .45s ease both}
 .art-cat{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin-bottom:.75rem}
 .art-wrap h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.12;letter-spacing:-.03em;margin-bottom:1.2rem}
 .art-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.77rem;color:var(--muted);margin-bottom:2.2rem;padding-bottom:1.6rem;border-bottom:1px solid var(--border)}
-.art-body{font-size:1rem;line-height:1.82;color:#cbd5e1}
-.art-body h2{font-size:1.3rem;font-weight:800;color:#f1f5f9;margin:2.4rem 0 .85rem;letter-spacing:-.02em}
-.art-body h3{font-size:1.05rem;font-weight:700;color:#e2e8f0;margin:1.8rem 0 .65rem}
+.art-body{font-size:1rem;line-height:1.82;color:#374151}
+.art-body h2{font-size:1.3rem;font-weight:800;color:#111827;margin:2.4rem 0 .85rem;letter-spacing:-.02em}
+.art-body h3{font-size:1.05rem;font-weight:700;color:#1e293b;margin:1.8rem 0 .65rem}
 .art-body p{margin-bottom:1.2rem}
 .art-body ul,.art-body ol{margin-bottom:1.2rem;padding-left:1.5rem}
 .art-body li{margin-bottom:.45rem}
-.art-body strong{color:#f1f5f9;font-weight:700}
+.art-body strong{color:#111827;font-weight:700}
 .art-body a{color:var(--purple-l);text-decoration:underline;text-underline-offset:3px}
-.art-callout{background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:1.2rem 1.4rem;margin:1.8rem 0;font-size:.92rem;color:#e2e8f0}
-.art-callout strong{color:#a855f7}
+.art-callout{background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:1.2rem 1.4rem;margin:1.8rem 0;font-size:.92rem;color:#374151}
+.art-callout strong{color:#7c3aed}
 .process-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.4rem;margin:1.4rem 0}
 .process-card h3{color:#f1f5f9;font-size:1rem;font-weight:800;margin-bottom:.5rem}
 .process-tag{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#a855f7;background:rgba(168,85,247,.12);padding:2px 8px;border-radius:100px;display:inline-block;margin-bottom:.6rem}
 .process-gain{font-size:.78rem;color:#22d3ee;font-weight:700;margin-top:.6rem}
 .art-cta{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));border:1px solid rgba(124,58,237,.25);border-radius:18px;padding:2rem;margin-top:3rem;text-align:center}
-.art-cta h2{font-size:1.2rem;margin-bottom:.6rem;color:#f1f5f9}
+.art-cta h2{font-size:1.2rem;margin-bottom:.6rem;color:#111827}
 .art-cta p{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem}
 .art-cta a{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:.88rem;font-weight:700;padding:.75rem 1.8rem;border-radius:100px;text-decoration:none}
+
+.art-prevnext{max-width:720px;margin:3rem auto 0;padding:2rem 5%;display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--border)}
+.art-prev,.art-next{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;max-width:280px;padding:.8rem 1.2rem;border:1px solid var(--border);border-radius:12px;transition:border-color .2s,background .2s}
+.art-prev:hover,.art-next:hover{border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.04)}
+.art-prev::before{content:"Article précédent";font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);display:block}
+.art-next::after{content:"Article suivant";font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);display:block;order:-1}
+.art-next{text-align:right;margin-left:auto}
+.art-prev span,.art-next span{font-size:.83rem;color:var(--text);font-weight:600;line-height:1.4}
+@media(max-width:600px){.art-prevnext{flex-direction:column}.art-next{text-align:left;margin-left:0}.art-prev,.art-next{max-width:100%}}
 </style>
 </head>
 <body>
@@ -121,7 +130,7 @@ body{animation:pageIn .45s ease both}
         </div>
       </div>
       <div class="nav-dd">
-        <button type="button" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></button>
+        <a href="../formation-initiation-ia.html" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></a>
         <div class="nav-dd-menu">
           <a href="../formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
           <a href="../formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
@@ -130,7 +139,7 @@ body{animation:pageIn .45s ease both}
           <a href="../index.html#formations">Voir toutes les formations →</a>
         </div>
       </div>
-      <a href="../index.html#approche">Approche</a>
+      
       <a href="../blog.html">Blog</a>
     </div>
     <a href="../contact.html" class="n-cta">Audit gratuit →</a>
@@ -169,7 +178,7 @@ body{animation:pageIn .45s ease both}
     <div class="process-card">
       <div class="process-tag">Processus 2</div>
       <h3>Génération automatique des contenus d'onboarding</h3>
-      <p>Les guides d'accueil, emails de bienvenue, FAQ internes, fiches de poste personnalisées, autant de documents qui se répètent avec de légères variations à chaque nouvelle recrue. Un agent IA peut les générer à partir d'un template et des informations du poste.</p>
+      <p>Les guides d'accueil, emails de bienvenue, FAQ internes, fiches de poste personnalisées, autant de documents qui se répètent avec de légères variations à chaque nouvelle recrue. Un <a href="../agents-ia.html">agent IA</a> peut les générer à partir d'un template et des informations du poste.</p>
       <p>Format d'entrée : fiche de poste + équipe + date d'arrivée. Format de sortie : email J-3, email J1, pack onboarding PDF.</p>
       <div class="process-gain">Gain estimé : 1h30 par nouveau collaborateur</div>
     </div>
@@ -202,6 +211,8 @@ body{animation:pageIn .45s ease both}
     <p>Commencez par le processus le plus douloureux pour votre équipe, pas nécessairement le plus "impressionnant" techniquement. La présélection de CVs et le chatbot FAQ sont généralement les deux quick wins les plus rapides à déployer, ils ne nécessitent pas d'accès à votre SIRH et peuvent être opérationnels en quelques jours.</p>
     <p>L'erreur classique est de vouloir automatiser le processus complet d'un coup. Commencez par une tâche, mesurez le gain de temps réel, puis étendez.</p>
 
+    <p>Lire aussi : <a href="audit-ia-guide.html">réaliser un audit IA</a> pour identifier vos processus RH prioritaires, et <a href="roi-ia-pme.html">mesurer le ROI</a> avant de vous lancer.</p>
+
     <div class="art-cta">
       <h2>Automatiser vos processus RH avec l'IA</h2>
       <p>Nous accompagnons les équipes RH de PME et ETI dans le déploiement de leurs premiers cas d'usage IA. Diagnostic gratuit en 30 min.</p>
@@ -210,6 +221,10 @@ body{animation:pageIn .45s ease both}
   </div>
 </article>
 </main>
+<nav class="art-prevnext" aria-label="Navigation entre articles">
+  <a href="claude-vs-gpt4o.html" class="art-prev"><span>Claude vs GPT-4o : quel modèle choisir pour votre PME en 2025 ?</span></a>
+  <a href="rgpd-ia-entreprise.html" class="art-next"><span>RGPD et IA en entreprise : déployer en conformité sans ralentir</span></a>
+</nav>
 <a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <footer role="contentinfo">
   <p>© 2026 Quantum Agency · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>

@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Comment réaliser un audit IA en entreprise : guide complet 2025">
 <meta name="twitter:description" content="Méthode complète pour auditer vos processus métier et identifier les opportunités IA à fort ROI.">
-<meta name="theme-color" content="#05050a">
+<meta name="theme-color" content="#7c3aed">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,8 +34,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
-:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
+body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#1e293b;line-height:1.6;overflow-x:hidden}
+:root{--bg:#ffffff;--bg2:#f8fafc;--purple:#7c3aed;--purple-l:#7c3aed;--cyan:#0891b2;--text:#1e293b;--muted:#64748b;--border:rgba(0,0,0,.08)}
 :focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
 .g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShimmer 6s ease infinite}
 @keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
@@ -67,7 +67,7 @@ nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)
 @media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
 .breadcrumb{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.74rem;color:var(--muted);margin-bottom:1.4rem}
 .breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--text)}
-.breadcrumb span{color:rgba(148,163,184,.3)}
+.breadcrumb span{color:rgba(0,0,0,.25)}
 footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer p{color:rgba(148,163,184,.45);font-size:.76rem}
 footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
@@ -88,25 +88,34 @@ body{animation:pageIn .45s ease both}
 .art-cat{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin-bottom:.75rem}
 .art-wrap h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.12;letter-spacing:-.03em;margin-bottom:1.2rem}
 .art-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.77rem;color:var(--muted);margin-bottom:2.2rem;padding-bottom:1.6rem;border-bottom:1px solid var(--border)}
-.art-body{font-size:1rem;line-height:1.82;color:#cbd5e1}
-.art-body h2{font-size:1.3rem;font-weight:800;color:#f1f5f9;margin:2.4rem 0 .85rem;letter-spacing:-.02em}
-.art-body h3{font-size:1.05rem;font-weight:700;color:#e2e8f0;margin:1.8rem 0 .65rem}
+.art-body{font-size:1rem;line-height:1.82;color:#374151}
+.art-body h2{font-size:1.3rem;font-weight:800;color:#111827;margin:2.4rem 0 .85rem;letter-spacing:-.02em}
+.art-body h3{font-size:1.05rem;font-weight:700;color:#1e293b;margin:1.8rem 0 .65rem}
 .art-body p{margin-bottom:1.2rem}
 .art-body ul,.art-body ol{margin-bottom:1.2rem;padding-left:1.5rem}
 .art-body li{margin-bottom:.45rem}
-.art-body strong{color:#f1f5f9;font-weight:700}
+.art-body strong{color:#111827;font-weight:700}
 .art-body a{color:var(--purple-l);text-decoration:underline;text-underline-offset:3px}
 .art-body a:hover{color:#c084fc}
-.art-callout{background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:1.2rem 1.4rem;margin:1.8rem 0;font-size:.92rem;color:#e2e8f0}
-.art-callout strong{color:#a855f7}
+.art-callout{background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:1.2rem 1.4rem;margin:1.8rem 0;font-size:.92rem;color:#374151}
+.art-callout strong{color:#7c3aed}
 .art-table{width:100%;border-collapse:collapse;margin:1.8rem 0;font-size:.88rem}
-.art-table th{background:rgba(124,58,237,.12);color:#f1f5f9;font-weight:700;padding:.65rem 1rem;text-align:left;border-bottom:1px solid rgba(124,58,237,.2)}
-.art-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:#cbd5e1;vertical-align:top}
+.art-table th{background:rgba(124,58,237,.08);color:#1e293b;font-weight:700;padding:.65rem 1rem;text-align:left;border-bottom:1px solid rgba(124,58,237,.2)}
+.art-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:#374151;vertical-align:top}
 .art-table tr:last-child td{border-bottom:none}
 .art-cta{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));border:1px solid rgba(124,58,237,.25);border-radius:18px;padding:2rem;margin-top:3rem;text-align:center}
-.art-cta h2{font-size:1.2rem;margin-bottom:.6rem;color:#f1f5f9}
+.art-cta h2{font-size:1.2rem;margin-bottom:.6rem;color:#111827}
 .art-cta p{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem}
 .art-cta a{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:.88rem;font-weight:700;padding:.75rem 1.8rem;border-radius:100px;text-decoration:none}
+
+.art-prevnext{max-width:720px;margin:3rem auto 0;padding:2rem 5%;display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--border)}
+.art-prev,.art-next{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;max-width:280px;padding:.8rem 1.2rem;border:1px solid var(--border);border-radius:12px;transition:border-color .2s,background .2s}
+.art-prev:hover,.art-next:hover{border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.04)}
+.art-prev::before{content:"Article précédent";font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);display:block}
+.art-next::after{content:"Article suivant";font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);display:block;order:-1}
+.art-next{text-align:right;margin-left:auto}
+.art-prev span,.art-next span{font-size:.83rem;color:var(--text);font-weight:600;line-height:1.4}
+@media(max-width:600px){.art-prevnext{flex-direction:column}.art-next{text-align:left;margin-left:0}.art-prev,.art-next{max-width:100%}}
 </style>
 </head>
 <body>
@@ -128,7 +137,7 @@ body{animation:pageIn .45s ease both}
         </div>
       </div>
       <div class="nav-dd">
-        <button type="button" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></button>
+        <a href="../formation-initiation-ia.html" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></a>
         <div class="nav-dd-menu">
           <a href="../formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
           <a href="../formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
@@ -137,7 +146,7 @@ body{animation:pageIn .45s ease both}
           <a href="../index.html#formations">Voir toutes les formations →</a>
         </div>
       </div>
-      <a href="../index.html#approche">Approche</a>
+      
       <a href="../blog.html">Blog</a>
     </div>
     <a href="../contact.html" class="n-cta">Audit gratuit →</a>
@@ -170,7 +179,7 @@ body{animation:pageIn .45s ease both}
     <p>Un audit préalable vous évite de financer un déploiement d'IA sur un processus qui n'est pas prêt. Il vous permet aussi de prioriser : avec un budget limité, vous voulez concentrer l'effort là où le retour est le plus rapide.</p>
 
     <div class="art-callout">
-      <strong>Règle des 3 mois :</strong> si un projet IA ne peut pas montrer un bénéfice mesurable en 3 mois, il n'est probablement pas le bon point de départ. L'audit sert à trouver ce point de départ.
+      <strong>Règle des 3 mois :</strong> si un projet IA ne peut pas montrer un bénéfice mesurable en 3 mois, il n'est probablement pas le bon point de départ. L'audit sert à trouver ce point de départ. Notre <a href="../audit-ia.html">service d'audit IA</a> couvre l'ensemble de cette démarche.
     </div>
 
     <h2>2. La cartographie des processus : première étape</h2>
@@ -230,10 +239,10 @@ body{animation:pageIn .45s ease both}
     <h2>7. Ce que vous devez éviter</h2>
     <p>Quelques erreurs fréquentes que nous observons lors de premiers audits :</p>
     <ul>
-      <li>Commencer par les cas les plus "impressionnants" (agents autonomes, chatbots vocaux) plutôt que les plus rentables</li>
+      <li>Commencer par les cas les plus "impressionnants" (<a href="../agents-ia.html">agents autonomes</a>, chatbots vocaux) plutôt que les plus rentables</li>
       <li>Négliger la conduite du changement : l'IA adoptée à contrecoeur ne crée pas de valeur</li>
       <li>Sous-estimer les coûts cachés : maintenance des modèles, mise à jour des données, supervision humaine</li>
-      <li>Externaliser entièrement sans former personne en interne. Vous devenez alors dépendant pour toujours</li>
+      <li>Externaliser entièrement sans <a href="../formation-initiation-ia.html">former personne en interne</a>. Vous devenez alors dépendant pour toujours</li>
     </ul>
 
     <div class="art-cta">
@@ -244,6 +253,10 @@ body{animation:pageIn .45s ease both}
   </div>
 </article>
 </main>
+<nav class="art-prevnext" aria-label="Navigation entre articles">
+  <div></div>
+  <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-4o : quel modèle choisir pour votre PME en 2025 ?</span></a>
+</nav>
 <a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <footer role="contentinfo">
   <p>© 2026 Quantum Agency · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>
