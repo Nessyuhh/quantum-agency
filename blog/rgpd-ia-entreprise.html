@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RGPD et IA en entreprise : déployer en conformité sans ralentir | Quantum Agency</title>
+<meta name="description" content="Cadre pratique pour vos projets IA sous contrainte RGPD : traitement des données personnelles, modèles on-premise, LLM souverains et documentation obligatoire CNIL.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.quantum-agency.fr/blog/rgpd-ia-entreprise.html">
+<meta property="og:title" content="RGPD et IA en entreprise : déployer en conformité sans ralentir">
+<meta property="og:description" content="Cadre pratique pour vos projets IA sous contrainte RGPD : traitement des données, modèles on-premise, LLM souverains.">
+<meta property="og:url" content="https://www.quantum-agency.fr/blog/rgpd-ia-entreprise.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.quantum-agency.fr/og-image.svg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Quantum Agency">
+<meta property="article:published_time" content="2025-07-01">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RGPD et IA en entreprise : déployer en conformité sans ralentir">
+<meta name="theme-color" content="#05050a">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"RGPD et IA en entreprise : déployer en conformité sans ralentir","datePublished":"2025-07-01","dateModified":"2025-07-01","author":{"@type":"Organization","name":"Quantum Agency","url":"https://www.quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Agency","url":"https://www.quantum-agency.fr/"},"description":"Cadre pratique pour vos projets IA sous contrainte RGPD : traitement des données personnelles, modèles on-premise, LLM souverains.","url":"https://www.quantum-agency.fr/blog/rgpd-ia-entreprise.html"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"RGPD et IA en entreprise","item":"https://www.quantum-agency.fr/blog/rgpd-ia-entreprise.html"}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
+:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
+:focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
+nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
+.n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.n-logo{font-weight:900;font-size:14px;background:linear-gradient(135deg,var(--purple-l),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.n-links{display:flex;gap:4px}
+.n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd{position:relative;display:inline-flex;align-items:center}.nav-dd::after{content:"";position:absolute;top:100%;left:-10%;right:-10%;height:20px}
+.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
+.nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
+.nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(8,4,22,.97);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:6px;min-width:240px;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.22,1,.36,1),transform .25s cubic-bezier(.22,1,.36,1);z-index:300;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:rgba(255,255,255,.65);font-size:12.5px;font-weight:500;text-decoration:none;padding:9px 14px;border-radius:10px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-dd-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-badge{font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:#a855f7;padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2);flex-shrink:0}
+.nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
+.n-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none}
+@media(max-width:640px){nav:not(.breadcrumb){display:none}}
+#bb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(6,4,18,.93);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.07);padding:4px 4px env(safe-area-inset-bottom);gap:0}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(148,163,184,.5);padding:6px 2px;min-height:48px;border-radius:10px;-webkit-tap-highlight-color:transparent}
+.ti span:first-child{font-size:18px;line-height:1}
+.ti span:last-child{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.ti.active,.ti:hover{color:var(--purple-l)}
+.tc{flex:0 0 auto;background:linear-gradient(135deg,var(--purple),var(--purple-l));border-radius:22px;padding:0 18px;height:40px;display:flex;align-items:center;color:#fff;font-size:11px;font-weight:800;text-decoration:none;margin:0 5px;box-shadow:0 4px 18px rgba(124,58,237,.45);-webkit-tap-highlight-color:transparent}
+@media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.74rem;color:var(--muted);margin-bottom:1.4rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--text)}
+.breadcrumb span{color:rgba(148,163,184,.3)}
+footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer p{color:rgba(148,163,184,.45);font-size:.76rem}
+footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
+footer a:hover{color:var(--muted)}
+#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(5,5,10,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
+#back-top.visible{opacity:1;transform:translateY(0)}
+@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4);transform:scaleX(0);z-index:400;pointer-events:none}
+@supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body{animation:pageIn .45s ease both}
+.art-wrap{max-width:720px;margin:0 auto;padding:130px 5% 5rem}
+.art-cat{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin-bottom:.75rem}
+.art-wrap h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.12;letter-spacing:-.03em;margin-bottom:1.2rem}
+.art-meta{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.77rem;color:var(--muted);margin-bottom:2.2rem;padding-bottom:1.6rem;border-bottom:1px solid var(--border)}
+.art-body{font-size:1rem;line-height:1.82;color:#cbd5e1}
+.art-body h2{font-size:1.3rem;font-weight:800;color:#f1f5f9;margin:2.4rem 0 .85rem;letter-spacing:-.02em}
+.art-body h3{font-size:1.05rem;font-weight:700;color:#e2e8f0;margin:1.8rem 0 .65rem}
+.art-body p{margin-bottom:1.2rem}
+.art-body ul,.art-body ol{margin-bottom:1.2rem;padding-left:1.5rem}
+.art-body li{margin-bottom:.45rem}
+.art-body strong{color:#f1f5f9;font-weight:700}
+.art-body a{color:var(--purple-l);text-decoration:underline;text-underline-offset:3px}
+.art-callout{background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:1.2rem 1.4rem;margin:1.8rem 0;font-size:.92rem;color:#e2e8f0}
+.art-callout strong{color:#a855f7}
+.art-callout.warning{background:rgba(239,68,68,.07);border-color:rgba(239,68,68,.22)}
+.art-callout.warning strong{color:#f87171}
+.check-list{list-style:none;padding-left:0}
+.check-list li{padding-left:1.8rem;position:relative;margin-bottom:.55rem}
+.check-list li::before{content:"✓";position:absolute;left:0;color:#22c55e;font-weight:700}
+.art-cta{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));border:1px solid rgba(124,58,237,.25);border-radius:18px;padding:2rem;margin-top:3rem;text-align:center}
+.art-cta h2{font-size:1.2rem;margin-bottom:.6rem;color:#f1f5f9}
+.art-cta p{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem}
+.art-cta a{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:.88rem;font-weight:700;padding:.75rem 1.8rem;border-radius:100px;text-decoration:none}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<div id="progress-bar" aria-hidden="true"></div>
+<nav aria-label="Navigation principale">
+  <div class="n-inner">
+    <a href="../index.html" class="n-logo">Quantum Agency</a>
+    <div class="n-links">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Services <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="../audit-ia.html">Audit IA <span class="nav-dd-badge">Diagnostic</span></a>
+          <a href="../integration-ia.html">Intégration IA</a>
+          <a href="../automatisation-ia.html">Automatisation</a>
+          <a href="../agents-ia.html">Agents IA <span class="nav-dd-badge">LLM privé</span></a>
+          <div class="dd-divider"></div>
+          <a href="../consulting-ia.html">Conseil stratégique →</a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Formations <span class="nav-dd-caret">&#x25BE;</span></button>
+        <div class="nav-dd-menu">
+          <a href="../formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
+          <a href="../formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
+          <a href="../formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
+          <div class="dd-divider"></div>
+          <a href="../index.html#formations">Voir toutes les formations →</a>
+        </div>
+      </div>
+      <a href="../index.html#approche">Approche</a>
+      <a href="../blog.html">Blog</a>
+    </div>
+    <a href="../contact.html" class="n-cta">Prendre RDV</a>
+  </div>
+</nav>
+<nav id="bb" aria-label="Navigation mobile">
+  <a href="../index.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span><span>Accueil</span></a>
+  <a href="../consulting-ia.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg></span><span>Conseil</span></a>
+  <a href="../contact.html" class="tc">RDV gratuit →</a>
+  <a href="../index.html#formations" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span><span>Formations</span></a>
+  <a href="../contact.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span><span>Contact</span></a>
+</nav>
+<main id="main-content">
+<article class="art-wrap">
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="../index.html">Accueil</a><span>›</span><a href="../blog.html">Blog</a><span>›</span><span aria-current="page">RGPD et IA en entreprise</span>
+  </nav>
+  <div class="art-cat">Conformité &amp; Souveraineté</div>
+  <h1>RGPD et IA en entreprise : déployer en conformité sans ralentir</h1>
+  <div class="art-meta">
+    <span>Quantum Agency</span>
+    <span>Juillet 2025</span>
+    <span>7 min de lecture</span>
+  </div>
+  <div class="art-body">
+    <p>Le RGPD n'est pas un obstacle au déploiement de l'IA — c'est un cadre. Les entreprises qui l'intègrent dès la conception de leurs projets IA avancent plus vite que celles qui découvrent les contraintes en cours de route. Voici le cadre pratique que nous appliquons chez Quantum Agency.</p>
+
+    <div class="art-callout warning">
+      <strong>Avertissement :</strong> cet article est informatif et ne constitue pas un conseil juridique. Consultez votre DPO ou un avocat spécialisé pour votre situation spécifique.
+    </div>
+
+    <h2>Ce que le RGPD implique concrètement pour un projet IA</h2>
+    <p>Le RGPD s'applique dès lors que votre projet IA traite des données à caractère personnel — ce qui inclut la plupart des cas d'usage métier (données clients, collaborateurs, partenaires). Les obligations principales :</p>
+    <ul>
+      <li><strong>Base légale du traitement</strong> : consentement, contrat, obligation légale ou intérêt légitime — vous devez en avoir une</li>
+      <li><strong>Minimisation des données</strong> : n'envoyez au modèle que ce qui est strictement nécessaire</li>
+      <li><strong>Durée de conservation</strong> : les données utilisées pour entraîner ou fine-tuner ne peuvent pas être conservées indéfiniment</li>
+      <li><strong>Droit à l'explication</strong> : pour les décisions automatisées à impact significatif (recrutement, crédit), vous devez pouvoir expliquer le résultat</li>
+      <li><strong>Registre des traitements</strong> : tout nouveau traitement IA doit être documenté</li>
+    </ul>
+
+    <h2>Le vrai risque : envoyer des données personnelles à un LLM externe</h2>
+    <p>Quand vous copiez-collez un contrat client dans ChatGPT ou envoyez des CVs à une API externe, vous transférez des données personnelles à un tiers — potentiellement localisé hors UE. Cela peut être légal, mais cela nécessite des garanties :</p>
+    <ul>
+      <li>Un accord de traitement des données (DPA) signé avec le fournisseur du LLM</li>
+      <li>Des clauses contractuelles types (CCT) si le serveur est aux USA</li>
+      <li>Une mention dans votre registre des traitements</li>
+    </ul>
+
+    <div class="art-callout">
+      <strong>Bonne nouvelle :</strong> OpenAI, Anthropic et les principaux fournisseurs cloud proposent des DPA (Data Processing Agreements) signables — c'est en général une case à cocher dans votre compte ou un formulaire simple. L'essentiel est de l'avoir fait avant de commencer.
+    </div>
+
+    <h2>Les trois architectures selon votre niveau de sensibilité</h2>
+
+    <h3>Niveau 1 — Données peu sensibles (marketing, contenu public)</h3>
+    <p>API externe (OpenAI, Anthropic, Google) avec DPA signé. C'est suffisant pour la plupart des cas d'usage de génération de contenu, de résumé de documents publics, ou de support client sur des sujets non-confidentiels.</p>
+
+    <h3>Niveau 2 — Données métier sensibles (contrats, RH, finances)</h3>
+    <p>Deux options viables : API avec anonymisation/pseudonymisation avant envoi (on remplace les noms, emails, n° de sécurité sociale par des tokens avant d'envoyer au modèle) ou déploiement dans votre cloud privé (Azure OpenAI, AWS Bedrock) avec des données qui ne sortent pas de votre périmètre.</p>
+
+    <h3>Niveau 3 — Données critiques (santé, données judiciaires, secret défense)</h3>
+    <p>Modèle on-premise obligatoire. Les LLM open-source hébergés sur votre infrastructure (Mistral, Llama, Gemma) ou des modèles souverains français (Mistral AI, CentraleSupélec) sont la seule option conforme pour ces usages.</p>
+
+    <h2>La checklist conformité IA minimale</h2>
+    <ul class="check-list">
+      <li>DPA signé avec chaque fournisseur de LLM utilisé</li>
+      <li>Registre des traitements mis à jour avec les nouveaux traitements IA</li>
+      <li>Politique d'usage IA interne communiquée aux collaborateurs</li>
+      <li>Processus d'anonymisation pour les données sensibles envoyées à des API externes</li>
+      <li>Formation des utilisateurs aux risques de divulgation involontaire</li>
+      <li>PIA (Privacy Impact Assessment) si traitement à grande échelle ou données sensibles</li>
+    </ul>
+
+    <h2>L'IA Act européen : ce qui change en 2025-2026</h2>
+    <p>Le règlement européen sur l'IA (AI Act) entré en vigueur en 2024 ajoute des obligations au-delà du RGPD pour les systèmes IA à "haut risque" (santé, emploi, éducation, infrastructure critique). Si votre usage entre dans ces catégories, des exigences spécifiques de transparence, de supervision humaine et de documentation s'appliquent.</p>
+    <p>Pour la majorité des PME, les cas d'usage courants (génération de contenu, analyse documentaire, chatbot support) ne tombent pas dans les catégories à haut risque — mais mieux vaut vérifier.</p>
+
+    <div class="art-cta">
+      <h2>Déployez votre IA en conformité</h2>
+      <p>Nos consultants vous accompagnent sur l'architecture technique et la documentation RGPD de vos projets IA. Audit de conformité inclus dans chaque mission.</p>
+      <a href="../contact.html">Parler à un consultant →</a>
+    </div>
+  </div>
+</article>
+</main>
+<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
+<footer role="contentinfo">
+  <p>© 2026 Quantum Agency · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>
+  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="../audit-ia.html">Audit IA</a>
+    <a href="../integration-ia.html">Intégration IA</a>
+    <a href="../agents-ia.html">Agents IA</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../blog.html">Blog</a>
+  </div>
+</footer>
+<script>
+var bt=document.getElementById('back-top');
+if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
+</script>
+</body>
+</html>
