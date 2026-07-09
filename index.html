@@ -1540,17 +1540,19 @@ function toggleFaq(btn){
   const stepLabel=document.getElementById('form-step-label');
   if(!formOuter)return;
   const TOTAL=3;
-  let current=0,inTrans=false;
+  let current=0,inTrans=false,_sceneW=0,_visW=0;
   const ss={lastEventMs:0,velocity:0,snapTime:0,lastSceneTime:0,accumulated:0,lastDir:0};
+  function _cacheW(){_sceneW=formScenes.parentElement.offsetWidth;_visW=formVis.parentElement.offsetWidth;}
+  _cacheW();
+  window.addEventListener('resize',_cacheW,{passive:true});
 
   function isMob(){return window.innerWidth<=768;}
   function normWheel(e){let d=e.deltaY;if(e.deltaMode===1)d*=40;if(e.deltaMode===2)d*=window.innerHeight;return d;}
 
   function setScene(idx){
     current=idx;
-    const w=formScenes.parentElement.offsetWidth;
-    formScenes.style.transform=`translateX(${-idx*w}px)`;
-    formVis.style.transform=`translateX(${-idx*formVis.parentElement.offsetWidth}px)`;
+    formScenes.style.transform=`translateX(${-idx*_sceneW}px)`;
+    formVis.style.transform=`translateX(${-idx*_visW}px)`;
     formDots.forEach((d,i)=>d.classList.toggle('active',i===idx));
     if(stepLabel)stepLabel.textContent=`${idx+1} / 3`;
   }
@@ -1649,25 +1651,20 @@ window.addEventListener('scroll',()=>{
   document.querySelectorAll('[data-count]').forEach(el=>obs.observe(el));
 })();
 
-/* ── Scroll reveal bidirectionnel ── */
+/* ── Scroll reveal bidirectionnel — IntersectionObserver (zero forced reflow) ── */
 (function(){
-  const elems=Array.from(document.querySelectorAll('[data-v]'));
-  function check(){
-    const vh=window.innerHeight;
-    elems.forEach(el=>{
-      const r=el.getBoundingClientRect();
-      const visible=r.top<vh-40&&r.bottom>40;
-      if(visible&&!el.classList.contains('in-view')){
-        el.style.transitionDelay='';
-        el.classList.add('in-view');
-      }else if(!visible&&el.classList.contains('in-view')){
-        el.style.transitionDelay='0ms';
-        el.classList.remove('in-view');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.transitionDelay='';
+        e.target.classList.add('in-view');
+      }else{
+        e.target.style.transitionDelay='0ms';
+        e.target.classList.remove('in-view');
       }
     });
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  check();
+  },{threshold:0,rootMargin:'-40px 0px -40px 0px'});
+  document.querySelectorAll('[data-v]').forEach(el=>obs.observe(el));
 })();
 
 /* ── Hero spotlight (mouse parallax) ── */
