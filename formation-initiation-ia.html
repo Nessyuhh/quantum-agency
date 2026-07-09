@@ -47,7 +47,7 @@ nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)
 .n-links{display:flex;gap:4px}
 .n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
 .n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
-.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd{position:relative;display:inline-flex;align-items:center}.nav-dd::after{content:"";position:absolute;top:100%;left:-10%;right:-10%;height:20px}
 .nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
 .nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
 .nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
