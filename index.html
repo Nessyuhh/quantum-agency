@@ -257,7 +257,7 @@ h1{font-size:clamp(2.6rem,6.5vw,5.4rem);font-weight:900;line-height:1.03;letter-
 .form-feats li{display:flex;align-items:flex-start;gap:.7rem;font-size:.84rem;color:var(--muted)}
 .form-feats li::before{content:'✓';color:var(--purple-l);font-weight:800;flex-shrink:0;margin-top:.05em}
 .form-dur{font-size:.75rem;color:var(--muted);margin-bottom:1.2rem}
-.form-link{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.12);color:var(--purple-l);border:1px solid rgba(168,85,247,.22);padding:.55rem 1.3rem;border-radius:100px;font-size:.82rem;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+.form-link{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.12);color:var(--purple);border:1px solid rgba(168,85,247,.22);padding:.55rem 1.3rem;border-radius:100px;font-size:.82rem;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
 .form-link:hover{background:rgba(124,58,237,.25);border-color:rgba(168,85,247,.4);transform:translateX(4px)}
 
 /* Mockup panel */
@@ -361,7 +361,7 @@ h1{font-size:clamp(2.6rem,6.5vw,5.4rem);font-weight:900;line-height:1.03;letter-
 /* ══ SECTION COMMONS ══ */
 section{padding:7rem 5%}
 .sec-head{text-align:center;max-width:700px;margin:0 auto 4.5rem}
-.tag{display:inline-block;font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin-bottom:.9rem;animation:shimmer 4s ease-in-out infinite}
+.tag{display:inline-block;font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:.9rem;animation:shimmer 4s ease-in-out infinite}
 h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:1rem}
 .lead{color:var(--muted);font-size:1rem;line-height:1.78}
 
@@ -451,7 +451,7 @@ a.step{text-decoration:none;color:inherit}
 .tcard-inner{background:var(--bg2);border-radius:15px;padding:1.5rem}
 .stars-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem}
 .stars{color:#f59e0b;font-size:.78rem;letter-spacing:2px}
-.verified-badge{font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#22c55e;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:2px 6px;border-radius:100px}
+.verified-badge{font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#166534;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);padding:2px 6px;border-radius:100px}
 .testi-text{color:var(--muted);font-size:.85rem;line-height:1.75;font-style:italic;margin-bottom:1.3rem}
 .testi-author{display:flex;align-items:center;gap:.7rem}
 .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
@@ -484,14 +484,14 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
 .foot-logo{font-size:1.05rem;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-.02em}
 .foot-logo span{color:var(--purple-l)}
-.foot-desc{color:var(--muted);font-size:.83rem;margin-top:.7rem;line-height:1.75;max-width:250px}
-.foot-col h4{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.9rem}
+.foot-desc{color:rgba(255,255,255,.58);font-size:.83rem;margin-top:.7rem;line-height:1.75;max-width:250px}
+.foot-col h3{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:.9rem}
 .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.foot-col a{color:var(--muted);text-decoration:none;font-size:.83rem;transition:color .2s}
+.foot-col a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.83rem;transition:color .2s}
 .foot-col a:hover{color:var(--purple-l)}
-.foot-col span{color:var(--muted);font-size:.83rem}
+.foot-col span{color:rgba(255,255,255,.55);font-size:.83rem}
 .footer-btm{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
-.footer-btm p{color:rgba(148,163,184,.45);font-size:.76rem}
+.footer-btm p{color:rgba(255,255,255,.52);font-size:.76rem}
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:960px){.consulting-split{grid-template-columns:1fr;gap:3rem}.spin-ring,.spin-ring-2{display:none}.footer-grid{grid-template-columns:1fr 1fr}}
@@ -524,6 +524,7 @@ body{animation:pageIn .45s ease both}
 
 /* ══ content-visibility ══ */
 #consulting,#why,#temoignages,#faq,#contact{content-visibility:auto;contain-intrinsic-size:0 600px}
+#llm-matrix,#expertises,#formations{content-visibility:auto;contain-intrinsic-size:0 800px}
 
 /* ══ GRAIN NOISE OVERLAY ══ */
 .grain-overlay{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9001;opacity:.038;animation:grainPan 8s steps(2) infinite}
@@ -565,7 +566,6 @@ body{animation:pageIn .45s ease both}
 .exp-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.79rem;font-weight:700;color:var(--purple-l);text-decoration:none;transition:gap .2s}
 .exp-link:hover{gap:.65rem}
 @media(max-width:900px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.exp-grid{grid-template-columns:1fr}}
 
 /* ══ LLM MATRIX ══ */
 #llm-matrix{padding:7rem 5%;background:#05050a;position:relative;overflow:hidden}
@@ -578,7 +578,7 @@ body{animation:pageIn .45s ease both}
 .llm-card{border-radius:16px;padding:1.4rem 1.3rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
 .llm-card:hover{border-color:rgba(168,85,247,.35);background:rgba(124,58,237,.08);transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 24px rgba(124,58,237,.12)}
 .llm-zone{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-l);margin-bottom:.55rem;animation:shimmer 4s ease-in-out infinite}
-.llm-card h4{font-size:.88rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.6rem;line-height:1.35;color:rgba(255,255,255,.9)}
+.llm-card h3{font-size:.88rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.6rem;line-height:1.35;color:rgba(255,255,255,.9)}
 .llm-models{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.65rem}
 .llm-pill{font-size:.63rem;font-weight:700;padding:.18rem .55rem;border-radius:100px}
 .llm-pill.pur{background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:#c084fc}
@@ -587,7 +587,6 @@ body{animation:pageIn .45s ease both}
 .llm-pill.amb{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#fbbf24}
 .llm-use{font-size:.77rem;color:rgba(148,163,184,.6);line-height:1.62}
 @media(max-width:960px){.llm-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.llm-grid{grid-template-columns:1fr}}
 
 /* ══ MOBILE-NATIVE (≤ 640px) ══ */
 @media(max-width:640px){
@@ -665,7 +664,7 @@ body{animation:pageIn .45s ease both}
   .mob-form-card .form-level{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem}
   .mob-form-card .form-title{font-size:1.25rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.7rem}
   .mob-form-card .form-desc{font-size:.82rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1rem}
-  .mob-form-card .form-link{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.12);color:var(--purple-l);border:1px solid rgba(168,85,247,.2);padding:.5rem 1.1rem;border-radius:100px;font-size:.78rem;font-weight:700;text-decoration:none;width:fit-content;margin-top:auto}
+  .mob-form-card .form-link{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.12);color:var(--purple);border:1px solid rgba(168,85,247,.2);padding:.5rem 1.1rem;border-radius:100px;font-size:.78rem;font-weight:700;text-decoration:none;width:fit-content;margin-top:auto}
   .form-dots{bottom:1.2rem;left:6%;pointer-events:none}
 
   /* Stats */
@@ -710,6 +709,48 @@ body{animation:pageIn .45s ease both}
   section{padding:4rem 6%}
   .sec-head{margin-bottom:2.5rem}
   h2{font-size:1.75rem}
+
+  /* Performance: kill expensive grain on mobile */
+  .grain-overlay{display:none}
+
+  /* Performance: reduce blob presence on mobile */
+  .b1{width:320px;height:320px;opacity:.1}
+  .b2{width:260px;height:260px;opacity:.08}
+  .b3{display:none}
+
+  /* Expertises — horizontal scroll snap */
+  #expertises{padding:3.5rem 0 4rem}
+  #expertises .sec-head{padding:0 6%}
+  .exp-grid{
+    display:flex;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:.5rem 6% 1.5rem;gap:.75rem;
+    scrollbar-width:none;max-width:none;margin:0;
+    scroll-padding-left:6%;
+  }
+  .exp-grid::-webkit-scrollbar{display:none}
+  .exp-card{
+    flex:0 0 80vw;max-width:300px;
+    scroll-snap-align:start;
+  }
+  .exp-card:hover{transform:none}
+
+  /* LLM Matrix — horizontal scroll snap */
+  #llm-matrix{padding:3.5rem 0 4rem}
+  #llm-matrix .llm-matrix-head{padding:0 6%}
+  .llm-grid{
+    display:flex;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:.5rem 6% 1.5rem;gap:.75rem;
+    scrollbar-width:none;max-width:none;margin:0;
+    position:static;scroll-padding-left:6%;
+  }
+  .llm-grid::-webkit-scrollbar{display:none}
+  .llm-card{
+    flex:0 0 80vw;max-width:290px;
+    scroll-snap-align:start;
+  }
+  .llm-card:hover{transform:none}
 }
 </style>
 </head>
@@ -775,6 +816,7 @@ body{animation:pageIn .45s ease both}
       </div>
       <a href="#approche">Approche</a>
       <a href="#faq">FAQ</a>
+      <a href="blog.html">Blog</a>
     </div>
     <a href="contact.html" class="island-cta">Audit gratuit →</a>
     <button class="island-burger" id="burger" onclick="toggleMenu()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -783,7 +825,7 @@ body{animation:pageIn .45s ease both}
   </div>
 </nav>
 
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
   <a href="#expertises" onclick="closeMenu()">Nos services</a>
   <a href="audit-ia.html" class="mob-sub" onclick="closeMenu()">Audit IA</a>
   <a href="integration-ia.html" class="mob-sub" onclick="closeMenu()">Intégration IA</a>
@@ -969,49 +1011,49 @@ body{animation:pageIn .45s ease both}
   <div class="llm-grid">
     <div class="llm-card" data-v>
       <div class="llm-zone">Raisonnement &amp; Analyse</div>
-      <h4>Analyse complexe &amp; audit</h4>
+      <h3>Analyse complexe &amp; audit</h3>
       <div class="llm-models"><span class="llm-pill pur">Claude (Anthropic)</span><span class="llm-pill pur">GPT-4o (OpenAI)</span></div>
       <p class="llm-use">Synthèse de documents, audit de processus, raisonnement multi-étapes, génération de rapports.</p>
     </div>
     <div class="llm-card" data-v data-d="1">
       <div class="llm-zone">Génération de code</div>
-      <h4>Intégrations &amp; automatisation</h4>
+      <h3>Intégrations &amp; automatisation</h3>
       <div class="llm-models"><span class="llm-pill pur">Claude</span><span class="llm-pill grn">Codestral (Mistral)</span><span class="llm-pill pur">GPT-4o</span></div>
       <p class="llm-use">Développement d'API, scripts d'automatisation, connecteurs métier, tests et débogage.</p>
     </div>
     <div class="llm-card" data-v data-d="2">
       <div class="llm-zone">Recherche &amp; RAG</div>
-      <h4>Bases documentaires &amp; veille</h4>
+      <h3>Bases documentaires &amp; veille</h3>
       <div class="llm-models"><span class="llm-pill cyn">Perplexity AI</span><span class="llm-pill cyn">Google Gemini</span></div>
       <p class="llm-use">Recherche temps réel, bases documentaires RAG, FAQ IA, veille concurrentielle et réglementaire.</p>
     </div>
     <div class="llm-card" data-v data-d="3">
       <div class="llm-zone">Souveraineté on-premise</div>
-      <h4>Déploiement local &amp; RGPD</h4>
+      <h3>Déploiement local &amp; RGPD</h3>
       <div class="llm-models"><span class="llm-pill grn">Mistral AI</span><span class="llm-pill grn">Meta Llama</span><span class="llm-pill grn">Qwen (Alibaba)</span></div>
       <p class="llm-use">Données sensibles, hébergement on-premise, conformité RGPD, secteurs régulés (santé, finance, défense).</p>
     </div>
     <div class="llm-card" data-v>
       <div class="llm-zone">Multimodal</div>
-      <h4>Image, audio &amp; vidéo</h4>
+      <h3>Image, audio &amp; vidéo</h3>
       <div class="llm-models"><span class="llm-pill pur">GPT-4o</span><span class="llm-pill cyn">Google Gemini</span><span class="llm-pill amb">xAI Grok</span></div>
       <p class="llm-use">Analyse d'images produits, transcription, traitement multimodal, génération visuelle pour les équipes.</p>
     </div>
     <div class="llm-card" data-v data-d="1">
       <div class="llm-zone">Agents autonomes</div>
-      <h4>Orchestration &amp; workflows</h4>
+      <h3>Orchestration &amp; workflows</h3>
       <div class="llm-models"><span class="llm-pill pur">Claude</span><span class="llm-pill pur">GPT-4o</span><span class="llm-pill amb">DeepSeek R1</span></div>
       <p class="llm-use">Agents autonomes, chaînes d'actions complexes, orchestration multi-agents, tâches longue durée.</p>
     </div>
     <div class="llm-card" data-v data-d="2">
       <div class="llm-zone">Copilote métier</div>
-      <h4>Office, CRM &amp; ERP</h4>
+      <h3>Office, CRM &amp; ERP</h3>
       <div class="llm-models"><span class="llm-pill cyn">Microsoft Copilot</span><span class="llm-pill cyn">Gemini Workspace</span></div>
       <p class="llm-use">Intégration native dans l'écosystème Microsoft 365, Google Workspace, Salesforce et autres suites métier.</p>
     </div>
     <div class="llm-card" data-v data-d="3">
       <div class="llm-zone">Volume &amp; coût optimisé</div>
-      <h4>Traitement massif &amp; scale</h4>
+      <h3>Traitement massif &amp; scale</h3>
       <div class="llm-models"><span class="llm-pill amb">DeepSeek</span><span class="llm-pill grn">Llama 3</span><span class="llm-pill grn">Mistral Small</span></div>
       <p class="llm-use">Classification à grande échelle, traitement de volumes, tâches répétitives, optimisation du coût par token.</p>
     </div>
@@ -1399,16 +1441,17 @@ body{animation:pageIn .45s ease both}
       <p class="foot-desc">Cabinet de conseil spécialisé dans la transformation des entreprises par l'Intelligence Artificielle. Audit, intégration, automatisation, agents IA et formation executive.</p>
     </div>
     <div class="foot-col">
-      <h4>Services</h4>
+      <h3>Services</h3>
       <ul>
         <li><a href="consulting-ia.html">Audit IA</a></li>
         <li><a href="consulting-ia.html">Intégration IA</a></li>
         <li><a href="consulting-ia.html">Automatisation</a></li>
         <li><a href="consulting-ia.html">Agents IA</a></li>
+        <li><a href="blog.html">Blog IA</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h4>Formations</h4>
+      <h3>Formations</h3>
       <ul>
         <li><a href="formation-initiation-ia.html">Initiation à l'IA</a></li>
         <li><a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation</a></li>
@@ -1416,7 +1459,7 @@ body{animation:pageIn .45s ease both}
       </ul>
     </div>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h3>Contact</h3>
       <ul>
         <li><a href="contact.html">Prendre RDV</a></li>
         <li><a href="mailto:contact@quantum-agency.fr">contact@quantum-agency.fr</a></li>
@@ -1466,6 +1509,7 @@ function toggleMenu(){
   const m=document.getElementById('mobile-menu'),b=document.getElementById('burger');
   const open=m.classList.toggle('open');
   m.setAttribute('aria-hidden',!open);
+  if(open){m.removeAttribute('inert');}else{m.setAttribute('inert','');}
   b.classList.toggle('open',open);
   b.setAttribute('aria-expanded',open);
   b.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
@@ -1474,7 +1518,7 @@ function toggleMenu(){
 }
 function closeMenu(){
   const m=document.getElementById('mobile-menu'),b=document.getElementById('burger');
-  m.classList.remove('open');m.setAttribute('aria-hidden','true');
+  m.classList.remove('open');m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
   b.classList.remove('open');b.setAttribute('aria-expanded','false');
   b.setAttribute('aria-label','Ouvrir le menu');document.body.style.overflow='';
   b.focus();
