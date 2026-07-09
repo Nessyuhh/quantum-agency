@@ -157,16 +157,16 @@ body{animation:pageIn .45s ease both}
     <span>7 min de lecture</span>
   </div>
   <div class="art-body">
-    <p>Le RGPD n'est pas un obstacle au déploiement de l'IA — c'est un cadre. Les entreprises qui l'intègrent dès la conception de leurs projets IA avancent plus vite que celles qui découvrent les contraintes en cours de route. Voici le cadre pratique que nous appliquons chez Quantum Agency.</p>
+    <p>Le RGPD n'est pas un obstacle au déploiement de l'IA - c'est un cadre. Les entreprises qui l'intègrent dès la conception de leurs projets IA avancent plus vite que celles qui découvrent les contraintes en cours de route. Voici le cadre pratique que nous appliquons chez Quantum Agency.</p>
 
     <div class="art-callout warning">
       <strong>Avertissement :</strong> cet article est informatif et ne constitue pas un conseil juridique. Consultez votre DPO ou un avocat spécialisé pour votre situation spécifique.
     </div>
 
     <h2>Ce que le RGPD implique concrètement pour un projet IA</h2>
-    <p>Le RGPD s'applique dès lors que votre projet IA traite des données à caractère personnel — ce qui inclut la plupart des cas d'usage métier (données clients, collaborateurs, partenaires). Les obligations principales :</p>
+    <p>Le RGPD s'applique dès lors que votre projet IA traite des données à caractère personnel - ce qui inclut la plupart des cas d'usage métier (données clients, collaborateurs, partenaires). Les obligations principales :</p>
     <ul>
-      <li><strong>Base légale du traitement</strong> : consentement, contrat, obligation légale ou intérêt légitime — vous devez en avoir une</li>
+      <li><strong>Base légale du traitement</strong> : consentement, contrat, obligation légale ou intérêt légitime - vous devez en avoir une</li>
       <li><strong>Minimisation des données</strong> : n'envoyez au modèle que ce qui est strictement nécessaire</li>
       <li><strong>Durée de conservation</strong> : les données utilisées pour entraîner ou fine-tuner ne peuvent pas être conservées indéfiniment</li>
       <li><strong>Droit à l'explication</strong> : pour les décisions automatisées à impact significatif (recrutement, crédit), vous devez pouvoir expliquer le résultat</li>
@@ -174,7 +174,7 @@ body{animation:pageIn .45s ease both}
     </ul>
 
     <h2>Le vrai risque : envoyer des données personnelles à un LLM externe</h2>
-    <p>Quand vous copiez-collez un contrat client dans ChatGPT ou envoyez des CVs à une API externe, vous transférez des données personnelles à un tiers — potentiellement localisé hors UE. Cela peut être légal, mais cela nécessite des garanties :</p>
+    <p>Quand vous copiez-collez un contrat client dans ChatGPT ou envoyez des CVs à une API externe, vous transférez des données personnelles à un tiers - potentiellement localisé hors UE. Cela peut être légal, mais cela nécessite des garanties :</p>
     <ul>
       <li>Un accord de traitement des données (DPA) signé avec le fournisseur du LLM</li>
       <li>Des clauses contractuelles types (CCT) si le serveur est aux USA</li>
@@ -182,18 +182,18 @@ body{animation:pageIn .45s ease both}
     </ul>
 
     <div class="art-callout">
-      <strong>Bonne nouvelle :</strong> OpenAI, Anthropic et les principaux fournisseurs cloud proposent des DPA (Data Processing Agreements) signables — c'est en général une case à cocher dans votre compte ou un formulaire simple. L'essentiel est de l'avoir fait avant de commencer.
+      <strong>Bonne nouvelle :</strong> OpenAI, Anthropic et les principaux fournisseurs cloud proposent des DPA (Data Processing Agreements) signables - c'est en général une case à cocher dans votre compte ou un formulaire simple. L'essentiel est de l'avoir fait avant de commencer.
     </div>
 
     <h2>Les trois architectures selon votre niveau de sensibilité</h2>
 
-    <h3>Niveau 1 — Données peu sensibles (marketing, contenu public)</h3>
+    <h3>Niveau 1 - Données peu sensibles (marketing, contenu public)</h3>
     <p>API externe (OpenAI, Anthropic, Google) avec DPA signé. C'est suffisant pour la plupart des cas d'usage de génération de contenu, de résumé de documents publics, ou de support client sur des sujets non-confidentiels.</p>
 
-    <h3>Niveau 2 — Données métier sensibles (contrats, RH, finances)</h3>
+    <h3>Niveau 2 - Données métier sensibles (contrats, RH, finances)</h3>
     <p>Deux options viables : API avec anonymisation/pseudonymisation avant envoi (on remplace les noms, emails, n° de sécurité sociale par des tokens avant d'envoyer au modèle) ou déploiement dans votre cloud privé (Azure OpenAI, AWS Bedrock) avec des données qui ne sortent pas de votre périmètre.</p>
 
-    <h3>Niveau 3 — Données critiques (santé, données judiciaires, secret défense)</h3>
+    <h3>Niveau 3 - Données critiques (santé, données judiciaires, secret défense)</h3>
     <p>Modèle on-premise obligatoire. Les LLM open-source hébergés sur votre infrastructure (Mistral, Llama, Gemma) ou des modèles souverains français (Mistral AI, CentraleSupélec) sont la seule option conforme pour ces usages.</p>
 
     <h2>La checklist conformité IA minimale</h2>
@@ -208,7 +208,7 @@ body{animation:pageIn .45s ease both}
 
     <h2>L'IA Act européen : ce qui change en 2025-2026</h2>
     <p>Le règlement européen sur l'IA (AI Act) entré en vigueur en 2024 ajoute des obligations au-delà du RGPD pour les systèmes IA à "haut risque" (santé, emploi, éducation, infrastructure critique). Si votre usage entre dans ces catégories, des exigences spécifiques de transparence, de supervision humaine et de documentation s'appliquent.</p>
-    <p>Pour la majorité des PME, les cas d'usage courants (génération de contenu, analyse documentaire, chatbot support) ne tombent pas dans les catégories à haut risque — mais mieux vaut vérifier.</p>
+    <p>Pour la majorité des PME, les cas d'usage courants (génération de contenu, analyse documentaire, chatbot support) ne tombent pas dans les catégories à haut risque - mais mieux vaut vérifier.</p>
 
     <div class="art-cta">
       <h2>Déployez votre IA en conformité</h2>

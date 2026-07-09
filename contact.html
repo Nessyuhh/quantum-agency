@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Contact — Réserver un appel gratuit | Quantum Agency</title>
+<title>Contact - Réserver un appel gratuit | Quantum Agency</title>
 <meta name="description" content="Session gratuite 30 min avec Quantum Agency. Formation IA ou consulting IA pour TPE/PME : on identifie ensemble vos opportunités et priorités.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.quantum-agency.fr/contact.html">
-<meta property="og:title" content="Contact Quantum Agency — Appel gratuit 30 min">
+<meta property="og:title" content="Contact Quantum Agency - Appel gratuit 30 min">
 <meta property="og:description" content="Réservez votre appel de découverte gratuit avec Quantum Agency. Formation IA ou consulting : on analyse votre situation et on vous propose le bon parcours.">
 <meta property="og:url" content="https://www.quantum-agency.fr/contact.html">
 <meta property="og:type" content="website">
@@ -206,14 +206,14 @@ body{animation:pageIn .45s ease both}
           <div class="expect-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div class="expect-body">
             <strong>Vos objectifs prioritaires</strong>
-            <span>Productivité, automatisation, stratégie — on identifie ensemble ce qui compte vraiment</span>
+            <span>Productivité, automatisation, stratégie - on identifie ensemble ce qui compte vraiment</span>
           </div>
         </div>
         <div class="expect-item">
           <div class="expect-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
           <div class="expect-body">
             <strong>Un plan d'action concret</strong>
-            <span>À l'issue de l'appel, vous repartez avec une direction claire — même si on ne travaille pas ensemble</span>
+            <span>À l'issue de l'appel, vous repartez avec une direction claire - même si on ne travaille pas ensemble</span>
           </div>
         </div>
         <div class="expect-item">
@@ -287,7 +287,7 @@ body{animation:pageIn .45s ease both}
           </fieldset>
           <div class="field">
             <label for="message">Décrivez votre situation (optionnel)</label>
-            <textarea id="message" name="message" placeholder="Contexte, objectifs, contraintes — plus vous nous donnez d'informations, plus notre appel sera productif..." rows="4"></textarea>
+            <textarea id="message" name="message" placeholder="Contexte, objectifs, contraintes - plus vous nous donnez d'informations, plus notre appel sera productif..." rows="4"></textarea>
           </div>
           <p id="form-error" role="alert" aria-live="polite" style="color:#ef4444;font-size:.8rem;margin-top:.5rem;font-weight:600;min-height:1.2em"></p>
           <button type="submit" class="submit-btn">Envoyer ma demande →</button>
@@ -345,7 +345,7 @@ async function submitForm(e){
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({
-        _subject:'Nouvelle demande — '+besoin.value+' | '+prenom+' '+nom,
+        _subject:'Nouvelle demande - '+besoin.value+' | '+prenom+' '+nom,
         prenom,nom,email,
         societe:form.querySelector('[name="societe"]').value.trim(),
         effectif:form.querySelector('[name="effectif"]').value,
