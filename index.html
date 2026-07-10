@@ -813,13 +813,14 @@ body.intro-active{overflow:hidden}
 
 <script>
 (function(){
-  // Sur mobile : pas d'intro, afficher le site directement
-  if(window.innerWidth<=640){
+  // Mobile ou déjà vu cette session → skip intro
+  if(window.innerWidth<=640 || sessionStorage.getItem('intro_played')){
     document.body.classList.remove('intro-active');
     const _ov=document.getElementById('intro-overlay');
     if(_ov)_ov.remove();
     return;
   }
+  sessionStorage.setItem('intro_played','1');
   const arc=document.getElementById('i-arc');
   const tail=document.getElementById('i-tail');
   const wm=document.getElementById('i-wm');
