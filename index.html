@@ -485,7 +485,6 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 
 /* ══ PAGE LOAD FADE ══ */
 @keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-body{animation:pageIn .45s ease both}
 
 /* ══ BACK TO TOP ══ */
 #back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(10,5,28,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:none;text-decoration:none}
@@ -749,25 +748,29 @@ body{animation:pageIn .45s ease both}
   .llm-card:hover{transform:none}
 }
 /* ── Intro animation overlay ── */
-body.intro-active{overflow:hidden}
-#intro-overlay{position:fixed;inset:0;z-index:9999;background:#030308;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease-out}
+#intro-overlay{position:fixed;inset:0;z-index:9999;background:#030308;display:flex;align-items:center;justify-content:center;font-family:'Inter',system-ui,sans-serif;transition:opacity .8s ease-out}
 #intro-overlay.fading{opacity:0;pointer-events:none}
-#i-arc{stroke-dasharray:207.4;stroke-dashoffset:207.4}
-#i-arc.drawing{animation:i-arc-draw 1.1s cubic-bezier(.4,0,.15,1) forwards}
-@keyframes i-arc-draw{to{stroke-dashoffset:0}}
+#i-logo-group{display:flex;align-items:center}
+#i-q-wrap{position:relative;display:inline-block;line-height:0}
+#i-arc-wrap{display:inline-block;line-height:0}
+/* opacity:0.01 force Chrome à calculer le gradient même quand dashoffset=dasharray */
+#i-arc{stroke-dasharray:207.35;stroke-dashoffset:207.35;opacity:0.01}
+#i-arc.sweeping{animation:i-arc-sweep 1.4s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes i-arc-sweep{from{stroke-dashoffset:207.35;opacity:0.01}to{stroke-dashoffset:0;opacity:1}}
 #i-tail{stroke-dasharray:38.2;stroke-dashoffset:38.2;opacity:0}
-#i-tail.drawing{animation:i-tail-draw .55s cubic-bezier(.4,0,.15,1) forwards}
+#i-tail.drawing{animation:i-tail-draw .65s cubic-bezier(.4,0,.15,1) forwards}
 @keyframes i-tail-draw{0%{stroke-dashoffset:38.2;opacity:1}100%{stroke-dashoffset:0;opacity:1}}
-.i-glow{animation:i-qglow 3s ease-in-out infinite}
-@keyframes i-qglow{0%,100%{filter:drop-shadow(0 0 4px rgba(168,85,247,.35))}50%{filter:drop-shadow(0 0 16px rgba(168,85,247,.75)) drop-shadow(0 0 30px rgba(34,211,238,.3))}}
-#i-group{display:flex;align-items:center;transform-origin:center center}
-#i-wm{display:flex;flex-direction:column;gap:.5rem;max-width:0;overflow:hidden;margin-left:0;opacity:0;white-space:nowrap;transition:max-width 1.1s cubic-bezier(.22,1,.36,1),margin-left .9s cubic-bezier(.22,1,.36,1),opacity .8s ease-out}
-#i-wm.visible{max-width:420px;margin-left:3rem;opacity:1}
-#i-wm-q{font-size:2.7rem;font-weight:800;letter-spacing:.14em;color:#e2e8f0;line-height:1;font-family:'Inter',system-ui,sans-serif}
+.i-glowing{animation:i-q-glow 3s ease-in-out infinite}
+@keyframes i-q-glow{0%,100%{filter:drop-shadow(0 0 6px rgba(168,85,247,.4))}50%{filter:drop-shadow(0 0 20px rgba(168,85,247,.85)) drop-shadow(0 0 40px rgba(34,211,238,.4))}}
+#i-wm{display:flex;flex-direction:column;gap:.5rem;max-width:0;overflow:hidden;margin-left:0;opacity:0;white-space:nowrap;text-align:center;transition:max-width 1.1s cubic-bezier(.22,1,.36,1),margin-left .9s cubic-bezier(.22,1,.36,1),opacity .8s ease-out}
+#i-wm.visible{max-width:500px;margin-left:3rem;opacity:1}
 #i-wm-sep{height:1px;background:linear-gradient(90deg,rgba(124,58,237,.5),rgba(6,182,212,.25));width:0;transition:width 1s ease-out .4s}
 #i-wm.visible #i-wm-sep{width:100%}
-#i-wm-c{font-size:1.15rem;font-weight:300;letter-spacing:.48em;color:#64748b;line-height:1;font-family:'Inter',system-ui,sans-serif}
-#i-group.flying{transition:transform .65s cubic-bezier(.4,0,.2,1),opacity .35s ease-in .38s;opacity:0}
+#i-fly{position:fixed;z-index:10000;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+#i-fly.flying{transition:transform .65s cubic-bezier(.4,0,.2,1),opacity .35s ease-in .3s;opacity:0}
+/* ── Sparkle navbar ── */
+@keyframes i-spark-arm{0%{transform:scaleX(0);opacity:.9}70%{transform:scaleX(1);opacity:.8}100%{transform:scaleX(1.4);opacity:0}}
+#i-spark{position:fixed;pointer-events:none;z-index:10001;width:0;height:0}
 /* ── Mobile logo bar ── */
 #mob-logo-bar{display:none}
 </style>
@@ -775,66 +778,134 @@ body.intro-active{overflow:hidden}
 <body class="intro-active">
 
 <!-- ══════════════════════════════════════════════════════════
-     INTRO ANIMATION — joue une fois au chargement, vole vers navbar
+     INTRO ANIMATION — CSS conic-gradient mask + @property fan reveal
 ═══════════════════════════════════════════════════════════ -->
 <div id="intro-overlay" aria-hidden="true">
-<div id="i-group">
-  <svg viewBox="0 0 100 100" width="240" height="240" fill="none" overflow="visible">
-    <defs>
-      <linearGradient id="i-qg" x1="10%" y1="10%" x2="90%" y2="90%">
-        <stop offset="0%" stop-color="#ddd6fe"/>
-        <stop offset="50%" stop-color="#a855f7"/>
-        <stop offset="100%" stop-color="#22d3ee"/>
-      </linearGradient>
-    </defs>
-    <path id="i-arc" d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#i-qg)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <line id="i-tail" x1="60" y1="62" x2="88" y2="88" stroke="url(#i-qg)" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
-  <div id="i-wm">
-    <span id="i-wm-q">QUANTUM</span>
-    <div id="i-wm-sep"></div>
-    <span id="i-wm-c">CONSULTING</span>
+  <div id="i-logo-group">
+    <div id="i-q-wrap">
+      <div id="i-arc-wrap">
+        <svg id="i-arc-svg" viewBox="0 0 100 100" width="240" height="240" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="i-qg" gradientUnits="userSpaceOnUse" x1="14" y1="14" x2="86" y2="86">
+              <stop offset="0%" stop-color="#ddd6fe"/>
+              <stop offset="50%" stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <path id="i-arc" d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#i-qg)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <svg id="i-tail-svg" viewBox="0 0 100 100" width="240" height="240" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none">
+        <defs>
+          <linearGradient id="i-tg" gradientUnits="userSpaceOnUse" x1="14" y1="14" x2="86" y2="86">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <line id="i-tail" x1="60" y1="62" x2="88" y2="88" stroke="url(#i-tg)" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div id="i-wm">
+      <span style="font-size:2.7rem;font-weight:800;letter-spacing:.21em;color:#e2e8f0;line-height:1">QUANTUM</span>
+      <div id="i-wm-sep"></div>
+      <span style="font-size:1.7rem;font-weight:300;letter-spacing:.56em;color:#64748b;line-height:1;padding-left:.56em">CONSULTING</span>
+    </div>
   </div>
-</div>
 </div>
 
 <script>
 (function(){
-  // Mobile ou déjà vu cette session → skip intro
-  if(window.innerWidth<=640 || sessionStorage.getItem('intro_played')){
-    document.body.classList.remove('intro-active');
+  if(screen.width<=768||window.innerWidth<=640){
     const _ov=document.getElementById('intro-overlay');
-    if(_ov)_ov.remove();
+    if(_ov){_ov.remove();}
+    document.body.classList.remove('intro-active');
     return;
   }
-  sessionStorage.setItem('intro_played','1');
-  const arc=document.getElementById('i-arc');
-  const tail=document.getElementById('i-tail');
-  const wm=document.getElementById('i-wm');
-  const grp=document.getElementById('i-group');
-  const ov=document.getElementById('intro-overlay');
-  function dismiss(){ov.classList.add('fading');setTimeout(()=>{ov.remove();document.body.classList.remove('intro-active');},850);}
-  // Arc se dessine dès 200ms (5h→4h, sens horaire)
-  setTimeout(()=>{arc.classList.add('drawing');},200);
-  // Queue se dessine juste après l'arc (~1.35s)
-  setTimeout(()=>{tail.classList.add('drawing');},1350);
-  // Wordmark slide-in (~1.95s)
-  setTimeout(()=>{wm.classList.add('visible');},1950);
-  // Glow pulsant (~2.9s)
-  setTimeout(()=>{arc.classList.add('i-glow');tail.classList.add('i-glow');},2900);
-  // Vol vers navbar (~3.5s)
+  const ov   = document.getElementById('intro-overlay');
+  const arc  = document.getElementById('i-arc');
+  const tail = document.getElementById('i-tail');
+  const wm   = document.getElementById('i-wm');
+
+  function dismiss(){
+    ov.classList.add('fading');
+    setTimeout(()=>{ ov.remove(); document.body.classList.remove('intro-active'); }, 850);
+  }
+
+  // Arc sweep — CSS stroke-dashoffset animation, starts at 300ms
+  setTimeout(()=>{ arc.classList.add('sweeping'); }, 300);
+  // Tail draws 80ms after arc sweep completes (300+1400+80)
+  setTimeout(()=>{ tail.classList.add('drawing'); }, 1780);
+  // Wordmark slides in
+  setTimeout(()=>{ wm.classList.add('visible'); }, 2200);
+  // Glow pulse — sur les SVG parents pour ne pas confliger avec sweeping/drawing
   setTimeout(()=>{
-    const navSvg=document.querySelector('.island-logo svg');
-    if(!navSvg){dismiss();return;}
-    const dst=navSvg.getBoundingClientRect();
-    const src=grp.getBoundingClientRect();
-    const scale=dst.height/src.height;
-    const tx=(dst.left+dst.width/2)-(src.left+src.width/2);
-    const ty=(dst.top+dst.height/2)-(src.top+src.height/2);
-    grp.classList.add('flying');
-    grp.style.transform=`translate(${tx}px,${ty}px) scale(${scale})`;
-    setTimeout(dismiss,700);
-  },3500);
+    document.getElementById('i-arc-svg').classList.add('i-glowing');
+    document.getElementById('i-tail-svg').classList.add('i-glowing');
+  }, 3200);
+  // Q flies to navbar — extraction du vrai Q, pas d'élément fantôme
+  setTimeout(()=>{
+    const qWrap = document.getElementById('i-q-wrap');
+    const rect  = qWrap.getBoundingClientRect();
+
+    // Arrêt du glow + fade du wordmark
+    document.getElementById('i-arc-svg').classList.remove('i-glowing');
+    document.getElementById('i-tail-svg').classList.remove('i-glowing');
+    const wmEl = document.getElementById('i-wm');
+    wmEl.style.transition = 'opacity .25s ease-out';
+    wmEl.style.opacity = '0';
+
+    // Extraction : on pin le Q à sa position viewport exacte
+    qWrap.style.position = 'fixed';
+    qWrap.style.left     = rect.left + 'px';
+    qWrap.style.top      = rect.top  + 'px';
+    qWrap.style.margin   = '0';
+    qWrap.style.zIndex   = '10000';
+    document.body.appendChild(qWrap);
+
+    // Fade du fond de l'overlay (le Q n'est plus dedans)
+    dismiss();
+
+    // Calcul de la position cible : centre de l'icône Q dans la navbar
+    const navSvg = document.querySelector('.island-logo svg');
+    if(navSvg){
+      const dst    = navSvg.getBoundingClientRect();
+      const scale  = dst.height / 240;
+      // Centre du Q dans le SVG navbar : viewBox 190×36, Q centré en (18,18)
+      const qNavCX = dst.left + 18 * (dst.height / 36);
+      const qNavCY = dst.top  + 18 * (dst.height / 36);
+      const dx = qNavCX - (rect.left + 120);
+      const dy = qNavCY - (rect.top  + 120);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        qWrap.style.transition      = 'transform .7s cubic-bezier(.4,0,.2,1),opacity .3s ease-in .4s';
+        qWrap.style.transformOrigin = '120px 120px';
+        qWrap.style.transform       = `translate(${dx}px,${dy}px) scale(${scale})`;
+        qWrap.style.opacity         = '0';
+      }));
+    }
+    // Sparkle à l'arrivée (700ms = durée du fly)
+    setTimeout(()=>{
+      // Étoile 4 branches au centre du Q navbar
+      if(navSvg){
+        const d2 = navSvg.getBoundingClientRect();
+        const cx = d2.left + 18*(d2.height/36);
+        const cy = d2.top  + 18*(d2.height/36);
+        const sp = document.createElement('div');
+        sp.id = 'i-spark';
+        sp.style.left = cx+'px';
+        sp.style.top  = cy+'px';
+        sp.innerHTML = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="position:absolute;transform:translate(-50%,-50%)">
+          <line x1="14" y1="1"  x2="14" y2="27" stroke="white" stroke-width="1.2" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out forwards"/>
+          <line x1="1"  y1="14" x2="27" y2="14" stroke="white" stroke-width="1.2" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out forwards"/>
+          <line x1="5"  y1="5"  x2="23" y2="23" stroke="rgba(168,85,247,.7)" stroke-width=".8" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out .05s forwards"/>
+          <line x1="23" y1="5"  x2="5"  y2="23" stroke="rgba(34,211,238,.7)"  stroke-width=".8" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out .05s forwards"/>
+        </svg>`;
+        document.body.appendChild(sp);
+        setTimeout(()=>{ if(sp.parentNode) sp.remove(); }, 600);
+      }
+    }, 700);
+    setTimeout(()=>{ if(qWrap.parentNode) qWrap.remove(); }, 1200);
+  }, 4200);
 })();
 </script>
 <!-- FIN INTRO -->
@@ -1757,6 +1828,6 @@ document.addEventListener('keydown',e=>{
   bars.forEach(b=>obs.observe(b));
 })();
 </script>
-<script src="i18n.js?v=2"></script>
+<script src="i18n.js?v=3"></script>
 </body>
 </html>
