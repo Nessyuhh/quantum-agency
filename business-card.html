@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Consulting — Carte de visite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1e1e2e;display:flex;flex-direction:column;align-items:center;gap:4rem;padding:4rem 2rem;font-family:'Inter',system-ui,sans-serif;min-height:100vh}
+h2{font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#475569;text-align:center}
+
+/* Carte 85 × 55 mm = 322 × 208 px à 96 dpi (1mm=3.78px) */
+.card{width:322px;height:208px;border-radius:12px;position:relative;overflow:hidden;flex-shrink:0}
+.pair{display:flex;gap:2.5rem;align-items:center}
+
+/* ─── Recto ──────────────────────────────────────────────── */
+.recto{background:#030308;border:1px solid rgba(255,255,255,.06)}
+
+/* Blob violet bas-gauche */
+.recto::before{
+  content:'';position:absolute;bottom:-40px;left:-40px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,.22) 0%,transparent 70%);
+}
+/* Grain léger */
+.recto::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.6;pointer-events:none;
+}
+
+.recto-inner{position:relative;z-index:1;padding:22px 24px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+
+.recto-logo svg{display:block}
+
+.recto-name{font-size:.93rem;font-weight:700;color:#e2e8f0;letter-spacing:.01em}
+.recto-title{font-size:.55rem;font-weight:400;color:#64748b;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+
+.recto-contact{display:flex;flex-direction:column;gap:4px}
+.recto-contact span{font-size:.56rem;font-weight:400;color:#475569;letter-spacing:.03em}
+.recto-contact span strong{color:#94a3b8;font-weight:500}
+
+/* ─── Verso ──────────────────────────────────────────────── */
+.verso{
+  background:linear-gradient(145deg,#0d0720 0%,#0a051e 60%,#030308 100%);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+/* Arc décoratif */
+.verso-arc{
+  position:absolute;top:-60px;right:-60px;
+  width:220px;height:220px;border-radius:50%;
+  background:none;
+  border:1px solid rgba(124,58,237,.12);
+}
+.verso-arc2{
+  position:absolute;top:-30px;right:-30px;
+  width:160px;height:160px;border-radius:50%;
+  background:none;
+  border:1px solid rgba(124,58,237,.08);
+}
+.verso-blob{
+  position:absolute;bottom:-30px;left:30px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.1) 0%,transparent 70%);
+}
+
+.verso-inner{position:relative;z-index:1;padding:24px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+
+.verso-tagline{font-size:.65rem;font-weight:300;color:#64748b;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+
+/* Grand Q centré */
+.verso-q{display:block}
+
+.verso-sep{width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.4),transparent)}
+
+.verso-site{font-size:.6rem;font-weight:500;letter-spacing:.08em;color:#7c3aed}
+
+/* ─── Encart print ───────────────────────────────────────── */
+.print-note{font-size:.58rem;color:#334155;text-align:center;max-width:700px;line-height:1.6}
+
+/* ─── Version print ──────────────────────────────────────── */
+@media print{
+  body{background:#fff;padding:10mm;gap:10mm}
+  h2{color:#aaa}
+  .card{box-shadow:none}
+  .print-note{display:none}
+  .pair{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<h2>Carte de visite · 85 × 55 mm</h2>
+
+<div class="pair">
+
+  <!-- ── RECTO ────────────────────────────────── -->
+  <div>
+    <h2 style="margin-bottom:1rem">Recto</h2>
+    <div class="card recto">
+      <div class="recto-inner">
+
+        <!-- Logo horizontal compact -->
+        <div class="recto-logo">
+          <svg viewBox="0 0 190 36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rl" x1="5" y1="5" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ddd6fe"/>
+                <stop offset="50%" stop-color="#a855f7"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <path d="M 24.48 29.23 A 12.96 12.96 0 1 1 29.23 24.48" stroke="url(#rl)" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="21.6" y1="22.32" x2="31.68" y2="31.68" stroke="url(#rl)" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="40" y1="5" x2="40" y2="31" stroke="rgba(124,58,237,.2)" stroke-width="1"/>
+            <text x="48" y="17" font-family="'Inter',system-ui,sans-serif" font-weight="800" font-size="12" letter-spacing="2.5" fill="#e2e8f0">QUANTUM</text>
+            <text x="48" y="30" font-family="'Inter',system-ui,sans-serif" font-weight="300" font-size="7.5" letter-spacing="4.2" fill="#64748b">CONSULTING</text>
+          </svg>
+        </div>
+
+        <!-- Nom + titre -->
+        <div>
+          <div class="recto-name">Prénom Nom</div>
+          <div class="recto-title">Consultant IA &amp; Transformation digitale</div>
+        </div>
+
+        <!-- Contact -->
+        <div class="recto-contact">
+          <span><strong>E</strong> &nbsp;contact@quantum-agency.fr</span>
+          <span><strong>T</strong> &nbsp;+33 6 49 10 35 02</span>
+          <span><strong>W</strong> &nbsp;quantum-agency.fr</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VERSO ────────────────────────────────── -->
+  <div>
+    <h2 style="margin-bottom:1rem">Verso</h2>
+    <div class="card verso">
+      <div class="verso-arc"></div>
+      <div class="verso-arc2"></div>
+      <div class="verso-blob"></div>
+      <div class="verso-inner">
+
+        <div class="verso-tagline">Conseil · Intégration · Formation</div>
+
+        <!-- Grand Q -->
+        <svg class="verso-q" viewBox="0 0 100 100" width="68" height="68" fill="none">
+          <defs>
+            <linearGradient id="vq" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ddd6fe"/>
+              <stop offset="50%" stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#vq)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="62" x2="88" y2="88" stroke="url(#vq)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <div class="verso-sep"></div>
+        <div class="verso-site">quantum-agency.fr</div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="print-note">
+  Pour imprimer : Fichier → Imprimer · Désactiver les marges · Format A4 Portrait · Découpe aux traits de coupe.<br>
+  Recommandé : carte 350g couché mat, finition pelliculage soft-touch.
+</p>
+
+</body>
+</html>

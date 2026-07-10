@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Consulting — Signature Email</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;font-family:'Inter',system-ui,sans-serif;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem;min-height:100vh}
+h2{font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#475569}
+.preview-frame{background:#fff;border-radius:12px;padding:2.5rem;max-width:640px;width:100%}
+.preview-label{font-size:.58rem;color:#64748b;text-align:center;max-width:640px}
+
+/* ─────── SIGNATURE (compatible email HTML) ─────────────── */
+/* Tout en inline styles pour compatibilité email */
+.sig-code{background:#0d1117;border-radius:8px;padding:1.5rem;max-width:640px;width:100%}
+.sig-code pre{font-size:.62rem;color:#94a3b8;line-height:1.7;overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+.copy-btn{
+  display:block;margin:.75rem 0 0 auto;
+  font-family:inherit;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#a855f7;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);
+  border-radius:100px;padding:.4rem 1rem;cursor:pointer;transition:all .2s;
+}
+.copy-btn:hover{background:rgba(168,85,247,.16);border-color:rgba(168,85,247,.4)}
+</style>
+</head>
+<body>
+
+<h2>Signature Email · Prévisualisation</h2>
+
+<!-- ── PREVIEW ──────────────────────────────────────── -->
+<div class="preview-frame">
+
+  <!--[DÉBUT SIGNATURE — copier de ici jusqu'à FIN SIGNATURE]-->
+  <table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.5;color:#334155;width:100%;max-width:560px">
+    <tr>
+      <td style="padding-bottom:16px;border-bottom:1px solid #e2e8f0">
+
+        <!-- Logo Q inline SVG -->
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="padding-right:16px;vertical-align:middle">
+              <!-- SVG Q icon — affiché comme image dans les clients email compatibles -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="44" height="44" style="display:block">
+                <rect width="100" height="100" rx="18" fill="#0d0720"/>
+                <defs>
+                  <linearGradient id="sig-q" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#ddd6fe"/>
+                    <stop offset="50%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#22d3ee"/>
+                  </linearGradient>
+                </defs>
+                <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#sig-q)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                <line x1="60" y1="62" x2="88" y2="88" stroke="url(#sig-q)" stroke-width="5.5" stroke-linecap="round"/>
+              </svg>
+            </td>
+            <td style="vertical-align:middle;border-left:1px solid #e2e8f0;padding-left:16px">
+              <div style="font-size:15px;font-weight:800;color:#0f172a;letter-spacing:.05em;line-height:1.1">Prénom Nom</div>
+              <div style="font-size:11px;font-weight:400;color:#64748b;letter-spacing:.06em;text-transform:uppercase;margin-top:3px">Consultant IA · Quantum Consulting</div>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-top:14px">
+        <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+          <tr>
+            <td style="font-size:12px;color:#64748b;padding-bottom:6px">
+              📞 <a href="tel:+33649103502" style="color:#64748b;text-decoration:none">+33 6 49 10 35 02</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:12px;color:#64748b;padding-bottom:6px">
+              ✉️ <a href="mailto:contact@quantum-agency.fr" style="color:#7c3aed;text-decoration:none;font-weight:500">contact@quantum-agency.fr</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:12px;color:#64748b;padding-bottom:10px">
+              🌐 <a href="https://quantum-agency.fr" style="color:#7c3aed;text-decoration:none;font-weight:500">quantum-agency.fr</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- CTA bouton -->
+              <a href="https://quantum-agency.fr/contact.html"
+                 style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#0891b2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-decoration:none;padding:7px 18px;border-radius:100px">
+                Prendre rendez-vous →
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!--[FIN SIGNATURE]-->
+
+</div>
+
+<p class="preview-label">Prévisualisation sur fond blanc · Certains clients email n'affichent pas les SVG inline — dans ce cas, remplacez le bloc SVG par une image hébergée.</p>
+
+<!-- ── CODE À COPIER ─────────────────────────────── -->
+<div class="sig-code">
+  <pre id="sig-code-block"><!--[DÉBUT SIGNATURE]-->
+&lt;table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.5;color:#334155;width:100%;max-width:560px"&gt;
+  &lt;tr&gt;&lt;td style="padding-bottom:16px;border-bottom:1px solid #e2e8f0"&gt;
+    &lt;table cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;
+      &lt;td style="padding-right:16px;vertical-align:middle"&gt;
+        &lt;!-- Option A : SVG inline (Gmail Web, Outlook 365 web) --&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="44" height="44" style="display:block"&gt;
+          &lt;rect width="100" height="100" rx="18" fill="#0d0720"/&gt;
+          &lt;defs&gt;&lt;linearGradient id="sig-q" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse"&gt;
+            &lt;stop offset="0%" stop-color="#ddd6fe"/&gt;&lt;stop offset="50%" stop-color="#a855f7"/&gt;&lt;stop offset="100%" stop-color="#22d3ee"/&gt;
+          &lt;/linearGradient&gt;&lt;/defs&gt;
+          &lt;path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#sig-q)" stroke-width="5.5" stroke-linecap="round" fill="none"/&gt;
+          &lt;line x1="60" y1="62" x2="88" y2="88" stroke="url(#sig-q)" stroke-width="5.5" stroke-linecap="round"/&gt;
+        &lt;/svg&gt;
+        &lt;!-- Option B : image hébergée (Outlook desktop, Apple Mail) --&gt;
+        &lt;!-- &lt;img src="https://quantum-agency.fr/favicon.svg" width="44" height="44" alt="Quantum Consulting" style="display:block"&gt; --&gt;
+      &lt;/td&gt;
+      &lt;td style="vertical-align:middle;border-left:1px solid #e2e8f0;padding-left:16px"&gt;
+        &lt;div style="font-size:15px;font-weight:800;color:#0f172a;letter-spacing:.05em;line-height:1.1"&gt;Prénom Nom&lt;/div&gt;
+        &lt;div style="font-size:11px;font-weight:400;color:#64748b;letter-spacing:.06em;text-transform:uppercase;margin-top:3px"&gt;Consultant IA · Quantum Consulting&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;&lt;/table&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td style="padding-top:14px"&gt;
+    &lt;table cellpadding="0" cellspacing="0" border="0" style="width:100%"&gt;
+      &lt;tr&gt;&lt;td style="font-size:12px;color:#64748b;padding-bottom:6px"&gt;📞 &lt;a href="tel:+33649103502" style="color:#64748b;text-decoration:none"&gt;+33 6 49 10 35 02&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td style="font-size:12px;color:#64748b;padding-bottom:6px"&gt;✉️ &lt;a href="mailto:contact@quantum-agency.fr" style="color:#7c3aed;text-decoration:none;font-weight:500"&gt;contact@quantum-agency.fr&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td style="font-size:12px;color:#64748b;padding-bottom:10px"&gt;🌐 &lt;a href="https://quantum-agency.fr" style="color:#7c3aed;text-decoration:none;font-weight:500"&gt;quantum-agency.fr&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;a href="https://quantum-agency.fr/contact.html" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#0891b2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-decoration:none;padding:7px 18px;border-radius:100px"&gt;Prendre rendez-vous →&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+<!--[FIN SIGNATURE]--></pre>
+  <button class="copy-btn" onclick="
+    const txt=document.getElementById('sig-code-block').innerText;
+    navigator.clipboard.writeText(txt).then(()=>{this.textContent='✓ Copié !';setTimeout(()=>this.textContent='Copier le code HTML',2000)});
+  ">Copier le code HTML</button>
+</div>
+
+<p class="preview-label" style="margin-top:0">
+  <strong style="color:#94a3b8">Comment l'intégrer :</strong><br>
+  Gmail : Paramètres → Signature → Créer → Coller le code en mode HTML (via l'icône &lt;&gt;)<br>
+  Outlook : Fichier → Options → Courrier → Signatures → Nouveau → onglet HTML<br>
+  Apple Mail : Mail → Préférences → Signatures → Créer → Glisser le bloc dans la zone signature
+</p>
+
+</body>
+</html>
