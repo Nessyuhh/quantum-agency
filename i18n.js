@@ -546,9 +546,7 @@
   }
 
   function syncBtns() {
-    document.querySelectorAll('.q-lang-btn').forEach(b => {
-      b.textContent = LANG === 'fr' ? 'EN' : 'FR';
-    });
+    syncBtnsNew();
   }
 
   function apply(l) {
@@ -580,73 +578,79 @@
   }
 
   // ──────────────────────────────────────────────────────────────────
-  //  BUTTON INJECTION
+  //  SWITCHER INJECTION  (fixed top-right, hors navbar)
   // ──────────────────────────────────────────────────────────────────
 
   function injectStyles() {
     const s = document.createElement('style');
     s.textContent = `
-.q-lang-btn{
-  font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:100px;
-  padding:5px 13px;border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);
-  white-space:nowrap;line-height:1;
+#q-lang-sw{
+  position:fixed;top:18px;right:22px;z-index:9998;
+  display:flex;align-items:center;gap:10px;
+  font-family:inherit;font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  pointer-events:auto;
 }
-.q-lang-btn:hover{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.35)}
-#q-lang-desk{margin-right:6px}
+.q-lbtn{
+  background:none;border:none;cursor:pointer;padding:2px 0;
+  color:rgba(255,255,255,.38);position:relative;
+  transition:color .3s;line-height:1;
+  text-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+.q-lbtn::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1.5px;
+  background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.q-lbtn.ql-active{color:rgba(255,255,255,.9)}
+.q-lbtn.ql-active::after{transform:scaleX(1)}
 @media(max-width:640px){
-  #q-lang-desk{display:none!important}
-  #q-lang-mob{display:flex!important;align-items:center}
-}
-@media(min-width:641px){
-  #q-lang-mob{display:none!important}
+  #q-lang-sw{top:14px;right:16px;font-size:10px}
+  .q-lbtn{color:rgba(10,5,28,.3);text-shadow:none}
+  .q-lbtn.ql-active{color:rgba(10,5,28,.75)}
 }`;
     document.head.appendChild(s);
   }
 
-  function makeBtn(id, lightBg) {
-    const b = document.createElement('button');
-    b.className = 'q-lang-btn';
-    b.id = id;
-    b.setAttribute('aria-label', 'Switch language / Changer de langue');
-    b.textContent = LANG === 'fr' ? 'EN' : 'FR';
-    if (lightBg) {
-      b.style.cssText = 'color:rgba(10,5,28,.7);background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.15)';
-    }
-    b.addEventListener('click', () => apply(LANG === 'fr' ? 'en' : 'fr'));
-    return b;
+  function syncBtnsNew() {
+    const fr = document.getElementById('q-lbtn-fr');
+    const en = document.getElementById('q-lbtn-en');
+    if (!fr || !en) return;
+    fr.classList.toggle('ql-active', LANG === 'fr');
+    en.classList.toggle('ql-active', LANG === 'en');
   }
 
   function init() {
     injectStyles();
 
-    // Desktop: before .island-cta (index.html) or .n-cta (other pages)
-    const deskTarget = document.querySelector('.island-cta, .n-cta');
-    if (deskTarget && deskTarget.parentElement) {
-      const btn = makeBtn('q-lang-desk', false);
-      deskTarget.parentElement.insertBefore(btn, deskTarget);
-    }
+    // Créer le switcher fixe top-right
+    const sw = document.createElement('div');
+    sw.id = 'q-lang-sw';
+    sw.setAttribute('role', 'group');
+    sw.setAttribute('aria-label', 'Langue / Language');
 
-    // Mobile
+    const btnFR = document.createElement('button');
+    btnFR.id = 'q-lbtn-fr';
+    btnFR.className = 'q-lbtn' + (LANG === 'fr' ? ' ql-active' : '');
+    btnFR.textContent = 'FR';
+    btnFR.setAttribute('aria-label', 'Passer en français');
+    btnFR.addEventListener('click', () => apply('fr'));
+
+    const btnEN = document.createElement('button');
+    btnEN.id = 'q-lbtn-en';
+    btnEN.className = 'q-lbtn' + (LANG === 'en' ? ' ql-active' : '');
+    btnEN.textContent = 'EN';
+    btnEN.setAttribute('aria-label', 'Switch to English');
+    btnEN.addEventListener('click', () => apply('en'));
+
+    sw.appendChild(btnFR);
+    sw.appendChild(btnEN);
+    document.body.appendChild(sw);
+
+    // Nettoyer l'éventuel mob-logo-bar justifyContent qu'on avait ajouté
     const mobBar = document.getElementById('mob-logo-bar');
-    if (mobBar) {
-      // index.html: append to mob-logo-bar right side
-      mobBar.style.justifyContent = 'space-between';
-      mobBar.appendChild(makeBtn('q-lang-mob', true));
-    } else {
-      // Other pages: fixed top-right pill
-      const btn = makeBtn('q-lang-mob', false);
-      Object.assign(btn.style, {
-        position: 'fixed', top: '10px', right: '5%', zIndex: '260',
-        backdropFilter: 'blur(14px)',
-        webkitBackdropFilter: 'blur(14px)',
-        background: 'rgba(10,5,28,.75)',
-        border: '1px solid rgba(255,255,255,.18)',
-        color: 'rgba(255,255,255,.9)',
-      });
-      document.body.appendChild(btn);
-    }
+    if (mobBar) mobBar.style.justifyContent = '';
 
     // Apply stored preference
     if (LANG === 'en') apply('en');

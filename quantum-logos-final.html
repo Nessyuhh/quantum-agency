@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Consulting — Logo Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#030308;color:#f1f5f9;font-family:'Inter',system-ui,sans-serif;min-height:100vh;padding:4rem 2rem}
+header{text-align:center;margin-bottom:4rem}
+header h1{font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#334155;margin-bottom:.6rem}
+header p{font-size:.9rem;font-weight:300;color:#475569}
+
+/* ─── Sections ─────────────────────────────────────── */
+.section{max-width:960px;margin:0 auto 5rem}
+.section-label{font-size:.55rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;color:#7c3aed;margin-bottom:2rem;padding-left:.1rem}
+
+.row{display:flex;gap:1.25rem;align-items:stretch}
+
+/* ─── Cards ────────────────────────────────────────── */
+.card{flex:1;background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.065);border-radius:20px;padding:3rem 2rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;cursor:pointer;transition:border-color .3s,background .3s,transform .25s;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 10%,rgba(124,58,237,.09) 0%,transparent 70%);opacity:0;transition:opacity .3s}
+.card:hover::after{opacity:1}
+.card:hover{border-color:rgba(124,58,237,.35);transform:translateY(-3px)}
+.card.selected{border-color:rgba(124,58,237,.7);background:rgba(124,58,237,.07)}
+.card svg{transition:filter .3s}
+.card:hover svg,.card.selected svg{filter:drop-shadow(0 0 20px rgba(124,58,237,.4))}
+
+.card-white{background:#fff;border:1px solid rgba(0,0,0,.06)}
+.card-white:hover{border-color:rgba(124,58,237,.4)}
+.card-white:hover svg{filter:drop-shadow(0 0 16px rgba(124,58,237,.3))}
+
+.card-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#475569;text-align:center}
+.card-note{font-size:.67rem;color:#334155;text-align:center;line-height:1.5;margin-top:.3rem}
+
+/* ─── Icône seule ───────────────────────────────────── */
+.icon-row{display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.icon-card{padding:1.5rem;border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:1rem;cursor:pointer;transition:all .25s}
+.icon-card:hover svg{filter:drop-shadow(0 0 14px rgba(124,58,237,.5))}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Quantum Consulting · Sélection logo</h1>
+  <p>Arc Luxe × Typographie Inter — Variantes de mise en page</p>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1 — HORIZONTAL (usage principal)
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">01 · Horizontal — usage principal</div>
+  <div class="row">
+
+    <!-- Variante A : Q grand + texte droit -->
+    <div class="card">
+      <svg viewBox="0 0 310 80" width="310" height="80" fill="none">
+        <defs>
+          <linearGradient id="hA" x1="5%" y1="5%" x2="95%" y2="95%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <!-- Q arc — centre 40,40 r=30 -->
+        <!-- 5h: x=55, y=65.98 | 4h: x=65.98, y=55 -->
+        <path d="M 55 65.98 A 30 30 0 1 1 65.98 55"
+              stroke="url(#hA)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Tail -->
+        <line x1="47" y1="49" x2="72" y2="74"
+              stroke="url(#hA)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Séparateur vertical -->
+        <line x1="98" y1="16" x2="98" y2="64"
+              stroke="rgba(124,58,237,.2)" stroke-width="1"/>
+        <!-- QUANTUM -->
+        <text x="116" y="36"
+              font-family="'Inter',sans-serif" font-weight="800" font-size="16"
+              letter-spacing="3.5" fill="#e2e8f0">QUANTUM</text>
+        <!-- Ligne -->
+        <line x1="116" y1="45" x2="304" y2="45"
+              stroke="rgba(124,58,237,.28)" stroke-width=".8"/>
+        <!-- CONSULTING -->
+        <text x="116" y="59"
+              font-family="'Inter',sans-serif" font-weight="300" font-size="10"
+              letter-spacing="6.5" fill="#64748b">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label">Variante A — Q grand</div>
+        <div class="card-note">Signature principale · Entête · Présentation</div>
+      </div>
+    </div>
+
+    <!-- Variante B : Q compact + texte droit équilibré -->
+    <div class="card">
+      <svg viewBox="0 0 280 64" width="280" height="64" fill="none">
+        <defs>
+          <linearGradient id="hB" x1="5%" y1="5%" x2="95%" y2="95%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <!-- Q centre 32,32 r=22 -->
+        <!-- 5h (60°): x=43, y=51.06 | 4h (30°): x=51.06, y=43 -->
+        <path d="M 43 51.06 A 22 22 0 1 1 51.06 43"
+              stroke="url(#hB)" stroke-width="1.7" stroke-linecap="round"/>
+        <line x1="37" y1="38.5" x2="56" y2="57.5"
+              stroke="url(#hB)" stroke-width="1.7" stroke-linecap="round"/>
+        <!-- Séparateur -->
+        <line x1="76" y1="12" x2="76" y2="52" stroke="rgba(124,58,237,.2)" stroke-width="1"/>
+        <!-- Texte -->
+        <text x="90" y="29"
+              font-family="'Inter',sans-serif" font-weight="800" font-size="13.5"
+              letter-spacing="3" fill="#e2e8f0">QUANTUM</text>
+        <line x1="90" y1="36.5" x2="272" y2="36.5"
+              stroke="rgba(124,58,237,.25)" stroke-width=".7"/>
+        <text x="90" y="48"
+              font-family="'Inter',sans-serif" font-weight="300" font-size="8.5"
+              letter-spacing="5.5" fill="#64748b">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label">Variante B — Compact</div>
+        <div class="card-note">Navbar · Carte de visite · Signature email</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2 — STACKED (vertical)
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">02 · Vertical / Empilé — réseaux, social</div>
+  <div class="row">
+
+    <!-- Stacked A : Q centré, texte dessous -->
+    <div class="card">
+      <svg viewBox="0 0 200 160" width="200" height="160" fill="none">
+        <defs>
+          <linearGradient id="sA" x1="10%" y1="10%" x2="90%" y2="90%">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="55%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <!-- Q centre 100,56 r=38 -->
+        <!-- 5h (60°): x=119, y=88.93 | 4h (30°): x=132.93, y=75 -->
+        <path d="M 119 88.93 A 38 38 0 1 1 132.93 75"
+              stroke="url(#sA)" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="109" y1="67" x2="141" y2="99"
+              stroke="url(#sA)" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Texte centré -->
+        <text x="100" y="126"
+              font-family="'Inter',sans-serif" font-weight="800" font-size="14"
+              letter-spacing="4" fill="#e2e8f0" text-anchor="middle">QUANTUM</text>
+        <line x1="28" y1="133" x2="172" y2="133"
+              stroke="rgba(124,58,237,.25)" stroke-width=".8"/>
+        <text x="100" y="147"
+              font-family="'Inter',sans-serif" font-weight="300" font-size="8.5"
+              letter-spacing="5.5" fill="#64748b" text-anchor="middle">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label">Vertical A</div>
+        <div class="card-note">LinkedIn · Profil · Couverture</div>
+      </div>
+    </div>
+
+    <!-- Stacked B : Q avec halo léger + texte serré -->
+    <div class="card">
+      <svg viewBox="0 0 200 160" width="200" height="160" fill="none">
+        <defs>
+          <linearGradient id="sB" x1="10%" y1="10%" x2="90%" y2="90%">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="55%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(124,58,237,.12)"/>
+            <stop offset="100%" stop-color="rgba(124,58,237,0)"/>
+          </radialGradient>
+        </defs>
+        <!-- Halo derrière le Q -->
+        <ellipse cx="100" cy="55" rx="52" ry="52" fill="url(#glow)"/>
+        <!-- Q centre 100,55 r=36 -->
+        <!-- 5h: x=118, y=86.18 | 4h: x=131.18, y=73 -->
+        <path d="M 118 86.18 A 36 36 0 1 1 131.18 73"
+              stroke="url(#sB)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="108" y1="66" x2="138" y2="96"
+              stroke="url(#sB)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Texte -->
+        <text x="100" y="122"
+              font-family="'Inter',sans-serif" font-weight="800" font-size="13"
+              letter-spacing="3.5" fill="#e2e8f0" text-anchor="middle">QUANTUM</text>
+        <text x="100" y="139"
+              font-family="'Inter',sans-serif" font-weight="400" font-size="7.5"
+              letter-spacing="5.5" fill="#7c3aed" text-anchor="middle">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label">Vertical B — Halo</div>
+        <div class="card-note">Réseaux sociaux · Vignette · App</div>
+      </div>
+    </div>
+
+    <!-- Stacked C : Q seul avec texte en arc ou très serré -->
+    <div class="card">
+      <svg viewBox="0 0 200 160" width="200" height="160" fill="none">
+        <defs>
+          <linearGradient id="sC" x1="10%" y1="10%" x2="90%" y2="90%">
+            <stop offset="0%" stop-color="#ddd6fe"/>
+            <stop offset="55%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <!-- Q centre 100,60 r=40 -->
+        <path d="M 120 94.64 A 40 40 0 1 1 134.64 80"
+              stroke="url(#sC)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="109" y1="71" x2="142" y2="104"
+              stroke="url(#sC)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Tag sous le Q -->
+        <rect x="52" y="118" width="96" height="22" rx="11"
+              fill="rgba(124,58,237,.12)" stroke="rgba(124,58,237,.25)" stroke-width=".8"/>
+        <text x="100" y="133"
+              font-family="'Inter',sans-serif" font-weight="700" font-size="8"
+              letter-spacing="4" fill="#a855f7" text-anchor="middle">QUANTUM CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label">Vertical C — Tag pill</div>
+        <div class="card-note">Badge · Mobile · Stories</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3 — ICÔNE SEULE
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">03 · Marque seule — favicon, icône, tampon</div>
+  <div class="row">
+
+    <!-- Icône sur fond sombre -->
+    <div class="card" style="padding:2.5rem">
+      <div class="icon-row">
+        <!-- Grande -->
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="80" height="80" fill="none">
+            <defs>
+              <linearGradient id="i1" x1="10%" y1="10%" x2="90%" y2="90%">
+                <stop offset="0%" stop-color="#ddd6fe"/>
+                <stop offset="55%" stop-color="#a855f7"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#i1)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#i1)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#334155;letter-spacing:.1em;text-transform:uppercase">Grande</div>
+        </div>
+        <!-- Moyenne -->
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="52" height="52" fill="none">
+            <defs><linearGradient id="i2" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#ddd6fe"/><stop offset="55%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#i2)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#i2)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#334155;letter-spacing:.1em;text-transform:uppercase">Moyenne</div>
+        </div>
+        <!-- Petite -->
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="32" height="32" fill="none">
+            <defs><linearGradient id="i3" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#ddd6fe"/><stop offset="55%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#i3)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#i3)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#334155;letter-spacing:.1em;text-transform:uppercase">Favicon</div>
+        </div>
+      </div>
+      <div class="card-label">Sur fond sombre</div>
+    </div>
+
+    <!-- Icône sur fond blanc -->
+    <div class="card card-white" style="padding:2.5rem">
+      <div class="icon-row">
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="80" height="80" fill="none">
+            <defs><linearGradient id="w1" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#0891b2"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#w1)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#w1)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#cbd5e1;letter-spacing:.1em;text-transform:uppercase">Grande</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="52" height="52" fill="none">
+            <defs><linearGradient id="w2" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#0891b2"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#w2)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#w2)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#cbd5e1;letter-spacing:.1em;text-transform:uppercase">Moyenne</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="32" height="32" fill="none">
+            <defs><linearGradient id="w3" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#0891b2"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#w3)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#w3)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#cbd5e1;letter-spacing:.1em;text-transform:uppercase">Favicon</div>
+        </div>
+      </div>
+      <div class="card-label" style="color:#94a3b8">Sur fond blanc</div>
+    </div>
+
+    <!-- Icône sur fond violet -->
+    <div class="card" style="background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.3);padding:2.5rem">
+      <div class="icon-row">
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="80" height="80" fill="none">
+            <defs><linearGradient id="v1" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#ddd6fe"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#v1)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#v1)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#7c3aed;letter-spacing:.1em;text-transform:uppercase">Grande</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 100 100" width="52" height="52" fill="none">
+            <defs><linearGradient id="v2" x1="10%" y1="10%" x2="90%" y2="90%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#ddd6fe"/></linearGradient></defs>
+            <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#v2)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="62" x2="88" y2="88" stroke="url(#v2)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:.55rem;color:#7c3aed;letter-spacing:.1em;text-transform:uppercase">Favicon</div>
+        </div>
+      </div>
+      <div class="card-label" style="color:#7c3aed">Sur fond violet</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 4 — SUR FOND BLANC (horizontal)
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">04 · Rendu sur fond blanc</div>
+  <div class="row">
+
+    <div class="card card-white">
+      <svg viewBox="0 0 310 80" width="310" height="80" fill="none">
+        <defs>
+          <linearGradient id="wb1" x1="5%" y1="5%" x2="95%" y2="95%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#0891b2"/>
+          </linearGradient>
+        </defs>
+        <path d="M 55 65.98 A 30 30 0 1 1 65.98 55" stroke="url(#wb1)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="47" y1="49" x2="72" y2="74" stroke="url(#wb1)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="98" y1="16" x2="98" y2="64" stroke="rgba(124,58,237,.15)" stroke-width="1"/>
+        <text x="116" y="36" font-family="'Inter',sans-serif" font-weight="800" font-size="16" letter-spacing="3.5" fill="#1e293b">QUANTUM</text>
+        <line x1="116" y1="45" x2="304" y2="45" stroke="rgba(124,58,237,.2)" stroke-width=".8"/>
+        <text x="116" y="59" font-family="'Inter',sans-serif" font-weight="300" font-size="10" letter-spacing="6.5" fill="#94a3b8">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label" style="color:#94a3b8">Horizontal A — fond blanc</div>
+        <div class="card-note" style="color:#cbd5e1">Contrat · Document · Papier à en-tête</div>
+      </div>
+    </div>
+
+    <div class="card card-white">
+      <svg viewBox="0 0 200 160" width="180" height="144" fill="none">
+        <defs>
+          <linearGradient id="wb2" x1="10%" y1="10%" x2="90%" y2="90%">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#0891b2"/>
+          </linearGradient>
+        </defs>
+        <path d="M 120 94.64 A 40 40 0 1 1 134.64 80" stroke="url(#wb2)" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="109" y1="71" x2="142" y2="104" stroke="url(#wb2)" stroke-width="2.2" stroke-linecap="round"/>
+        <text x="100" y="126" font-family="'Inter',sans-serif" font-weight="800" font-size="14" letter-spacing="4" fill="#1e293b" text-anchor="middle">QUANTUM</text>
+        <line x1="28" y1="133" x2="172" y2="133" stroke="rgba(124,58,237,.2)" stroke-width=".8"/>
+        <text x="100" y="147" font-family="'Inter',sans-serif" font-weight="300" font-size="8.5" letter-spacing="5.5" fill="#94a3b8" text-anchor="middle">CONSULTING</text>
+      </svg>
+      <div>
+        <div class="card-label" style="color:#94a3b8">Vertical A — fond blanc</div>
+        <div class="card-note" style="color:#cbd5e1">Tampon · Profil · Badge</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<p style="text-align:center;font-size:.62rem;color:#1e293b;padding-bottom:3rem;letter-spacing:.08em">Tous les logos sont en SVG vectoriel — exportables en PNG, PDF ou intégrables directement en HTML</p>
+
+<script>
+document.querySelectorAll('.card:not(.card-white)').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.card').forEach(x=>x.classList.remove('selected'));
+    c.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>

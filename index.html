@@ -33,7 +33,7 @@
 /* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;line-height:1.6;overflow-x:clip;cursor:none}
+body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;line-height:1.6;overflow-x:clip}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:#f0f0f8}
 ::-webkit-scrollbar-thumb{background:linear-gradient(#7c3aed,#06b6d4);border-radius:3px}
@@ -67,19 +67,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
   @keyframes grow{to{transform:scaleX(1)}}
 }
 
-/* ══ CUSTOM CURSOR ══ */
-/* Override UA stylesheet which reapplies cursor on a/button */
-a,button,input,select,textarea,[role="button"]{cursor:none}
-#cursor{
-  position:fixed;width:8px;height:8px;
-  background:var(--purple-l);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  box-shadow:0 0 14px 4px rgba(168,85,247,.45);
-  transition:width .25s,height .25s,opacity .25s;
-  will-change:transform;top:0;left:0;
-}
-#cursor.hover{width:28px;height:28px;opacity:.45;background:transparent;border:1.5px solid var(--purple-l)}
-@media(hover:none){#cursor{display:none}}
 
 /* ══ DYNAMIC ISLAND NAV ══ */
 #island{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;width:max-content;max-width:calc(100vw - 32px)}
@@ -518,8 +505,8 @@ body{animation:pageIn .45s ease both}
   .mq-track{animation:none!important}
   .b1,.b2,.b3{animation:none!important}
   .spin-ring,.spin-ring-2{animation:none!important}
-  #cursor{display:none}
 }
+
 
 /* ══ content-visibility ══ */
 #consulting,#why,#temoignages,#faq,#contact{content-visibility:auto;contain-intrinsic-size:0 600px}
@@ -868,7 +855,6 @@ body.intro-active{overflow:hidden}
   </a>
 </header>
 
-<div id="cursor" aria-hidden="true"></div>
 <div id="progress-bar" aria-hidden="true"></div>
 <!-- Grain noise overlay -->
 <svg class="grain-overlay" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -1588,21 +1574,6 @@ body.intro-active{overflow:hidden}
 </footer>
 
 <script>
-/* ── Cursor ── */
-const cur = document.getElementById('cursor');
-let cX=0,cY=0,dX=0,dY=0;
-document.addEventListener('mousemove',e=>{cX=e.clientX;cY=e.clientY});
-document.addEventListener('mouseleave',()=>{cur.style.opacity='0'});
-document.addEventListener('mouseenter',()=>{cur.style.opacity='1'});
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
-});
-(function animCursor(){
-  dX+=(cX-dX)*.14;dY+=(cY-dY)*.14;
-  cur.style.transform=`translate(${dX-4}px,${dY-4}px)`;
-  requestAnimationFrame(animCursor);
-})();
 
 /* ── Nav compact ── */
 const island=document.getElementById('island');
@@ -1786,6 +1757,6 @@ document.addEventListener('keydown',e=>{
   bars.forEach(b=>obs.observe(b));
 })();
 </script>
-<script src="i18n.js"></script>
+<script src="i18n.js?v=2"></script>
 </body>
 </html>
