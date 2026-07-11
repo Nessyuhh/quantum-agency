@@ -34,7 +34,7 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
 :root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
 :focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
@@ -388,6 +388,6 @@ if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',
 var hero=document.getElementById('audit-hero'),spot=document.getElementById('hero-spot');
 if(hero&&spot){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();spot.style.background='radial-gradient(600px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(168,85,247,.1),transparent 60%)';});hero.addEventListener('mouseleave',function(){spot.style.background='';});}
 </script>
-<script src="i18n.js?v=2"></script>
+<script src="i18n.js?v=3"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;line-height:1.6;overflow-x:hidden}
 :root{--bg:#ffffff;--bg2:#f3f3f8;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--text:#0a0a14;--muted:#4a5568;--border:rgba(0,0,0,.08)}
 :focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
@@ -352,6 +352,6 @@ document.querySelectorAll('.btn').forEach(function(btn){
 var pgHero=document.getElementById('pg-hero-sec'),pgSpot=document.getElementById('hero-spot-pg');
 if(pgHero&&pgSpot){pgHero.addEventListener('mousemove',function(e){var r=pgHero.getBoundingClientRect();pgSpot.style.background='radial-gradient(600px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(168,85,247,.07),transparent 60%)';});pgHero.addEventListener('mouseleave',function(){pgSpot.style.background='';});}
 </script>
-<script src="i18n.js?v=2"></script>
+<script src="i18n.js?v=3"></script>
 </body>
 </html>
