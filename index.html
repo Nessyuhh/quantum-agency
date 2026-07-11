@@ -577,53 +577,39 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 @media(max-width:640px){
   /* Switch nav */
   #island{display:none!important}
-  body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}
-  /* Logo bar mobile fixe en haut */
+  /* ── Nav mobile — pill flottante (Dynamic Island) ── */
   #mob-logo-bar{
-    display:flex;align-items:center;
-    position:fixed;top:0;left:0;right:0;z-index:250;
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(20px) saturate(180%);
-    -webkit-backdrop-filter:blur(20px) saturate(180%);
-    border-bottom:1px solid rgba(0,0,0,.07);
-    padding:0 6%;height:52px;
+    display:flex!important;align-items:center;gap:2px;
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);
+    z-index:250;width:max-content;max-width:calc(100vw - 24px);
+    background:rgba(10,5,28,.92);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid rgba(255,255,255,.1);border-radius:100px;
+    padding:8px 8px 8px 16px;
+    box-shadow:0 8px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.07);
   }
+  .mob-logo-link{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0;margin-right:4px}
+  .mob-nav-links{display:flex;align-items:center;gap:1px}
+  .mob-nav-links a{color:rgba(255,255,255,.62);font-size:12px;font-weight:500;text-decoration:none;padding:6px 11px;border-radius:100px;transition:color .18s,background .18s;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .mob-nav-links a:active{background:rgba(255,255,255,.1);color:#fff}
+  .mob-nav-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:11.5px;font-weight:700;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;flex-shrink:0;margin-left:6px;-webkit-tap-highlight-color:transparent;box-shadow:0 4px 16px rgba(124,58,237,.4);touch-action:manipulation}
+  .mob-burger-mini{display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,.08);border:none;padding:8px 7px;border-radius:100px;cursor:pointer;margin-left:4px;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+  .mob-burger-mini span{display:block;width:14px;height:1.5px;background:rgba(255,255,255,.75);border-radius:2px}
 
-  /* Bottom tab bar */
-  #bottom-bar{
-    display:flex;align-items:center;
-    position:fixed;bottom:0;left:0;right:0;z-index:300;
-    background:rgba(6,4,18,.93);
-    backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%);
-    border-top:1px solid rgba(255,255,255,.07);
-    padding:4px 4px env(safe-area-inset-bottom);
-    box-shadow:0 -4px 40px rgba(0,0,0,.45);
-    gap:0;
-  }
-  .tab-item{
-    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:3px;text-decoration:none;color:rgba(148,163,184,.5);
-    padding:6px 2px;min-height:48px;border-radius:10px;
-    transition:color .2s,background .2s;
-    -webkit-tap-highlight-color:transparent;user-select:none;
-  }
-  .tab-item.active{color:var(--purple-l)}
-  .tab-item:active{background:rgba(124,58,237,.12)}
-  .tab-icon{font-size:18px;line-height:1}
-  .tab-label{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
-  .tab-cta{
-    flex:0 0 auto;background:linear-gradient(135deg,var(--purple),var(--purple-l));
-    border-radius:22px;padding:0 20px;height:40px;display:flex;align-items:center;
-    color:#fff;font-size:11px;font-weight:800;letter-spacing:.02em;
-    text-decoration:none;margin:0 6px;
-    box-shadow:0 4px 18px rgba(124,58,237,.45);
-    -webkit-tap-highlight-color:transparent;white-space:nowrap;
-    min-width:44px;
-  }
+  /* Bottom tab bar — supprimé */
+  #bottom-bar{display:none!important}
 
-  /* Hero — décalé sous le logo bar */
-  #hero{padding:calc(52px + 60px) 6% 50px;min-height:90svh;text-align:left;align-items:flex-start}
+  /* Hero — décalé sous la pill nav flottante */
+  #hero{padding:calc(72px + 36px) 5% 50px;min-height:90svh;text-align:left;align-items:flex-start}
+
+  /* ── Intro animation — version mobile ── */
+  #i-logo-group{flex-direction:column!important;align-items:center!important;gap:1.5rem}
+  #i-arc-svg,#i-tail-svg{width:160px!important;height:160px!important}
+  #i-wm{margin-left:0!important;transition:max-width 1.1s cubic-bezier(.22,1,.36,1),opacity .8s ease-out!important}
+  #i-wm.visible{max-width:80vw!important;margin-left:0!important}
+  #i-wm span:first-child{font-size:2rem!important}
+  #i-wm span:last-child{font-size:1rem!important;letter-spacing:.45em!important}
   .hero-content{margin:0;text-align:left}
   .hero-badge{font-size:.63rem}
   h1{font-size:clamp(2.1rem,8vw,2.8rem);letter-spacing:-.035em}
@@ -700,10 +686,12 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   .foot-col:nth-child(3),.foot-col:nth-child(4){display:none}
   footer{padding-bottom:1.5rem}
 
-  /* Sections */
-  section{padding:4rem 6%}
-  .sec-head{margin-bottom:2.5rem}
-  h2{font-size:1.75rem}
+  /* Sections — allégées */
+  section{padding:2.5rem 5%}
+  .sec-head{margin-bottom:1.4rem}
+  h2{font-size:1.6rem;letter-spacing:-.025em}
+  .lead{display:none}
+  .tag{font-size:.6rem;padding:.28rem .9rem}
 
   /* Performance: kill expensive grain on mobile */
   .grain-overlay{display:none}
@@ -713,22 +701,29 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   .b2{width:260px;height:260px;opacity:.08}
   .b3{display:none}
 
-  /* Expertises - horizontal scroll snap */
-  #expertises{padding:3.5rem 0 4rem}
-  #expertises .sec-head{padding:0 6%}
+  /* Expertises — grille 2×3 premium compacte */
+  #expertises{padding:3rem 5%}
+  #expertises .sec-head{padding:0;margin-bottom:1.5rem}
   .exp-grid{
-    display:flex;overflow-x:auto;
-    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-    padding:.5rem 6% 1.5rem;gap:.75rem;
-    scrollbar-width:none;max-width:none;margin:0;
-    scroll-padding-left:6%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.6rem;
+    max-width:none;margin:0;padding:0;
+    overflow:visible;
   }
-  .exp-grid::-webkit-scrollbar{display:none}
   .exp-card{
-    flex:0 0 80vw;max-width:300px;
-    scroll-snap-align:start;
+    flex:none;max-width:none;width:auto;
+    background:rgba(0,0,0,.03);
+    border:1px solid rgba(0,0,0,.07);
+    border-radius:16px;padding:1rem .9rem;
+    min-height:auto;position:relative;
   }
   .exp-card:hover{transform:none}
+  .exp-card p{display:none}
+  .exp-card h3{font-size:.88rem;margin-bottom:.6rem;line-height:1.3}
+  .exp-card-ico{width:28px;height:28px;margin-bottom:.55rem;display:flex;align-items:center;justify-content:center}
+  .exp-card-ico svg{width:18px;height:18px}
+  .exp-link{font-size:.72rem;padding:.32rem .75rem;margin-top:auto}
 
   /* LLM Matrix - horizontal scroll snap */
   #llm-matrix{padding:3.5rem 0 4rem}
@@ -773,6 +768,110 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 #i-spark{position:fixed;pointer-events:none;z-index:10001;width:0;height:0}
 /* ── Mobile logo bar ── */
 #mob-logo-bar{display:none}
+
+/* ── Formations mockup 3D hover + gradient border accent ── */
+.mock-panel{perspective:1000px}
+.mock-win{border-color:rgba(168,85,247,.22)!important;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s,border-color .45s}
+.mock-panel:hover .mock-win{transform:scale(1.03) rotateX(2deg) rotateY(-3deg);border-color:rgba(168,85,247,.5)!important;box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 40px rgba(124,58,237,.15),0 0 0 1px rgba(6,182,212,.2),inset 0 1px 0 rgba(255,255,255,.1)}
+
+/* ── Button click ripple keyframe ── */
+@keyframes ripple-click{to{transform:translate(-50%,-50%) scale(80);opacity:0}}
+
+/* ══ MOBILE MINIMALISTE — REFONTE HOMEPAGE ══ */
+@media(max-width:640px){
+  /* Touch */
+  .btn-primary,.btn-outline,.form-link,.faq-btn,.exp-link,.mob-nav-cta,.mob-nav-links a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+
+  /* ── Sections masquées sur mobile ── */
+  #trust-bar,#llm-matrix,#consulting,#formations,#approche{display:none!important}
+
+  /* ── Hero — 1 CTA, épuré ── */
+  .btn-outline{display:none!important}
+  .hero-badge{margin-bottom:1.2rem;font-size:.6rem}
+  .hero-sub{font-size:.92rem;margin-bottom:1.8rem;opacity:.75}
+
+  /* ── Stats — 2 chiffres, compact ── */
+  #stats{padding:1.5rem 5%;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+  .stats-grid>div:nth-child(n+3){display:none}
+  .stat-num{font-size:1.75rem}
+  .stat-bar-wrap{display:none}
+  .stat-lbl{font-size:.72rem;color:var(--muted)}
+
+  /* ── Expertises — cartes clicables (icon + titre + desc condensée) ── */
+  #expertises{padding:2rem 5%}
+  #expertises .sec-head{margin-bottom:1rem}
+  .exp-grid{
+    display:flex;flex-direction:column;gap:.55rem;
+    padding:0;overflow:visible;grid-template-columns:unset;
+  }
+  .exp-card{
+    position:relative;
+    display:grid;
+    grid-template-columns:38px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:.75rem;row-gap:.18rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:14px;
+    padding:1rem 2.6rem 1rem 1rem;
+    box-shadow:0 1px 8px rgba(0,0,0,.04);
+    cursor:pointer;min-height:unset;
+    transition:box-shadow .18s,border-color .18s;
+  }
+  .exp-card:active{box-shadow:0 1px 4px rgba(0,0,0,.06);border-color:rgba(124,58,237,.22)}
+  .exp-card-ico{
+    grid-column:1;grid-row:1/3;align-self:center;
+    width:36px;height:36px;margin:0;flex-shrink:0;
+    background:rgba(124,58,237,.07);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .exp-card-ico svg{width:17px;height:17px}
+  .exp-card h3{
+    grid-column:2;grid-row:1;align-self:end;
+    font-size:.88rem;font-weight:700;margin:0;line-height:1.25;letter-spacing:-.01em;
+  }
+  .exp-card p{
+    grid-column:2;grid-row:2;align-self:start;
+    display:block;font-size:.76rem;color:var(--muted);
+    line-height:1.45;margin:0;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  /* Lien invisible couvre toute la card */
+  .exp-link{
+    position:absolute!important;inset:0!important;
+    background:none!important;border:none!important;
+    padding:0!important;margin:0!important;
+    font-size:0;color:transparent;z-index:1;
+  }
+  /* Flèche décorative */
+  .exp-card::after{
+    content:'→';position:absolute;right:.95rem;top:50%;
+    transform:translateY(-50%);
+    color:rgba(0,0,0,.2);font-size:.85rem;pointer-events:none;
+  }
+
+  /* ── Témoignages — 1 seule card, pleine largeur ── */
+  #temoignages{padding:2rem 5%}
+  #temoignages .mq-row:last-child{display:none}
+  #temoignages .mq-row .mq-track{overflow:visible;animation:none!important;flex-wrap:wrap;padding:0;mask:none!important;-webkit-mask:none!important}
+  #temoignages .tcard{flex:0 0 100%;max-width:100%;margin:0;scroll-snap-align:none}
+  #temoignages .tcard:not(:first-child){display:none}
+
+  /* ── FAQ — 3 questions max ── */
+  #faq{padding:2rem 5%}
+  .faq-item:nth-child(n+4){display:none}
+
+  /* ── CTA — simplifié ── */
+  #contact{padding:2rem 5%}
+  .cta-glass{padding:1.8rem 1.2rem;border-radius:16px}
+
+  /* ── Footer — ultra minimal ── */
+  footer{padding:1.5rem 5% 2rem}
+  .footer-grid{grid-template-columns:1fr!important;gap:.75rem}
+  .foot-col:nth-child(n+2){display:none!important}
+  .foot-copy{font-size:.7rem;margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border)}
+}
 </style>
 </head>
 <body class="intro-active">
@@ -817,9 +916,81 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <script>
 (function(){
   if(screen.width<=768||window.innerWidth<=640){
-    const _ov=document.getElementById('intro-overlay');
-    if(_ov){_ov.remove();}
-    document.body.classList.remove('intro-active');
+    // Version mobile : même séquence + fly vers pill nav + scintillement
+    const arcM  = document.getElementById('i-arc');
+    const tailM = document.getElementById('i-tail');
+    const wmM   = document.getElementById('i-wm');
+    const ovM   = document.getElementById('intro-overlay');
+    function dismissM(){
+      ovM.classList.add('fading');
+      setTimeout(()=>{ ovM.remove(); document.body.classList.remove('intro-active'); }, 850);
+    }
+    setTimeout(()=>{ arcM.classList.add('sweeping'); }, 300);
+    setTimeout(()=>{ tailM.classList.add('drawing'); }, 1780);
+    setTimeout(()=>{ wmM.classList.add('visible'); }, 2200);
+    setTimeout(()=>{
+      document.getElementById('i-arc-svg').classList.add('i-glowing');
+      document.getElementById('i-tail-svg').classList.add('i-glowing');
+    }, 3200);
+    // Fly Q vers la pill nav mobile
+    setTimeout(()=>{
+      const qWrap = document.getElementById('i-q-wrap');
+      const rect  = qWrap.getBoundingClientRect();
+      // Arrêt glow + fade wordmark
+      document.getElementById('i-arc-svg').classList.remove('i-glowing');
+      document.getElementById('i-tail-svg').classList.remove('i-glowing');
+      wmM.style.transition='opacity .25s ease-out';
+      wmM.style.opacity='0';
+      // Pin le Q à sa position viewport exacte
+      qWrap.style.position='fixed';
+      qWrap.style.left=rect.left+'px';
+      qWrap.style.top=rect.top+'px';
+      qWrap.style.margin='0';
+      qWrap.style.zIndex='10000';
+      document.body.appendChild(qWrap);
+      // Fade overlay
+      dismissM();
+      // Cible : Q dans la mob pill nav
+      const navSvg=document.querySelector('.mob-logo-link svg');
+      if(navSvg){
+        const dst   = navSvg.getBoundingClientRect();
+        const qSize = rect.width||160;
+        const qCX   = qSize/2;
+        const qCY   = qSize/2;
+        const scale = dst.height/qSize;
+        const tCX   = dst.left+dst.width/2;
+        const tCY   = dst.top+dst.height/2;
+        const dx    = tCX-(rect.left+qCX);
+        const dy    = tCY-(rect.top+qCY);
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          qWrap.style.transition='transform .7s cubic-bezier(.4,0,.2,1),opacity .3s ease-in .4s';
+          qWrap.style.transformOrigin=qCX+'px '+qCY+'px';
+          qWrap.style.transform=`translate(${dx}px,${dy}px) scale(${scale})`;
+          qWrap.style.opacity='0';
+        }));
+        // Scintillement à l'arrivée (700ms = durée du fly)
+        setTimeout(()=>{
+          const d2=navSvg.getBoundingClientRect();
+          const cx=d2.left+d2.width/2;
+          const cy=d2.top+d2.height/2;
+          const sp=document.createElement('div');
+          sp.id='i-spark';
+          sp.style.left=cx+'px';
+          sp.style.top=cy+'px';
+          sp.innerHTML=`<svg width="24" height="24" viewBox="0 0 28 28" fill="none" style="position:absolute;transform:translate(-50%,-50%)">
+            <line x1="14" y1="1"  x2="14" y2="27" stroke="white" stroke-width="1.2" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out forwards"/>
+            <line x1="1"  y1="14" x2="27" y2="14" stroke="white" stroke-width="1.2" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out forwards"/>
+            <line x1="5"  y1="5"  x2="23" y2="23" stroke="rgba(168,85,247,.7)" stroke-width=".8" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out .05s forwards"/>
+            <line x1="23" y1="5"  x2="5"  y2="23" stroke="rgba(34,211,238,.7)"  stroke-width=".8" stroke-linecap="round" style="transform-origin:14px 14px;animation:i-spark-arm .45s ease-out .05s forwards"/>
+          </svg>`;
+          document.body.appendChild(sp);
+          setTimeout(()=>{ if(sp.parentNode)sp.remove(); },600);
+        },700);
+        setTimeout(()=>{ if(qWrap.parentNode)qWrap.remove(); },1200);
+      } else {
+        setTimeout(()=>{ if(qWrap.parentNode)qWrap.remove(); },1000);
+      }
+    },3900);
     return;
   }
   const ov   = document.getElementById('intro-overlay');
@@ -912,18 +1083,23 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-<!-- MOBILE LOGO BAR — visible uniquement sur ≤640px -->
+<!-- MOBILE NAV — visible uniquement sur ≤640px -->
 <header id="mob-logo-bar" role="banner">
-  <a href="/" aria-label="Quantum Consulting — Accueil" style="display:inline-flex;align-items:center;text-decoration:none">
-    <svg viewBox="0 0 190 36" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block">
-      <defs><linearGradient id="qmob" x1="5" y1="5" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
-      <path d="M 24.48 29.23 A 12.96 12.96 0 1 1 29.23 24.48" stroke="url(#qmob)" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="21.6" y1="22.32" x2="31.68" y2="31.68" stroke="url(#qmob)" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="40" y1="5" x2="40" y2="31" stroke="rgba(124,58,237,.2)" stroke-width="1"/>
-      <text x="48" y="17" font-family="'Inter',system-ui,sans-serif" font-weight="800" font-size="12" letter-spacing="2.5" fill="#0f172a">QUANTUM</text>
-      <text x="48" y="30" font-family="'Inter',system-ui,sans-serif" font-weight="300" font-size="7.5" letter-spacing="4.2" fill="#64748b">CONSULTING</text>
+  <a href="/" aria-label="Quantum Consulting — Accueil" class="mob-logo-link">
+    <svg viewBox="0 0 100 100" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block">
+      <defs><linearGradient id="qmob" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
+      <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#qmob)" stroke-width="5.5" stroke-linecap="round"/>
+      <line x1="60" y1="62" x2="88" y2="88" stroke="url(#qmob)" stroke-width="5.5" stroke-linecap="round"/>
     </svg>
   </a>
+  <nav class="mob-nav-links" aria-label="Navigation principale mobile">
+    <a href="#expertises">Services</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+  <a href="contact.html" class="mob-nav-cta">Audit →</a>
+  <button class="mob-burger-mini" onclick="toggleMenu()" aria-label="Menu complet" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <div id="progress-bar" aria-hidden="true"></div>
@@ -1006,6 +1182,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   <a href="formation-expert-ia.html" class="mob-sub" onclick="closeMenu()">Expert &amp; Stratégie IA</a>
   
   <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
   <a href="contact.html" class="mob-cta" onclick="closeMenu()">Demander un audit gratuit →</a>
 </div>
 
@@ -1802,6 +1979,34 @@ document.addEventListener('keydown',e=>{
       btn.style.transform='';
     },{passive:true});
   });
+})();
+
+/* ── Button click ripple ── */
+(function(){
+  document.querySelectorAll('.btn-primary').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      const r=btn.getBoundingClientRect();
+      const sp=document.createElement('span');
+      sp.style.cssText='position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:6px;height:6px;left:'+(e.clientX-r.left)+'px;top:'+(e.clientY-r.top)+'px;transform:translate(-50%,-50%) scale(0);animation:ripple-click .65s ease-out forwards;pointer-events:none;z-index:5';
+      btn.appendChild(sp);
+      setTimeout(()=>sp.remove(),700);
+    },{passive:true});
+  });
+})();
+
+/* ── Mobile formation swipe dots ── */
+(function(){
+  const scroll=document.querySelector('.mob-form-scroll');
+  const allDots=document.querySelectorAll('.form-dot');
+  const stepLabel=document.querySelector('.form-step');
+  if(!scroll||!allDots.length)return;
+  scroll.addEventListener('scroll',()=>{
+    if(window.innerWidth>640)return;
+    const pct=scroll.scrollLeft/(scroll.scrollWidth-scroll.clientWidth||1);
+    const idx=Math.min(allDots.length-1,Math.round(pct*(allDots.length-1)));
+    allDots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    if(stepLabel)stepLabel.textContent=(idx+1)+' / '+allDots.length;
+  },{passive:true});
 })();
 
 /* ── Back to top visibility ── */
