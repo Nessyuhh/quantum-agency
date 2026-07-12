@@ -119,20 +119,16 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 #mobile-menu .mob-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));padding:.75rem 2rem;border-radius:100px;font-size:1rem;margin-top:.5rem;color:#fff!important}
 
 /* ══ HERO ══ */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:flex-start;text-align:left;padding:140px 5% 80px;position:relative;overflow:hidden}
-
-/* Hero scroll-fade CSS only */
-@supports(animation-timeline:scroll()){
-  .hero-scroll-layer{
-    animation:heroOut linear both;
-    animation-timeline:scroll(root);
-    animation-range:10vh 65vh;
-  }
-  @keyframes heroOut{
-    from{opacity:1;transform:translateY(0) scale(1)}
-    to{opacity:0;transform:translateY(-60px) scale(.96)}
-  }
-}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0;position:relative;overflow:hidden}
+/* Hero center animation */
+#hero-center{display:flex;align-items:center;gap:4rem;position:relative;z-index:1}
+#hq-svg{width:clamp(160px,18vw,280px);height:clamp(160px,18vw,280px);flex-shrink:0;animation:hq-glow 4s ease-in-out infinite}
+@keyframes hq-glow{0%,100%{filter:drop-shadow(0 0 8px rgba(168,85,247,.45))}50%{filter:drop-shadow(0 0 32px rgba(168,85,247,.95)) drop-shadow(0 0 64px rgba(34,211,238,.4))}}
+#hero-wm{display:flex;flex-direction:column;gap:1.1rem;text-align:left}
+.hw-top{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;letter-spacing:.14em;color:#e2e8f0;line-height:1;white-space:nowrap}
+.hw-sep{height:1px;background:linear-gradient(90deg,rgba(124,58,237,.55),rgba(6,182,212,.25))}
+.hw-bot{font-size:clamp(.88rem,1.3vw,1.1rem);font-weight:300;letter-spacing:.5em;color:#475569;line-height:1;padding-left:.5em;white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 #hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(124,58,237,.12) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);pointer-events:none}
 
@@ -601,7 +597,12 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   #bottom-bar{display:none!important}
 
   /* Hero — décalé sous la pill nav flottante */
-  #hero{padding:calc(46px + 44px + 30px) 5% 50px;min-height:90svh;text-align:left;align-items:flex-start}
+  #hero{min-height:100svh;padding:0;align-items:center;justify-content:center}
+  #hero-center{flex-direction:column;gap:2rem}
+  #hq-svg{width:200px;height:200px}
+  #hero-wm{align-items:center;text-align:center}
+  .hw-top{font-size:2.4rem;letter-spacing:.12em}
+  .hw-bot{font-size:.82rem;letter-spacing:.4em}
 
   /* ── Intro animation — version mobile ── */
   #i-logo-group{flex-direction:column!important;align-items:center!important;gap:1.5rem}
@@ -798,57 +799,50 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   .stat-bar-wrap{display:none}
   .stat-lbl{font-size:.72rem;color:var(--muted)}
 
-  /* ── Expertises — cartes clicables pleine largeur ── */
-  #expertises{padding:2rem 5%!important}
-  #expertises .sec-head{margin-bottom:1rem!important}
+  /* ── Expertises — grille 2 colonnes dark ── */
+  #expertises{padding:2.5rem 5%!important}
+  #expertises .sec-head{margin-bottom:1.5rem!important}
   .exp-grid{
-    display:flex!important;flex-direction:column!important;
-    gap:.5rem!important;padding:0!important;overflow:visible!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:.65rem!important;padding:0!important;
+    max-width:none!important;margin:0!important;
   }
   .exp-card{
     position:relative!important;
-    display:grid!important;
-    grid-template-columns:40px 1fr!important;
-    grid-template-rows:auto auto!important;
-    column-gap:.8rem!important;row-gap:.22rem!important;
-    background:#fff!important;
-    border:1px solid rgba(0,0,0,.09)!important;
-    border-radius:14px!important;
-    padding:1rem 2.8rem 1rem 1rem!important;
-    box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
-    cursor:pointer!important;min-height:unset!important;
+    display:flex!important;flex-direction:column!important;
+    background:rgba(255,255,255,.04)!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    border-radius:16px!important;
+    padding:1.1rem 1rem!important;
+    min-height:auto!important;
+    cursor:pointer!important;
+    transition:border-color .2s!important;
   }
-  .exp-card:active{border-color:rgba(124,58,237,.25)!important;box-shadow:0 1px 4px rgba(0,0,0,.04)!important}
+  .exp-card:active{border-color:rgba(168,85,247,.35)!important;background:rgba(124,58,237,.08)!important}
   .exp-card-ico{
-    grid-column:1!important;grid-row:1/3!important;align-self:center!important;
-    width:38px!important;height:38px!important;margin:0!important;
-    background:rgba(124,58,237,.08)!important;border-radius:10px!important;
+    width:36px!important;height:36px!important;
+    margin:0 0 .75rem!important;
+    background:rgba(124,58,237,.12)!important;
+    border-radius:10px!important;
     display:flex!important;align-items:center!important;justify-content:center!important;
+    flex-shrink:0!important;
   }
   .exp-card-ico svg{width:18px!important;height:18px!important}
   .exp-card h3{
-    grid-column:2!important;grid-row:1!important;align-self:end!important;
-    font-size:.88rem!important;font-weight:700!important;
-    margin:0!important;line-height:1.25!important;
+    font-size:.82rem!important;font-weight:700!important;
+    margin:0 0 .5rem!important;line-height:1.3!important;
+    color:rgba(226,232,240,.9)!important;
   }
-  .exp-card p{
-    grid-column:2!important;grid-row:2!important;align-self:start!important;
-    display:-webkit-box!important;-webkit-line-clamp:2!important;
-    -webkit-box-orient:vertical!important;overflow:hidden!important;
-    font-size:.75rem!important;color:var(--muted)!important;
-    line-height:1.45!important;margin:0!important;
-  }
+  .exp-card p{display:none!important}
   .exp-link{
-    position:absolute!important;inset:0!important;
-    background:none!important;border:none!important;
-    padding:0!important;margin:0!important;
-    font-size:0!important;color:transparent!important;z-index:1!important;
+    font-size:.68rem!important;margin-top:auto!important;
+    padding:.25rem .65rem!important;
+    background:rgba(124,58,237,.12)!important;
+    border-color:rgba(168,85,247,.2)!important;
+    color:rgba(168,85,247,.85)!important;width:fit-content!important;
   }
-  .exp-card::after{
-    content:'→';position:absolute;right:1rem;top:50%;
-    transform:translateY(-50%);
-    color:rgba(0,0,0,.22);font-size:.85rem;pointer-events:none;
-  }
+  .exp-card::after{display:none!important}
 
   /* ── Témoignages — 1 seule card, pleine largeur ── */
   #temoignages{padding:2rem 5%}
@@ -1188,62 +1182,30 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 <main id="main-content">
 
 <!-- HERO -->
-<section id="hero" aria-labelledby="hero-h1">
+<section id="hero">
   <div class="b1" aria-hidden="true"></div>
   <div class="b2" aria-hidden="true"></div>
   <div class="b3" aria-hidden="true"></div>
   <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
-  <div class="hero-scroll-layer">
-    <div class="hero-content">
-      <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Cabinet de conseil IA · Transformation des entreprises</div>
-      <h1 id="hero-h1">
-        <span class="word w1">Transformez</span>
-        <span class="word w2">&nbsp;vos</span>
-        <span class="word w3">&nbsp;processus.</span><br>
-        <span class="word w4 g-text">Libérez</span>
-        <span class="word w5 g-text">&nbsp;votre</span>
-        <span class="word w6 g-text">&nbsp;potentiel&nbsp;IA.</span>
-      </h1>
-      <p class="hero-sub">De l'audit de vos opportunités à l'intégration des meilleurs modèles. Une approche sur mesure pour PME, ETI et grands groupes. Résultats mesurables en 6 semaines.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn-primary">Demander un audit gratuit →</a>
-        <a href="#expertises" class="btn-outline">Découvrir notre approche</a>
-      </div>
+  <div id="hero-center" aria-hidden="true">
+    <svg id="hq-svg" viewBox="0 0 100 100" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hqg" gradientUnits="userSpaceOnUse" x1="14" y1="14" x2="86" y2="86">
+          <stop offset="0%" stop-color="#ddd6fe"/>
+          <stop offset="50%" stop-color="#a855f7"/>
+          <stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient>
+      </defs>
+      <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#hqg)" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <line x1="60" y1="62" x2="88" y2="88" stroke="url(#hqg)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div id="hero-wm">
+      <span class="hw-top">QUANTUM</span>
+      <div class="hw-sep"></div>
+      <span class="hw-bot">CONSULTING</span>
     </div>
   </div>
-  <!-- Hero visual panel -->
-  <div class="hero-vis" aria-hidden="true">
-    <div class="hv-chat">
-      <div class="hv-bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="hv-title">Quantum Consulting · AI Workspace</span>
-      </div>
-      <div class="hv-body">
-        <div class="hv-msg hv-u">Identifie nos 3 processus à automatiser en priorité</div>
-        <div class="hv-msg hv-a">
-          <div class="hv-tag">✦ Claude (Anthropic)</div>
-          Analyse terminée : 3 leviers identifiés :<br>
-          1. Qualification leads → +22% taux transfo<br>
-          2. Reporting mensuel → −85% temps manuel<br>
-          3. SAV tier-1 → agent IA autonome 24/7
-        </div>
-        <div class="hv-msg hv-u">Génère la feuille de route et le ROI estimé</div>
-        <div class="hv-typing"><span></span><span></span><span></span></div>
-      </div>
-    </div>
-    <!-- Floating tech badges -->
-    <div class="hv-badge hv-b1">✦ Claude</div>
-    <div class="hv-badge hv-b2">GPT-4o</div>
-    <div class="hv-badge hv-b3">n8n / Make</div>
-    <div class="hv-badge hv-b4">Mistral AI</div>
-    <div class="hv-badge hv-b5">✧ Gemini</div>
-    <div class="hv-badge hv-b6">Perplexity</div>
-  </div>
-
-  <div class="scroll-hint" aria-hidden="true">
-    <div class="scroll-mouse"></div>
-    <span>Scroller</span>
-  </div>
+  <h1 class="sr-only">Quantum Consulting — Cabinet de conseil en Intelligence Artificielle</h1>
 </section>
 
 <!-- TRUST BAR -->
