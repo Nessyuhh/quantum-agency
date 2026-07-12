@@ -110,23 +110,22 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 .nav-dd-badge{font-size:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:var(--purple-l);padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2)}
 
 /* Mobile menu — dark editorial */
-#mobile-menu{position:fixed;inset:0;z-index:190;background:rgba(5,5,15,.97);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;flex-direction:column;padding:1.4rem 2rem 2.5rem;overflow-y:auto}
-#mobile-menu.open{opacity:1;pointer-events:all}
-.mob-close-btn{align-self:flex-end;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.88rem;cursor:pointer;flex-shrink:0;transition:background .2s}
-.mob-close-btn:hover{background:rgba(255,255,255,.1)}
-.mob-menu-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:2.2rem;padding:.5rem 0}
-.mob-sect{display:flex;gap:1.1rem;align-items:flex-start}
-.mob-sect-num{font-size:.5rem;font-weight:900;letter-spacing:.25em;color:rgba(168,85,247,.38);padding-top:.85rem;min-width:1.6rem;text-transform:uppercase;flex-shrink:0}
-.mob-sect-inner{flex:1;display:flex;flex-direction:column;gap:.45rem}
-.mob-cat{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:rgba(255,255,255,.86);text-decoration:none;line-height:1;display:block;transition:color .2s}
-.mob-cat:hover,.mob-cat:active{color:#a855f7}
-.mob-subs{display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem;padding-left:.9rem;border-left:1px solid rgba(255,255,255,.07)}
-.mob-sub-lnk{font-size:.82rem;font-weight:400;letter-spacing:.01em;color:rgba(255,255,255,.3);text-decoration:none;transition:color .18s;line-height:1.6}
-.mob-sub-lnk:hover,.mob-sub-lnk:active{color:rgba(255,255,255,.7)}
-.mob-menu-sep{height:1px;background:rgba(255,255,255,.055);margin:.2rem 0}
-.mob-solo-lnk{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:block}
-.mob-solo-lnk:hover{color:rgba(255,255,255,.85)}
-.mob-menu-cta{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:1rem 2rem;border-radius:100px;font-weight:700;font-size:.93rem;letter-spacing:.02em;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.4);margin-top:1.6rem}
+/* ── Mobile popup menu ── */
+#menu-backdrop{position:fixed;inset:0;z-index:279;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .22s ease}
+#menu-backdrop.open{opacity:1;pointer-events:all}
+#mobile-menu{position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-10px) scale(.95);width:calc(100vw - 28px);max-width:360px;z-index:280;background:rgba(8,5,22,.97);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%);border:1px solid rgba(168,85,247,.22);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .26s cubic-bezier(.34,1.56,.64,1)}
+#mobile-menu.open{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0) scale(1)}
+.pmenu-head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem .75rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.pmenu-logo{font-size:.58rem;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.22);text-transform:uppercase}
+.pmenu-close{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.45);font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;flex-shrink:0}
+.pmenu-body{padding:.4rem 0}
+.pmenu-sect-lbl{font-size:.54rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,85,247,.55);padding:.65rem 1.1rem .3rem}
+.pmenu-lnk{display:flex;align-items:center;justify-content:space-between;padding:.72rem 1.1rem;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:background .12s,color .12s;-webkit-tap-highlight-color:transparent}
+.pmenu-lnk:active{background:rgba(168,85,247,.12);color:#fff}
+.pmenu-arrow{font-size:.65rem;color:rgba(255,255,255,.18);flex-shrink:0}
+.pmenu-sep{height:1px;background:rgba(255,255,255,.06);margin:.3rem 0}
+.pmenu-cta{display:block;margin:.55rem 1rem .85rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.82rem 1rem;border-radius:12px;font-weight:700;font-size:.88rem;text-align:center;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.4);-webkit-tap-highlight-color:transparent;transition:opacity .15s}
+.pmenu-cta:active{opacity:.82}
 
 /* ══ HERO ══ */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden;background:#05050a}
@@ -1155,43 +1154,28 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   </div>
 </nav>
 
+<div id="menu-backdrop" onclick="closeMenu()"></div>
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
-  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Fermer">✕</button>
-  <div class="mob-menu-body">
-    <div class="mob-sect">
-      <span class="mob-sect-num">01</span>
-      <div class="mob-sect-inner">
-        <a href="#expertises" class="mob-cat" onclick="closeMenu()">Services</a>
-        <div class="mob-subs">
-          <a href="audit-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Audit IA</a>
-          <a href="integration-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Intégration IA</a>
-          <a href="automatisation-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Automatisation</a>
-          <a href="agents-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Agents IA &amp; LLM privés</a>
-          <a href="consulting-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Conseil stratégique</a>
-        </div>
-      </div>
-    </div>
-    <div class="mob-menu-sep"></div>
-    <div class="mob-sect">
-      <span class="mob-sect-num">02</span>
-      <div class="mob-sect-inner">
-        <a href="#formations" class="mob-cat" onclick="closeMenu()">Formations</a>
-        <div class="mob-subs">
-          <a href="formation-initiation-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Initiation à l'IA</a>
-          <a href="formation-maitrise-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Maîtrise &amp; Automatisation</a>
-          <a href="formation-expert-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Expert &amp; Stratégie IA</a>
-        </div>
-      </div>
-    </div>
-    <div class="mob-menu-sep"></div>
-    <div class="mob-sect">
-      <span class="mob-sect-num">03</span>
-      <div class="mob-sect-inner">
-        <a href="#faq" class="mob-solo-lnk" onclick="closeMenu()">FAQ</a>
-      </div>
-    </div>
+  <div class="pmenu-head">
+    <span class="pmenu-logo">Navigation</span>
+    <button class="pmenu-close" onclick="closeMenu()" aria-label="Fermer">✕</button>
   </div>
-  <a href="contact.html" class="mob-menu-cta" onclick="closeMenu()">Demander un audit gratuit →</a>
+  <div class="pmenu-body">
+    <div class="pmenu-sect-lbl">Services</div>
+    <a href="audit-ia.html" class="pmenu-lnk" onclick="closeMenu()">Audit IA <span class="pmenu-arrow">→</span></a>
+    <a href="integration-ia.html" class="pmenu-lnk" onclick="closeMenu()">Intégration IA <span class="pmenu-arrow">→</span></a>
+    <a href="automatisation-ia.html" class="pmenu-lnk" onclick="closeMenu()">Automatisation <span class="pmenu-arrow">→</span></a>
+    <a href="agents-ia.html" class="pmenu-lnk" onclick="closeMenu()">Agents IA &amp; LLM privés <span class="pmenu-arrow">→</span></a>
+    <a href="consulting-ia.html" class="pmenu-lnk" onclick="closeMenu()">Conseil stratégique <span class="pmenu-arrow">→</span></a>
+    <div class="pmenu-sep"></div>
+    <div class="pmenu-sect-lbl">Formations</div>
+    <a href="formation-initiation-ia.html" class="pmenu-lnk" onclick="closeMenu()">Initiation à l'IA <span class="pmenu-arrow">→</span></a>
+    <a href="formation-maitrise-ia.html" class="pmenu-lnk" onclick="closeMenu()">Maîtrise &amp; Automatisation <span class="pmenu-arrow">→</span></a>
+    <a href="formation-expert-ia.html" class="pmenu-lnk" onclick="closeMenu()">Expert &amp; Stratégie IA <span class="pmenu-arrow">→</span></a>
+    <div class="pmenu-sep"></div>
+    <a href="#faq" class="pmenu-lnk" onclick="closeMenu()">FAQ <span class="pmenu-arrow">→</span></a>
+  </div>
+  <a href="contact.html" class="pmenu-cta" onclick="closeMenu()">Demander un audit gratuit →</a>
 </div>
 
 <main id="main-content">
@@ -1899,22 +1883,18 @@ window.addEventListener('scroll',()=>{
 
 /* ── Mobile menu ── */
 function toggleMenu(){
-  const m=document.getElementById('mobile-menu'),b=document.getElementById('burger');
+  const m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop'),b=document.getElementById('burger');
   const open=m.classList.toggle('open');
-  m.setAttribute('aria-hidden',!open);
+  bd.classList.toggle('open',open);
+  m.setAttribute('aria-hidden',String(!open));
   if(open){m.removeAttribute('inert');}else{m.setAttribute('inert','');}
-  b.classList.toggle('open',open);
-  b.setAttribute('aria-expanded',open);
-  b.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
-  document.body.style.overflow=open?'hidden':'';
+  if(b){b.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');}
   if(open)requestAnimationFrame(()=>{const f=m.querySelector('a,button');if(f)f.focus();});
 }
 function closeMenu(){
-  const m=document.getElementById('mobile-menu'),b=document.getElementById('burger');
-  m.classList.remove('open');m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
-  b.classList.remove('open');b.setAttribute('aria-expanded','false');
-  b.setAttribute('aria-label','Ouvrir le menu');document.body.style.overflow='';
-  b.focus();
+  const m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop'),b=document.getElementById('burger');
+  m.classList.remove('open');bd.classList.remove('open');m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
+  if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Ouvrir le menu');}
 }
 
 /* ── FAQ ── */
