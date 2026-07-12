@@ -432,6 +432,7 @@ if(pgHero&&pgSpot){pgHero.addEventListener('mousemove',function(e){var r=pgHero.
 <script>
 function toggleMobMenu(btn){
   var m=document.getElementById('mob-menu');
+  if(m.parentElement!==document.documentElement)document.documentElement.appendChild(m);
   var open=m.classList.toggle('open');
   m.setAttribute('aria-hidden',!open);
   if(btn)btn.setAttribute('aria-expanded',open);
