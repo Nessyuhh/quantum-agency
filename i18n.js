@@ -81,6 +81,10 @@
       'From auditing your AI opportunities to integrating the best models. A tailored approach for SMBs, mid-market companies and large enterprises. Measurable results in 6 weeks.',
     'Découvrir notre approche': 'Discover our approach',
     'Scroller': 'Scroll',
+    'Nous transformons vos processus métier grâce à l\'IA.':
+      'We transform your business processes through AI.',
+    'Audit · Intégration · Automatisation · Formation':
+      'Audit · Integration · Automation · Training',
 
     // Hero chat widget
     'Identifie nos 3 processus à automatiser en priorité':
