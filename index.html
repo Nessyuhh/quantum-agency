@@ -109,25 +109,34 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 .nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
 .nav-dd-badge{font-size:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:var(--purple-l);padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2)}
 
-/* Mobile menu */
-#mobile-menu{position:fixed;inset:0;z-index:190;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .3s}
+/* Mobile menu — dark editorial */
+#mobile-menu{position:fixed;inset:0;z-index:190;background:rgba(5,5,15,.97);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;flex-direction:column;padding:1.4rem 2rem 2.5rem;overflow-y:auto}
 #mobile-menu.open{opacity:1;pointer-events:all}
-#mobile-menu a{color:var(--text);text-decoration:none;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;transition:color .2s}
-#mobile-menu a:hover{color:var(--purple-l)}
-#mobile-menu .mob-sub{font-size:1rem!important;font-weight:500!important;color:var(--muted)!important;padding-left:.5rem;border-left:2px solid rgba(168,85,247,.3)}
-#mobile-menu .mob-sub:hover{color:var(--purple-l)!important}
-#mobile-menu .mob-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));padding:.75rem 2rem;border-radius:100px;font-size:1rem;margin-top:.5rem;color:#fff!important}
+.mob-close-btn{align-self:flex-end;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.88rem;cursor:pointer;flex-shrink:0;transition:background .2s}
+.mob-close-btn:hover{background:rgba(255,255,255,.1)}
+.mob-menu-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:2.2rem;padding:.5rem 0}
+.mob-sect{display:flex;gap:1.1rem;align-items:flex-start}
+.mob-sect-num{font-size:.5rem;font-weight:900;letter-spacing:.25em;color:rgba(168,85,247,.38);padding-top:.85rem;min-width:1.6rem;text-transform:uppercase;flex-shrink:0}
+.mob-sect-inner{flex:1;display:flex;flex-direction:column;gap:.45rem}
+.mob-cat{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:rgba(255,255,255,.86);text-decoration:none;line-height:1;display:block;transition:color .2s}
+.mob-cat:hover,.mob-cat:active{color:#a855f7}
+.mob-subs{display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem;padding-left:.9rem;border-left:1px solid rgba(255,255,255,.07)}
+.mob-sub-lnk{font-size:.82rem;font-weight:400;letter-spacing:.01em;color:rgba(255,255,255,.3);text-decoration:none;transition:color .18s;line-height:1.6}
+.mob-sub-lnk:hover,.mob-sub-lnk:active{color:rgba(255,255,255,.7)}
+.mob-menu-sep{height:1px;background:rgba(255,255,255,.055);margin:.2rem 0}
+.mob-solo-lnk{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:block}
+.mob-solo-lnk:hover{color:rgba(255,255,255,.85)}
+.mob-menu-cta{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:1rem 2rem;border-radius:100px;font-weight:700;font-size:.93rem;letter-spacing:.02em;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.4);margin-top:1.6rem}
 
 /* ══ HERO ══ */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0;position:relative;overflow:hidden}
-/* Hero center animation */
-#hero-center{display:flex;align-items:center;gap:4rem;position:relative;z-index:1}
-#hq-svg{width:clamp(160px,18vw,280px);height:clamp(160px,18vw,280px);flex-shrink:0;animation:hq-glow 4s ease-in-out infinite}
-@keyframes hq-glow{0%,100%{filter:drop-shadow(0 0 8px rgba(168,85,247,.45))}50%{filter:drop-shadow(0 0 32px rgba(168,85,247,.95)) drop-shadow(0 0 64px rgba(34,211,238,.4))}}
-#hero-wm{display:flex;flex-direction:column;gap:1.1rem;text-align:left}
-.hw-top{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;letter-spacing:.14em;color:#e2e8f0;line-height:1;white-space:nowrap}
-.hw-sep{height:1px;background:linear-gradient(90deg,rgba(124,58,237,.55),rgba(6,182,212,.25))}
-.hw-bot{font-size:clamp(.88rem,1.3vw,1.1rem);font-weight:300;letter-spacing:.5em;color:#475569;line-height:1;padding-left:.5em;white-space:nowrap}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden;background:#05050a}
+/* Automation graph */
+#auto-graph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#auto-svg{width:100%;height:100%;pointer-events:none}
+.ag-center-ring{transform-box:fill-box;transform-origin:center;animation:ag-spin 65s linear infinite}
+.ag-center-ring2{transform-box:fill-box;transform-origin:center;animation:ag-spin-r 48s linear infinite}
+@keyframes ag-spin{to{transform:rotate(360deg)}}
+@keyframes ag-spin-r{to{transform:rotate(-360deg)}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 #hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(124,58,237,.12) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);pointer-events:none}
@@ -536,16 +545,16 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 /* ══ EXPERTISES ══ */
 #expertises{padding:7rem 5%}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1100px;margin:0 auto}
-.exp-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:2rem 1.8rem;transition:transform .4s var(--ease-spring),box-shadow .4s,border-color .35s;transform-style:preserve-3d;position:relative;overflow:hidden;cursor:default}
-.exp-card::after{content:'';position:absolute;inset:0;opacity:0;background:linear-gradient(135deg,rgba(168,85,247,.05),rgba(6,182,212,.03));transition:opacity .35s;pointer-events:none}
-.exp-card:hover{transform:translateY(-10px) rotateX(3deg) rotateY(2deg);box-shadow:0 24px 60px rgba(0,0,0,.1),0 0 0 1px rgba(168,85,247,.2),0 0 40px rgba(124,58,237,.07);border-color:rgba(168,85,247,.2)}
+.exp-card{background:rgba(5,5,20,.88);border:1px solid rgba(168,85,247,.18);border-radius:20px;padding:2rem 1.8rem;transition:transform .4s var(--ease-spring),box-shadow .4s,border-color .35s;transform-style:preserve-3d;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;display:block;color:inherit}
+.exp-card::after{content:'';position:absolute;inset:0;opacity:0;background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(6,182,212,.04));transition:opacity .35s;pointer-events:none}
+.exp-card:hover{transform:translateY(-10px) rotateX(3deg) rotateY(2deg);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(168,85,247,.38),0 0 40px rgba(124,58,237,.18);border-color:rgba(168,85,247,.5)}
 .exp-card:hover::after{opacity:1}
-.exp-card:hover .exp-card-ico{background:rgba(124,58,237,.2);transform:scale(1.08) rotate(-4deg)}
-.exp-card-ico{width:48px;height:48px;background:rgba(124,58,237,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;transition:background .3s,transform .3s}
-.exp-card h3{font-size:1rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
-.exp-card p{font-size:.84rem;color:var(--muted);line-height:1.72;margin-bottom:1.1rem}
-.exp-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.79rem;font-weight:700;color:var(--purple-l);text-decoration:none;transition:gap .2s}
-.exp-link:hover{gap:.65rem}
+.exp-card:hover .exp-card-ico{background:rgba(124,58,237,.28);transform:scale(1.08) rotate(-4deg)}
+.exp-card-ico{width:48px;height:48px;background:rgba(124,58,237,.14);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;transition:background .3s,transform .3s}
+.exp-card h3{font-size:1rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;color:rgba(226,232,240,.9)}
+.exp-card p{font-size:.84rem;color:rgba(148,163,184,.62);line-height:1.72;margin-bottom:1.1rem}
+.exp-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.79rem;font-weight:700;color:var(--purple-l);transition:gap .2s}
+.exp-card:hover .exp-link{gap:.65rem}
 @media(max-width:900px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ══ LLM MATRIX ══ */
@@ -596,13 +605,8 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   /* Bottom tab bar — supprimé */
   #bottom-bar{display:none!important}
 
-  /* Hero — décalé sous la pill nav flottante */
-  #hero{min-height:100svh;padding:0;align-items:center;justify-content:center}
-  #hero-center{flex-direction:column;gap:2rem}
-  #hq-svg{width:200px;height:200px}
-  #hero-wm{align-items:center;text-align:center}
-  .hw-top{font-size:2.4rem;letter-spacing:.12em}
-  .hw-bot{font-size:.82rem;letter-spacing:.4em}
+  /* Hero mobile */
+  #hero{min-height:100svh}
 
   /* ── Intro animation — version mobile ── */
   #i-logo-group{flex-direction:column!important;align-items:center!important;gap:1.5rem}
@@ -809,39 +813,22 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
     max-width:none!important;margin:0!important;
   }
   .exp-card{
-    position:relative!important;
     display:flex!important;flex-direction:column!important;
-    background:rgba(255,255,255,.04)!important;
-    border:1px solid rgba(255,255,255,.08)!important;
     border-radius:16px!important;
     padding:1.1rem 1rem!important;
     min-height:auto!important;
-    cursor:pointer!important;
-    transition:border-color .2s!important;
   }
-  .exp-card:active{border-color:rgba(168,85,247,.35)!important;background:rgba(124,58,237,.08)!important}
+  .exp-card:active{border-color:rgba(168,85,247,.5)!important;background:rgba(124,58,237,.14)!important}
   .exp-card-ico{
     width:36px!important;height:36px!important;
     margin:0 0 .75rem!important;
-    background:rgba(124,58,237,.12)!important;
     border-radius:10px!important;
-    display:flex!important;align-items:center!important;justify-content:center!important;
     flex-shrink:0!important;
   }
   .exp-card-ico svg{width:18px!important;height:18px!important}
-  .exp-card h3{
-    font-size:.82rem!important;font-weight:700!important;
-    margin:0 0 .5rem!important;line-height:1.3!important;
-    color:rgba(226,232,240,.9)!important;
-  }
+  .exp-card h3{font-size:.82rem!important;margin:0 0 .5rem!important;line-height:1.3!important;}
   .exp-card p{display:none!important}
-  .exp-link{
-    font-size:.68rem!important;margin-top:auto!important;
-    padding:.25rem .65rem!important;
-    background:rgba(124,58,237,.12)!important;
-    border-color:rgba(168,85,247,.2)!important;
-    color:rgba(168,85,247,.85)!important;width:fit-content!important;
-  }
+  .exp-link{font-size:.68rem!important;margin-top:auto!important;padding:.25rem .65rem!important;width:fit-content!important;}
   .exp-card::after{display:none!important}
 
   /* ── Témoignages — 1 seule card, pleine largeur ── */
@@ -1087,7 +1074,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   </a>
   <nav class="mob-nav-links" aria-label="Navigation principale mobile">
     <a href="#expertises">Services</a>
-    <a href="blog.html">Blog</a>
+    <a href="#formations">Formations</a>
   </nav>
   <a href="contact.html" class="mob-nav-cta">Audit →</a>
   <button class="mob-burger-mini" onclick="toggleMenu()" aria-label="Menu complet" aria-expanded="false" aria-controls="mobile-menu">
@@ -1154,7 +1141,6 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
       </div>
       
       <a href="#faq">FAQ</a>
-      <a href="blog.html">Blog</a>
     </div>
     <a href="contact.html" class="island-cta">Audit gratuit →</a>
     <button class="island-burger" id="burger" onclick="toggleMenu()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -1164,19 +1150,42 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
 </nav>
 
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
-  <a href="#expertises" onclick="closeMenu()">Nos services</a>
-  <a href="audit-ia.html" class="mob-sub" onclick="closeMenu()">Audit IA</a>
-  <a href="integration-ia.html" class="mob-sub" onclick="closeMenu()">Intégration IA</a>
-  <a href="automatisation-ia.html" class="mob-sub" onclick="closeMenu()">Automatisation</a>
-  <a href="agents-ia.html" class="mob-sub" onclick="closeMenu()">Agents IA &amp; LLM privés</a>
-  <a href="#formations" onclick="closeMenu()">Formations</a>
-  <a href="formation-initiation-ia.html" class="mob-sub" onclick="closeMenu()">Initiation à l'IA</a>
-  <a href="formation-maitrise-ia.html" class="mob-sub" onclick="closeMenu()">Maîtrise &amp; Automatisation</a>
-  <a href="formation-expert-ia.html" class="mob-sub" onclick="closeMenu()">Expert &amp; Stratégie IA</a>
-  
-  <a href="#faq" onclick="closeMenu()">FAQ</a>
-  <a href="blog.html" onclick="closeMenu()">Blog</a>
-  <a href="contact.html" class="mob-cta" onclick="closeMenu()">Demander un audit gratuit →</a>
+  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Fermer">✕</button>
+  <div class="mob-menu-body">
+    <div class="mob-sect">
+      <span class="mob-sect-num">01</span>
+      <div class="mob-sect-inner">
+        <a href="#expertises" class="mob-cat" onclick="closeMenu()">Services</a>
+        <div class="mob-subs">
+          <a href="audit-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Audit IA</a>
+          <a href="integration-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Intégration IA</a>
+          <a href="automatisation-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Automatisation</a>
+          <a href="agents-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Agents IA &amp; LLM privés</a>
+          <a href="consulting-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Conseil stratégique</a>
+        </div>
+      </div>
+    </div>
+    <div class="mob-menu-sep"></div>
+    <div class="mob-sect">
+      <span class="mob-sect-num">02</span>
+      <div class="mob-sect-inner">
+        <a href="#formations" class="mob-cat" onclick="closeMenu()">Formations</a>
+        <div class="mob-subs">
+          <a href="formation-initiation-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Initiation à l'IA</a>
+          <a href="formation-maitrise-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Maîtrise &amp; Automatisation</a>
+          <a href="formation-expert-ia.html" class="mob-sub-lnk" onclick="closeMenu()">Expert &amp; Stratégie IA</a>
+        </div>
+      </div>
+    </div>
+    <div class="mob-menu-sep"></div>
+    <div class="mob-sect">
+      <span class="mob-sect-num">03</span>
+      <div class="mob-sect-inner">
+        <a href="#faq" class="mob-solo-lnk" onclick="closeMenu()">FAQ</a>
+      </div>
+    </div>
+  </div>
+  <a href="contact.html" class="mob-menu-cta" onclick="closeMenu()">Demander un audit gratuit →</a>
 </div>
 
 <main id="main-content">
@@ -1187,23 +1196,103 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   <div class="b2" aria-hidden="true"></div>
   <div class="b3" aria-hidden="true"></div>
   <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
-  <div id="hero-center" aria-hidden="true">
-    <svg id="hq-svg" viewBox="0 0 100 100" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+  <div id="auto-graph" aria-hidden="true">
+    <svg id="auto-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="hqg" gradientUnits="userSpaceOnUse" x1="14" y1="14" x2="86" y2="86">
+        <linearGradient id="ag-g1" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#ddd6fe"/>
           <stop offset="50%" stop-color="#a855f7"/>
           <stop offset="100%" stop-color="#22d3ee"/>
         </linearGradient>
+        <radialGradient id="ag-halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#a855f7" stop-opacity=".2"/>
+          <stop offset="60%" stop-color="#7c3aed" stop-opacity=".07"/>
+          <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="ag-glow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#hqg)" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <line x1="60" y1="62" x2="88" y2="88" stroke="url(#hqg)" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Tier labels -->
+      <text x="55" y="68" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(148,163,184,.18)" letter-spacing="3">SOURCES</text>
+      <text x="55" y="730" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(148,163,184,.18)" letter-spacing="3">SORTIES</text>
+      <text x="38" y="404" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(148,163,184,.18)" letter-spacing="3" transform="rotate(-90 38 404)">MODÈLES</text>
+
+      <!-- Spokes -->
+      <g stroke-width="1.2" fill="none">
+        <line x1="209" y1="209" x2="400" y2="400" stroke="rgba(168,85,247,.28)"/>
+        <line x1="400" y1="130" x2="400" y2="400" stroke="rgba(168,85,247,.28)"/>
+        <line x1="591" y1="209" x2="400" y2="400" stroke="rgba(168,85,247,.28)"/>
+        <line x1="130" y1="400" x2="400" y2="400" stroke="rgba(168,85,247,.22)"/>
+        <line x1="670" y1="400" x2="400" y2="400" stroke="rgba(6,182,212,.22)"/>
+        <line x1="400" y1="400" x2="209" y2="591" stroke="rgba(6,182,212,.28)"/>
+        <line x1="400" y1="400" x2="400" y2="670" stroke="rgba(6,182,212,.28)"/>
+        <line x1="400" y1="400" x2="591" y2="591" stroke="rgba(6,182,212,.28)"/>
+      </g>
+
+      <!-- Particles -->
+      <g id="ag-p"></g>
+
+      <!-- SOURCE NODES (top) -->
+      <g>
+        <circle cx="209" cy="209" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(168,85,247,.45)" stroke-width="1.5"/>
+        <text x="209" y="213" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" font-weight="800" fill="rgba(221,214,254,.85)" letter-spacing=".8">CRM</text>
+        <text x="209" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">SALESFORCE</text>
+      </g>
+      <g>
+        <circle cx="400" cy="130" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(168,85,247,.45)" stroke-width="1.5"/>
+        <text x="400" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" font-weight="800" fill="rgba(221,214,254,.85)" letter-spacing=".8">ERP</text>
+        <text x="400" y="173" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">SAP · ODOO</text>
+      </g>
+      <g>
+        <circle cx="591" cy="209" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(168,85,247,.45)" stroke-width="1.5"/>
+        <text x="591" y="213" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="800" fill="rgba(221,214,254,.85)" letter-spacing=".8">EMAIL</text>
+        <text x="591" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">GMAIL · DRIVE</text>
+      </g>
+
+      <!-- SIDE NODES -->
+      <g>
+        <circle cx="130" cy="400" r="26" fill="rgba(5,5,20,.94)" stroke="rgba(168,85,247,.38)" stroke-width="1.5"/>
+        <text x="130" y="404" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="800" fill="rgba(221,214,254,.78)" letter-spacing=".5">RAG</text>
+        <text x="130" y="440" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="600" fill="rgba(148,163,184,.38)" letter-spacing="1">BASE DOCS</text>
+      </g>
+      <g>
+        <circle cx="670" cy="400" r="26" fill="rgba(5,5,20,.94)" stroke="rgba(6,182,212,.38)" stroke-width="1.5"/>
+        <text x="670" y="404" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="800" fill="rgba(125,211,252,.78)" letter-spacing=".5">LLM</text>
+        <text x="670" y="440" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="600" fill="rgba(148,163,184,.38)" letter-spacing="1">MULTI-MODÈLES</text>
+      </g>
+
+      <!-- CENTER NODE -->
+      <g>
+        <circle cx="400" cy="400" r="120" fill="url(#ag-halo)"/>
+        <circle class="ag-center-ring" cx="400" cy="400" r="84" fill="none" stroke="rgba(168,85,247,.11)" stroke-width="1" stroke-dasharray="5 14"/>
+        <circle class="ag-center-ring2" cx="400" cy="400" r="70" fill="none" stroke="rgba(6,182,212,.09)" stroke-width="1" stroke-dasharray="3 9"/>
+        <circle cx="400" cy="400" r="55" fill="rgba(8,4,22,.97)" stroke="url(#ag-g1)" stroke-width="2.2"/>
+        <g transform="translate(358 358) scale(0.836)">
+          <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#ag-g1)" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+          <line x1="60" y1="62" x2="88" y2="88" stroke="url(#ag-g1)" stroke-width="3.2" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- OUTPUT NODES (bottom) -->
+      <g>
+        <circle cx="209" cy="591" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(6,182,212,.45)" stroke-width="1.5"/>
+        <text x="209" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" font-weight="800" fill="rgba(125,211,252,.85)" letter-spacing=".8">n8n</text>
+        <text x="209" y="634" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">MAKE · ZAPIER</text>
+      </g>
+      <g>
+        <circle cx="400" cy="670" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(6,182,212,.45)" stroke-width="1.5"/>
+        <text x="400" y="674" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="800" fill="rgba(125,211,252,.85)" letter-spacing=".8">SLACK</text>
+        <text x="400" y="713" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">TEAMS · NOTION</text>
+      </g>
+      <g>
+        <circle cx="591" cy="591" r="30" fill="rgba(5,5,20,.94)" stroke="rgba(6,182,212,.45)" stroke-width="1.5"/>
+        <text x="591" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="rgba(125,211,252,.85)" letter-spacing=".8">REPORT</text>
+        <text x="591" y="634" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(148,163,184,.42)" letter-spacing="1.5">RAPPORTS IA</text>
+      </g>
     </svg>
-    <div id="hero-wm">
-      <span class="hw-top">QUANTUM</span>
-      <div class="hw-sep"></div>
-      <span class="hw-bot">CONSULTING</span>
-    </div>
   </div>
   <h1 class="sr-only">Quantum Consulting — Cabinet de conseil en Intelligence Artificielle</h1>
 </section>
@@ -1243,42 +1332,42 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
     <p class="lead" data-v data-d="1">Nous intervenons sur l'ensemble de la chaîne de transformation IA - de la cartographie de vos processus jusqu'au déploiement en production et la formation de vos équipes.</p>
   </div>
   <div class="exp-grid">
-    <div class="exp-card" data-v>
+    <a href="audit-ia.html" class="exp-card" data-v>
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v3l2 2"/></svg></div>
       <h3>Audit IA</h3>
       <p>Diagnostic complet de vos processus métier, cartographie des opportunités d'automatisation et feuille de route ROI sur 12 mois.</p>
-      <a href="audit-ia.html" class="exp-link">En savoir plus →</a>
-    </div>
-    <div class="exp-card" data-v data-d="1">
+      <span class="exp-link">En savoir plus →</span>
+    </a>
+    <a href="consulting-ia.html" class="exp-card" data-v data-d="1">
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
       <h3>Conseil stratégique</h3>
       <p>Accompagnement des dirigeants et comités de direction pour construire et piloter une stratégie IA cohérente avec vos objectifs business.</p>
-      <a href="consulting-ia.html" class="exp-link">En savoir plus →</a>
-    </div>
-    <div class="exp-card" data-v data-d="2">
+      <span class="exp-link">En savoir plus →</span>
+    </a>
+    <a href="integration-ia.html" class="exp-card" data-v data-d="2">
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
       <h3>Intégration IA</h3>
       <p>Déploiement d'assistants, copilotes, bases documentaires RAG et connecteurs dans vos outils existants (CRM, ERP, Drive, Teams).</p>
-      <a href="integration-ia.html" class="exp-link">En savoir plus →</a>
-    </div>
-    <div class="exp-card" data-v data-d="3">
+      <span class="exp-link">En savoir plus →</span>
+    </a>
+    <a href="automatisation-ia.html" class="exp-card" data-v data-d="3">
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
       <h3>Automatisation</h3>
       <p>Automatisation de vos workflows via Make, n8n, API et protocoles MCP. Compatible avec l'ensemble de vos outils métier.</p>
-      <a href="automatisation-ia.html" class="exp-link">En savoir plus →</a>
-    </div>
-    <div class="exp-card" data-v data-d="4">
+      <span class="exp-link">En savoir plus →</span>
+    </a>
+    <a href="agents-ia.html" class="exp-card" data-v data-d="4">
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
       <h3>Agents IA</h3>
       <p>Conception et déploiement d'agents IA autonomes et de LLM privés hébergés selon vos contraintes de confidentialité et de souveraineté.</p>
-      <a href="agents-ia.html" class="exp-link">En savoir plus →</a>
-    </div>
-    <div class="exp-card" data-v data-d="5">
+      <span class="exp-link">En savoir plus →</span>
+    </a>
+    <a href="formation-initiation-ia.html" class="exp-card" data-v data-d="5">
       <div class="exp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
       <h3>Formation executive</h3>
       <p>Formations sur mesure pour dirigeants, managers et équipes métier, organisées en partenariat avec nos organismes de formation certifiés.</p>
-      <a href="formation-initiation-ia.html" class="exp-link">Découvrir →</a>
-    </div>
+      <span class="exp-link">Découvrir →</span>
+    </a>
   </div>
 </section>
 
@@ -1977,6 +2066,41 @@ document.addEventListener('keydown',e=>{
   window.addEventListener('scroll',()=>bt.classList.toggle('visible',scrollY>500),{passive:true});
   bt.addEventListener('mouseenter',()=>cur&&cur.classList.add('hover'));
   bt.addEventListener('mouseleave',()=>cur&&cur.classList.remove('hover'));
+})();
+
+/* ── Automation graph particles ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const g=document.getElementById('ag-p');
+  if(!g)return;
+  const PATHS=[
+    [209,209,400,400,'#a855f7',0.0025],
+    [400,130,400,400,'#a855f7',0.0030],
+    [591,209,400,400,'#a855f7',0.0027],
+    [130,400,400,400,'#a855f7',0.0022],
+    [670,400,400,400,'#22d3ee',0.0022],
+    [400,400,209,591,'#22d3ee',0.0025],
+    [400,400,400,670,'#22d3ee',0.0030],
+    [400,400,591,591,'#22d3ee',0.0027],
+  ];
+  const ps=[];
+  PATHS.forEach(([x1,y1,x2,y2,col,spd])=>{
+    for(let i=0;i<2;i++){
+      const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('r','2.8');c.setAttribute('fill',col);c.setAttribute('opacity','.7');
+      g.appendChild(c);
+      ps.push({el:c,x1,y1,x2,y2,t:i*0.5+(Math.random()*.08),spd});
+    }
+  });
+  function tick(){
+    ps.forEach(p=>{
+      p.t+=p.spd;if(p.t>1)p.t-=1;
+      p.el.setAttribute('cx',(p.x1+(p.x2-p.x1)*p.t).toFixed(1));
+      p.el.setAttribute('cy',(p.y1+(p.y2-p.y1)*p.t).toFixed(1));
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
 })();
 
 /* ── Stat bars IntersectionObserver fallback (non-scroll-timeline browsers) ── */
