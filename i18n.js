@@ -585,27 +585,31 @@
     const s = document.createElement('style');
     s.textContent = `
 #q-lang-sw{
-  position:fixed;top:18px;right:22px;z-index:9998;
-  display:flex;align-items:center;gap:10px;
-  font-family:inherit;font-size:11px;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
+  position:fixed;top:20px;right:24px;z-index:9998;
+  display:flex;align-items:center;gap:7px;
+  font-family:inherit;font-size:10.5px;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;
   pointer-events:auto;
 }
 .q-lbtn{
   background:none;border:none;cursor:pointer;padding:2px 0;
-  color:rgba(168,85,247,.4);position:relative;
+  color:rgba(255,255,255,.30);position:relative;
   transition:color .3s;line-height:1;
+  font-family:inherit;font-size:inherit;font-weight:inherit;
+  letter-spacing:inherit;text-transform:inherit;
+  -webkit-tap-highlight-color:transparent;
 }
 .q-lbtn::after{
-  content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1.5px;
+  content:'';position:absolute;bottom:-2px;left:0;width:100%;height:1px;
   background:currentColor;
   transform:scaleX(0);transform-origin:left;
-  transition:transform .3s ease;
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
 }
-.q-lbtn.ql-active{color:rgba(168,85,247,.9)}
+.q-lbtn.ql-active{color:rgba(255,255,255,.88)}
 .q-lbtn.ql-active::after{transform:scaleX(1)}
+.q-lang-sep{color:rgba(255,255,255,.15);line-height:1;user-select:none;font-weight:300}
 @media(max-width:640px){
-  #q-lang-sw{top:14px;right:16px;font-size:10px}
+  #q-lang-sw{top:68px;right:14px;font-size:9.5px;letter-spacing:.15em}
 }`;
     document.head.appendChild(s);
   }
@@ -641,7 +645,13 @@
     btnEN.setAttribute('aria-label', 'Switch to English');
     btnEN.addEventListener('click', () => apply('en'));
 
+    const sep = document.createElement('span');
+    sep.className = 'q-lang-sep';
+    sep.textContent = '|';
+    sep.setAttribute('aria-hidden', 'true');
+
     sw.appendChild(btnFR);
+    sw.appendChild(sep);
     sw.appendChild(btnEN);
     document.body.appendChild(sw);
 
