@@ -609,7 +609,7 @@
 .q-lbtn.ql-active::after{transform:scaleX(1)}
 .q-lang-sep{color:rgba(255,255,255,.15);line-height:1;user-select:none;font-weight:300}
 @media(max-width:640px){
-  #q-lang-sw{top:68px;right:14px;font-size:9.5px;letter-spacing:.15em}
+  #q-lang-sw{top:14px;right:14px;font-size:9.5px;letter-spacing:.15em}
 }`;
     document.head.appendChild(s);
   }

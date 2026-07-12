@@ -58,7 +58,7 @@ nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)
 .nav-dd-badge{font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:#a855f7;padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2);flex-shrink:0}
 .nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
 .n-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none}
-@media(max-width:640px){nav:not(.breadcrumb){top:14px}.n-inner{padding:8px 10px 8px 16px;justify-content:space-between;width:calc(100vw - 32px);gap:0}.n-links,.n-cta{display:none}.n-mob-burger{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:36px;height:36px;background:rgba(255,255,255,.08);border:none;border-radius:100px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;padding:0}.n-mob-burger span{display:block;width:14px;height:1.5px;background:rgba(255,255,255,.75);border-radius:2px}#mob-menu{position:fixed;inset:0;z-index:400;background:rgba(5,5,10,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:2rem}#mob-menu.open{opacity:1;pointer-events:all}#mob-menu a{color:rgba(255,255,255,.75);font-size:1.4rem;font-weight:700;text-decoration:none;letter-spacing:-.02em;-webkit-tap-highlight-color:transparent}#mob-menu a:active{color:#fff}#mob-menu .mob-menu-cta{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff!important;padding:.9rem 2.5rem;border-radius:100px;margin-top:.5rem;font-size:1rem;box-shadow:0 4px 24px rgba(124,58,237,.4)}.mob-menu-close{position:absolute;top:24px;right:20px;background:rgba(255,255,255,.08);border:none;border-radius:100px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}}
+@media(max-width:640px){nav:not(.breadcrumb){top:46px}.n-inner{padding:8px 10px 8px 16px;justify-content:space-between;width:calc(100vw - 32px);gap:0}.n-links,.n-cta{display:none}.n-mob-burger{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:36px;height:36px;background:rgba(255,255,255,.08);border:none;border-radius:100px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;padding:0}.n-mob-burger span{display:block;width:14px;height:1.5px;background:rgba(255,255,255,.75);border-radius:2px}#mob-menu{position:fixed;inset:0;z-index:400;background:rgba(5,5,10,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:2rem}#mob-menu.open{opacity:1;pointer-events:all}#mob-menu a{color:rgba(255,255,255,.75);font-size:1.4rem;font-weight:700;text-decoration:none;letter-spacing:-.02em;-webkit-tap-highlight-color:transparent}#mob-menu a:active{color:#fff}#mob-menu .mob-menu-cta{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff!important;padding:.9rem 2.5rem;border-radius:100px;margin-top:.5rem;font-size:1rem;box-shadow:0 4px 24px rgba(124,58,237,.4)}.mob-menu-close{position:absolute;top:24px;right:20px;background:rgba(255,255,255,.08);border:none;border-radius:100px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}}
 #bb{display:none;position:fixed;top:auto;bottom:0;left:0;right:0;transform:none;z-index:300;background:rgba(255,255,255,.95);backdrop-filter:blur(24px);border-top:1px solid rgba(0,0,0,.1);padding:4px 4px env(safe-area-inset-bottom);gap:0}
 .ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(10,10,20,.4);padding:6px 2px;min-height:48px;border-radius:10px;-webkit-tap-highlight-color:transparent}
 .ti span:first-child{font-size:18px;line-height:1}
@@ -165,11 +165,14 @@ body{animation:pageIn .45s ease both}
 
 <div id="mob-menu" role="dialog" aria-modal="true" aria-label="Menu navigation" aria-hidden="true">
   <button class="mob-menu-close" onclick="closeMobMenu()" aria-label="Fermer">✕</button>
-  <a href="index.html">Accueil</a>
-  <a href="index.html#expertises">Services</a>
-  <a href="index.html#formations">Formations</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html" class="mob-menu-cta">Audit gratuit →</a>
+  <a href="index.html" onclick="closeMobMenu()">Accueil</a>
+  <a href="audit-ia.html" onclick="closeMobMenu()">Audit IA</a>
+  <a href="agents-ia.html" onclick="closeMobMenu()">Agents IA</a>
+  <a href="automatisation-ia.html" onclick="closeMobMenu()">Automatisation</a>
+  <a href="integration-ia.html" onclick="closeMobMenu()">Intégration IA</a>
+  <a href="consulting-ia.html" onclick="closeMobMenu()">Consulting</a>
+  <a href="blog.html" onclick="closeMobMenu()">Blog</a>
+  <a href="contact.html" class="mob-menu-cta" onclick="closeMobMenu()">Audit gratuit →</a>
 </div>
 
 <nav id="bb" aria-label="Navigation mobile">
