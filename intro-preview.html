@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum — Intro Animation Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#030308}
+body{display:flex;align-items:center;justify-content:center;font-family:'Inter',system-ui,sans-serif}
+
+.stage{display:flex;align-items:center;justify-content:center;width:100vw;height:100vh}
+#logo-group{display:flex;align-items:center}
+
+/* ── Queue Q ── */
+#q-tail{stroke-dasharray:38.2;stroke-dashoffset:38.2;opacity:0}
+#q-tail.drawing{animation:tail-draw .65s cubic-bezier(.4,0,.15,1) forwards}
+@keyframes tail-draw{
+  0%  {stroke-dashoffset:38.2;opacity:1}
+  100%{stroke-dashoffset:0;   opacity:1}
+}
+
+/* ── Glow ── */
+.glowing{animation:q-glow 3s ease-in-out infinite}
+@keyframes q-glow{
+  0%,100%{filter:drop-shadow(0 0 6px rgba(168,85,247,.4))}
+  50%    {filter:drop-shadow(0 0 20px rgba(168,85,247,.85)) drop-shadow(0 0 40px rgba(34,211,238,.4))}
+}
+
+/* ── Wordmark ── */
+#wordmark{
+  display:flex;flex-direction:column;gap:.5rem;
+  max-width:0;overflow:hidden;margin-left:0;opacity:0;white-space:nowrap;
+  text-align:center;
+  transition:max-width 1.1s cubic-bezier(.22,1,.36,1),margin-left .9s cubic-bezier(.22,1,.36,1),opacity .8s ease-out;
+}
+#wordmark.visible{max-width:500px;margin-left:3rem;opacity:1}
+#wm-sep{height:1px;background:linear-gradient(90deg,rgba(124,58,237,.5),rgba(6,182,212,.25));width:0;transition:width 1s ease-out .4s}
+#wordmark.visible #wm-sep{width:100%}
+
+/* ── Replay ── */
+#replay{
+  position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  font-family:inherit;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#475569;background:none;border:1px solid rgba(255,255,255,.07);border-radius:100px;
+  padding:.55rem 1.6rem;cursor:pointer;opacity:0;transition:opacity .6s ease-out,color .2s,border-color .2s;
+}
+#replay.visible{opacity:1}
+#replay:hover{color:#a855f7;border-color:rgba(124,58,237,.35)}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div id="logo-group">
+
+    <svg id="main-svg" viewBox="0 0 100 100" width="260" height="260" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Gradient pour l'arc et la queue -->
+        <linearGradient id="qg" gradientUnits="userSpaceOnUse" x1="14" y1="14" x2="86" y2="86">
+          <stop offset="0%" stop-color="#ddd6fe"/>
+          <stop offset="50%" stop-color="#a855f7"/>
+          <stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient>
+        <!-- ClipPath éventail : secteur animé en JS -->
+        <clipPath id="fan-clip">
+          <path id="fan-sector" d=""/>
+        </clipPath>
+      </defs>
+
+      <!-- Arc Q masqué par le clipPath éventail -->
+      <g clip-path="url(#fan-clip)">
+        <path id="q-arc"
+              d="M 68 81.2 A 36 36 0 1 1 81.2 68"
+              stroke="url(#qg)" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- Queue (animée séparément après éventail terminé) -->
+      <line id="q-tail"
+            x1="60" y1="62" x2="88" y2="88"
+            stroke="url(#qg)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+
+    <div id="wordmark">
+      <span style="font-size:2.7rem;font-weight:800;letter-spacing:.14em;color:#e2e8f0;line-height:1">QUANTUM</span>
+      <div id="wm-sep"></div>
+      <span style="font-size:1.1rem;font-weight:300;letter-spacing:.48em;color:#64748b;line-height:1;padding-left:.48em">CONSULTING</span>
+    </div>
+
+  </div>
+</div>
+
+<button id="replay">↺ Rejouer</button>
+
+<script>
+(function(){
+  const fanSector = document.getElementById('fan-sector');
+  const qArc      = document.getElementById('q-arc');
+  const qTail     = document.getElementById('q-tail');
+  const wordmark  = document.getElementById('wordmark');
+  const replay    = document.getElementById('replay');
+
+  // L'arc Q : centre (50,50), démarre à ~60° (en bas à droite), balaie 330° dans le sens horaire
+  const CX = 50, CY = 50;
+  const R  = 75; // rayon du secteur (plus grand que l'arc de r=36)
+  const START_DEG  = 60;   // angle de départ du secteur (position du point (68,81.2))
+  const SWEEP_DEG  = 330;  // degrés à balayer pour couvrir l'arc complet
+
+  function deg2rad(d){ return d * Math.PI / 180; }
+
+  // Génère le chemin SVG d'un secteur (tarte) partant de START_DEG, balayant sweepDeg degrés horaire
+  function sectorPath(sweepDeg){
+    if(sweepDeg <= 0.01) return 'M 0 0'; // secteur vide
+    const s  = deg2rad(START_DEG);
+    const e  = deg2rad(START_DEG + sweepDeg);
+    const sx = CX + R * Math.cos(s);
+    const sy = CY + R * Math.sin(s);
+    const ex = CX + R * Math.cos(e);
+    const ey = CY + R * Math.sin(e);
+    const large = sweepDeg > 180 ? 1 : 0;
+    return `M ${CX} ${CY} L ${sx.toFixed(3)} ${sy.toFixed(3)} A ${R} ${R} 0 ${large} 1 ${ex.toFixed(3)} ${ey.toFixed(3)} Z`;
+  }
+
+  // Easing cubic-bezier(.22,1,.36,1) approximée (ease-out spring)
+  function easeOut(t){
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateFan(duration, onDone){
+    const start = performance.now();
+    function frame(){
+      const t    = Math.min((performance.now() - start) / duration, 1);
+      const ease = easeOut(t);
+      fanSector.setAttribute('d', sectorPath(ease * SWEEP_DEG));
+      if(t < 1) setTimeout(frame, 16);
+      else if(onDone) onDone();
+    }
+    setTimeout(frame, 16);
+  }
+
+  function reset(){
+    fanSector.setAttribute('d', '');
+    qTail.classList.remove('drawing','glowing');
+    qTail.style.animation = '';
+    qArc.classList.remove('glowing');
+    wordmark.classList.remove('visible');
+    replay.classList.remove('visible');
+    void qTail.offsetWidth;
+  }
+
+  function run(){
+    reset();
+
+    // Éventail s'ouvre à 300ms, durée 1.4s
+    setTimeout(()=>{
+      animateFan(1400, ()=>{
+        // Éventail terminé → rectangle plein (évite le bug arc 360° dégénéré)
+        fanSector.setAttribute('d', 'M -20 -20 H 120 V 120 H -20 Z');
+        // Queue se dessine 80ms après (arc reste visible)
+        setTimeout(()=>{ qTail.classList.add('drawing'); }, 80);
+      });
+    }, 300);
+
+    // Wordmark slide-in (300 + 1400 + 80 + 400 = ~2.2s)
+    setTimeout(()=>{ wordmark.classList.add('visible'); }, 2200);
+
+    // Glow
+    setTimeout(()=>{
+      qArc.classList.add('glowing');
+      qTail.classList.add('glowing');
+    }, 3200);
+
+    const isEmbed = new URLSearchParams(location.search).get('embed') === '1';
+    if(isEmbed){
+      // Mode overlay : signaler au parent pour déclencher le fly + dismiss
+      setTimeout(()=>{ window.parent.postMessage('intro-fly','*'); }, 4200);
+    } else {
+      // Mode preview standalone : bouton replay
+      setTimeout(()=>{ replay.classList.add('visible'); }, 5000);
+    }
+  }
+
+  run();
+  replay.addEventListener('click', ()=>{
+    replay.classList.remove('visible');
+    setTimeout(run, 80);
+  });
+})();
+</script>
+</body>
+</html>
