@@ -1889,11 +1889,13 @@ function toggleMenu(){
   m.setAttribute('aria-hidden',String(!open));
   if(open){m.removeAttribute('inert');}else{m.setAttribute('inert','');}
   if(b){b.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');}
+  document.body.style.overflow=open?'hidden':'';
   if(open)requestAnimationFrame(()=>{const f=m.querySelector('a,button');if(f)f.focus();});
 }
 function closeMenu(){
   const m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop'),b=document.getElementById('burger');
   m.classList.remove('open');bd.classList.remove('open');m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
+  document.body.style.overflow='';
   if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Ouvrir le menu');}
 }
 

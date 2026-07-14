@@ -634,11 +634,13 @@ function toggleMobMenu(btn){
   m.setAttribute('aria-hidden',String(!open));
   if(open){m.removeAttribute('inert');}else{m.setAttribute('inert','');}
   if(btn)btn.setAttribute('aria-expanded',String(open));
+  document.body.style.overflow=open?'hidden':'';
 }
 function closeMobMenu(){
   var m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop');
   m.classList.remove('open');bd.classList.remove('open');
   m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
+  document.body.style.overflow='';
   var b=document.querySelector('.n-mob-burger');
   if(b)b.setAttribute('aria-expanded','false');
 }
