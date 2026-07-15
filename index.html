@@ -149,7 +149,9 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 .b3{position:absolute;width:380px;height:380px;background:radial-gradient(circle,var(--purple-l),transparent 70%);border-radius:50%;will-change:transform;pointer-events:none;bottom:-5%;right:5%;animation:blobf 19s ease-in-out infinite;animation-delay:-15s}
 @keyframes blobf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-60px) scale(1.08)}66%{transform:translate(-30px,30px) scale(.93)}}
 
-.hero-content{position:relative;z-index:1;max-width:580px;margin:0}
+.hero-content{position:relative;z-index:1;max-width:580px;margin:0;color:rgba(226,232,240,.88)}
+.hero-scroll-layer .hero-sub{color:rgba(148,163,184,.62)!important}
+.hero-scroll-layer .btn-outline{color:rgba(226,232,240,.9);border-color:rgba(255,255,255,.15)}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:100px;padding:.35rem 1.1rem;font-size:.7rem;font-weight:700;color:var(--purple-l);margin-bottom:2rem;letter-spacing:.07em;text-transform:uppercase;animation:fadeUp .6s ease both}
 .badge-dot{width:6px;height:6px;background:var(--purple-l);border-radius:50%;animation:dotPulse 2s ease-in-out infinite}
 @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(168,85,247,.4)}50%{opacity:.6;transform:scale(.8);box-shadow:0 0 0 6px rgba(168,85,247,0)}}
@@ -1135,17 +1137,7 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
       </div>
     </div>
     <div class="island-links">
-      <div class="nav-dd">
-        <a href="formation-initiation-ia.html" class="nav-dd-trigger">Formations <span class="nav-dd-caret">▼</span></a>
-        <div class="nav-dd-menu">
-          <a href="formation-initiation-ia.html">Initiation à l'IA <span class="nav-dd-badge">Niv. 1</span></a>
-          <a href="formation-maitrise-ia.html">Maîtrise &amp; Automatisation <span class="nav-dd-badge">Niv. 2</span></a>
-          <a href="formation-expert-ia.html">Expert &amp; Stratégie IA <span class="nav-dd-badge">Niv. 3</span></a>
-          <div class="dd-divider"></div>
-          <a href="#formations">Voir toutes les formations →</a>
-        </div>
-      </div>
-      
+      <a href="formation-initiation-ia.html">Formations</a>
       <a href="#faq">FAQ</a>
     </div>
     <a href="contact.html" class="island-cta">Audit gratuit →</a>
