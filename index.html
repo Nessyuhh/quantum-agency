@@ -128,8 +128,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:#ffffff;color:#0a0a14;l
 .pmenu-cta:active{opacity:.82}
 
 /* ══ HERO ══ */
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden;background:#05050a}
-#hero-inner{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;transform:translateY(-2vh)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:flex-start;text-align:left;padding:140px 5% 80px;position:relative;overflow:hidden;background:#05050a}
+#hero-inner{display:none}
 #auto-graph{display:flex;align-items:center;justify-content:center}
 #auto-svg{width:min(80vw,62vh,580px);height:min(80vw,62vh,580px);pointer-events:none;display:block}
 #hero-tag{text-align:center;margin-top:2rem;padding:0 1.5rem}
@@ -607,9 +607,10 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   /* Bottom tab bar — supprimé */
   #bottom-bar{display:none!important}
 
-  /* Hero mobile — animation collée sous la navbar */
-  #hero{min-height:100svh;justify-content:flex-start}
-  #hero-inner{transform:none;padding-top:88px;padding-bottom:1.2rem;width:100%}
+  /* Hero mobile — animation centrée, layout desktop masqué */
+  #hero{min-height:100svh;flex-direction:column;align-items:center;justify-content:flex-start;padding:0;text-align:center}
+  .hero-scroll-layer,.hero-vis,.scroll-hint{display:none!important}
+  #hero-inner{display:flex!important;flex-direction:column;align-items:center;transform:none;padding-top:88px;padding-bottom:1.2rem;width:100%}
   #auto-svg{width:min(95vw,64vh);height:min(95vw,64vh)}
   #hero-tag{margin-top:2.6rem}
   .ht-main{font-size:1rem;font-weight:700;letter-spacing:-.02em}
@@ -1186,6 +1187,53 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   <div class="b2" aria-hidden="true"></div>
   <div class="b3" aria-hidden="true"></div>
   <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
+  <!-- Layout desktop -->
+  <div class="hero-scroll-layer">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Cabinet de conseil IA · Transformation des entreprises</div>
+      <h1 id="hero-h1">
+        <span class="word w1">Nous</span>
+        <span class="word w2">&nbsp;transformons</span><br>
+        <span class="word w3 g-text">vos</span>
+        <span class="word w4 g-text">&nbsp;processus</span>
+        <span class="word w5 g-text">&nbsp;grâce à l'IA.</span>
+      </h1>
+      <p class="hero-sub">De l'audit de vos opportunités à l'intégration des meilleurs modèles IA. Accompagnement sur mesure pour PME, ETI et grands groupes.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn-primary">Demander un audit gratuit →</a>
+        <a href="#expertises" class="btn-outline">Découvrir notre approche</a>
+      </div>
+    </div>
+  </div>
+  <!-- Chat panel desktop -->
+  <div class="hero-vis" aria-hidden="true">
+    <div class="hv-chat">
+      <div class="hv-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="hv-title">Quantum Consulting · AI Workspace</span>
+      </div>
+      <div class="hv-body">
+        <div class="hv-msg hv-u">Identifie nos 3 processus à automatiser en priorité</div>
+        <div class="hv-msg hv-a">
+          <div class="hv-tag">✦ Claude (Anthropic)</div>
+          Analyse terminée : 3 leviers identifiés :<br>
+          1. Qualification leads → +22% taux transfo<br>
+          2. Reporting mensuel → −85% temps manuel<br>
+          3. SAV tier-1 → agent IA autonome 24/7
+        </div>
+        <div class="hv-msg hv-u">Génère la feuille de route et le ROI estimé</div>
+        <div class="hv-typing"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="hv-badge hv-b1">✦ Claude</div>
+    <div class="hv-badge hv-b2">GPT-4o</div>
+    <div class="hv-badge hv-b3">n8n / Make</div>
+    <div class="hv-badge hv-b4">Mistral AI</div>
+    <div class="hv-badge hv-b5">✧ Gemini</div>
+    <div class="hv-badge hv-b6">Perplexity</div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><div class="scroll-mouse"></div><span>Scroller</span></div>
+  <!-- Layout mobile uniquement -->
   <div id="hero-inner">
   <div id="auto-graph" aria-hidden="true">
     <svg id="auto-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
