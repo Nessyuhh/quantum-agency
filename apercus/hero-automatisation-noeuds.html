@@ -1,55 +1,25 @@
 <meta charset="utf-8">
 <title>Hero automatisation — système de nœuds</title>
+<link rel="stylesheet" href="hero-commun.css">
 <style>
-  :root{--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;
-        --bg:#05050a;--text:#f1f5f9;--muted:#94a3b8}
-  body{margin:0;background:#0a0713;font-family:Inter,-apple-system,system-ui,sans-serif;
-       display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
 
   /* ── Le canevas ──────────────────────────────────────────────────────────
      Caricature d'un éditeur de scénarios type Make ou n8n : nœuds arrondis
      surdimensionnés, liens en courbe, paquets qui circulent. On ne cherche
      PAS à imiter l'interface — on en garde la grammaire visuelle. */
-  .canevas{position:relative;width:100%;max-width:920px;aspect-ratio:920/430;
-           border-radius:26px;overflow:hidden;
-           background:radial-gradient(120% 140% at 12% 0%,rgba(124,58,237,.20),transparent 55%),
-                      radial-gradient(110% 130% at 92% 100%,rgba(6,182,212,.16),transparent 55%),
-                      #0b0819;
-           border:1px solid rgba(168,85,247,.20);
-           box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05)}
 
   /* Trame de fond : la grille de points des éditeurs de workflow. */
-  .canevas::before{content:'';position:absolute;inset:0;
-    background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);
-    background-size:26px 26px;opacity:.5}
 
-  svg{position:absolute;inset:0;width:100%;height:100%}
-
-  /* Les liens : un tracé sourd, plus un tracé lumineux qui défile par-dessus. */
-  .lien{fill:none;stroke:rgba(168,85,247,.22);stroke-width:2.5;stroke-linecap:round}
-  .lien-vif{fill:none;stroke:url(#flux);stroke-width:2.5;stroke-linecap:round;
-            stroke-dasharray:14 210;animation:defile 3.2s linear infinite}
-  @keyframes defile{to{stroke-dashoffset:-224}}
-
-  .boite{fill:#150f28;stroke:rgba(168,85,247,.34);stroke-width:1.5}
-  .boite-actif{animation:respire 3.2s ease-in-out infinite}
-  @keyframes respire{
-    0%,62%,100%{stroke:rgba(168,85,247,.34);filter:none}
-    18%,42%{stroke:rgba(168,85,247,.95);filter:drop-shadow(0 0 14px rgba(168,85,247,.65))}}
-
-  .titre{fill:#f1f5f9;font-size:13px;font-weight:700;letter-spacing:-.01em}
-  .sstitre{fill:#94a3b8;font-size:10.5px;font-weight:500}
+  /* Les liens : un tracé sourd, plus un tracé lumineux qui défile par-dessus. */}
+  
   /* Icônes vectorielles : contour seul, hérité de la palette, jamais d'emoji. */
-  .icone{fill:none;stroke:#c4b5fd;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-
-  .paquet{r:5;filter:drop-shadow(0 0 8px rgba(168,85,247,.9))}
 
   @media (prefers-reduced-motion:reduce){
-    .lien-vif,.boite-actif,.paquet{animation:none!important}
-    .paquet{display:none}
+    .lien-vif,.boite-actif,
   }
 </style>
 
+<body class="apercu">
 <div class="canevas">
   <svg viewBox="0 0 920 430" role="img"
        aria-label="Schéma animé d'un scénario d'automatisation : un e-mail entrant est analysé par un agent, puis routé vers le CRM ou vers la facturation.">

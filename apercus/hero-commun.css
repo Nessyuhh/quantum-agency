@@ -1,0 +1,87 @@
+/* ============================================================================
+   Grammaire commune des sections d'ouverture animées
+   ----------------------------------------------------------------------------
+   Une seule feuille pour toutes les animations de hero : c'est le langage,
+   chaque page n'en écrit que la phrase. Ce fichier existe aussi pour ne pas
+   reproduire le défaut du site — un CSS recopié dans chaque page, qui a laissé
+   13 pages sur 14 avec un menu mobile cassé pendant des semaines.
+
+   Contraintes tenues partout : SVG pur, aucune bibliothèque, aucun JavaScript,
+   et prefers-reduced-motion coupe tout mouvement.
+   ========================================================================== */
+
+:root{
+  --purple:#7c3aed; --purple-l:#a855f7; --cyan:#06b6d4; --amber:#f59e0b;
+  --encre:#f1f5f9; --sourd:#94a3b8; --nuit:#0b0819; --nuit-clair:#150f28;
+  --liseré:rgba(168,85,247,.20); --liseré-vif:rgba(168,85,247,.95);
+}
+
+.canevas{
+  position:relative; width:100%; max-width:920px; aspect-ratio:920/430;
+  border-radius:26px; overflow:hidden;
+  background:
+    radial-gradient(120% 140% at 12% 0%, rgba(124,58,237,.20), transparent 55%),
+    radial-gradient(110% 130% at 92% 100%, rgba(6,182,212,.16), transparent 55%),
+    var(--nuit);
+  border:1px solid var(--liseré);
+  box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* La grille de points : le fond des éditeurs de workflow, repris comme signature
+   visuelle commune à toutes les pages. */
+.canevas::before{
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);
+  background-size:26px 26px; opacity:.5;
+}
+
+.canevas > svg{ position:absolute; inset:0; width:100%; height:100% }
+
+/* ── Vocabulaire partagé ─────────────────────────────────────────────────── */
+
+.boite{ fill:var(--nuit-clair); stroke:rgba(168,85,247,.34); stroke-width:1.5 }
+
+/* Icônes en TRACÉS, jamais en emoji : un emoji dépend de la police système, se
+   colore tout seul et casse la palette. */
+.icone{ fill:none; stroke:#c4b5fd; stroke-width:1.7;
+        stroke-linecap:round; stroke-linejoin:round }
+
+.titre  { fill:var(--encre); font-size:13px; font-weight:700; letter-spacing:-.01em }
+.sstitre{ fill:var(--sourd); font-size:10.5px; font-weight:500 }
+.etiq   { fill:var(--sourd); font-size:9.5px; font-weight:700;
+          letter-spacing:.14em; text-transform:uppercase }
+
+.lien    { fill:none; stroke:rgba(168,85,247,.22); stroke-width:2.5; stroke-linecap:round }
+.lien-vif{ fill:none; stroke:url(#flux); stroke-width:2.5; stroke-linecap:round;
+           stroke-dasharray:14 210; animation:defile 3.2s linear infinite }
+@keyframes defile{ to{ stroke-dashoffset:-224 } }
+
+.paquet{ r:5; filter:drop-shadow(0 0 8px rgba(168,85,247,.9)) }
+
+/* Un nœud qui « respire » quand le flux le traverse. */
+.boite-actif{ animation:respire 3.2s ease-in-out infinite }
+@keyframes respire{
+  0%,62%,100%{ stroke:rgba(168,85,247,.34); filter:none }
+  18%,42%    { stroke:var(--liseré-vif); filter:drop-shadow(0 0 14px rgba(168,85,247,.65)) }
+}
+
+/* Apparition progressive, pour tout ce qui se « révèle ». */
+.revele{ opacity:0; animation:apparait 4s ease-in-out infinite }
+@keyframes apparait{ 0%,8%{opacity:0} 22%,72%{opacity:1} 92%,100%{opacity:0} }
+
+/* ⚠️ Sans cette règle, l'animation devient un obstacle pour qui souffre de
+   troubles vestibulaires. Le sens doit rester lisible à l'arrêt. */
+@media (prefers-reduced-motion:reduce){
+  .canevas *{ animation:none!important }
+  .revele{ opacity:1!important }
+  .paquet{ display:none }
+}
+
+/* ── Page d'aperçu uniquement ────────────────────────────────────────────── */
+body.apercu{
+  margin:0; padding:26px; background:#0a0713; color:var(--encre);
+  font-family:Inter,-apple-system,system-ui,sans-serif;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+body.apercu h1{ font-size:15px; font-weight:700; margin:0 }
+body.apercu p { font-size:12.5px; color:var(--sourd); margin:0 0 8px; max-width:920px }
