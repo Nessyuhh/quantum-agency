@@ -3,46 +3,71 @@
 <link rel="stylesheet" href="hero-commun.css">
 <style>
   /* Mécanique : la BOUCLE, dans un périmètre fermé.
-     C'est ce qui sépare un agent d'un script : le script va de A à Z et
-     s'arrête ; l'agent observe le résultat de sa propre action et recommence.
-     Une flèche droite dirait « script ». Seul un cycle dit « agent ».
-     Et le périmètre en pointillés dit « vos données ne sortent pas » — argument
-     principal du LLM privé — mieux qu'une phrase. */
-  .orbite{ transform-origin:340px 215px; animation:tourne 9s linear infinite }
-  @keyframes tourne{ to{ transform:rotate(360deg) } }
+     Ce qui sépare un agent d'un script : le script va de A à Z et s'arrête,
+     l'agent observe le résultat de sa propre action et RECOMMENCE.
 
-  .etape{ animation:allume 9s ease-in-out infinite }
+     ── Reprise complète de la première version ──
+     Elle échouait sur trois points : rien n'était centré (l'anneau était à
+     x=340 dans un cadre de 920, avec un grand vide à droite), le sens du cycle
+     n'était marqué que par un point qui tournait — sans flèche, on ne lisait
+     pas de direction —, et un encart « cloud public » ajoutait du bruit sans
+     rien démontrer.
+     Ici : tout est centré sur x=460, quatre flèches courbes portent des pointes
+     qui disent la direction sans ambiguïté, et l'encart superflu a sauté. */
+
+  /* Le jeton fait le tour : c'est lui qui rend la boucle vivante. */
+  .jeton{ offset-path:path("M 460 116 A 106 106 0 1 1 459.9 116");
+          offset-rotate:0deg; animation:tourne 8s linear infinite }
+  @keyframes tourne{ to{ offset-distance:100% } }
+
+  /* Chaque étape s'allume au passage du jeton. Les retards sont le quart, la
+     moitié et les trois quarts du tour : le cycle est régulier, donc les
+     décalages le sont aussi. */
+  .etape{ animation:allume 8s ease-in-out infinite both }
   @keyframes allume{
-    0%,4%   { stroke:rgba(168,85,247,.3);  filter:none }
-    9%,20%  { stroke:var(--liseré-vif);    filter:drop-shadow(0 0 15px rgba(168,85,247,.6)) }
-    28%,100%{ stroke:rgba(168,85,247,.3);  filter:none }
+    0%,2%   { stroke:rgba(168,85,247,.32); filter:none }
+    7%,19%  { stroke:var(--liseré-vif); filter:drop-shadow(0 0 16px rgba(168,85,247,.6)) }
+    26%,100%{ stroke:rgba(168,85,247,.32); filter:none }
   }
-  .e2{ animation-delay:2.25s } .e3{ animation-delay:4.5s } .e4{ animation-delay:6.75s }
+  .s2{ animation-delay:2s } .s3{ animation-delay:4s } .s4{ animation-delay:6s }
 
-  /* Le périmètre respire doucement : présent, jamais tapageur. */
-  .perimetre{ fill:none; stroke:rgba(6,182,212,.45); stroke-width:1.6;
-              stroke-dasharray:9 8; animation:derive 26s linear infinite }
-  @keyframes derive{ to{ stroke-dashoffset:-340 } }
+  .fleche{ animation:passe 8s ease-in-out infinite both }
+  @keyframes passe{
+    0%,4%   { stroke:rgba(168,85,247,.26); opacity:.5 }
+    10%,22% { stroke:#a855f7; opacity:1 }
+    30%,100%{ stroke:rgba(168,85,247,.26); opacity:.5 }
+  }
+  .a2{ animation-delay:2s } .a3{ animation-delay:4s } .a4{ animation-delay:6s }
 
-  /* Une tentative de sortie qui rebondit sur le périmètre : la démonstration
-     que la donnée ne part pas, montrée plutôt qu'affirmée. */
-  .fuite{ opacity:0; animation:rebond 9s ease-in-out infinite }
+  /* Le périmètre : présent en continu, jamais tapageur. */
+  .perimetre{ fill:none; stroke:rgba(6,182,212,.4); stroke-width:1.6;
+              stroke-dasharray:10 8; animation:derive 30s linear infinite }
+  @keyframes derive{ to{ stroke-dashoffset:-360 } }
+
+  /* Une donnée tente de sortir et rebondit : la preuve, plutôt que l'affirmation. */
+  .fuite{ opacity:0; animation:rebond 8s ease-in-out infinite both }
   @keyframes rebond{
-    0%,52%  { opacity:0; transform:translate(0,0) }
-    58%     { opacity:1; transform:translate(150px,0) }
-    64%     { opacity:1; transform:translate(196px,0) }
-    72%     { opacity:.7; transform:translate(150px,0) }
-    78%,100%{ opacity:0; transform:translate(0,0) }
+    0%,56%  { opacity:0; transform:translateX(0) }
+    62%     { opacity:1; transform:translateX(150px) }
+    68%     { opacity:1; transform:translateX(214px) }
+    76%     { opacity:.6; transform:translateX(150px) }
+    82%,100%{ opacity:0; transform:translateX(0) }
   }
-  .heurt{ opacity:0; animation:impact 9s ease-out infinite }
-  @keyframes impact{ 0%,62%{opacity:0;r:3} 66%{opacity:.85;r:20} 74%,100%{opacity:0;r:26} }
+  .heurt{ opacity:0; animation:impact 8s ease-out infinite both }
+  @keyframes impact{ 0%,66%{opacity:0;r:4} 70%{opacity:.9;r:24} 80%,100%{opacity:0;r:30} }
+
+  /* offset-path n'est pas universel : repli sur une rotation autour du centre. */
+  @supports not (offset-path: path("M 0 0")){
+    .jeton{ animation:orbite 8s linear infinite; transform-origin:460px 222px }
+    @keyframes orbite{ to{ transform:rotate(360deg) } }
+  }
 </style>
 
 <body class="apercu">
 <h1>Agents IA &amp; LLM privés — la boucle fermée</h1>
 <p>Ce qui sépare un agent d'un script, c'est qu'il <em>observe le résultat de sa propre action et
-recommence</em>. Une flèche droite dirait « script » ; seul un cycle dit « agent ». Et le périmètre
-en pointillés démontre que la donnée ne sort pas, au lieu de l'affirmer.</p>
+recommence</em>. Une flèche droite dirait « script » ; seul un cycle dit « agent ». Et la donnée
+qui rebondit sur le périmètre démontre que rien ne sort, au lieu de l'affirmer.</p>
 
 <div class="canevas">
   <svg viewBox="0 0 920 430" role="img"
@@ -57,68 +82,61 @@ en pointillés démontre que la donnée ne sort pas, au lieu de l'affirmer.</p>
       <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/>
       </linearGradient>
-      <path id="cycle" d="M 340 105 A 110 110 0 1 1 339 105"/>
+      <marker id="pointe" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#a855f7"/>
+      </marker>
     </defs>
 
-    <!-- ── Le périmètre : votre infrastructure ── -->
-    <rect x="34" y="46" width="536" height="338" rx="26" class="perimetre"/>
-    <text x="54" y="76" class="etiq" style="fill:#67e8f9">Votre infrastructure · rien ne sort</text>
+    <!-- ── Le périmètre, centré sur 460 ── -->
+    <rect x="150" y="46" width="620" height="352" rx="28" class="perimetre"/>
+    <text x="460" y="30" class="etiq" text-anchor="middle" style="fill:#67e8f9">
+      Votre infrastructure · aucune donnée n'en sort
+    </text>
 
-    <!-- ── La boucle ── -->
-    <circle cx="340" cy="215" r="110" fill="none"
-            stroke="rgba(168,85,247,.18)" stroke-width="2.5"/>
-    <g class="orbite">
-      <circle cx="340" cy="105" r="6" fill="#a855f7"
-              style="filter:drop-shadow(0 0 10px rgba(168,85,247,.95))"/>
-    </g>
+    <!-- ── L'anneau et les quatre flèches ── -->
+    <circle cx="460" cy="222" r="106" fill="none" stroke="rgba(168,85,247,.14)" stroke-width="2"/>
 
-    <!-- Les quatre temps de l'agent -->
-    <g class="etape">
-      <rect x="272" y="52" width="136" height="46" rx="14" class="boite"/>
-    </g>
-    <text x="340" y="80" class="titre" text-anchor="middle">Percevoir</text>
+    <!-- Quatre arcs de 90°, pointe à l'arrivée. Des arcs courts ne se lisaient
+         pas comme un cycle : c'est la longueur parcourue qui fait la boucle. -->
+    <path class="fleche"    d="M 535 147 A 106 106 0 0 1 535 297" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a2" d="M 535 297 A 106 106 0 0 1 385 297" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a3" d="M 385 297 A 106 106 0 0 1 385 147" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a4" d="M 385 147 A 106 106 0 0 1 535 147" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
 
-    <g class="etape e2">
-      <rect x="392" y="192" width="136" height="46" rx="14" class="boite"/>
-    </g>
-    <text x="460" y="220" class="titre" text-anchor="middle">Décider</text>
+    <!-- ── Les quatre temps, centrés sur les points cardinaux de l'anneau ── -->
+    <g class="etape">   <rect x="382" y="52"  width="156" height="48" rx="15" class="boite"/></g>
+    <text x="460" y="82" class="titre" text-anchor="middle">Percevoir</text>
 
-    <g class="etape e3">
-      <rect x="272" y="332" width="136" height="46" rx="14" class="boite"/>
-    </g>
-    <text x="340" y="360" class="titre" text-anchor="middle">Agir</text>
+    <g class="etape s2"><rect x="580" y="198" width="160" height="48" rx="15" class="boite"/></g>
+    <text x="660" y="228" class="titre" text-anchor="middle">Décider</text>
 
-    <g class="etape e4">
-      <rect x="152" y="192" width="136" height="46" rx="14" class="boite"/>
-    </g>
-    <text x="220" y="220" class="titre" text-anchor="middle">Observer</text>
+    <g class="etape s3"><rect x="382" y="344" width="156" height="48" rx="15" class="boite"/></g>
+    <text x="460" y="374" class="titre" text-anchor="middle">Agir</text>
 
-    <!-- Le cœur -->
-    <circle cx="340" cy="215" r="34" fill="url(#accent)" opacity=".14"/>
-    <circle cx="340" cy="215" r="24" fill="url(#accent)" opacity=".92"/>
-    <path d="M 340 201 L 344.5 210.5 L 354 215 L 344.5 219.5 L 340 229 L 335.5 219.5 L 326 215 L 335.5 210.5 Z"
-          fill="#0b0819" opacity=".9"/>
+    <g class="etape s4"><rect x="180" y="198" width="160" height="48" rx="15" class="boite"/></g>
+    <text x="260" y="228" class="titre" text-anchor="middle">Observer</text>
 
-    <!-- ── La tentative de sortie, qui rebondit ── -->
+    <!-- ── Le cœur ── -->
+    <circle cx="460" cy="222" r="46" fill="url(#accent)" opacity=".12"/>
+    <circle cx="460" cy="222" r="30" fill="url(#accent)" opacity=".95"/>
+    <path d="M 460 204 L 465.5 216.5 L 478 222 L 465.5 227.5 L 460 240 L 454.5 227.5 L 442 222 L 454.5 216.5 Z"
+          fill="#0b0819" opacity=".92"/>
+
+    <!-- ── Le jeton qui fait le tour ── -->
+    <circle class="jeton" r="7" fill="#c4b5fd"
+            style="filter:drop-shadow(0 0 11px rgba(196,181,253,.95))"/>
+
+    <!-- ── La tentative de sortie, et le rebond ── -->
     <g class="fuite">
-      <circle cx="374" cy="215" r="5" fill="#f59e0b"
-              style="filter:drop-shadow(0 0 9px rgba(245,158,11,.9))"/>
+      <circle cx="506" cy="222" r="6" fill="#f59e0b"
+              style="filter:drop-shadow(0 0 10px rgba(245,158,11,.9))"/>
     </g>
-    <circle cx="570" cy="215" r="3" class="heurt" fill="none"
-            stroke="#f59e0b" stroke-width="2"/>
-
-    <!-- ── Ce qui reste dehors ── -->
-    <g opacity=".4">
-      <rect x="640" y="150" width="230" height="130" rx="20"
-            fill="none" stroke="rgba(148,163,184,.3)" stroke-width="1.5" stroke-dasharray="6 6"/>
-      <text x="755" y="200" class="etiq" text-anchor="middle" style="fill:#64748b">Cloud public</text>
-      <text x="755" y="228" class="sstitre" text-anchor="middle" style="fill:#64748b">
-        Aucune donnée
-      </text>
-      <text x="755" y="244" class="sstitre" text-anchor="middle" style="fill:#64748b">
-        n'y transite
-      </text>
-    </g>
+    <circle cx="770" cy="222" r="4" class="heurt" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
   </svg>
 </div>
 </body>

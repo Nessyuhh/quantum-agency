@@ -24,9 +24,11 @@
   .f2{animation-delay:.7s} .f3{animation-delay:1.4s} .f4{animation-delay:2.1s}
   .f5{animation-delay:2.8s} .f6{animation-delay:3.5s} .f7{animation-delay:4.2s}
 
+  /* Le tracé du V mesure 27,6 unités ; avec dasharray:16 il n'était jamais
+     dessiné en entier et se lisait comme un trait de travers. */
   .coche{ opacity:0; animation:valide 8s ease-out infinite both;
-          stroke-dasharray:16; stroke-dashoffset:16 }
-  @keyframes valide{ 0%,4%{opacity:0;stroke-dashoffset:16}
+          stroke-dasharray:30; stroke-dashoffset:30 }
+  @keyframes valide{ 0%,4%{opacity:0;stroke-dashoffset:30}
                      11%,88%{opacity:1;stroke-dashoffset:0} 100%{opacity:0} }
 
   .pret{ opacity:0; animation:final 8s ease-out infinite both }

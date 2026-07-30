@@ -8,12 +8,20 @@
      secondes ce qu'une grille de trois offres met un paragraphe à expliquer :
      ce ne sont pas trois produits au choix, c'est un CHEMIN.
      Sur chaque page de formation, on figera le palier concerné. */
-  .jauge{ transform-origin:left center; animation:remplit 10s cubic-bezier(.5,0,.3,1) infinite }
+  /* ⚠️ La jauge et le curseur étaient deux animations séparées : un scaleX et
+     un translateX, avec des valeurs qui ne correspondaient pas (scaleX(.333)
+     donne 268 px, le curseur avançait de 248). Ils se désynchronisaient, et
+     encore plus en cours d'interpolation puisque scale et translate ne
+     progressent pas pareil.
+     Désormais UNE seule animation translate un groupe qui contient les deux.
+     La barre est dessinée à GAUCHE du curseur : son bord droit EST le curseur.
+     Le décalage est structurellement impossible, à n'importe quelle vitesse. */
+  .attelage{ animation:remplit 10s cubic-bezier(.5,0,.3,1) infinite }
   @keyframes remplit{
-    0%,6%   { transform:scaleX(0) }
-    26%,34% { transform:scaleX(.333) }
-    52%,60% { transform:scaleX(.666) }
-    80%,100%{ transform:scaleX(1) }
+    0%,6%   { transform:translateX(0) }
+    26%,34% { transform:translateX(268px) }
+    52%,60% { transform:translateX(536px) }
+    80%,100%{ transform:translateX(804px) }
   }
   .palier{ animation:atteint 10s ease-out infinite both }
   @keyframes atteint{
@@ -27,11 +35,6 @@
   @keyframes surgit{ 0%,4%{opacity:0} 10%,97%{opacity:1} 100%{opacity:0} }
   .g2{ animation-delay:2.6s } .g3{ animation-delay:5.2s }
 
-  .curseur{ animation:avance 10s cubic-bezier(.5,0,.3,1) infinite }
-  @keyframes avance{
-    0%,6%{transform:translateX(0)} 26%,34%{transform:translateX(248px)}
-    52%,60%{transform:translateX(496px)} 80%,100%{transform:translateX(744px)}
-  }
 </style>
 
 <body class="apercu">
@@ -57,12 +60,15 @@ expliquer — ce ne sont pas trois produits au choix, <em>c'est un chemin</em>.<
 
     <text x="58" y="60" class="etiq">Niveau de maîtrise</text>
 
-    <!-- ── La jauge ── -->
+    <!-- ── La jauge et son curseur, attelés ── -->
     <rect x="58" y="82" width="804" height="12" rx="6" fill="rgba(168,85,247,.13)"/>
-    <rect x="58" y="82" width="804" height="12" rx="6" fill="url(#flux)" class="jauge"/>
-
-    <!-- Le curseur qui marque où l'on en est -->
-    <g class="curseur">
+    <clipPath id="piste"><rect x="58" y="70" width="804" height="36" rx="6"/></clipPath>
+    <g clip-path="url(#piste)">
+      <g class="attelage">
+        <rect x="-746" y="82" width="804" height="12" rx="6" fill="url(#flux)"/>
+      </g>
+    </g>
+    <g class="attelage">
       <circle cx="58" cy="88" r="9" fill="#0b0819" stroke="#a855f7" stroke-width="2.5"
               style="filter:drop-shadow(0 0 12px rgba(168,85,247,.8))"/>
     </g>

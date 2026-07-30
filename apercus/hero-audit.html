@@ -6,7 +6,9 @@
      Un audit, c'est passer sur l'existant et faire apparaître ce qu'on n'y
      voyait pas. Le mouvement doit donc dévoiler, pas circuler. */
   .sonde{ animation:balaye 6s cubic-bezier(.45,0,.2,1) infinite }
-  @keyframes balaye{ 0%{transform:translateX(0)} 72%,100%{transform:translateX(690px)} }
+  /* 884 et non 690 : la dernière colonne de tuiles finit à x=846, la sonde
+     doit la dépasser. À 690 elle s'arrêtait au milieu du dernier bloc. */
+  @keyframes balaye{ 0%{transform:translateX(0)} 72%,100%{transform:translateX(884px)} }
 
   /* Chaque colonne s'allume quand la sonde l'a dépassée — le décalage encode le
      balayage lui-même : c'est la sonde qui cause la révélation, pas le hasard.
@@ -28,8 +30,8 @@
     12%,90%  { opacity:1 }
     100%     { opacity:0 }
   }
-  .c1{ animation-delay:.4s } .c2{ animation-delay:1.7s }
-  .c3{ animation-delay:2.9s } .c4{ animation-delay:4.2s }
+  .c1{ animation-delay:.35s } .c2{ animation-delay:1.35s }
+  .c3{ animation-delay:2.3s } .c4{ animation-delay:3.3s }
   .fort{ fill:#4ade80 } .moyen{ fill:var(--amber) } .faible{ fill:var(--sourd) }
 </style>
 
