@@ -37,6 +37,22 @@
 
 .canevas > svg{ position:absolute; inset:0; width:100%; height:100% }
 
+/* ── Deux cadrages, pas un ───────────────────────────────────────────────────
+   Mesuré : un viewBox de 920 de large réduit à un écran de 390 px tombe à une
+   échelle de 0,39 — le texte de 13 px se rend à 5 px. Illisible, et ça reste
+   illisible jusqu'à 1024 px, donc sur tablette aussi.
+   Chaque animation porte donc DEUX tracés : un cadrage large en paysage, et un
+   cadrage étroit en portrait où le flux descend au lieu d'aller vers la droite.
+   Ce n'est pas le même dessin mis à l'échelle, c'est la même idée recomposée. */
+.canevas.etroit{ aspect-ratio:420/700 }
+svg.large { display:block }
+svg.etroit{ display:none }
+@media (max-width:1023px){
+  .canevas{ aspect-ratio:420/700; max-width:460px }
+  svg.large { display:none }
+  svg.etroit{ display:block }
+}
+
 /* ── Vocabulaire partagé ─────────────────────────────────────────────────── */
 
 .boite{ fill:var(--nuit-clair); stroke:rgba(168,85,247,.34); stroke-width:1.5 }
