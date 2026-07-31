@@ -1,0 +1,114 @@
+/* ============================================================================
+   Feuille commune du site Quantum
+   ----------------------------------------------------------------------------
+   Extraite le 31/07/2026 de 22 pages qui portaient chacune leur CSS en ligne.
+
+   POURQUOI CE FICHIER EXISTE
+   Le CSS recopié page par page a laissé 13 pages sur 14 avec un menu mobile
+   cassé pendant des semaines : la correction faite sur index.html n'avait
+   jamais atteint les autres. Une règle corrigée ici s'applique désormais
+   partout d'un coup.
+
+   CE QUI EST ICI, ET CE QUI N'Y EST PAS
+   Uniquement les règles de PREMIER NIVEAU, identiques sur au moins 10 pages,
+   et dont le sélecteur n'apparaît qu'une seule fois dans la page d'origine —
+   condition qui garantit qu'aucun écrasement interne n'est déplacé.
+   Les blocs @media restent dans les pages : leur ordre relatif au reste de la
+   cascade est trop sensible pour être déplacé sans risque.
+
+   Cette feuille est chargée AVANT le <style> de chaque page, donc toute règle
+   restée en ligne continue de gagner.
+   ========================================================================== */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+.skip-link:focus{top:0}
+:focus-visible{outline:2px solid #a855f7;outline-offset:3px;border-radius:4px}
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd::after{content:"";position:absolute;top:100%;left:-10%;right:-10%;height:20px}
+.nav-dd:hover .nav-dd-trigger{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(8,4,22,.97);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:6px;min-width:240px;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.22,1,.36,1),transform .25s cubic-bezier(.22,1,.36,1);z-index:300;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.nav-dd-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-dd-menu .dd-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 6px}
+[data-v].in-view{opacity:1;transform:translateY(0)}
+[data-v][data-d="1"]{transition-delay:.1s}
+[data-v][data-d="2"]{transition-delay:.2s}
+[data-v][data-d="3"]{transition-delay:.3s}
+#back-top.visible{opacity:1;transform:translateY(0)}
+#back-top:hover{background:rgba(124,58,237,.25);box-shadow:0 0 18px rgba(124,58,237,.4);transform:translateY(-3px)}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dd-badge{font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(168,85,247,.18);color:#a855f7;padding:2px 7px;border-radius:100px;border:1px solid rgba(168,85,247,.2);flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 0 28px rgba(124,58,237,.4);transition:transform .2s,box-shadow .2s;animation:btnGlow 3s ease-in-out infinite}
+.ti span:first-child{font-size:18px;line-height:1}
+.pg-sub{color:var(--muted);font-size:clamp(.95rem,1.6vw,1.1rem);max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+.n-links{display:flex;gap:4px}
+.n-cta{background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none}
+.content p strong{color:var(--text)}
+.hero-spot{position:absolute;inset:0;pointer-events:none;z-index:0;transition:background .08s linear}
+.ti.active,.ti:hover{color:var(--purple-l)}
+.pg-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:100px;padding:.35rem 1.1rem;font-size:.68rem;font-weight:800;color:var(--purple-l);margin-bottom:1rem;letter-spacing:.07em;text-transform:uppercase}
+.pg-hero{padding:140px 5% 80px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 52px rgba(124,58,237,.7),0 0 0 1px rgba(168,85,247,.4)!important;animation:none}
+footer a:hover{color:var(--muted)}
+.cta-sec p{color:var(--muted);max-width:500px;margin:0 auto 2rem;font-size:.95rem}
+.n-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.g-text{background:linear-gradient(130deg,var(--purple-l) 0%,var(--cyan) 50%,var(--purple-l) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShimmer 6s ease infinite}
+.nav-dd-menu a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:rgba(255,255,255,.65);font-size:12.5px;font-weight:500;text-decoration:none;padding:9px 14px;border-radius:10px;transition:color .2s,background .2s;white-space:nowrap}
+.ti span:last-child{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+footer a{color:rgba(148,163,184,.45);text-decoration:none;font-size:.76rem}
+.cta-sec{text-align:center;padding:5rem 5%;background:var(--bg2);border-top:1px solid var(--border)}
+.n-inner{display:flex;align-items:center;gap:8px;background:rgba(10,5,28,.9);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 12px 10px 20px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
+.cta-sec h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:1rem}
+footer p{color:rgba(148,163,184,.45);font-size:.76rem}
+.n-logo{text-decoration:none;display:inline-flex;align-items:center}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;justify-content:center;font-size:.74rem;color:var(--muted);margin-bottom:1.2rem}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4);transform:scaleX(0);z-index:400;pointer-events:none}
+nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200}
+.n-mob-burger{display:none}
+.breadcrumb a:hover{color:var(--text)}
+.nav-dd-caret{font-size:.55rem;opacity:.7;transition:transform .2s;display:inline-block}
+.tc{flex:0 0 auto;background:linear-gradient(135deg,var(--purple),var(--purple-l));border-radius:22px;padding:0 18px;height:40px;display:flex;align-items:center;color:#fff;font-size:11px;font-weight:800;text-decoration:none;margin:0 5px;box-shadow:0 4px 18px rgba(124,58,237,.45);-webkit-tap-highlight-color:transparent}
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+
+/* ── Repli des blocs longs sur petit écran ─────────────────────────────────
+   Voir assets/replier.js pour la mesure qui motive ce comportement : les pages
+   de service faisaient 9 à 11 écrans sur mobile contre 5 à 6 en desktop.
+   Ces règles ne s'appliquent QUE si le script a posé data-replie ; sans
+   JavaScript, aucun sélecteur ne correspond et tout reste ouvert. */
+[data-replie="ferme"]{ display:none }
+
+.replier-btn{
+  display:none; width:100%; align-items:center; justify-content:space-between;
+  gap:12px; margin:10px 0; padding:16px 18px;         /* 52px de haut : au-dessus
+                                                          des 44px minimum */
+  background:rgba(168,85,247,.07); border:1px solid rgba(168,85,247,.22);
+  border-radius:14px; color:#e2e8f0; font:600 15px/1.35 inherit;
+  text-align:left; cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.replier-btn:hover{ background:rgba(168,85,247,.12) }
+.replier-btn:focus-visible{ outline:2px solid #a855f7; outline-offset:2px }
+.replier-chev{ flex-shrink:0; color:#a855f7; transition:transform .2s ease }
+.replier-btn[aria-expanded="true"] .replier-chev{ transform:rotate(180deg) }
+
+@media (max-width:640px){ .replier-btn{ display:flex } }
+
+/* ── Cibles tactiles ───────────────────────────────────────────────────────
+   Mesuré : de 8 à 45 éléments par page sous les 44 px du minimum Apple, jusqu'à
+   45 sur cas-usage. Sur un téléphone, ce sont des liens qu'on rate.
+   On agrandit la zone SANS toucher à la mise en page : le padding vertical
+   d'un lien en ligne n'affecte pas le flux du texte. */
+@media (max-width:640px){
+  a:not([class]), nav a, footer a, .n-links a, .pmenu-lnk, .nav-dd-menu a{
+    min-height:44px; display:inline-flex; align-items:center;
+  }
+  button, [role="button"], .btn, .n-cta, .pmenu-cta, input[type="submit"]{
+    min-height:44px;
+  }
+  /* Un champ sous 16px déclenche un zoom automatique sur iOS à la mise au
+     point, et l'utilisateur se retrouve avec une page décalée. */
+  input, textarea, select{ font-size:16px }
+}

@@ -1,0 +1,186 @@
+<meta charset="utf-8">
+<title>Audit — desktop et mobile</title>
+<style>
+  body{margin:0;padding:24px;background:#0b0d12;color:#e8eaf0;
+       font:14px/1.55 Inter,-apple-system,system-ui,sans-serif}
+  h1{font-size:19px;margin:0 0 4px}
+  .sous{color:#94a3b8;font-size:13px;margin:0 0 20px;max-width:900px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px}
+  th{text-align:left;font:600 10.5px ui-monospace,Menlo,monospace;color:#94a3b8;
+     text-transform:uppercase;letter-spacing:.1em;padding:8px 10px;border-bottom:1px solid #252a36}
+  td{padding:7px 10px;border-bottom:1px solid #171b24;vertical-align:top}
+  td:first-child{font:600 12px ui-monospace,Menlo,monospace;white-space:nowrap}
+  .ok{color:#4ade80} .ko{color:#f87171;font-weight:700} .att{color:#fbbf24}
+  .det{color:#64748b;font-size:11.5px}
+  iframe{position:absolute;left:-9999px;top:0;border:0}
+  #etat{color:#a855f7;font-size:13px;margin-bottom:14px}
+</style>
+
+<h1>Audit du site — desktop et mobile</h1>
+<p class="sous">Chaque page est chargée dans un iframe à largeur imposée, ce qui donne un viewport
+exact sans dépendre de la taille de la fenêtre. Les mesures sont prises dans le document lui-même,
+donc ce sont les valeurs réelles du navigateur — pas une estimation.</p>
+<div id="etat">Analyse en cours…</div>
+<table id="res"><thead><tr>
+  <th>Page</th><th>Largeur</th><th>Débordement H</th><th>Superpositions</th>
+  <th>Centrage</th><th>Cibles &lt; 44px</th><th>Hauteur</th><th>Divers</th>
+</tr></thead><tbody></tbody></table>
+
+<script>
+const PAGES = ['index.html','audit-ia.html','integration-ia.html','automatisation-ia.html',
+  'agents-ia.html','consulting-ia.html','formation-initiation-ia.html','formation-maitrise-ia.html',
+  'formation-expert-ia.html','cas-usage.html','modeles-ia.html','faq-ia.html','blog.html',
+  'contact.html','404.html'];
+const LARGEURS = [390, 1440];
+
+/* ── Les contrôles ────────────────────────────────────────────────────────────
+   Tout est mesuré sur le document réel de l'iframe. On ne juge pas « à l'œil » :
+   un décalage de 3 px se voit dans un getBoundingClientRect, pas sur une
+   capture. */
+function auditer(doc, win, largeur){
+  const R = {};
+  const de = doc.documentElement;
+
+  // 1. Débordement horizontal — la cause n°1 de « ça déborde à droite »
+  R.debord = Math.max(0, de.scrollWidth - de.clientWidth);
+  R.coupables = [];
+  if (R.debord > 1){
+    for (const e of doc.querySelectorAll('body *')){
+      const r = e.getBoundingClientRect();
+      if (r.width && r.right > de.clientWidth + 1){
+        R.coupables.push(nom(e) + ' → ' + Math.round(r.right) + 'px');
+        if (R.coupables.length >= 3) break;
+      }
+    }
+  }
+
+  // 2. Superpositions entre FRÈRES visibles — deux blocs de flux qui se
+  //    chevauchent est presque toujours un défaut, jamais une intention.
+  R.superpo = [];
+  const conteneurs = doc.querySelectorAll('body, main, section, header, footer, div');
+  for (const c of conteneurs){
+    const enf = [...c.children].filter(e => {
+      const s = win.getComputedStyle(e);
+      /* ⚠️ Exclure les éléments d'apparition NON encore révélés : ils portent
+         [data-v] avec opacity:0 et transform:translateY(28px), donc ils
+         chevauchent leur voisin tant que .in-view n'est pas posé. C'est un
+         état transitoire qu'aucun visiteur ne voit — au moment où il y arrive,
+         l'apparition s'est déclenchée. Les compter donnait 18 fausses
+         superpositions, toutes de 12 ou 28 px, soit exactement les valeurs de
+         translateY du CSS. */
+      if (e.hasAttribute('data-v') && !e.classList.contains('in-view')) return false;
+      /* ⚠️ Ignorer les éléments EN LIGNE. Un <strong> qui s'étend sur deux
+         lignes a un rectangle englobant couvrant toute la largeur des deux :
+         deux <strong> d'un même paragraphe se « chevauchent » alors qu'ils ne
+         se touchent jamais visuellement. Le chevauchement n'a de sens qu'entre
+         éléments de bloc. */
+      if (s.display.indexOf('inline') === 0) return false;
+      return s.display !== 'none' && s.visibility !== 'hidden' &&
+             s.position !== 'absolute' && s.position !== 'fixed' && s.float === 'none';
+    });
+    for (let i = 0; i < enf.length - 1; i++){
+      const a = enf[i].getBoundingClientRect(), b = enf[i+1].getBoundingClientRect();
+      if (!a.height || !b.height) continue;
+      /* ⚠️ Il faut un chevauchement sur LES DEUX AXES. Ne tester que la
+         verticale comptait comme superposés deux éléments simplement placés
+         côte à côte — tout le contenu d'une barre de navigation en flex. */
+      const cv = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      const ch = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+      if (cv > 4 && ch > 4 && Math.min(a.height, b.height) > 8){
+        R.superpo.push(nom(enf[i]) + ' ∩ ' + nom(enf[i+1]) +
+                       ' (' + Math.round(ch) + '×' + Math.round(cv) + 'px)');
+        if (R.superpo.length >= 3) break;
+      }
+    }
+    if (R.superpo.length >= 3) break;
+  }
+
+  // 3. Centrage — on compare les marges gauche et droite des blocs larges
+  R.decentre = [];
+  for (const e of doc.querySelectorAll('main > *, section, .wrap, .container, header, footer')){
+    const r = e.getBoundingClientRect();
+    if (r.width < de.clientWidth * 0.5 || r.width > de.clientWidth) continue;
+    const g = r.left, d = de.clientWidth - r.right;
+    if (Math.abs(g - d) > 3){
+      R.decentre.push(nom(e) + ' g:' + Math.round(g) + ' d:' + Math.round(d));
+      if (R.decentre.length >= 3) break;
+    }
+  }
+
+  // 4. Cibles tactiles — 44 px est le minimum Apple, 48 chez Google.
+  R.petites = 0; R.exemples = [];
+  if (largeur <= 640){
+    for (const e of doc.querySelectorAll('a, button, [role=button], input, select')){
+      const r = e.getBoundingClientRect();
+      if (!r.width || !r.height) continue;
+      if (win.getComputedStyle(e).display === 'none') continue;
+      if (r.height < 44 || r.width < 44){
+        R.petites++;
+        if (R.exemples.length < 2)
+          R.exemples.push(nom(e) + ' ' + Math.round(r.width) + '×' + Math.round(r.height));
+      }
+    }
+  }
+
+  // 5. Hauteur de défilement — le point soulevé : un mobile ne doit pas
+  //    dérouler indéfiniment le même contenu qu'un desktop.
+  R.hauteur = de.scrollHeight;
+  R.ecrans = +(de.scrollHeight / win.innerHeight).toFixed(1);
+
+  // 6. Divers structurels
+  R.h1 = doc.querySelectorAll('h1').length;
+  R.sansAlt = [...doc.querySelectorAll('img')].filter(i => !i.hasAttribute('alt')).length;
+  R.petitTexte = [...doc.querySelectorAll('input, textarea, select')]
+    .filter(i => parseFloat(win.getComputedStyle(i).fontSize) < 16).length;
+  return R;
+}
+function nom(e){
+  return e.tagName.toLowerCase() +
+    (e.id ? '#' + e.id : '') +
+    (e.className && typeof e.className === 'string' && e.className.trim()
+      ? '.' + e.className.trim().split(/\s+/)[0] : '');
+}
+
+function cell(v, seuil, detail){
+  if (v === 0 || v === false) return '<span class="ok">ok</span>';
+  const cl = seuil ? 'att' : 'ko';
+  return '<span class="' + cl + '">' + v + '</span>' +
+         (detail ? '<div class="det">' + detail + '</div>' : '');
+}
+
+(async () => {
+  const tb = document.querySelector('#res tbody');
+  for (const page of PAGES){
+    for (const L of LARGEURS){
+      const f = document.createElement('iframe');
+      f.style.width = L + 'px'; f.style.height = '900px'; f.src = '/' + page;
+      document.body.appendChild(f);
+      await new Promise(r => { f.onload = r; setTimeout(r, 4000); });
+      let R;
+      try { R = auditer(f.contentDocument, f.contentWindow, L); }
+      catch(e){ R = {erreur: e.message}; }
+      f.remove();
+      const tr = document.createElement('tr');
+      if (R.erreur){
+        tr.innerHTML = `<td>${page}</td><td>${L}</td><td colspan="6" class="ko">${R.erreur}</td>`;
+      } else {
+        const div = [];
+        if (R.h1 !== 1) div.push(R.h1 + ' h1');
+        if (R.sansAlt) div.push(R.sansAlt + ' img sans alt');
+        if (R.petitTexte) div.push(R.petitTexte + ' champs <16px');
+        tr.innerHTML =
+          `<td>${page}</td><td>${L}px</td>` +
+          `<td>${cell(R.debord ? R.debord + 'px' : 0, false, R.coupables.join('<br>'))}</td>` +
+          `<td>${cell(R.superpo.length, false, R.superpo.join('<br>'))}</td>` +
+          `<td>${cell(R.decentre.length, true, R.decentre.join('<br>'))}</td>` +
+          `<td>${L <= 640 ? cell(R.petites, true, R.exemples.join('<br>')) : '<span class="det">—</span>'}</td>` +
+          `<td>${R.ecrans} écrans<div class="det">${R.hauteur}px</div></td>` +
+          `<td>${div.length ? '<span class="att">' + div.join('<br>') + '</span>' : '<span class="ok">ok</span>'}</td>`;
+      }
+      tb.appendChild(tr);
+      document.getElementById('etat').textContent = 'Analysé : ' + page + ' @ ' + L + 'px';
+    }
+  }
+  document.getElementById('etat').textContent = 'Terminé — ' + (PAGES.length * LARGEURS.length) + ' analyses';
+})();
+</script>
