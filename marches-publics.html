@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="/assets/commun.css">
 <link rel="stylesheet" href="/assets/heros.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Audit IA pour PME et ETI : diagnostic et feuille de route | Quantum Consulting</title>
-<meta name="description" content="Audit IA complet : cartographie de vos processus, identification des opportunités d'automatisation, benchmark des modèles (Claude, GPT-4o, Mistral) et feuille de route ROI sur 12 mois.">
+<title>Répondre aux appels d'offres BTP | Quantum Consulting</title>
+<meta name="description" content="Montage de dossiers de candidature pour les marchés publics du BTP : veille, pièces administratives, mémoire technique, dépôt avant échéance.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://quantum-agency.fr/audit-ia.html">
+<link rel="canonical" href="https://quantum-agency.fr/marches-publics.html">
 <meta property="og:title" content="Audit IA PME et ETI : diagnostic et feuille de route | Quantum Consulting">
 <meta property="og:description" content="Audit IA complet : cartographie processus, identification opportunités d'automatisation, benchmark Claude / GPT-4o / Mistral, feuille de route ROI 12 mois.">
 <meta property="og:url" content="https://www.quantum-agency.fr/audit-ia.html">
@@ -28,6 +28,41 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
 <noscript><style>
+/* ── section d'ouverture animée ── */
+/* Mécanique : l'ÉCHÉANCE.
+     Ici la douleur du client n'est pas la complexité, c'est la DATE. Un dossier
+     incomplet le jour J vaut zéro, quelle que soit la qualité de l'entreprise.
+     Le mouvement doit donc faire sentir le compte à rebours pendant que les
+     pièces se rangent — c'est la course qui est le sujet, pas le classement.
+     Seule page où le mouvement porte une TENSION plutôt qu'une démonstration. */
+  .compte{ stroke-dasharray:339; stroke-dashoffset:0;
+           animation:decompte 8s linear infinite;
+           transform:rotate(-90deg); transform-origin:790px 150px }
+  @keyframes decompte{ to{ stroke-dashoffset:271 } }   /* il en reste toujours */
+
+  /* Les pièces tombent une à une dans le dossier. */
+  .piece{ opacity:0; animation:tombe 8s cubic-bezier(.4,1.3,.5,1) infinite both }
+  @keyframes tombe{
+    0%,2%  { opacity:0; transform:translate(0,-46px) }
+    9%     { opacity:1; transform:translate(0,0) }
+    88%    { opacity:1; transform:translate(0,0) }
+    100%   { opacity:0; transform:translate(0,0) }
+  }
+  .f2{animation-delay:.7s} .f3{animation-delay:1.4s} .f4{animation-delay:2.1s}
+  .f5{animation-delay:2.8s} .f6{animation-delay:3.5s} .f7{animation-delay:4.2s}
+
+  /* Le tracé du V mesure 27,6 unités ; avec dasharray:16 il n'était jamais
+     dessiné en entier et se lisait comme un trait de travers. */
+  .coche{ opacity:0; animation:valide 8s ease-out infinite both;
+          stroke-dasharray:30; stroke-dashoffset:30 }
+  @keyframes valide{ 0%,4%{opacity:0;stroke-dashoffset:30}
+                     11%,88%{opacity:1;stroke-dashoffset:0} 100%{opacity:0} }
+
+  .pret{ opacity:0; animation:final 8s ease-out infinite both }
+  @keyframes final{ 0%,62%{opacity:0} 70%,92%{opacity:1} 100%{opacity:0} }
+.compteV{ stroke-dasharray:270; animation:decompte 8s linear infinite;
+                     transform:rotate(-90deg); transform-origin:330px 52px }
+
 /* ── section d'ouverture animée ── */
 /* Mécanique propre à cette page : la RÉVÉLATION.
      Un audit, c'est passer sur l'existant et faire apparaître ce qu'on n'y
@@ -179,7 +214,7 @@ body{animation:pageIn .45s ease both}
 </style>
 <script src="/assets/replier.js" defer></script>
 </head>
-<body>
+<body class="pole-btp">
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="progress-bar" aria-hidden="true"></div>
 <nav aria-label="Navigation principale">
@@ -255,324 +290,179 @@ body{animation:pageIn .45s ease both}
 </nav>
 
 <main id="main-content">
-<header class="pg-hero" id="audit-hero">
+<header class="pg-hero">
   <div class="hero-spot" id="hero-spot" aria-hidden="true"></div>
   <nav class="breadcrumb" aria-label="Fil d'Ariane">
     <a href="index.html">Accueil</a><span>›</span>
-    <span aria-current="page">Audit IA</span>
+    <span aria-current="page">Marchés publics BTP</span>
   </nav>
-  <div class="pg-tag">Diagnostic &amp; Cartographie</div>
-  <h1>Cartographier vos opportunités <span class="g-text">avant d'investir</span></h1>
+  <div class="pg-tag">Marchés publics · BTP</div>
+  <h1>Un dossier complet, <span class="g-text">déposé avant l'échéance</span></h1>
   <div class="canevas hero-canevas">
     <svg class="large" viewBox="0 0 920 430" role="img"
-       aria-label="Balayage d'audit sur douze processus de l'entreprise : chaque processus est
-                   noté au passage de la sonde, du potentiel faible au potentiel fort.">
+       aria-label="Sept pièces administratives tombent une à une dans un dossier de candidature et
+                   se cochent, pendant qu'un compte à rebours se réduit jusqu'à la date limite de
+                   remise.">
     <defs>
       <linearGradient id="flux" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
         <stop offset="100%" stop-color="#06b6d4"/>
       </linearGradient>
-      <linearGradient id="sonde" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
-        <stop offset="50%" stop-color="#a855f7" stop-opacity=".95"/>
-        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="sillage" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#a855f7" stop-opacity="0"/>
-        <stop offset="100%" stop-color="#a855f7" stop-opacity=".22"/>
+      <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/>
       </linearGradient>
     </defs>
 
-    <text x="58" y="62" class="etiq">Processus analysés</text>
+    <text x="58" y="58" class="etiq">Pièces du dossier</text>
 
-    <!-- Le sillage passe DERRIÈRE les tuiles.
-         Peint par-dessus, il les assombrissait au moment exact où la sonde les
-         atteint — il contrariait donc la révélation au lieu de la servir. Seul
-         le trait net reste au premier plan, tout à la fin du document. -->
-    <g class="sonde">
-      <rect x="-120" y="74" width="120" height="230" fill="url(#sillage)"/>
+    <!-- ── Les sept pièces ── -->
+    <g class="titre" style="font-size:12.5px">
+      <g class="piece">
+        <rect x="58" y="76" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 96 l 6 7 l 12 -14" class="coche" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="101">Kbis · moins de 3 mois</text>
+      </g>
+      <g class="piece f2">
+        <rect x="58" y="124" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 144 l 6 7 l 12 -14" class="coche f2" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="149">Attestation URSSAF</text>
+      </g>
+      <g class="piece f3">
+        <rect x="58" y="172" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 192 l 6 7 l 12 -14" class="coche f3" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="197">Assurance décennale</text>
+      </g>
+      <g class="piece f4">
+        <rect x="58" y="220" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 240 l 6 7 l 12 -14" class="coche f4" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="245">DC1 · DC2</text>
+      </g>
+      <g class="piece f5">
+        <rect x="58" y="268" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 288 l 6 7 l 12 -14" class="coche f5" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="293">Références de chantiers</text>
+      </g>
+      <g class="piece f6">
+        <rect x="58" y="316" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 336 l 6 7 l 12 -14" class="coche f6" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="341">Mémoire technique</text>
+      </g>
+      <g class="piece f7">
+        <rect x="58" y="364" width="290" height="40" rx="12" class="boite"/>
+        <path d="M 302 384 l 6 7 l 12 -14" class="coche f7" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="80" y="389">Critère environnemental</text>
+      </g>
     </g>
 
-    <!-- Les douze processus de l'entreprise -->
-    <g id="tuiles">
-      <g><rect class="tuile tuile-vue c1" x="58"  y="86"  width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c1" x="58"  y="160" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c1" x="58"  y="234" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c2" x="262" y="86"  width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c2" x="262" y="160" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c2" x="262" y="234" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c3" x="466" y="86"  width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c3" x="466" y="160" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c3" x="466" y="234" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c4" x="670" y="86"  width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c4" x="670" y="160" width="176" height="58" rx="13"/></g>
-      <g><rect class="tuile tuile-vue c4" x="670" y="234" width="176" height="58" rx="13"/></g>
-    </g>
+    <!-- ── Le dossier qui se remplit ── -->
+    <path d="M 420 130 h 96 l 18 22 h 116 a 16 16 0 0 1 16 16 v 148 a 16 16 0 0 1 -16 16
+             h -230 a 16 16 0 0 1 -16 -16 v -170 a 16 16 0 0 1 16 -16 z"
+          class="boite" stroke="rgba(168,85,247,.5)"
+          style="filter:drop-shadow(0 0 26px rgba(168,85,247,.22))"/>
+    <text x="535" y="222" class="etiq" text-anchor="middle">Dossier de candidature</text>
+    <text x="535" y="252" class="titre" text-anchor="middle" style="font-size:19px">7 / 7</text>
+    <text x="535" y="274" class="sstitre" text-anchor="middle">pièces conformes</text>
 
-    <!-- Libellés : toujours lisibles, même à l'arrêt -->
-    <g class="titre" style="font-size:12px">
-      <text x="76" y="112">Devis &amp; relances</text>
-      <text x="76" y="186">Saisie comptable</text>
-      <text x="76" y="260">Support client</text>
-      <text x="280" y="112">Suivi de chantier</text>
-      <text x="280" y="186">Reporting</text>
-      <text x="280" y="260">Recrutement</text>
-      <text x="484" y="112">Appels d'offres</text>
-      <text x="484" y="186">Achats</text>
-      <text x="484" y="260">Planning</text>
-      <text x="688" y="112">Facturation</text>
-      <text x="688" y="186">Veille</text>
-      <text x="688" y="260">Archivage</text>
-    </g>
+    <!-- ── Le compte à rebours ── -->
+    <circle cx="790" cy="150" r="54" fill="none" stroke="rgba(245,158,11,.14)" stroke-width="9"/>
+    <circle cx="790" cy="150" r="54" fill="none" stroke="#f59e0b" stroke-width="9"
+            stroke-linecap="round" class="compte"/>
+    <text x="790" y="146" class="titre" text-anchor="middle" style="font-size:24px">6</text>
+    <text x="790" y="167" class="sstitre" text-anchor="middle" style="font-size:10.5px">jours</text>
+    <text x="790" y="228" class="etiq" text-anchor="middle" style="fill:#f59e0b">Remise le 12/08</text>
 
-    <!-- Les notes : ce que le balayage a trouvé -->
-    <g class="sstitre" style="font-size:10px;font-weight:700">
-      <g class="note c1"><text x="76"  y="130" class="fort">Potentiel fort · 8,4 h/sem</text></g>
-      <g class="note c1"><text x="76"  y="204" class="fort">Potentiel fort · 6,1 h/sem</text></g>
-      <g class="note c1"><text x="76"  y="278" class="moyen">Moyen · 3,2 h/sem</text></g>
-      <g class="note c2"><text x="280" y="130" class="moyen">Moyen · 2,8 h/sem</text></g>
-      <g class="note c2"><text x="280" y="204" class="fort">Potentiel fort · 5,5 h/sem</text></g>
-      <g class="note c2"><text x="280" y="278" class="faible">Faible · humain requis</text></g>
-      <g class="note c3"><text x="484" y="130" class="fort">Potentiel fort · 9,7 h/sem</text></g>
-      <g class="note c3"><text x="484" y="204" class="moyen">Moyen · 2,1 h/sem</text></g>
-      <g class="note c3"><text x="484" y="278" class="moyen">Moyen · 4,0 h/sem</text></g>
-      <g class="note c4"><text x="688" y="130" class="fort">Potentiel fort · 7,2 h/sem</text></g>
-      <g class="note c4"><text x="688" y="204" class="faible">Faible · déjà outillé</text></g>
-      <g class="note c4"><text x="688" y="278" class="moyen">Moyen · 1,9 h/sem</text></g>
-    </g>
-
-    <!-- Le trait de sonde, au premier plan : lui seul doit passer devant. -->
-    <g class="sonde">
-      <rect x="-1.4" y="66" width="2.8" height="246" fill="url(#sonde)"/>
-      <circle cx="0" cy="66" r="4" fill="#a855f7"/>
-      <circle cx="0" cy="312" r="4" fill="#06b6d4"/>
-    </g>
-
-    <!-- Le total, qui n'a de sens qu'une fois le balayage terminé -->
-    <g class="revele" style="animation-duration:6s;animation-delay:.4s">
-      <rect x="58" y="330" width="788" height="52" rx="14" class="boite"/>
-      <text x="80" y="353" class="etiq">Total identifié</text>
-      <text x="80" y="371" class="titre" style="font-size:15px">
-        50,9 h par semaine récupérables sur 12 processus
-      </text>
+    <!-- ── L'issue ── -->
+    <g class="pret">
+      <rect x="676" y="286" width="228" height="60" rx="16" class="boite"
+            stroke="rgba(74,222,128,.55)"/>
+      <path d="M 702 316 l 7 8 l 14 -17" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round"/>
+      <text x="736" y="311" class="titre" style="font-size:13px">Dossier déposé</text>
+      <text x="736" y="329" class="sstitre">4 jours avant l'échéance</text>
     </g>
   </svg>
     <svg class="etroit" viewBox="0 0 420 700" role="img"
-       aria-label="Balayage d'audit qui descend sur six processus, chacun noté au passage.">
-    <defs>
-      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%%" stop-color="#7c3aed"/><stop offset="55%%" stop-color="#a855f7"/>
-        <stop offset="100%%" stop-color="#06b6d4"/>
-      </linearGradient>
-      <linearGradient id="accentV" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%%" stop-color="#a855f7"/><stop offset="100%%" stop-color="#06b6d4"/>
-      </linearGradient>
-      <linearGradient id="sondeV" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
-        <stop offset="50%" stop-color="#a855f7" stop-opacity=".95"/>
-        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <style>
-      .sondeV{ animation:descend 6s cubic-bezier(.45,0,.2,1) infinite }
-      @keyframes descend{ 0%{transform:translateY(0)} 72%,100%{transform:translateY(534px)} }
-      .l1{animation-delay:.4s} .l2{animation-delay:1.1s} .l3{animation-delay:1.8s}
-      .l4{animation-delay:2.5s} .l5{animation-delay:3.2s} .l6{animation-delay:3.9s}
-    </style>
-    <text x="34" y="42" class="etiq">Processus analysés</text>
-    <rect class="tuile tuile-vue l1" x="26" y="62" width="368" height="72" rx="15"/>
-    <text x="48" y="92" class="titre" style="font-size:14px">Devis & relances</text>
-    <g class="note l1"><text x="48" y="114" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 8,4 h/sem</text></g>
-    <rect class="tuile tuile-vue l2" x="26" y="150" width="368" height="72" rx="15"/>
-    <text x="48" y="180" class="titre" style="font-size:14px">Saisie comptable</text>
-    <g class="note l2"><text x="48" y="202" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 6,1 h/sem</text></g>
-    <rect class="tuile tuile-vue l3" x="26" y="238" width="368" height="72" rx="15"/>
-    <text x="48" y="268" class="titre" style="font-size:14px">Support client</text>
-    <g class="note l3"><text x="48" y="290" class="moyen" style="font-size:12px;font-weight:700">Moyen · 3,2 h/sem</text></g>
-    <rect class="tuile tuile-vue l4" x="26" y="326" width="368" height="72" rx="15"/>
-    <text x="48" y="356" class="titre" style="font-size:14px">Suivi de chantier</text>
-    <g class="note l4"><text x="48" y="378" class="moyen" style="font-size:12px;font-weight:700">Moyen · 2,8 h/sem</text></g>
-    <rect class="tuile tuile-vue l5" x="26" y="414" width="368" height="72" rx="15"/>
-    <text x="48" y="444" class="titre" style="font-size:14px">Appels d'offres</text>
-    <g class="note l5"><text x="48" y="466" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 9,7 h/sem</text></g>
-    <rect class="tuile tuile-vue l6" x="26" y="502" width="368" height="72" rx="15"/>
-    <text x="48" y="532" class="titre" style="font-size:14px">Facturation</text>
-    <g class="note l6"><text x="48" y="554" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 7,2 h/sem</text></g>
-    <g class="sondeV">
-      <rect x="26" y="-1.6" width="368" height="3.2" fill="url(#sondeV)"/>
-      <circle cx="26" cy="0" r="4" fill="#a855f7"/><circle cx="394" cy="0" r="4" fill="#06b6d4"/>
-    </g>
-    <g class="revele" style="animation-duration:6s;animation-delay:.4s">
-      <rect x="26" y="618" width="368" height="56" rx="14" class="boite"/>
-      <text x="46" y="642" class="etiq">Total identifié</text>
-      <text x="46" y="662" class="titre" style="font-size:14px">50,9 h par semaine récupérables</text>
+       aria-label="Six pièces tombent dans le dossier et se cochent pendant qu'un compte à rebours se réduit.">
+    <defs>      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+    <style>.compteV{ stroke-dasharray:270; animation:decompte 8s linear infinite;
+                     transform:rotate(-90deg); transform-origin:330px 52px }</style>
+    <text x="26" y="40" class="etiq">Pièces du dossier</text>
+    <circle cx="330" cy="52" r="43" fill="none" stroke="rgba(245,158,11,.14)" stroke-width="8"/>
+    <circle cx="330" cy="52" r="43" fill="none" stroke="#f59e0b" stroke-width="8"
+            stroke-linecap="round" class="compteV"/>
+    <text x="330" y="50" class="titre" text-anchor="middle" style="font-size:20px">6</text>
+    <text x="330" y="68" class="sstitre" text-anchor="middle" style="font-size:10px">jours</text>
+    <g class="piece "><rect x="26" y="108" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 131 l 7 8 l 14 -16" class="coche " fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="137" class="titre" style="font-size:13.5px">Kbis · moins de 3 mois</text></g>
+    <g class="piece f2"><rect x="26" y="166" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 189 l 7 8 l 14 -16" class="coche f2" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="195" class="titre" style="font-size:13.5px">Attestation URSSAF</text></g>
+    <g class="piece f3"><rect x="26" y="224" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 247 l 7 8 l 14 -16" class="coche f3" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="253" class="titre" style="font-size:13.5px">Assurance décennale</text></g>
+    <g class="piece f4"><rect x="26" y="282" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 305 l 7 8 l 14 -16" class="coche f4" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="311" class="titre" style="font-size:13.5px">DC1 · DC2</text></g>
+    <g class="piece f5"><rect x="26" y="340" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 363 l 7 8 l 14 -16" class="coche f5" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="369" class="titre" style="font-size:13.5px">Références de chantiers</text></g>
+    <g class="piece f6"><rect x="26" y="398" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 421 l 7 8 l 14 -16" class="coche f6" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="427" class="titre" style="font-size:13.5px">Mémoire technique</text></g>
+    <path d="M 100 470 h 70 l 16 20 h 134 a 15 15 0 0 1 15 15 v 110 a 15 15 0 0 1 -15 15
+             h -220 a 15 15 0 0 1 -15 -15 v -130 a 15 15 0 0 1 15 -15 z" class="boite"
+          stroke="rgba(168,85,247,.5)" style="filter:drop-shadow(0 0 24px rgba(168,85,247,.22))"/>
+    <text x="210" y="536" class="etiq" text-anchor="middle">Dossier de candidature</text>
+    <text x="210" y="568" class="titre" text-anchor="middle" style="font-size:22px">6 / 6</text>
+    <text x="210" y="590" class="sstitre" text-anchor="middle">pièces conformes</text>
+    <g class="pret">
+      <rect x="70" y="628" width="280" height="52" rx="15" class="boite" stroke="rgba(74,222,128,.55)"/>
+      <path d="M 96 654 l 7 8 l 14 -17" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round"/>
+      <text x="130" y="650" class="titre" style="font-size:13px">Dossier déposé</text>
+      <text x="130" y="668" class="sstitre">4 jours avant l'échéance</text>
     </g>
   </svg>
   </div>
-  <a href="contact.html" class="btn">Démarrer par un audit →</a>
+  <a href="contact.html" class="btn">Faire étudier un avis de marché →</a>
 </header>
-<a href="marches-publics.html" class="porte-btp">
-  <b>Vous répondez à des appels d'offres BTP ?</b><br>
-  <span>Montage de dossiers de candidature pour les marchés publics : veille, pièces, mémoire technique, dépôt. →</span>
-</a>
-
-
-<article class="content">
-
-  <section>
-    <h2 data-v>Pourquoi commencer par un audit avant tout investissement IA ?</h2>
-    <p>La majorité des projets IA qui échouent partagent le même point de départ : une décision prise sans diagnostic préalable. On achète une licence Copilot parce qu'un concurrent l'utilise. On déploie ChatGPT en entreprise sans cadre de gouvernance. On automatise un processus qui n'était pas le bon. <strong>L'audit IA est la seule étape qui garantit que vous investissez au bon endroit.</strong></p>
-    <p>Un audit Quantum Consulting n'est pas un rapport générique. C'est une immersion dans vos processus réels, avec vos vrais outils, vos vraies contraintes (budgétaires, techniques, réglementaires). Nous cartographions ce qui peut être amélioré par l'IA, nous estimons le ROI de chaque opportunité et nous benchmarkons les modèles disponibles (Claude d'Anthropic, GPT-4o d'OpenAI, Mistral AI, Meta Llama, Google Gemini) pour identifier lequel correspond le mieux à votre contexte.</p>
-    <p>À l'issue d'un audit, vous disposez d'un actif stratégique : une feuille de route IA priorisée sur 12 mois, avec des estimations de gains, des recommandations de modèles et une séquence de déploiement réaliste. Pas de FOMO, pas de dépenses inutiles. Uniquement ce qui génère de la valeur dans votre organisation.</p>
-  </section>
-
-  <div class="stat-row">
-    <div class="stat-box" data-v><span class="stat-v g-text">48h</span><div class="stat-l">Durée d'un audit flash sur 2 processus ciblés</div></div>
-    <div class="stat-box" data-v data-d="1"><span class="stat-v g-text">3–5</span><div class="stat-l">Opportunités IA à fort ROI identifiées en moyenne</div></div>
-    <div class="stat-box" data-v data-d="2"><span class="stat-v g-text">6 sem.</span><div class="stat-l">Délai typique entre audit et premiers résultats concrets</div></div>
-  </div>
-
-  <section>
-    <h2 data-v>Les 3 niveaux d'audit proposés</h2>
-    <div class="three-col">
-      <div class="card" data-v>
-        <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--purple-l)" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></span>
-        <h3>Audit Flash (2 jours)</h3>
-        <p>Focus sur 1 à 2 processus ciblés. Idéal pour valider une opportunité avant d'engager un budget plus important.</p>
-        <ul>
-          <li>Analyse de 2 processus prioritaires</li>
-          <li>Benchmark des modèles IA adaptés</li>
-          <li>Estimation ROI et délai de déploiement</li>
-          <li>Session restitution dirigeant (1h)</li>
-          <li>Rapport synthétique 8-12 pages</li>
-        </ul>
-      </div>
-      <div class="card" data-v data-d="1">
-        <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
-        <h3>Audit Complet (2 semaines)</h3>
-        <p>Cartographie exhaustive de votre organisation. L'audit de référence pour une transformation IA structurée sur 12 mois.</p>
-        <ul>
-          <li>Entretiens avec toutes les équipes clés</li>
-          <li>Cartographie complète des flux de données</li>
-          <li>Analyse de 8 à 15 processus candidats</li>
-          <li>Feuille de route priorisée 12 mois</li>
-          <li>Présentation comité de direction</li>
-        </ul>
-      </div>
-      <div class="card" data-v data-d="2">
-        <span class="ico-big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-        <h3>Audit Technique DSI</h3>
-        <p>Pour les équipes IT : évaluation de l'architecture existante, des APIs disponibles et des contraintes de souveraineté pour un déploiement IA on-premise ou cloud privé.</p>
-        <ul>
-          <li>Audit de l'infrastructure SI existante</li>
-          <li>Évaluation Mistral AI, Meta Llama on-premise</li>
-          <li>Architecture cible et plan de migration</li>
-          <li>Analyse des risques et plan de conformité</li>
-          <li>Documentation technique complète</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 data-v>Ce que couvre un audit Quantum Consulting</h2>
-    <div class="two-col">
-      <div class="card" data-v>
-        <h3>Cartographie des processus</h3>
-        <p>Identification et modélisation de tous vos flux de travail manuels ou semi-automatisés. Repérage des points de friction, des tâches répétitives et des goulots d'étranglement candidats à l'IA.</p>
-      </div>
-      <div class="card" data-v data-d="1">
-        <h3>Potentiel d'automatisation</h3>
-        <p>Évaluation du niveau d'automatisation possible pour chaque processus : de la simple assistance à l'autonomie complète d'un agent IA. Estimation du temps récupéré par équipe.</p>
-      </div>
-      <div class="card" data-v data-d="2">
-        <h3>Benchmark des modèles LLM</h3>
-        <p>Comparaison des modèles IA disponibles selon vos contraintes : Claude (Anthropic) pour le raisonnement, GPT-4o (OpenAI) pour le multimodal, Mistral AI pour la souveraineté européenne, Meta Llama pour le on-premise.</p>
-      </div>
-      <div class="card" data-v data-d="3">
-        <h3>Gouvernance &amp; conformité RGPD</h3>
-        <p>Analyse des risques liés à l'utilisation de données dans les modèles IA. Recommandations sur les clauses contractuelles, la localisation des données et les droits des personnes concernées.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="hl-box" data-v>
-    <h3>Modèles IA évalués lors de l'audit</h3>
-    <div class="llm-list">
-      <div class="llm-item"><div class="llm-model">Claude 3.5 Sonnet (Anthropic)</div><div class="llm-zone">Raisonnement complexe, analyse de documents longs, agents autonomes, écriture structurée</div></div>
-      <div class="llm-item"><div class="llm-model">GPT-4o (OpenAI)</div><div class="llm-zone">Multimodal, analyse images et documents mixtes, traitement de flux hétérogènes</div></div>
-      <div class="llm-item"><div class="llm-model">Mistral Large (Mistral AI)</div><div class="llm-zone">Souveraineté européenne, conformité RGPD, déploiement on-premise en France</div></div>
-      <div class="llm-item"><div class="llm-model">Meta Llama 3 (Meta)</div><div class="llm-zone">Déploiement entièrement privé, coût marginal nul, personnalisation fine sur vos données</div></div>
-      <div class="llm-item"><div class="llm-model">Google Gemini 1.5 Pro (Google)</div><div class="llm-zone">RAG documentaire, fenêtre de contexte 1M tokens, recherche dans Google Workspace</div></div>
-      <div class="llm-item"><div class="llm-model">DeepSeek R1 (DeepSeek)</div><div class="llm-zone">Raisonnement structuré, analyse financière et technique, coût très réduit à volume</div></div>
-    </div>
-  </div>
-
-  <section>
-    <h2 data-v>Comment se déroule un audit</h2>
-    <div class="step-list">
-      <div class="step-row" data-v>
-        <div class="step-n">1</div>
-        <div class="step-body">
-          <h4>Appel de cadrage (30 min, gratuit)</h4>
-          <p>Échange pour comprendre votre secteur, vos enjeux, votre maturité IA et vos contraintes. À l'issue, nous vous proposons le type d'audit adapté à votre situation.</p>
-        </div>
-      </div>
-      <div class="step-row" data-v>
-        <div class="step-n">2</div>
-        <div class="step-body">
-          <h4>Immersion terrain</h4>
-          <p>Entretiens avec vos équipes, observation des processus réels, analyse de vos outils existants. Nous travaillons avec vos données, pas avec des cas théoriques.</p>
-        </div>
-      </div>
-      <div class="step-row" data-v>
-        <div class="step-n">3</div>
-        <div class="step-body">
-          <h4>Analyse &amp; modélisation</h4>
-          <p>Cartographie des flux, évaluation du potentiel d'automatisation, benchmark des modèles IA pertinents pour chaque cas d'usage identifié. Estimation ROI pour chaque opportunité.</p>
-        </div>
-      </div>
-      <div class="step-row" data-v>
-        <div class="step-n">4</div>
-        <div class="step-body">
-          <h4>Restitution à votre direction</h4>
-          <p>Présentation des résultats en session de travail avec votre comité de direction. Échanges, questions, ajustements de priorités. Livrables remis à l'issue de la séance.</p>
-        </div>
-      </div>
-      <div class="step-row" data-v>
-        <div class="step-n">5</div>
-        <div class="step-body">
-          <h4>Feuille de route sur 12 mois</h4>
-          <p>Séquencement des initiatives IA par ordre de priorité et de ROI estimé, avec budget indicatif et ressources nécessaires pour chaque étape. Livrable exploitable dès le lendemain.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 data-v>Questions fréquentes sur nos audits IA</h2>
-    <div class="two-col">
-      <div class="card" data-v>
-        <h3>Combien coûte un audit IA ?</h3>
-        <p>Un audit Flash commence à 2 500€ HT. Un audit complet pour une PME de 20 à 100 personnes se situe entre 5 000€ et 10 000€ HT selon le périmètre. Chaque mission inclut un devis détaillé et transparent avant démarrage. Financement partiel possible via dispositifs de conseil aux entreprises selon votre région.</p>
-      </div>
-      <div class="card" data-v data-d="1">
-        <h3>Faut-il un budget implémentation prévu à l'avance ?</h3>
-        <p>Non : c'est précisément le rôle de l'audit de vous donner les chiffres pour construire votre budget implémentation. Les opportunités identifiées peuvent être réalisées progressivement, en commençant par les quick wins à faible investissement. Aucune mise de fonds importante n'est nécessaire pour démarrer.</p>
-      </div>
-    </div>
-  </section>
-
-</article>
-</main>
-
-<section class="cta-sec" aria-labelledby="cta-h">
-  <h2 id="cta-h" data-v>Commencez par un appel de cadrage gratuit</h2>
-  <p data-v data-d="1">30 minutes pour évaluer ensemble si un audit IA est pertinent pour votre organisation, et quel format correspond à vos enjeux du moment.</p>
-  <a href="contact.html" class="btn" data-v data-d="2">Réserver l'appel gratuit →</a>
+<main class="content">
+<section>
+  <h2>Le dossier incomplet vaut zéro</h2>
+  <p>Une entreprise du BTP perd rarement un marché sur son prix. Elle le perd sur une attestation
+  périmée, une pièce oubliée, un mémoire technique bâclé la veille du dépôt. Le travail
+  administratif d'un appel d'offres se compte en journées, et il tombe toujours au moment où le
+  chantier en cours réclame le plus d'attention.</p>
+  <p>Nous prenons ce travail en charge de bout en bout : repérage des consultations qui vous
+  correspondent, collecte et suivi de validité des pièces, rédaction du mémoire technique, dépôt
+  sur la plateforme.</p>
 </section>
-
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
+<section>
+  <h2>Ce que nous suivons pour vous</h2>
+  <p><strong>La veille.</strong> Les consultations publiées sur le BOAMP et les profils d'acheteurs,
+  filtrées sur vos codes d'activité, votre zone d'intervention et vos capacités réelles. Vous ne
+  recevez que ce que vous pouvez gagner.</p>
+  <p><strong>Les pièces.</strong> Kbis, attestations URSSAF et fiscale, assurances décennale et
+  responsabilité civile, DC1, DC2, références de chantiers. Chaque pièce a une date d'expiration,
+  et c'est cette date que nous surveillons — pas seulement sa présence au dossier.</p>
+  <p><strong>Le mémoire technique.</strong> Le seul document où l'entreprise se distingue vraiment.
+  Moyens humains et matériels, méthodologie, gestion des déchets, et depuis le 21 août 2026 le
+  critère environnemental, devenu obligatoire.</p>
+</section>
+<section class="cta-sec">
+  <h2>Faites étudier un avis de marché</h2>
+  <p>Envoyez-nous une consultation qui vous intéresse. Nous vous disons si elle vaut le coup et ce
+  qu'il faudrait réunir.</p>
+  <a href="contact.html" class="btn">Nous envoyer un avis de marché →</a>
+</section>
+</main>
 <footer role="contentinfo">
   <p>© 2026 Quantum Consulting · Cabinet de conseil IA · Transformation des entreprises · Paris, France</p>
   <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
