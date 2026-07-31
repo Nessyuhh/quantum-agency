@@ -61,6 +61,14 @@ function auditer(doc, win, largeur){
   for (const c of conteneurs){
     const enf = [...c.children].filter(e => {
       const s = win.getComputedStyle(e);
+      /* ⚠️ Exclure les éléments d'apparition NON encore révélés : ils portent
+         [data-v] avec opacity:0 et transform:translateY(28px), donc ils
+         chevauchent leur voisin tant que .in-view n'est pas posé. C'est un
+         état transitoire qu'aucun visiteur ne voit — au moment où il y arrive,
+         l'apparition s'est déclenchée. Les compter donnait 18 fausses
+         superpositions, toutes de 12 ou 28 px, soit exactement les valeurs de
+         translateY du CSS. */
+      if (e.hasAttribute('data-v') && !e.classList.contains('in-view')) return false;
       return s.display !== 'none' && s.visibility !== 'hidden' &&
              s.position !== 'absolute' && s.position !== 'fixed' && s.float === 'none';
     });

@@ -73,3 +73,42 @@ nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)
 .skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;background:#7c3aed;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
 .n-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
 .breadcrumb a{color:var(--muted);text-decoration:none}
+
+/* ── Repli des blocs longs sur petit écran ─────────────────────────────────
+   Voir assets/replier.js pour la mesure qui motive ce comportement : les pages
+   de service faisaient 9 à 11 écrans sur mobile contre 5 à 6 en desktop.
+   Ces règles ne s'appliquent QUE si le script a posé data-replie ; sans
+   JavaScript, aucun sélecteur ne correspond et tout reste ouvert. */
+[data-replie="ferme"]{ display:none }
+
+.replier-btn{
+  display:none; width:100%; align-items:center; justify-content:space-between;
+  gap:12px; margin:10px 0; padding:16px 18px;         /* 52px de haut : au-dessus
+                                                          des 44px minimum */
+  background:rgba(168,85,247,.07); border:1px solid rgba(168,85,247,.22);
+  border-radius:14px; color:#e2e8f0; font:600 15px/1.35 inherit;
+  text-align:left; cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.replier-btn:hover{ background:rgba(168,85,247,.12) }
+.replier-btn:focus-visible{ outline:2px solid #a855f7; outline-offset:2px }
+.replier-chev{ flex-shrink:0; color:#a855f7; transition:transform .2s ease }
+.replier-btn[aria-expanded="true"] .replier-chev{ transform:rotate(180deg) }
+
+@media (max-width:640px){ .replier-btn{ display:flex } }
+
+/* ── Cibles tactiles ───────────────────────────────────────────────────────
+   Mesuré : de 8 à 45 éléments par page sous les 44 px du minimum Apple, jusqu'à
+   45 sur cas-usage. Sur un téléphone, ce sont des liens qu'on rate.
+   On agrandit la zone SANS toucher à la mise en page : le padding vertical
+   d'un lien en ligne n'affecte pas le flux du texte. */
+@media (max-width:640px){
+  a:not([class]), nav a, footer a, .n-links a, .pmenu-lnk, .nav-dd-menu a{
+    min-height:44px; display:inline-flex; align-items:center;
+  }
+  button, [role="button"], .btn, .n-cta, .pmenu-cta, input[type="submit"]{
+    min-height:44px;
+  }
+  /* Un champ sous 16px déclenche un zoom automatique sur iOS à la mise au
+     point, et l'utilisateur se retrouve avec une page décalée. */
+  input, textarea, select{ font-size:16px }
+}
