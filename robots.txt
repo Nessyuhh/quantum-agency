@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.quantum-agency.fr/sitemap.xml
+Sitemap: https://quantum-agency.fr/sitemap.xml

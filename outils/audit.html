@@ -69,6 +69,12 @@ function auditer(doc, win, largeur){
          superpositions, toutes de 12 ou 28 px, soit exactement les valeurs de
          translateY du CSS. */
       if (e.hasAttribute('data-v') && !e.classList.contains('in-view')) return false;
+      /* ⚠️ Ignorer les éléments EN LIGNE. Un <strong> qui s'étend sur deux
+         lignes a un rectangle englobant couvrant toute la largeur des deux :
+         deux <strong> d'un même paragraphe se « chevauchent » alors qu'ils ne
+         se touchent jamais visuellement. Le chevauchement n'a de sens qu'entre
+         éléments de bloc. */
+      if (s.display.indexOf('inline') === 0) return false;
       return s.display !== 'none' && s.visibility !== 'hidden' &&
              s.position !== 'absolute' && s.position !== 'fixed' && s.float === 'none';
     });
