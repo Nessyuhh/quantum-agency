@@ -100,3 +100,81 @@ svg.etroit{ display:none }
    Il n'y a donc plus rien à écrire au-dessus. */
 .hero-canevas{ margin:26px auto 30px; max-width:920px }
 @media (max-width:1023px){ .hero-canevas{ margin:20px auto 24px } }
+
+/* ═══ HÉROS PLEIN ÉCRAN ══════════════════════════════════════════════════════
+   Inspiré de la structure de Donoor : chez eux le visuel n'est pas un encart,
+   c'est le FOND — la photo occupe tout le premier écran et le texte est posé
+   dessus. L'animation était jusqu'ici enfermée dans une carte sous le titre,
+   donc reléguée au rang d'illustration alors qu'elle est le meilleur argument
+   de la page.
+
+   Ici elle devient le fond du héros. Le titre passe devant.
+   La direction artistique ne change pas : même fond, même violet, même
+   typographie. Seule la mise en page bouge.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.pg-hero.plein{
+  position:relative; min-height:min(92vh,860px); display:flex;
+  flex-direction:column; align-items:center; justify-content:center;
+  padding:120px 5% 90px; overflow:hidden; text-align:center;
+}
+
+/* Le canevas en fond : il déborde volontairement pour remplir l'écran. */
+.hero-fond{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-fond .canevas{
+  /* Ratio respecte, largeur pleine, opacite basse. Le fond doit SUGGERER un
+     systeme qui tourne derriere le titre, pas se lire. A 42 % il concurrencait
+     encore ; a 1,9x d'echelle (slice) il inondait l'ecran. */
+  width:100%; max-width:1400px; height:auto; aspect-ratio:920/430;
+  border:0; border-radius:0; box-shadow:none; opacity:.16;
+}
+/* Un voile qui creuse le centre : le texte doit rester lisible sans que
+   l'animation disparaisse. Un simple assombrissement uniforme tuerait les
+   deux. */
+.pg-hero.plein::after{
+  content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+  /* Le voile doit CREUSER le centre, pas assombrir uniformément : les libellés
+     de l'animation concurrençaient le titre au lieu de l'accompagner. */
+  background:radial-gradient(90% 68% at 50% 50%,
+    rgba(5,5,10,.97) 0%, rgba(5,5,10,.93) 30%, rgba(5,5,10,.62) 62%,
+    rgba(5,5,10,.18) 85%, transparent 100%);
+}
+.hero-avant{ position:relative; z-index:2; max-width:960px; margin:0 auto }
+
+/* Titre : court, lourd, deux lignes, point final. « Créez votre QR Code.
+   Collectez plus de dons. » se lit en une seconde ; une proposition élégante
+   de quatre lignes ne se lit pas du tout. */
+.pg-hero.plein h1{
+  font-size:clamp(38px,6.2vw,76px); line-height:1.02; letter-spacing:-.035em;
+  font-weight:900; margin:0 auto 20px; max-width:16ch;
+}
+.pg-hero.plein .pg-sub{
+  font-size:clamp(15.5px,1.5vw,19px); max-width:50ch; margin:0 auto 34px;
+  color:rgba(226,232,240,.72);
+}
+.hero-duo{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+.hero-duo .btn{ margin:0 }
+/* Le second bouton translucide, comme chez Donoor : présent sans concurrencer. */
+.btn-fantome{
+  display:inline-flex; align-items:center; gap:8px; min-height:48px;
+  padding:14px 24px; border-radius:100px; font-weight:600; font-size:15px;
+  color:#e2e8f0; text-decoration:none;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  transition:background .15s,border-color .15s;
+}
+.btn-fantome:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.3) }
+
+.pg-hero.plein .breadcrumb{ margin-bottom:18px; opacity:.75 }
+.pg-hero.plein .pg-tag{ margin-bottom:22px }
+
+@media (max-width:1023px){
+  .pg-hero.plein{ min-height:auto; padding:96px 6% 72px }
+  .hero-fond .canevas{ width:150%; opacity:.5 }
+  .pg-hero.plein::after{
+    background:radial-gradient(140% 80% at 50% 50%,
+      rgba(5,5,10,.92) 0%, rgba(5,5,10,.78) 45%, rgba(5,5,10,.35) 85%, transparent 100%);
+  }
+}
