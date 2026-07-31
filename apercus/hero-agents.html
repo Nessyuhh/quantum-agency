@@ -70,7 +70,7 @@ recommence</em>. Une flèche droite dirait « script » ; seul un cycle dit « a
 qui rebondit sur le périmètre démontre que rien ne sort, au lieu de l'affirmer.</p>
 
 <div class="canevas">
-  <svg viewBox="0 0 920 430" role="img"
+  <svg class="large" viewBox="0 0 920 430" role="img"
        aria-label="Un agent tourne en boucle : percevoir, décider, agir, observer, puis reprendre.
                    L'ensemble est enfermé dans un périmètre sur lequel une tentative de sortie de
                    données vient rebondir.">
@@ -137,6 +137,54 @@ qui rebondit sur le périmètre démontre que rien ne sort, au lieu de l'affirme
               style="filter:drop-shadow(0 0 10px rgba(245,158,11,.9))"/>
     </g>
     <circle cx="770" cy="222" r="4" class="heurt" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  </svg>
+
+  <svg class="etroit" viewBox="0 0 420 700" role="img"
+       aria-label="Un agent tourne en boucle percevoir, décider, agir, observer, dans un périmètre fermé.">
+    <defs>      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      <linearGradient id="accentV" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      <marker id="pointeV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5"
+              orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a855f7"/></marker>
+    </defs>
+    <style>
+      .jetonV{ offset-path:path("M 210 232 A 118 118 0 1 1 209.9 232"); offset-rotate:0deg;
+               animation:tourneV 8s linear infinite }
+      @keyframes tourneV{ to{ offset-distance:100% } }
+      @supports not (offset-path: path("M 0 0")){
+        .jetonV{ animation:orbiteV 8s linear infinite; transform-origin:210px 350px }
+        @keyframes orbiteV{ to{ transform:rotate(360deg) } } }
+    </style>
+    <rect x="24" y="94" width="372" height="512" rx="28" class="perimetre"/>
+    <text x="210" y="70" class="etiq" text-anchor="middle" style="fill:#67e8f9">Votre infrastructure</text>
+    <text x="210" y="88" class="etiq" text-anchor="middle" style="fill:#67e8f9">aucune donnée n'en sort</text>
+
+    <circle cx="210" cy="350" r="118" fill="none" stroke="rgba(168,85,247,.14)" stroke-width="2"/>
+    <path class="fleche"    d="M 293 267 A 118 118 0 0 1 293 433" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a2" d="M 293 433 A 118 118 0 0 1 127 433" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a3" d="M 127 433 A 118 118 0 0 1 127 267" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a4" d="M 127 267 A 118 118 0 0 1 293 267" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+
+    <g class="etape">   <rect x="122" y="152" width="176" height="50" rx="15" class="boite"/></g>
+    <text x="210" y="183" class="titre" text-anchor="middle">Percevoir</text>
+    <g class="etape s2"><rect x="238" y="325" width="158" height="50" rx="15" class="boite"/></g>
+    <text x="317" y="356" class="titre" text-anchor="middle">Décider</text>
+    <g class="etape s3"><rect x="122" y="498" width="176" height="50" rx="15" class="boite"/></g>
+    <text x="210" y="529" class="titre" text-anchor="middle">Agir</text>
+    <g class="etape s4"><rect x="24" y="325" width="158" height="50" rx="15" class="boite"/></g>
+    <text x="103" y="356" class="titre" text-anchor="middle">Observer</text>
+
+    <circle cx="210" cy="350" r="48" fill="url(#accentV)" opacity=".12"/>
+    <circle cx="210" cy="350" r="32" fill="url(#accentV)" opacity=".95"/>
+    <path d="M 210 331 L 216 344 L 229 350 L 216 356 L 210 369 L 204 356 L 191 350 L 204 344 Z"
+          fill="#0b0819" opacity=".92"/>
+    <circle class="jetonV" r="7" fill="#c4b5fd" style="filter:drop-shadow(0 0 11px rgba(196,181,253,.95))"/>
   </svg>
 </div>
 </body>

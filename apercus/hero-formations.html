@@ -44,7 +44,7 @@ qui monte par paliers dit en trois secondes ce qu'une grille de trois offres met
 expliquer — ce ne sont pas trois produits au choix, <em>c'est un chemin</em>.</p>
 
 <div class="canevas">
-  <svg viewBox="0 0 920 430" role="img"
+  <svg class="large" viewBox="0 0 920 430" role="img"
        aria-label="Progression en trois paliers : initiation, maîtrise et automatisation, puis
                    expert et stratégie. La jauge se remplit et chaque palier atteint affiche ce
                    qu'il rend capable de faire.">
@@ -117,6 +117,53 @@ expliquer — ce ne sont pas trois produits au choix, <em>c'est un chemin</em>.<
     <text x="460" y="392" class="sstitre" text-anchor="middle" style="font-size:11.5px">
       Chaque niveau suppose le précédent — on n'entre pas au niveau 3 par hasard
     </text>
+  </svg>
+
+  <svg class="etroit" viewBox="0 0 420 700" role="img"
+       aria-label="Progression en trois paliers, la jauge monte de l'initiation à l'expertise.">
+    <defs>      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      <linearGradient id="accentV" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient><clipPath id="pisteV"><rect x="30" y="66" width="34" height="536" rx="17"/></clipPath></defs>
+    <style>
+      .attelageV{ animation:monte 10s cubic-bezier(.5,0,.3,1) infinite }
+      @keyframes monte{
+        0%,6%{transform:translateY(0)} 26%,34%{transform:translateY(-179px)}
+        52%,60%{transform:translateY(-358px)} 80%,100%{transform:translateY(-536px)} }
+    </style>
+    <text x="30" y="42" class="etiq">Niveau de maîtrise</text>
+    <rect x="30" y="66" width="34" height="536" rx="17" fill="rgba(168,85,247,.13)"/>
+    <g clip-path="url(#pisteV)"><g class="attelageV">
+      <rect x="30" y="602" width="34" height="536" rx="17" fill="url(#fluxV)"/>
+    </g></g>
+    <g class="attelageV">
+      <circle cx="47" cy="602" r="13" fill="#0b0819" stroke="#a855f7" stroke-width="3"
+              style="filter:drop-shadow(0 0 12px rgba(168,85,247,.8))"/>
+    </g>
+
+    <rect x="88" y="440" width="308" height="162" rx="18" class="boite palier"/>
+    <rect x="88" y="252" width="308" height="162" rx="18" class="boite palier p2"/>
+    <rect x="88" y="64"  width="308" height="162" rx="18" class="boite palier p3"/>
+
+    <g class="etiq"><text x="110" y="474">Niveau 1</text><text x="110" y="286">Niveau 2</text>
+      <text x="110" y="98">Niveau 3</text></g>
+    <g class="titre" style="font-size:17px">
+      <text x="110" y="504">Initiation à l'IA</text>
+      <text x="110" y="316">Maîtrise &amp; Automatisation</text>
+      <text x="110" y="128">Expert &amp; Stratégie</text>
+    </g>
+    <g class="sstitre" style="font-size:12.5px">
+      <g class="gain"><text x="110" y="534">Vos équipes utilisent l'IA</text>
+        <text x="110" y="554">au quotidien, sans crainte</text>
+        <text x="110" y="578" style="fill:#4ade80;font-weight:700">2 à 4 h gagnées / semaine</text></g>
+      <g class="gain g2"><text x="110" y="346">Vous construisez vos propres</text>
+        <text x="110" y="370" style="fill:#4ade80;font-weight:700">workflows sans développeur</text></g>
+      <g class="gain g3"><text x="110" y="158">Vous pilotez une feuille de route</text>
+        <text x="110" y="182" style="fill:#4ade80;font-weight:700">IA sur 12 mois, chiffrée</text></g>
+    </g>
+    <text x="210" y="646" class="sstitre" text-anchor="middle" style="font-size:12px">
+      Chaque niveau suppose le précédent</text>
   </svg>
 </div>
 </body>

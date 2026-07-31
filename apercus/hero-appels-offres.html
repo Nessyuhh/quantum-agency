@@ -43,7 +43,7 @@ pendant que les pièces se rangent. Seule page où l'animation porte une tension
 démonstration.</p>
 
 <div class="canevas">
-  <svg viewBox="0 0 920 430" role="img"
+  <svg class="large" viewBox="0 0 920 430" role="img"
        aria-label="Sept pièces administratives tombent une à une dans un dossier de candidature et
                    se cochent, pendant qu'un compte à rebours se réduit jusqu'à la date limite de
                    remise.">
@@ -122,6 +122,57 @@ démonstration.</p>
       <path d="M 702 316 l 7 8 l 14 -17" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round"/>
       <text x="736" y="311" class="titre" style="font-size:13px">Dossier déposé</text>
       <text x="736" y="329" class="sstitre">4 jours avant l'échéance</text>
+    </g>
+  </svg>
+
+  <svg class="etroit" viewBox="0 0 420 700" role="img"
+       aria-label="Six pièces tombent dans le dossier et se cochent pendant qu'un compte à rebours se réduit.">
+    <defs>      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+    <style>.compteV{ stroke-dasharray:270; animation:decompte 8s linear infinite;
+                     transform:rotate(-90deg); transform-origin:330px 52px }</style>
+    <text x="26" y="40" class="etiq">Pièces du dossier</text>
+    <circle cx="330" cy="52" r="43" fill="none" stroke="rgba(245,158,11,.14)" stroke-width="8"/>
+    <circle cx="330" cy="52" r="43" fill="none" stroke="#f59e0b" stroke-width="8"
+            stroke-linecap="round" class="compteV"/>
+    <text x="330" y="50" class="titre" text-anchor="middle" style="font-size:20px">6</text>
+    <text x="330" y="68" class="sstitre" text-anchor="middle" style="font-size:10px">jours</text>
+    <g class="piece "><rect x="26" y="108" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 131 l 7 8 l 14 -16" class="coche " fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="137" class="titre" style="font-size:13.5px">Kbis · moins de 3 mois</text></g>
+    <g class="piece f2"><rect x="26" y="166" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 189 l 7 8 l 14 -16" class="coche f2" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="195" class="titre" style="font-size:13.5px">Attestation URSSAF</text></g>
+    <g class="piece f3"><rect x="26" y="224" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 247 l 7 8 l 14 -16" class="coche f3" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="253" class="titre" style="font-size:13.5px">Assurance décennale</text></g>
+    <g class="piece f4"><rect x="26" y="282" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 305 l 7 8 l 14 -16" class="coche f4" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="311" class="titre" style="font-size:13.5px">DC1 · DC2</text></g>
+    <g class="piece f5"><rect x="26" y="340" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 363 l 7 8 l 14 -16" class="coche f5" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="369" class="titre" style="font-size:13.5px">Références de chantiers</text></g>
+    <g class="piece f6"><rect x="26" y="398" width="368" height="46" rx="13" class="boite"/>
+      <path d="M 350 421 l 7 8 l 14 -16" class="coche f6" fill="none" stroke="#4ade80"
+            stroke-width="2.6" stroke-linecap="round"/>
+      <text x="48" y="427" class="titre" style="font-size:13.5px">Mémoire technique</text></g>
+    <path d="M 100 470 h 70 l 16 20 h 134 a 15 15 0 0 1 15 15 v 110 a 15 15 0 0 1 -15 15
+             h -220 a 15 15 0 0 1 -15 -15 v -130 a 15 15 0 0 1 15 -15 z" class="boite"
+          stroke="rgba(168,85,247,.5)" style="filter:drop-shadow(0 0 24px rgba(168,85,247,.22))"/>
+    <text x="210" y="536" class="etiq" text-anchor="middle">Dossier de candidature</text>
+    <text x="210" y="568" class="titre" text-anchor="middle" style="font-size:22px">6 / 6</text>
+    <text x="210" y="590" class="sstitre" text-anchor="middle">pièces conformes</text>
+    <g class="pret">
+      <rect x="70" y="628" width="280" height="52" rx="15" class="boite" stroke="rgba(74,222,128,.55)"/>
+      <path d="M 96 654 l 7 8 l 14 -17" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round"/>
+      <text x="130" y="650" class="titre" style="font-size:13px">Dossier déposé</text>
+      <text x="130" y="668" class="sstitre">4 jours avant l'échéance</text>
     </g>
   </svg>
 </div>

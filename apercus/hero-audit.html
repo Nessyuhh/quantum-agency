@@ -42,7 +42,7 @@ Le mouvement dévoile au lieu de circuler, et chaque gisement ne s'allume qu'<em
 passage de la sonde — c'est elle qui cause la découverte.</p>
 
 <div class="canevas">
-  <svg viewBox="0 0 920 430" role="img"
+  <svg class="large" viewBox="0 0 920 430" role="img"
        aria-label="Balayage d'audit sur douze processus de l'entreprise : chaque processus est
                    noté au passage de la sonde, du potentiel faible au potentiel fort.">
     <defs>
@@ -133,6 +133,58 @@ passage de la sonde — c'est elle qui cause la découverte.</p>
       <text x="80" y="371" class="titre" style="font-size:15px">
         50,9 h par semaine récupérables sur 12 processus
       </text>
+    </g>
+  </svg>
+
+  <svg class="etroit" viewBox="0 0 420 700" role="img"
+       aria-label="Balayage d'audit qui descend sur six processus, chacun noté au passage.">
+    <defs>
+      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%%" stop-color="#7c3aed"/><stop offset="55%%" stop-color="#a855f7"/>
+        <stop offset="100%%" stop-color="#06b6d4"/>
+      </linearGradient>
+      <linearGradient id="accentV" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%%" stop-color="#a855f7"/><stop offset="100%%" stop-color="#06b6d4"/>
+      </linearGradient>
+      <linearGradient id="sondeV" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#a855f7" stop-opacity=".95"/>
+        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <style>
+      .sondeV{ animation:descend 6s cubic-bezier(.45,0,.2,1) infinite }
+      @keyframes descend{ 0%{transform:translateY(0)} 72%,100%{transform:translateY(534px)} }
+      .l1{animation-delay:.4s} .l2{animation-delay:1.1s} .l3{animation-delay:1.8s}
+      .l4{animation-delay:2.5s} .l5{animation-delay:3.2s} .l6{animation-delay:3.9s}
+    </style>
+    <text x="34" y="42" class="etiq">Processus analysés</text>
+    <rect class="tuile tuile-vue l1" x="26" y="62" width="368" height="72" rx="15"/>
+    <text x="48" y="92" class="titre" style="font-size:14px">Devis & relances</text>
+    <g class="note l1"><text x="48" y="114" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 8,4 h/sem</text></g>
+    <rect class="tuile tuile-vue l2" x="26" y="150" width="368" height="72" rx="15"/>
+    <text x="48" y="180" class="titre" style="font-size:14px">Saisie comptable</text>
+    <g class="note l2"><text x="48" y="202" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 6,1 h/sem</text></g>
+    <rect class="tuile tuile-vue l3" x="26" y="238" width="368" height="72" rx="15"/>
+    <text x="48" y="268" class="titre" style="font-size:14px">Support client</text>
+    <g class="note l3"><text x="48" y="290" class="moyen" style="font-size:12px;font-weight:700">Moyen · 3,2 h/sem</text></g>
+    <rect class="tuile tuile-vue l4" x="26" y="326" width="368" height="72" rx="15"/>
+    <text x="48" y="356" class="titre" style="font-size:14px">Suivi de chantier</text>
+    <g class="note l4"><text x="48" y="378" class="moyen" style="font-size:12px;font-weight:700">Moyen · 2,8 h/sem</text></g>
+    <rect class="tuile tuile-vue l5" x="26" y="414" width="368" height="72" rx="15"/>
+    <text x="48" y="444" class="titre" style="font-size:14px">Appels d'offres</text>
+    <g class="note l5"><text x="48" y="466" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 9,7 h/sem</text></g>
+    <rect class="tuile tuile-vue l6" x="26" y="502" width="368" height="72" rx="15"/>
+    <text x="48" y="532" class="titre" style="font-size:14px">Facturation</text>
+    <g class="note l6"><text x="48" y="554" class="fort" style="font-size:12px;font-weight:700">Potentiel fort · 7,2 h/sem</text></g>
+    <g class="sondeV">
+      <rect x="26" y="-1.6" width="368" height="3.2" fill="url(#sondeV)"/>
+      <circle cx="26" cy="0" r="4" fill="#a855f7"/><circle cx="394" cy="0" r="4" fill="#06b6d4"/>
+    </g>
+    <g class="revele" style="animation-duration:6s;animation-delay:.4s">
+      <rect x="26" y="618" width="368" height="56" rx="14" class="boite"/>
+      <text x="46" y="642" class="etiq">Total identifié</text>
+      <text x="46" y="662" class="titre" style="font-size:14px">50,9 h par semaine récupérables</text>
     </g>
   </svg>
 </div>
