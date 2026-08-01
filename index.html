@@ -1977,19 +1977,41 @@ function toggleFaq(btn){
     formDots.forEach((d,i)=>d.classList.toggle('active',i===idx));
     if(stepLabel)stepLabel.textContent=`${idx+1} / 3`;
   }
-  function isInZone(){
-    const sy=window.scrollY;
-    return sy>=formOuter.offsetTop&&sy<formOuter.offsetTop+formOuter.offsetHeight;
+  /* ⚠️ offsetTop est relatif à l'offsetParent, PAS au document.
+     Ici offsetParent vaut section#formations, donc offsetTop valait 0 alors que
+     la section est à 4278 px du haut. Conséquences enchaînées :
+       · progress = scrollY - 0 = scrollY, donc la scène 3 était atteinte dès
+         deux écrans de défilement, bien avant d'arriver sur la section ;
+       · isInZone() était vrai de 0 à 2700 px, donc plus aucune mise à jour une
+         fois la section réellement atteinte : figé sur la scène 3, et 300vh à
+         faire défiler sans que rien ne bouge.
+     rect.top + scrollY donne la position réelle dans le document, et se
+     recalcule tout seul : aucun cache à invalider quand la mise en page bouge
+     (polices, images, ouverture d'une FAQ au-dessus). */
+  function docTop(){
+    return formOuter.getBoundingClientRect().top+window.scrollY;
   }
+  /* La distance réellement parcourue pendant que le panneau est collé n'est pas
+     la hauteur du conteneur : c'est cette hauteur MOINS un écran. Diviser par
+     innerHeight donnait des bornes fausses, et la scène 3 n'apparaissait qu'au
+     tout dernier pixel. */
   function getActive(){
-    const progress=window.scrollY-formOuter.offsetTop;
-    return Math.max(0,Math.min(TOTAL-1,Math.floor(progress/window.innerHeight)));
+    const progress=window.scrollY-docTop();
+    const parcours=Math.max(1,formOuter.offsetHeight-window.innerHeight);
+    return Math.max(0,Math.min(TOTAL-1,Math.floor(progress/(parcours/TOTAL))));
   }
-  window.addEventListener('scroll',()=>{
-    if(isMob()||!isInZone())return;
-    const a=getActive();if(a!==current)setScene(a);
-  },{passive:true});
+  function majScene(){
+    if(isMob())return;
+    const haut=docTop(),sy=window.scrollY;
+    /* Au-dessus de la section on rearme sur la scène 1, en dessous on laisse la
+       scène 3 : revenir en arrière doit rejouer la séquence dans le bon sens. */
+    const a=sy<haut?0:(sy>=haut+formOuter.offsetHeight?TOTAL-1:getActive());
+    if(a!==current)setScene(a);
+  }
+  window.addEventListener('scroll',majScene,{passive:true});
+  window.addEventListener('resize',majScene,{passive:true});
   setScene(0);
+  majScene();
 })();
 
 /* ── Blob parallax ── */
