@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/assets/commun.css">
+<link rel="stylesheet" href="/assets/heros.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Agents IA et LLM Privés : déploiement souverain en entreprise | Quantum Consulting</title>
 <meta name="description" content="Déploiement d'agents IA autonomes et LLM privés : Claude, GPT-4o, Mistral, Llama pour RAG, copilotes métier et systèmes multi-agents souverains conformes RGPD.">
@@ -26,7 +27,75 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
-<noscript><style>[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>
+/* ── section d'ouverture animée ── */
+/* Mécanique : la BOUCLE, dans un périmètre fermé.
+     Ce qui sépare un agent d'un script : le script va de A à Z et s'arrête,
+     l'agent observe le résultat de sa propre action et RECOMMENCE.
+
+     ── Reprise complète de la première version ──
+     Elle échouait sur trois points : rien n'était centré (l'anneau était à
+     x=340 dans un cadre de 920, avec un grand vide à droite), le sens du cycle
+     n'était marqué que par un point qui tournait — sans flèche, on ne lisait
+     pas de direction —, et un encart « cloud public » ajoutait du bruit sans
+     rien démontrer.
+     Ici : tout est centré sur x=460, quatre flèches courbes portent des pointes
+     qui disent la direction sans ambiguïté, et l'encart superflu a sauté. */
+
+  /* Le jeton fait le tour : c'est lui qui rend la boucle vivante. */
+  .jeton{ offset-path:path("M 460 116 A 106 106 0 1 1 459.9 116");
+          offset-rotate:0deg; animation:tourne 8s linear infinite }
+  @keyframes tourne{ to{ offset-distance:100% } }
+
+  /* Chaque étape s'allume au passage du jeton. Les retards sont le quart, la
+     moitié et les trois quarts du tour : le cycle est régulier, donc les
+     décalages le sont aussi. */
+  .etape{ animation:allume 8s ease-in-out infinite both }
+  @keyframes allume{
+    0%,2%   { stroke:rgba(168,85,247,.32); filter:none }
+    7%,19%  { stroke:var(--liseré-vif); filter:drop-shadow(0 0 16px rgba(168,85,247,.6)) }
+    26%,100%{ stroke:rgba(168,85,247,.32); filter:none }
+  }
+  .s2{ animation-delay:2s } .s3{ animation-delay:4s } .s4{ animation-delay:6s }
+
+  .fleche{ animation:passe 8s ease-in-out infinite both }
+  @keyframes passe{
+    0%,4%   { stroke:rgba(168,85,247,.26); opacity:.5 }
+    10%,22% { stroke:#a855f7; opacity:1 }
+    30%,100%{ stroke:rgba(168,85,247,.26); opacity:.5 }
+  }
+  .a2{ animation-delay:2s } .a3{ animation-delay:4s } .a4{ animation-delay:6s }
+
+  /* Le périmètre : présent en continu, jamais tapageur. */
+  .perimetre{ fill:none; stroke:rgba(6,182,212,.4); stroke-width:1.6;
+              stroke-dasharray:10 8; animation:derive 30s linear infinite }
+  @keyframes derive{ to{ stroke-dashoffset:-360 } }
+
+  /* Une donnée tente de sortir et rebondit : la preuve, plutôt que l'affirmation. */
+  .fuite{ opacity:0; animation:rebond 8s ease-in-out infinite both }
+  @keyframes rebond{
+    0%,56%  { opacity:0; transform:translateX(0) }
+    62%     { opacity:1; transform:translateX(150px) }
+    68%     { opacity:1; transform:translateX(214px) }
+    76%     { opacity:.6; transform:translateX(150px) }
+    82%,100%{ opacity:0; transform:translateX(0) }
+  }
+  .heurt{ opacity:0; animation:impact 8s ease-out infinite both }
+  @keyframes impact{ 0%,66%{opacity:0;r:4} 70%{opacity:.9;r:24} 80%,100%{opacity:0;r:30} }
+
+  /* offset-path n'est pas universel : repli sur une rotation autour du centre. */
+  @supports not (offset-path: path("M 0 0")){
+    .jeton{ animation:orbite 8s linear infinite; transform-origin:460px 222px }
+    @keyframes orbite{ to{ transform:rotate(360deg) } }
+  }
+
+      .jetonV{ offset-path:path("M 210 232 A 118 118 0 1 1 209.9 232"); offset-rotate:0deg;
+               animation:tourneV 8s linear infinite }
+      @keyframes tourneV{ to{ offset-distance:100% } }
+      @supports not (offset-path: path("M 0 0")){
+        .jetonV{ animation:orbiteV 8s linear infinite; transform-origin:210px 350px }
+        @keyframes orbiteV{ to{ transform:rotate(360deg) } } }
+[data-v]{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"Agents IA et LLM Privés en Entreprise","description":"Déploiement d'agents IA autonomes et de LLM privés : Claude (Anthropic), GPT-4o (OpenAI), Mistral AI, Meta Llama pour RAG documentaire, copilotes métier et systèmes multi-agents souverains conformes RGPD.","provider":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"},"areaServed":{"@type":"Country","name":"France"},"serviceType":"Déploiement Agents IA","offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.quantum-agency.fr/contact.html"}}
 </script>
@@ -175,7 +244,7 @@ body{animation:pageIn .45s ease both}
       </div>
       
     </div>
-    <a href="contact.html" class="n-cta">Audit gratuit →</a>
+          <a href="contact.html" class="n-cta">Audit gratuit →</a>
     <button class="n-mob-burger" onclick="toggleMobMenu(this)" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -203,7 +272,8 @@ body{animation:pageIn .45s ease both}
     <div class="pmenu-sep"></div>
     <a href="faq-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">FAQ <span class="pmenu-arrow">→</span></a>
   </div>
-  <a href="contact.html" class="pmenu-cta" onclick="closeMobMenu()">Demander un audit gratuit →</a>
+  <div class="pmenu-sep"></div>
+      <a href="contact.html" class="pmenu-cta" onclick="closeMobMenu()">Demander un audit gratuit →</a>
 </div>
 
 <nav id="bb" aria-label="Navigation mobile">
@@ -222,13 +292,123 @@ body{animation:pageIn .45s ease both}
     <span aria-current="page">Agents IA &amp; LLM Privés</span>
   </nav>
   <div class="pg-tag">Agents autonomes &amp; LLM souverain</div>
-  <h1>Agents IA et LLM Privés : déployer <span class="g-text">l'intelligence autonome</span> dans votre organisation</h1>
-  <p class="pg-sub">Des agents IA qui raisonnent, planifient et exécutent des tâches complexes, avec les modèles les mieux adaptés à votre contexte, et vos données qui restent chez vous.</p>
-  <div class="meta-row">
-    <div class="meta-badge">Multi-modèles LLM</div>
-    <div class="meta-badge">Souveraineté RGPD</div>
-    <div class="meta-badge">RAG documentaire</div>
-    <div class="meta-badge">On-premise disponible</div>
+  <h1>Des agents autonomes, <span class="g-text">vos données chez vous</span></h1>
+  <div class="canevas hero-canevas">
+    <svg class="large" viewBox="0 0 920 430" role="img"
+       aria-label="Un agent tourne en boucle : percevoir, décider, agir, observer, puis reprendre.
+                   L'ensemble est enfermé dans un périmètre sur lequel une tentative de sortie de
+                   données vient rebondir.">
+    <defs>
+      <linearGradient id="flux" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/>
+      </linearGradient>
+      <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/>
+      </linearGradient>
+      <marker id="pointe" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#a855f7"/>
+      </marker>
+    </defs>
+
+    <!-- ── Le périmètre, centré sur 460 ── -->
+    <rect x="150" y="46" width="620" height="352" rx="28" class="perimetre"/>
+    <text x="460" y="30" class="etiq" text-anchor="middle" style="fill:#67e8f9">
+      Votre infrastructure · aucune donnée n'en sort
+    </text>
+
+    <!-- ── L'anneau et les quatre flèches ── -->
+    <circle cx="460" cy="222" r="106" fill="none" stroke="rgba(168,85,247,.14)" stroke-width="2"/>
+
+    <!-- Quatre arcs de 90°, pointe à l'arrivée. Des arcs courts ne se lisaient
+         pas comme un cycle : c'est la longueur parcourue qui fait la boucle. -->
+    <path class="fleche"    d="M 535 147 A 106 106 0 0 1 535 297" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a2" d="M 535 297 A 106 106 0 0 1 385 297" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a3" d="M 385 297 A 106 106 0 0 1 385 147" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+    <path class="fleche a4" d="M 385 147 A 106 106 0 0 1 535 147" fill="none"
+          stroke-width="3" stroke-linecap="round" marker-end="url(#pointe)"/>
+
+    <!-- ── Les quatre temps, centrés sur les points cardinaux de l'anneau ── -->
+    <g class="etape">   <rect x="382" y="52"  width="156" height="48" rx="15" class="boite"/></g>
+    <text x="460" y="82" class="titre" text-anchor="middle">Percevoir</text>
+
+    <g class="etape s2"><rect x="580" y="198" width="160" height="48" rx="15" class="boite"/></g>
+    <text x="660" y="228" class="titre" text-anchor="middle">Décider</text>
+
+    <g class="etape s3"><rect x="382" y="344" width="156" height="48" rx="15" class="boite"/></g>
+    <text x="460" y="374" class="titre" text-anchor="middle">Agir</text>
+
+    <g class="etape s4"><rect x="180" y="198" width="160" height="48" rx="15" class="boite"/></g>
+    <text x="260" y="228" class="titre" text-anchor="middle">Observer</text>
+
+    <!-- ── Le cœur ── -->
+    <circle cx="460" cy="222" r="46" fill="url(#accent)" opacity=".12"/>
+    <circle cx="460" cy="222" r="30" fill="url(#accent)" opacity=".95"/>
+    <path d="M 460 204 L 465.5 216.5 L 478 222 L 465.5 227.5 L 460 240 L 454.5 227.5 L 442 222 L 454.5 216.5 Z"
+          fill="#0b0819" opacity=".92"/>
+
+    <!-- ── Le jeton qui fait le tour ── -->
+    <circle class="jeton" r="7" fill="#c4b5fd"
+            style="filter:drop-shadow(0 0 11px rgba(196,181,253,.95))"/>
+
+    <!-- ── La tentative de sortie, et le rebond ── -->
+    <g class="fuite">
+      <circle cx="506" cy="222" r="6" fill="#f59e0b"
+              style="filter:drop-shadow(0 0 10px rgba(245,158,11,.9))"/>
+    </g>
+    <circle cx="770" cy="222" r="4" class="heurt" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  </svg>
+    <svg class="etroit" viewBox="0 0 420 700" role="img"
+       aria-label="Un agent tourne en boucle percevoir, décider, agir, observer, dans un périmètre fermé.">
+    <defs>      <linearGradient id="fluxV" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3aed"/><stop offset="55%" stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      <linearGradient id="accentV" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      <marker id="pointeV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5"
+              orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a855f7"/></marker>
+    </defs>
+    <style>
+      .jetonV{ offset-path:path("M 210 232 A 118 118 0 1 1 209.9 232"); offset-rotate:0deg;
+               animation:tourneV 8s linear infinite }
+      @keyframes tourneV{ to{ offset-distance:100% } }
+      @supports not (offset-path: path("M 0 0")){
+        .jetonV{ animation:orbiteV 8s linear infinite; transform-origin:210px 350px }
+        @keyframes orbiteV{ to{ transform:rotate(360deg) } } }
+    </style>
+    <rect x="24" y="94" width="372" height="512" rx="28" class="perimetre"/>
+    <text x="210" y="70" class="etiq" text-anchor="middle" style="fill:#67e8f9">Votre infrastructure</text>
+    <text x="210" y="88" class="etiq" text-anchor="middle" style="fill:#67e8f9">aucune donnée n'en sort</text>
+
+    <circle cx="210" cy="350" r="118" fill="none" stroke="rgba(168,85,247,.14)" stroke-width="2"/>
+    <path class="fleche"    d="M 293 267 A 118 118 0 0 1 293 433" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a2" d="M 293 433 A 118 118 0 0 1 127 433" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a3" d="M 127 433 A 118 118 0 0 1 127 267" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+    <path class="fleche a4" d="M 127 267 A 118 118 0 0 1 293 267" fill="none" stroke-width="3"
+          stroke-linecap="round" marker-end="url(#pointeV)"/>
+
+    <g class="etape">   <rect x="122" y="152" width="176" height="50" rx="15" class="boite"/></g>
+    <text x="210" y="183" class="titre" text-anchor="middle">Percevoir</text>
+    <g class="etape s2"><rect x="238" y="325" width="158" height="50" rx="15" class="boite"/></g>
+    <text x="317" y="356" class="titre" text-anchor="middle">Décider</text>
+    <g class="etape s3"><rect x="122" y="498" width="176" height="50" rx="15" class="boite"/></g>
+    <text x="210" y="529" class="titre" text-anchor="middle">Agir</text>
+    <g class="etape s4"><rect x="24" y="325" width="158" height="50" rx="15" class="boite"/></g>
+    <text x="103" y="356" class="titre" text-anchor="middle">Observer</text>
+
+    <circle cx="210" cy="350" r="48" fill="url(#accentV)" opacity=".12"/>
+    <circle cx="210" cy="350" r="32" fill="url(#accentV)" opacity=".95"/>
+    <path d="M 210 331 L 216 344 L 229 350 L 216 356 L 210 369 L 204 356 L 191 350 L 204 344 Z"
+          fill="#0b0819" opacity=".92"/>
+    <circle class="jetonV" r="7" fill="#c4b5fd" style="filter:drop-shadow(0 0 11px rgba(196,181,253,.95))"/>
+  </svg>
   </div>
   <a href="contact.html" class="btn">Discuter de votre cas d'usage →</a>
 </header>
