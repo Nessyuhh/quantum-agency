@@ -1995,23 +1995,103 @@ function toggleFaq(btn){
      la hauteur du conteneur : c'est cette hauteur MOINS un écran. Diviser par
      innerHeight donnait des bornes fausses, et la scène 3 n'apparaissait qu'au
      tout dernier pixel. */
-  function getActive(){
-    const progress=window.scrollY-docTop();
-    const parcours=Math.max(1,formOuter.offsetHeight-window.innerHeight);
-    return Math.max(0,Math.min(TOTAL-1,Math.floor(progress/(parcours/TOTAL))));
+  function parcours(){
+    return Math.max(1,formOuter.offsetHeight-window.innerHeight);
   }
-  function majScene(){
-    if(isMob())return;
-    const haut=docTop(),sy=window.scrollY;
-    /* Au-dessus de la section on rearme sur la scène 1, en dessous on laisse la
-       scène 3 : revenir en arrière doit rejouer la séquence dans le bon sens. */
-    const a=sy<haut?0:(sy>=haut+formOuter.offsetHeight?TOTAL-1:getActive());
+
+  /* ── Un geste = une scène ────────────────────────────────────────────────
+     Piloter les scènes par la POSITION de défilement rendait la séquence
+     traversable d'un seul geste : trois scènes défilaient sans qu'on ait le
+     temps d'en lire une. On pilote donc par le GESTE. Tant que le panneau est
+     collé, le défilement de la page est retenu ; chaque nouveau geste avance
+     d'une scène. Le geste qui suit la dernière scène rend la main et la page
+     repart — c'est le seul qui ne bloque pas.
+
+     ⚠️ Retenir le défilement est hostile à qui souffre de troubles
+     vestibulaires, et à qui a désactivé les animations. Dans ce cas on ne
+     retient rien : la séquence reste pilotée par la position, comme avant. */
+  const RETENIR=!window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const SILENCE=180;   // ms sans événement = le geste précédent est terminé
+  let etat='avant';    // avant · retenu · apres
+  let dernier=0;
+
+  function bornes(){ const h=docTop(); return [h,h+parcours()]; }
+
+  function majEtat(){
+    if(isMob()||!RETENIR)return;
+    const [h,bas]=bornes(),sy=window.scrollY;
+    if(sy<h-2){ if(etat!=='avant'){etat='avant';setScene(0);} return; }
+    if(sy>bas+2){ if(etat!=='apres'){etat='apres';setScene(TOTAL-1);} return; }
+    if(etat!=='retenu'){
+      /* On entre : on cale le panneau au début de sa zone collée, et on ouvre
+         sur la première scène si l'on vient d'en haut, la dernière si l'on
+         remonte depuis le bas. */
+      const parLeHaut=etat==='avant';
+      etat='retenu';
+      setScene(parLeHaut?0:TOTAL-1);
+      window.scrollTo({top:parLeHaut?h:bas-1,behavior:'instant'});
+    }
+  }
+
+  function geste(e,sens){
+    if(isMob()||!RETENIR||etat!=='retenu')return;
+    const t=e.timeStamp||Date.now();
+    const nouveau=t-dernier>SILENCE;
+    dernier=t;
+    /* L'inertie d'un pavé tactile produit une rafale d'événements pour un seul
+       geste. On ne réagit qu'au premier de la rafale, sinon un coup de doigt
+       ferait défiler les trois scènes. */
+    if(!nouveau){ e.preventDefault(); return; }
+
+    const [h,bas]=bornes();
+    if(sens>0){
+      if(current<TOTAL-1){ e.preventDefault(); setScene(current+1); }
+      else { etat='apres'; window.scrollTo({top:bas+3,behavior:'instant'}); }
+    }else{
+      if(current>0){ e.preventDefault(); setScene(current-1); }
+      else { etat='avant'; window.scrollTo({top:h-3,behavior:'instant'}); }
+    }
+  }
+
+  window.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)<2)return;
+    geste(e,e.deltaY>0?1:-1);
+  },{passive:false});
+
+  /* Tablettes et écrans tactiles larges : même logique, mesurée sur le doigt. */
+  let toucheY=null;
+  window.addEventListener('touchstart',e=>{toucheY=e.touches[0].clientY;},{passive:true});
+  window.addEventListener('touchmove',e=>{
+    if(toucheY===null)return;
+    const d=toucheY-e.touches[0].clientY;
+    if(Math.abs(d)<24)return;
+    geste(e,d>0?1:-1);
+  },{passive:false});
+  window.addEventListener('touchend',()=>{toucheY=null;dernier=0;},{passive:true});
+
+  /* Clavier : les mêmes touches que pour défiler, pour ne pas enfermer qui
+     n'utilise pas de souris. */
+  window.addEventListener('keydown',e=>{
+    const bas=['ArrowDown','PageDown',' ','Spacebar'].includes(e.key);
+    const haut=['ArrowUp','PageUp'].includes(e.key);
+    if(!bas&&!haut)return;
+    dernier=0;                       // une touche = toujours un geste distinct
+    geste(e,bas?1:-1);
+  },{passive:false});
+
+  /* Repli sans retenue : la position pilote, comme avant. */
+  function parPosition(){
+    if(isMob()||RETENIR)return;
+    const [h]=bornes(),sy=window.scrollY;
+    const p=Math.max(0,Math.min(TOTAL-1,Math.floor((sy-h)/(parcours()/TOTAL))));
+    const a=sy<h?0:(sy>=h+formOuter.offsetHeight?TOTAL-1:p);
     if(a!==current)setScene(a);
   }
-  window.addEventListener('scroll',majScene,{passive:true});
-  window.addEventListener('resize',majScene,{passive:true});
+
+  window.addEventListener('scroll',()=>{majEtat();parPosition();},{passive:true});
+  window.addEventListener('resize',()=>{majEtat();parPosition();},{passive:true});
   setScene(0);
-  majScene();
+  majEtat();
 })();
 
 /* ── Blob parallax ── */
