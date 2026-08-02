@@ -22,15 +22,26 @@
 
   var SEUIL_ECRAN = 640;      // au-delà, on ne replie rien
   var SEUIL_BLOC  = 520;      // un bloc plus court que ça ne gêne personne
-  var GARDES      = 4;        // les premiers blocs restent ouverts : on ne veut
-                              // pas accueillir le visiteur par un mur de titres.
-                              // ⚠️ Ce compte ne porte QUE sur les blocs dépassant
-                              // SEUIL_BLOC. Les sections courtes (trust-bar 80 px,
-                              // stats 138 px) ne sont jamais candidates et ne
-                              // consomment donc pas de garde — d'où l'écart entre
-                              // « les 4 premières sections » et ce chiffre.
-                              // À 4 : hero, expertises, Modèles & LLM et
-                              // Consulting s'ouvrent d'emblée.
+  var GARDES      = 2;        // les premiers blocs restent ouverts : on ne veut
+                              // pas accueillir le visiteur par un mur de titres
+
+  /* ── Marqueur explicite ───────────────────────────────────────────────────
+     Un bloc portant data-ouvert n'est JAMAIS replié, quelle que soit sa place.
+
+     Pourquoi ce marqueur existe : GARDES est positionnel, il ouvre les N
+     premiers blocs longs quels qu'ils soient. Sur l'accueil, monter à 4 ouvrait
+     « Modèles & LLM » — une section technique — tout en laissant « Formations »
+     replié, alors que c'est l'une des deux offres du cabinet. Le résultat
+     dépendait de l'ordre du HTML, donc réordonner une section changeait
+     silencieusement ce qui s'ouvre.
+
+     Avec le marqueur, l'intention est écrite là où elle se lit :
+         <section id="consulting" data-ouvert>
+
+     ⚠️ Les blocs marqués sont retirés du décompte AVANT que GARDES s'applique.
+     Sans ça, un bloc marqué placé en tête consommerait une garde et refermerait
+     un bloc qui devait rester ouvert. */
+  var MARQUEUR    = 'data-ouvert';
 
   /* On CHERCHE le conteneur des blocs répétés au lieu de le nommer.
      Viser « .content » ne suffisait pas : sur cas-usage les blocs sont un
@@ -64,7 +75,11 @@
       });
       if (blocs.length < 3) return;   // deux blocs longs ne font pas un mur
 
-      blocs.forEach(function (bloc, i) {
+      /* Les blocs marqués sortent du décompte : ils restent ouverts et ne
+         consomment aucune garde. */
+      var libres = blocs.filter(function (e) { return !e.hasAttribute(MARQUEUR); });
+
+      libres.forEach(function (bloc, i) {
         if (i < GARDES) return;
         bloc.setAttribute('data-replie', 'ferme');
 
