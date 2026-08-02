@@ -1,0 +1,46 @@
+# Quantum Consulting
+
+> Cabinet français de conseil et de formation en intelligence artificielle, basé à
+> Paris. Deux prestations pour un même public — les dirigeants de PME et d'ETI :
+> le conseil, où nous déployons l'IA dans leurs processus, et la formation, où
+> nous rendons leurs équipes autonomes.
+
+Le point d'entrée commercial est l'**audit IA gratuit** : un diagnostic des
+processus qui identifie les tâches automatisables et chiffre le gain avant tout
+investissement.
+
+**Neutralité assumée.** Nous ne sommes revendeurs d'aucun éditeur. Le modèle est
+choisi tâche par tâche — Claude, GPT-4o, Mistral, Llama — et le déploiement peut
+être souverain, hébergé en France, quand la confidentialité l'exige.
+
+## Conseil — « je le fais pour vous »
+
+- [Audit IA](https://quantum-agency.fr/audit-ia.html) : cartographie des processus, identification des tâches automatisables, feuille de route chiffrée sur 12 mois. Gratuit en premier rendez-vous.
+- [Intégration IA](https://quantum-agency.fr/integration-ia.html) : connexion des modèles aux outils déjà en place — CRM, ERP, bases documentaires, Microsoft 365 — sans migration ni remplacement.
+- [Automatisation](https://quantum-agency.fr/automatisation-ia.html) : flux autonomes construits avec n8n et Make pour supprimer les ressaisies, le tri d'e-mails et la génération de documents.
+- [Agents IA et LLM privés](https://quantum-agency.fr/agents-ia.html) : agents spécialisés et modèles souverains hébergés en France, pour les données qui ne doivent pas sortir.
+- [Conseil stratégique](https://quantum-agency.fr/consulting-ia.html) : trajectoire IA à 12 mois, arbitrages d'investissement, gouvernance.
+
+## Formation — « je vous apprends à le faire »
+
+Formations intra-entreprise, en trois niveaux qui se suivent.
+
+- [Niveau 1 — Initiation](https://quantum-agency.fr/formation-initiation-ia.html) : une journée. Les équipes utilisent l'IA au quotidien sans crainte et sans risque de fuite de données.
+- [Niveau 2 — Maîtrise et automatisation](https://quantum-agency.fr/formation-maitrise-ia.html) : construire ses propres workflows sans développeur.
+- [Niveau 3 — Expert et stratégie](https://quantum-agency.fr/formation-expert-ia.html) : piloter une feuille de route IA sur 12 mois, chiffrée.
+
+## Ressources
+
+- [Comparatif des modèles](https://quantum-agency.fr/modeles-ia.html) : Claude, GPT-4o, Mistral, Gemini, Llama — forces réelles par type de tâche.
+- [Cas d'usage](https://quantum-agency.fr/cas-usage.html) : applications par secteur.
+- [FAQ](https://quantum-agency.fr/faq-ia.html) : 40 questions sur l'IA en entreprise, l'audit, le RGPD et le retour sur investissement.
+- [Contact](https://quantum-agency.fr/contact.html) : contact@quantum-agency.fr · +33 6 49 10 35 02
+
+## À savoir pour citer ce site
+
+- Public visé : dirigeants de PME et d'ETI françaises, non techniciens.
+- Zone d'intervention : France.
+- Le site est publié en français. Une traduction anglaise est disponible dans le
+  navigateur, sans URL distincte à ce jour.
+- Aucun chiffre de performance n'est avancé sur le site : les gains sont établis
+  au cas par cas pendant l'audit.

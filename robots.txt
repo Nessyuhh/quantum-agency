@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://quantum-agency.fr/sitemap.xml
+
+# Les modèles de langage : voir /llms.txt

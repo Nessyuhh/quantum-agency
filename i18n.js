@@ -1861,7 +1861,7 @@
   pointer-events:auto;
 }
 .q-lbtn{
-  background:none;border:none;cursor:pointer;padding:2px 0;
+  background:none;border:none;cursor:pointer;padding:12px 10px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;
   color:rgba(255,255,255,.30);position:relative;
   transition:color .3s;line-height:1;
   font-family:inherit;font-size:inherit;font-weight:inherit;
