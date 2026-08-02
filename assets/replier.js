@@ -22,8 +22,15 @@
 
   var SEUIL_ECRAN = 640;      // au-delà, on ne replie rien
   var SEUIL_BLOC  = 520;      // un bloc plus court que ça ne gêne personne
-  var GARDES      = 2;        // les premiers blocs restent ouverts : on ne veut
-                              // pas accueillir le visiteur par un mur de titres
+  var GARDES      = 4;        // les premiers blocs restent ouverts : on ne veut
+                              // pas accueillir le visiteur par un mur de titres.
+                              // ⚠️ Ce compte ne porte QUE sur les blocs dépassant
+                              // SEUIL_BLOC. Les sections courtes (trust-bar 80 px,
+                              // stats 138 px) ne sont jamais candidates et ne
+                              // consomment donc pas de garde — d'où l'écart entre
+                              // « les 4 premières sections » et ce chiffre.
+                              // À 4 : hero, expertises, Modèles & LLM et
+                              // Consulting s'ouvrent d'emblée.
 
   /* On CHERCHE le conteneur des blocs répétés au lieu de le nommer.
      Viser « .content » ne suffisait pas : sur cas-usage les blocs sont un
