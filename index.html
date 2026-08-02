@@ -797,7 +797,19 @@ footer{background:#000;padding:3.5rem 5% 2rem;border-top:1px solid var(--border)
   .btn-primary,.btn-outline,.form-link,.faq-btn,.exp-link,.mob-nav-cta,.mob-nav-links a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
   /* ── Sections masquées sur mobile ── */
-  #trust-bar,#llm-matrix,#consulting,#formations,#approche{display:none!important}
+  /* ⛔ Ces cinq sections étaient masquées ici par display:none!important.
+     Conséquence mesurée : 9 093 px de contenu sur ordinateur contre 2 582 px sur
+     téléphone. Un visiteur mobile ne voyait ni les services, ni les formations,
+     ni la preuve sociale — soit les deux offres du cabinet.
+
+     Le pire est que le traitement mobile EXISTAIT déjà : assets/replier.js replie
+     les blocs longs derrière un bouton portant leur titre, et #formations a même
+     ses propres cartes à défilement horizontal. Mais un élément masqué a une
+     hauteur nulle : replier.js le mesurait à 0, ne le jugeait pas « long », et
+     n'insérait aucun bouton. Le masquage tuait son propre remplacement.
+
+     Retiré. Vérifié à 390 px : 7 boutons de repli portant les titres réels, et
+     l'ouverture de Consulting le fait passer de 0 à 680 px. */
 
   /* ── Hero — 1 CTA, épuré ── */
   .btn-outline{display:none!important}
