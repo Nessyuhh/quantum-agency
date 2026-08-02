@@ -94,7 +94,15 @@ class Extracteur(HTMLParser):
 
 
 def pages():
-    return sorted(p for p in RACINE.glob('*.html') if p.name not in EXCLUES)
+    """Pages du site public.
+
+    ⚠️ La variante de `variantes/` est incluse : elle est destinée à devenir
+    l'accueil, et 82 % de son contenu était absent du dictionnaire. L'intégrer
+    maintenant évite de casser la couverture le jour de la bascule.
+    """
+    p = [x for x in RACINE.glob('*.html') if x.name not in EXCLUES]
+    p += [x for x in RACINE.glob('variantes/*/*.html') if x.name not in EXCLUES]
+    return sorted(p, key=lambda x: str(x))
 
 
 def extraire():
@@ -102,9 +110,10 @@ def extraire():
     for p in pages():
         e = Extracteur()
         e.feed(p.read_text(encoding='utf-8'))
-        par_page[p.name] = e.chaines
+        cle = p.name if p.parent == RACINE else f'{p.parent.name}/{p.name}'
+        par_page[cle] = e.chaines
         for s in e.chaines:
-            toutes.setdefault(s, []).append(p.name)
+            toutes.setdefault(s, []).append(cle)
     return par_page, toutes
 
 

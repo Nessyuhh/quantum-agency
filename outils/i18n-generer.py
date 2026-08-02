@@ -102,7 +102,10 @@ def main():
     # On la remplit depuis les <title> réels et les traductions de EN.
     import glob
     reels = {}
-    for f_ in sorted(glob.glob(str(RACINE / '*.html'))):
+    # variantes/ incluse : sa page est destinée à devenir l'accueil, son
+    # <title> doit être dans TITLES avant la bascule, pas après.
+    for f_ in sorted(glob.glob(str(RACINE / '*.html'))
+                     + glob.glob(str(RACINE / 'variantes' / '*' / '*.html'))):
         nom = pathlib.Path(f_).name
         if nom in EXCLUES:
             continue
