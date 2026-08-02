@@ -28,74 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
 <noscript><style>
-/* ── section d'ouverture animée ── */
-/* Mécanique : la BOUCLE, dans un périmètre fermé.
-     Ce qui sépare un agent d'un script : le script va de A à Z et s'arrête,
-     l'agent observe le résultat de sa propre action et RECOMMENCE.
-
-     ── Reprise complète de la première version ──
-     Elle échouait sur trois points : rien n'était centré (l'anneau était à
-     x=340 dans un cadre de 920, avec un grand vide à droite), le sens du cycle
-     n'était marqué que par un point qui tournait — sans flèche, on ne lisait
-     pas de direction —, et un encart « cloud public » ajoutait du bruit sans
-     rien démontrer.
-     Ici : tout est centré sur x=460, quatre flèches courbes portent des pointes
-     qui disent la direction sans ambiguïté, et l'encart superflu a sauté. */
-
-  /* Le jeton fait le tour : c'est lui qui rend la boucle vivante. */
-  .jeton{ offset-path:path("M 460 116 A 106 106 0 1 1 459.9 116");
-          offset-rotate:0deg; animation:tourne 8s linear infinite }
-  @keyframes tourne{ to{ offset-distance:100% } }
-
-  /* Chaque étape s'allume au passage du jeton. Les retards sont le quart, la
-     moitié et les trois quarts du tour : le cycle est régulier, donc les
-     décalages le sont aussi. */
-  .etape{ animation:allume 8s ease-in-out infinite both }
-  @keyframes allume{
-    0%,2%   { stroke:rgba(168,85,247,.32); filter:none }
-    7%,19%  { stroke:var(--liseré-vif); filter:drop-shadow(0 0 16px rgba(168,85,247,.6)) }
-    26%,100%{ stroke:rgba(168,85,247,.32); filter:none }
-  }
-  .s2{ animation-delay:2s } .s3{ animation-delay:4s } .s4{ animation-delay:6s }
-
-  .fleche{ animation:passe 8s ease-in-out infinite both }
-  @keyframes passe{
-    0%,4%   { stroke:rgba(168,85,247,.26); opacity:.5 }
-    10%,22% { stroke:#a855f7; opacity:1 }
-    30%,100%{ stroke:rgba(168,85,247,.26); opacity:.5 }
-  }
-  .a2{ animation-delay:2s } .a3{ animation-delay:4s } .a4{ animation-delay:6s }
-
-  /* Le périmètre : présent en continu, jamais tapageur. */
-  .perimetre{ fill:none; stroke:rgba(6,182,212,.4); stroke-width:1.6;
-              stroke-dasharray:10 8; animation:derive 30s linear infinite }
-  @keyframes derive{ to{ stroke-dashoffset:-360 } }
-
-  /* Une donnée tente de sortir et rebondit : la preuve, plutôt que l'affirmation. */
-  .fuite{ opacity:0; animation:rebond 8s ease-in-out infinite both }
-  @keyframes rebond{
-    0%,56%  { opacity:0; transform:translateX(0) }
-    62%     { opacity:1; transform:translateX(150px) }
-    68%     { opacity:1; transform:translateX(214px) }
-    76%     { opacity:.6; transform:translateX(150px) }
-    82%,100%{ opacity:0; transform:translateX(0) }
-  }
-  .heurt{ opacity:0; animation:impact 8s ease-out infinite both }
-  @keyframes impact{ 0%,66%{opacity:0;r:4} 70%{opacity:.9;r:24} 80%,100%{opacity:0;r:30} }
-
-  /* offset-path n'est pas universel : repli sur une rotation autour du centre. */
-  @supports not (offset-path: path("M 0 0")){
-    .jeton{ animation:orbite 8s linear infinite; transform-origin:460px 222px }
-    @keyframes orbite{ to{ transform:rotate(360deg) } }
-  }
-
-      .jetonV{ offset-path:path("M 210 232 A 118 118 0 1 1 209.9 232"); offset-rotate:0deg;
-               animation:tourneV 8s linear infinite }
-      @keyframes tourneV{ to{ offset-distance:100% } }
-      @supports not (offset-path: path("M 0 0")){
-        .jetonV{ animation:orbiteV 8s linear infinite; transform-origin:210px 350px }
-        @keyframes orbiteV{ to{ transform:rotate(360deg) } } }
-[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"Agents IA et LLM Privés en Entreprise","description":"Déploiement d'agents IA autonomes et de LLM privés : Claude (Anthropic), GPT-4o (OpenAI), Mistral AI, Meta Llama pour RAG documentaire, copilotes métier et systèmes multi-agents souverains conformes RGPD.","provider":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"},"areaServed":{"@type":"Country","name":"France"},"serviceType":"Déploiement Agents IA","offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.quantum-agency.fr/contact.html"}}
 </script>
@@ -211,6 +144,75 @@ body{animation:pageIn .45s ease both}
 
 
 @supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+
+/* ── section d'ouverture animée ── */
+/* Mécanique : la BOUCLE, dans un périmètre fermé.
+     Ce qui sépare un agent d'un script : le script va de A à Z et s'arrête,
+     l'agent observe le résultat de sa propre action et RECOMMENCE.
+
+     ── Reprise complète de la première version ──
+     Elle échouait sur trois points : rien n'était centré (l'anneau était à
+     x=340 dans un cadre de 920, avec un grand vide à droite), le sens du cycle
+     n'était marqué que par un point qui tournait — sans flèche, on ne lisait
+     pas de direction —, et un encart « cloud public » ajoutait du bruit sans
+     rien démontrer.
+     Ici : tout est centré sur x=460, quatre flèches courbes portent des pointes
+     qui disent la direction sans ambiguïté, et l'encart superflu a sauté. */
+
+  /* Le jeton fait le tour : c'est lui qui rend la boucle vivante. */
+  .jeton{ offset-path:path("M 460 116 A 106 106 0 1 1 459.9 116");
+          offset-rotate:0deg; animation:tourne 8s linear infinite }
+  @keyframes tourne{ to{ offset-distance:100% } }
+
+  /* Chaque étape s'allume au passage du jeton. Les retards sont le quart, la
+     moitié et les trois quarts du tour : le cycle est régulier, donc les
+     décalages le sont aussi. */
+  .etape{ animation:allume 8s ease-in-out infinite both }
+  @keyframes allume{
+    0%,2%   { stroke:rgba(168,85,247,.32); filter:none }
+    7%,19%  { stroke:var(--liseré-vif); filter:drop-shadow(0 0 16px rgba(168,85,247,.6)) }
+    26%,100%{ stroke:rgba(168,85,247,.32); filter:none }
+  }
+  .s2{ animation-delay:2s } .s3{ animation-delay:4s } .s4{ animation-delay:6s }
+
+  .fleche{ animation:passe 8s ease-in-out infinite both }
+  @keyframes passe{
+    0%,4%   { stroke:rgba(168,85,247,.26); opacity:.5 }
+    10%,22% { stroke:#a855f7; opacity:1 }
+    30%,100%{ stroke:rgba(168,85,247,.26); opacity:.5 }
+  }
+  .a2{ animation-delay:2s } .a3{ animation-delay:4s } .a4{ animation-delay:6s }
+
+  /* Le périmètre : présent en continu, jamais tapageur. */
+  .perimetre{ fill:none; stroke:rgba(6,182,212,.4); stroke-width:1.6;
+              stroke-dasharray:10 8; animation:derive 30s linear infinite }
+  @keyframes derive{ to{ stroke-dashoffset:-360 } }
+
+  /* Une donnée tente de sortir et rebondit : la preuve, plutôt que l'affirmation. */
+  .fuite{ opacity:0; animation:rebond 8s ease-in-out infinite both }
+  @keyframes rebond{
+    0%,56%  { opacity:0; transform:translateX(0) }
+    62%     { opacity:1; transform:translateX(150px) }
+    68%     { opacity:1; transform:translateX(214px) }
+    76%     { opacity:.6; transform:translateX(150px) }
+    82%,100%{ opacity:0; transform:translateX(0) }
+  }
+  .heurt{ opacity:0; animation:impact 8s ease-out infinite both }
+  @keyframes impact{ 0%,66%{opacity:0;r:4} 70%{opacity:.9;r:24} 80%,100%{opacity:0;r:30} }
+
+  /* offset-path n'est pas universel : repli sur une rotation autour du centre. */
+  @supports not (offset-path: path("M 0 0")){
+    .jeton{ animation:orbite 8s linear infinite; transform-origin:460px 222px }
+    @keyframes orbite{ to{ transform:rotate(360deg) } }
+  }
+
+      .jetonV{ offset-path:path("M 210 232 A 118 118 0 1 1 209.9 232"); offset-rotate:0deg;
+               animation:tourneV 8s linear infinite }
+      @keyframes tourneV{ to{ offset-distance:100% } }
+      @supports not (offset-path: path("M 0 0")){
+        .jetonV{ animation:orbiteV 8s linear infinite; transform-origin:210px 350px }
+        @keyframes orbiteV{ to{ transform:rotate(360deg) } } }
+[data-v]{opacity:1!important;transform:none!important}
 </style>
 <script src="/assets/replier.js" defer></script>
 </head>

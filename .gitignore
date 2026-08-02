@@ -1,1 +1,4 @@
 .DS_Store
+outils/i18n-manquantes.json
+
+__pycache__/

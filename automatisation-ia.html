@@ -28,22 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
 <noscript><style>
-/* ── section d'ouverture animée ── */
-/* ── Le canevas ──────────────────────────────────────────────────────────
-     Caricature d'un éditeur de scénarios type Make ou n8n : nœuds arrondis
-     surdimensionnés, liens en courbe, paquets qui circulent. On ne cherche
-     PAS à imiter l'interface — on en garde la grammaire visuelle. */
-
-  /* Trame de fond : la grille de points des éditeurs de workflow. */
-
-  /* Les liens : un tracé sourd, plus un tracé lumineux qui défile par-dessus. */}
-  
-  /* Icônes vectorielles : contour seul, hérité de la palette, jamais d'emoji. */
-
-  @media (prefers-reduced-motion:reduce){
-    .lien-vif,.boite-actif,
-  }
-[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"Automatisation IA des processus métier","description":"Automatisation des processus métier avec l'intelligence artificielle : workflows Make, n8n, Zapier, agents autonomes Claude (Anthropic) et GPT-4o (OpenAI). Réduction des tâches répétitives, libération des équipes sur la valeur ajoutée.","provider":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"},"areaServed":{"@type":"Country","name":"France"},"serviceType":"Automatisation IA","offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.quantum-agency.fr/contact.html"}}
 </script>
@@ -157,6 +142,23 @@ body{animation:pageIn .45s ease both}
 
 
 @supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+
+/* ── section d'ouverture animée ── */
+/* ── Le canevas ──────────────────────────────────────────────────────────
+     Caricature d'un éditeur de scénarios type Make ou n8n : nœuds arrondis
+     surdimensionnés, liens en courbe, paquets qui circulent. On ne cherche
+     PAS à imiter l'interface — on en garde la grammaire visuelle. */
+
+  /* Trame de fond : la grille de points des éditeurs de workflow. */
+
+  /* Les liens : un tracé sourd, plus un tracé lumineux qui défile par-dessus. */}
+  
+  /* Icônes vectorielles : contour seul, hérité de la palette, jamais d'emoji. */
+
+  @media (prefers-reduced-motion:reduce){
+    .lien-vif,.boite-actif,
+  }
+[data-v]{opacity:1!important;transform:none!important}
 </style>
 <script src="/assets/replier.js" defer></script>
 </head>

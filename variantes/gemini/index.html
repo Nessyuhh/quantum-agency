@@ -190,6 +190,24 @@ body {
 
 /* Dropdown */
 .nav-dd { position: relative; }
+/* ⚠️ Pont invisible entre le bouton et le menu.
+   Le menu est posé à `top: calc(100% + 10px)` : ces 10 px de vide ne font partie
+   ni du bouton ni du menu. Dès que le curseur les traverse pour descendre vers
+   un lien, `.nav-dd:hover` devient faux et le menu se referme — le sous-menu
+   était donc inatteignable à la souris.
+   Le pont couvre exactement l'écart et n'existe qu'au survol, pour ne rien
+   intercepter le reste du temps. */
+.nav-dd::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 100%;
+  height: 12px; display: none;
+}
+.nav-dd:hover::after { display: block; }
+/* Un menu qui ne s'ouvre qu'au survol est inutilisable au clavier : le bouton
+   existe déjà, on lui donne le même pouvoir que la souris. */
+.nav-dd:focus-within .nav-dd-btn { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.nav-dd:focus-within .nav-dd-menu {
+  opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0);
+}
 .nav-dd-btn {
   background: none; border: none; color: rgba(241, 245, 249, 0.75);
   font-size: 0.85rem; font-weight: 500; padding: 6px 14px; border-radius: var(--radius-full);
@@ -426,15 +444,6 @@ section { padding: 6rem 5%; position: relative; }
 .matrix-card p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
 
 /* ── STATS SECTION ── */
-.stats-section {
-  padding: 4.5rem 5%;
-  background: linear-gradient(90deg, rgba(124, 58, 237, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; text-align: center; }
-.stat-number { font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
-.stat-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
 
 /* ── FAQ ── */
 #faq { max-width: 850px; margin: 0 auto; }
@@ -610,8 +619,6 @@ footer {
     max-width: 340px;
     scroll-snap-align: center;
   }
-
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   
   section { padding: 4rem 5%; }
@@ -674,21 +681,21 @@ footer {
         <li class="nav-dd">
           <button class="nav-dd-btn" aria-haspopup="true">Consulting ▾</button>
           <div class="nav-dd-menu">
-            <a href="#consulting">Audit IA <span class="nav-dd-badge">Offert</span></a>
-            <a href="#consulting">Intégration &amp; API</a>
-            <a href="#consulting">Automatisation Workflows</a>
-            <a href="#consulting">Agents IA Autonomes</a>
+            <a href="/audit-ia.html">Audit IA <span class="nav-dd-badge">Offert</span></a>
+            <a href="/integration-ia.html">Intégration &amp; API</a>
+            <a href="/automatisation-ia.html">Automatisation Workflows</a>
+            <a href="/agents-ia.html">Agents IA Autonomes</a>
+            <a href="/consulting-ia.html">Conseil stratégique</a>
           </div>
         </li>
         <li class="nav-dd">
           <button class="nav-dd-btn" aria-haspopup="true">Formation ▾</button>
           <div class="nav-dd-menu">
-            <a href="#formation">Initiation Executive</a>
-            <a href="#formation">Maîtrise &amp; Automatisation</a>
-            <a href="#formation">Expert &amp; Stratégie IA</a>
+            <a href="/formation-initiation-ia.html">Initiation Executive</a>
+            <a href="/formation-maitrise-ia.html">Maîtrise &amp; Automatisation</a>
+            <a href="/formation-expert-ia.html">Expert &amp; Stratégie IA</a>
           </div>
         </li>
-        <li><a href="#matrix">Modèles &amp; LLM</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -741,9 +748,9 @@ footer {
             <div class="chat-msg chat-ai">
               <div class="chat-ai-author">✦ QUANTUM AGENT AUDIT</div>
               Analyse de vos flux effectuée :<br>
-              1. <strong>Saisie &amp; validation factures ERP</strong> : <!-- À VÉRIFIER --> -80% de temps manuel.<br>
+              1. <strong>Saisie &amp; validation factures ERP</strong> : saisie supprimée, contrôle conservé.<br>
               2. <strong>Réponse demandes support N1</strong> : Traitement instantané 24/7.<br>
-              3. <strong>Synthèse rapports commerciaux</strong> : Gain estimé de <!-- À VÉRIFIER --> 12h/semaine par manager.
+              3. <strong>Synthèse rapports commerciaux</strong> : rédigés depuis le CRM, relus par le manager.
             </div>
           </div>
         </div>
@@ -757,16 +764,16 @@ footer {
   <div class="trust-bar" aria-label="Engagements et résultats">
     <div class="trust-marquee">
       <div class="trust-item"><span class="trust-icon">✦</span> NEUTRALITÉ MULTI-MODÈLES</div>
-      <div class="trust-item"><span class="trust-icon">✦</span> GAIN MOYEN DE <!-- À VÉRIFIER --> 15 000€/AN IDENTIFIÉ</div>
+      <div class="trust-item"><span class="trust-icon">✦</span> GAINS CHIFFRÉS DÈS L'AUDIT</div>
       <div class="trust-item"><span class="trust-icon">✦</span> SOUVERAINETÉ &amp; SÉCURITÉ DES DONNÉES</div>
       <div class="trust-item"><span class="trust-icon">✦</span> PME &amp; ETI TOUS SECTEURS</div>
-      <div class="trust-item"><span class="trust-icon">✦</span> ACCACOMPAGNEMENT SUR MESURE</div>
+      <div class="trust-item"><span class="trust-icon">✦</span> ACCOMPAGNEMENT SUR MESURE</div>
       <!-- Duplicate for infinite loop -->
       <div class="trust-item"><span class="trust-icon">✦</span> NEUTRALITÉ MULTI-MODÈLES</div>
-      <div class="trust-item"><span class="trust-icon">✦</span> GAIN MOYEN DE <!-- À VÉRIFIER --> 15 000€/AN IDENTIFIÉ</div>
+      <div class="trust-item"><span class="trust-icon">✦</span> GAINS CHIFFRÉS DÈS L'AUDIT</div>
       <div class="trust-item"><span class="trust-icon">✦</span> SOUVERAINETÉ &amp; SÉCURITÉ DES DONNÉES</div>
       <div class="trust-item"><span class="trust-icon">✦</span> PME &amp; ETI TOUS SECTEURS</div>
-      <div class="trust-item"><span class="trust-icon">✦</span> ACCACOMPAGNEMENT SUR MESURE</div>
+      <div class="trust-item"><span class="trust-icon">✦</span> ACCOMPAGNEMENT SUR MESURE</div>
     </div>
   </div>
 
@@ -783,16 +790,9 @@ footer {
     </div>
 
     <div class="consulting-grid">
-      <a href="#audit-gratuit" class="card-consulting">
-        <div class="card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </div>
-        <h3>Audit IA &amp; Opportunités</h3>
-        <p>Analyse complète de vos processus métier, cartographie des tâches automatisables et calcul d'impact financier priorisé sur 12 mois.</p>
-        <span class="card-link">Demander un audit gratuit →</span>
-      </a>
+      
 
-      <a href="#audit-gratuit" class="card-consulting">
+            <a href="/integration-ia.html" class="card-consulting">
         <div class="card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
@@ -801,7 +801,7 @@ footer {
         <span class="card-link">En savoir plus →</span>
       </a>
 
-      <a href="#audit-gratuit" class="card-consulting">
+      <a href="/automatisation-ia.html" class="card-consulting">
         <div class="card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
@@ -810,7 +810,7 @@ footer {
         <span class="card-link">En savoir plus →</span>
       </a>
 
-      <a href="#audit-gratuit" class="card-consulting">
+      <a href="/agents-ia.html" class="card-consulting">
         <div class="card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
@@ -844,7 +844,7 @@ footer {
             <li>Cas d'usage concrets par métier</li>
             <li>Sensibilisation à la sécurité des données</li>
           </ul>
-          <a href="#audit-gratuit" class="btn-secondary" style="width:100%; text-align:center;">Programme Initiation →</a>
+          <a href="/formation-initiation-ia.html" class="btn-secondary" style="width:100%; text-align:center;">Programme Initiation →</a>
         </div>
 
         <div class="card-formation" style="border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.03);">
@@ -856,7 +856,7 @@ footer {
             <li>Prise en main des outils d'automation (n8n/Make)</li>
             <li>Atelier sur vos propres fichiers métier</li>
           </ul>
-          <a href="#audit-gratuit" class="btn-primary" style="width:100%; text-align:center;">Programme Maîtrise →</a>
+          <a href="/formation-maitrise-ia.html" class="btn-primary" style="width:100%; text-align:center;">Programme Maîtrise →</a>
         </div>
 
         <div class="card-formation">
@@ -868,7 +868,7 @@ footer {
             <li>Gouvernance, éthique et conformité AI Act</li>
             <li>Coaching individuel des dirigeants</li>
           </ul>
-          <a href="#audit-gratuit" class="btn-secondary" style="width:100%; text-align:center;">Programme Expert →</a>
+          <a href="/formation-expert-ia.html" class="btn-secondary" style="width:100%; text-align:center;">Programme Expert →</a>
         </div>
       </div>
     </div>
@@ -926,32 +926,7 @@ footer {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════
-       CHIFFRES CLÉS & ROI
-  ═══════════════════════════════════════════════════════════ -->
-  <div class="stats-section">
-    <div class="stats-grid">
-      <div>
-        <!-- À VÉRIFIER -->
-        <div class="stat-number g-text">15k€</div>
-        <div class="stat-label">Économies identifiées par audit moyen</div>
-      </div>
-      <div>
-        <!-- À VÉRIFIER -->
-        <div class="stat-number g-text">40%</div>
-        <div class="stat-label">De tâches répétitives automatisables</div>
-      </div>
-      <div>
-        <!-- À VÉRIFIER -->
-        <div class="stat-number g-text">6 sem.</div>
-        <div class="stat-label">Pour obtenir un premier ROI mesurable</div>
-      </div>
-      <div>
-        <div class="stat-number g-text">100%</div>
-        <div class="stat-label">Conforme RGPD &amp; normes européennes</div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- ══════════════════════════════════════════════════════════
        FAQ DIRIGEANTS

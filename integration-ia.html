@@ -28,41 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
 <noscript><style>
-/* ── section d'ouverture animée ── */
-/* Mécanique : l'ENCLENCHEMENT.
-     Une intégration, ce n'est pas un flux qui circule — c'est un AVANT et un
-     APRÈS. Deux ensembles séparés, une pièce qui vient s'emboîter, et alors
-     seulement les données passent. Le mouvement doit montrer la bascule. */
-  .gauche{ animation:rapproche-g 7s cubic-bezier(.5,0,.2,1) infinite }
-  .droite{ animation:rapproche-d 7s cubic-bezier(.5,0,.2,1) infinite }
-  @keyframes rapproche-g{ 0%,10%{transform:translateX(-46px)} 34%,100%{transform:translateX(0)} }
-  @keyframes rapproche-d{ 0%,10%{transform:translateX(46px)}  34%,100%{transform:translateX(0)} }
-
-  /* La pièce d'intégration descend et se verrouille. */
-  .piece{ animation:emboite 7s cubic-bezier(.34,1.4,.5,1) infinite }
-  @keyframes emboite{
-    0%,14%{ transform:translateY(-58px); opacity:0 }
-    36%   { transform:translateY(0);     opacity:1 }
-    100%  { transform:translateY(0);     opacity:1 }
-  }
-  /* Le « clic » : une onde brève au moment exact de l'emboîtement. */
-  .onde{ opacity:0; animation:clic 7s ease-out infinite }
-  @keyframes clic{ 0%,34%{opacity:0;r:16} 40%{opacity:.55;r:52} 50%,100%{opacity:0;r:64} }
-
-  /* Les données ne circulent QU'APRÈS. C'est tout le propos. */
-  .apres{ opacity:0; animation:puis 7s linear infinite }
-  @keyframes puis{ 0%,40%{opacity:0} 48%,92%{opacity:1} 100%{opacity:0} }
-  .lien-vif{ animation-duration:1.6s }
-
-      .hautV{ animation:rappH 7s cubic-bezier(.5,0,.2,1) infinite }
-      .basV { animation:rappB 7s cubic-bezier(.5,0,.2,1) infinite }
-      @keyframes rappH{ 0%,10%{transform:translateY(-40px)} 34%,100%{transform:translateY(0)} }
-      @keyframes rappB{ 0%,10%{transform:translateY(40px)}  34%,100%{transform:translateY(0)} }
-      .pieceV{ animation:emboiteV 7s cubic-bezier(.34,1.4,.5,1) infinite }
-      @keyframes emboiteV{ 0%,14%{transform:translateX(-70px);opacity:0}
-                            36%,100%{transform:translateX(0);opacity:1} }
-      .lien-vif{ animation-duration:1.6s }
-[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"Intégration IA dans les outils métier","description":"Intégration de solutions d'intelligence artificielle dans les outils existants des entreprises : CRM (Salesforce, HubSpot), ERP (SAP, Sage), Microsoft 365, Google Workspace. Claude, GPT-4o, Gemini, Mistral selon les contraintes.","provider":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"},"areaServed":{"@type":"Country","name":"France"},"serviceType":"Intégration Intelligence Artificielle","offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.quantum-agency.fr/contact.html"}}
 </script>
@@ -173,6 +139,42 @@ body{animation:pageIn .45s ease both}
 
 
 @supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+
+/* ── section d'ouverture animée ── */
+/* Mécanique : l'ENCLENCHEMENT.
+     Une intégration, ce n'est pas un flux qui circule — c'est un AVANT et un
+     APRÈS. Deux ensembles séparés, une pièce qui vient s'emboîter, et alors
+     seulement les données passent. Le mouvement doit montrer la bascule. */
+  .gauche{ animation:rapproche-g 7s cubic-bezier(.5,0,.2,1) infinite }
+  .droite{ animation:rapproche-d 7s cubic-bezier(.5,0,.2,1) infinite }
+  @keyframes rapproche-g{ 0%,10%{transform:translateX(-46px)} 34%,100%{transform:translateX(0)} }
+  @keyframes rapproche-d{ 0%,10%{transform:translateX(46px)}  34%,100%{transform:translateX(0)} }
+
+  /* La pièce d'intégration descend et se verrouille. */
+  .piece{ animation:emboite 7s cubic-bezier(.34,1.4,.5,1) infinite }
+  @keyframes emboite{
+    0%,14%{ transform:translateY(-58px); opacity:0 }
+    36%   { transform:translateY(0);     opacity:1 }
+    100%  { transform:translateY(0);     opacity:1 }
+  }
+  /* Le « clic » : une onde brève au moment exact de l'emboîtement. */
+  .onde{ opacity:0; animation:clic 7s ease-out infinite }
+  @keyframes clic{ 0%,34%{opacity:0;r:16} 40%{opacity:.55;r:52} 50%,100%{opacity:0;r:64} }
+
+  /* Les données ne circulent QU'APRÈS. C'est tout le propos. */
+  .apres{ opacity:0; animation:puis 7s linear infinite }
+  @keyframes puis{ 0%,40%{opacity:0} 48%,92%{opacity:1} 100%{opacity:0} }
+  .lien-vif{ animation-duration:1.6s }
+
+      .hautV{ animation:rappH 7s cubic-bezier(.5,0,.2,1) infinite }
+      .basV { animation:rappB 7s cubic-bezier(.5,0,.2,1) infinite }
+      @keyframes rappH{ 0%,10%{transform:translateY(-40px)} 34%,100%{transform:translateY(0)} }
+      @keyframes rappB{ 0%,10%{transform:translateY(40px)}  34%,100%{transform:translateY(0)} }
+      .pieceV{ animation:emboiteV 7s cubic-bezier(.34,1.4,.5,1) infinite }
+      @keyframes emboiteV{ 0%,14%{transform:translateX(-70px);opacity:0}
+                            36%,100%{transform:translateX(0);opacity:1} }
+      .lien-vif{ animation-duration:1.6s }
+[data-v]{opacity:1!important;transform:none!important}
 </style>
 <script src="/assets/replier.js" defer></script>
 </head>

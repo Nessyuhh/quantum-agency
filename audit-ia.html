@@ -28,44 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
 <noscript><style>
-/* ── section d'ouverture animée ── */
-/* Mécanique propre à cette page : la RÉVÉLATION.
-     Un audit, c'est passer sur l'existant et faire apparaître ce qu'on n'y
-     voyait pas. Le mouvement doit donc dévoiler, pas circuler. */
-  .sonde{ animation:balaye 6s cubic-bezier(.45,0,.2,1) infinite }
-  /* 884 et non 690 : la dernière colonne de tuiles finit à x=846, la sonde
-     doit la dépasser. À 690 elle s'arrêtait au milieu du dernier bloc. */
-  @keyframes balaye{ 0%{transform:translateX(0)} 72%,100%{transform:translateX(884px)} }
-
-  /* Chaque colonne s'allume quand la sonde l'a dépassée — le décalage encode le
-     balayage lui-même : c'est la sonde qui cause la révélation, pas le hasard.
-     ⚠️ Le décalage passe par animation-delay et NON par un sélecteur de keyframe
-     calculé : calc() et var() sont interdits dans un sélecteur de @keyframes.
-     Les retards sont calés sur le temps de passage réel de la sonde, qui met
-     72 % de 6 s pour parcourir 690 px — soit ~0,4 s, 1,7 s, 2,9 s et 4,2 s aux
-     abscisses 58, 262, 466 et 670. */
-  .tuile     { fill:var(--nuit-clair); stroke:rgba(168,85,247,.16); stroke-width:1.4 }
-  .tuile-vue { animation:decouvre 6s ease-out infinite both }
-  @keyframes decouvre{
-    0%,4%    { stroke:rgba(168,85,247,.16); fill:var(--nuit-clair) }
-    9%,90%   { stroke:rgba(168,85,247,.55); fill:#1d1436 }
-    100%     { stroke:rgba(168,85,247,.16); fill:var(--nuit-clair) }
-  }
-  .note{ opacity:0; animation:surgit 6s ease-out infinite both }
-  @keyframes surgit{
-    0%,4%    { opacity:0 }
-    12%,90%  { opacity:1 }
-    100%     { opacity:0 }
-  }
-  .c1{ animation-delay:.35s } .c2{ animation-delay:1.35s }
-  .c3{ animation-delay:2.3s } .c4{ animation-delay:3.3s }
-  .fort{ fill:#4ade80 } .moyen{ fill:var(--amber) } .faible{ fill:var(--sourd) }
-
-      .sondeV{ animation:descend 6s cubic-bezier(.45,0,.2,1) infinite }
-      @keyframes descend{ 0%{transform:translateY(0)} 72%,100%{transform:translateY(534px)} }
-      .l1{animation-delay:.4s} .l2{animation-delay:1.1s} .l3{animation-delay:1.8s}
-      .l4{animation-delay:2.5s} .l5{animation-delay:3.2s} .l6{animation-delay:3.9s}
-[data-v]{opacity:1!important;transform:none!important}</style></noscript>
+</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"Audit IA pour PME et ETI","description":"Audit complet des processus métier pour identifier les opportunités IA à fort ROI : cartographie, benchmark des modèles (Claude, GPT-4o, Mistral), feuille de route priorisée sur 12 mois.","provider":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"},"areaServed":{"@type":"Country","name":"France"},"serviceType":"Audit Intelligence Artificielle","offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.quantum-agency.fr/contact.html"}}
 </script>
@@ -176,6 +139,45 @@ body{animation:pageIn .45s ease both}
 
 
 @supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
+
+/* ── section d'ouverture animée ── */
+/* Mécanique propre à cette page : la RÉVÉLATION.
+     Un audit, c'est passer sur l'existant et faire apparaître ce qu'on n'y
+     voyait pas. Le mouvement doit donc dévoiler, pas circuler. */
+  .sonde{ animation:balaye 6s cubic-bezier(.45,0,.2,1) infinite }
+  /* 884 et non 690 : la dernière colonne de tuiles finit à x=846, la sonde
+     doit la dépasser. À 690 elle s'arrêtait au milieu du dernier bloc. */
+  @keyframes balaye{ 0%{transform:translateX(0)} 72%,100%{transform:translateX(884px)} }
+
+  /* Chaque colonne s'allume quand la sonde l'a dépassée — le décalage encode le
+     balayage lui-même : c'est la sonde qui cause la révélation, pas le hasard.
+     ⚠️ Le décalage passe par animation-delay et NON par un sélecteur de keyframe
+     calculé : calc() et var() sont interdits dans un sélecteur de @keyframes.
+     Les retards sont calés sur le temps de passage réel de la sonde, qui met
+     72 % de 6 s pour parcourir 690 px — soit ~0,4 s, 1,7 s, 2,9 s et 4,2 s aux
+     abscisses 58, 262, 466 et 670. */
+  .tuile     { fill:var(--nuit-clair); stroke:rgba(168,85,247,.16); stroke-width:1.4 }
+  .tuile-vue { animation:decouvre 6s ease-out infinite both }
+  @keyframes decouvre{
+    0%,4%    { stroke:rgba(168,85,247,.16); fill:var(--nuit-clair) }
+    9%,90%   { stroke:rgba(168,85,247,.55); fill:#1d1436 }
+    100%     { stroke:rgba(168,85,247,.16); fill:var(--nuit-clair) }
+  }
+  .note{ opacity:0; animation:surgit 6s ease-out infinite both }
+  @keyframes surgit{
+    0%,4%    { opacity:0 }
+    12%,90%  { opacity:1 }
+    100%     { opacity:0 }
+  }
+  .c1{ animation-delay:.35s } .c2{ animation-delay:1.35s }
+  .c3{ animation-delay:2.3s } .c4{ animation-delay:3.3s }
+  .fort{ fill:#4ade80 } .moyen{ fill:var(--amber) } .faible{ fill:var(--sourd) }
+
+      .sondeV{ animation:descend 6s cubic-bezier(.45,0,.2,1) infinite }
+      @keyframes descend{ 0%{transform:translateY(0)} 72%,100%{transform:translateY(534px)} }
+      .l1{animation-delay:.4s} .l2{animation-delay:1.1s} .l3{animation-delay:1.8s}
+      .l4{animation-delay:2.5s} .l5{animation-delay:3.2s} .l6{animation-delay:3.9s}
+[data-v]{opacity:1!important;transform:none!important}
 </style>
 <script src="/assets/replier.js" defer></script>
 </head>
