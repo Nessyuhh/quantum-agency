@@ -591,7 +591,7 @@ footer {
     transition: color 0.2s, background 0.2s;
   }
   .mob-tab-item.active, .mob-tab-item:active { color: var(--purple-l); background: rgba(168, 85, 247, 0.1); }
-  .mob-tab-icon { font-size: 1.1rem; }
+  .mob-tab-icon { display: flex; align-items: center; justify-content: center; height: 20px; }
 
   /* Hero Mobile Redesign */
   .hero {
@@ -1105,19 +1105,19 @@ footer {
 ═══════════════════════════════════════════════════════════ -->
 <nav class="mob-bottom-nav" aria-label="Fast mobile navigation">
   <a href="#consulting" class="mob-tab-item active">
-    <span class="mob-tab-icon">⚡</span>
+    <span class="mob-tab-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg></span>
     <span>Consulting</span>
   </a>
   <a href="#formation" class="mob-tab-item">
-    <span class="mob-tab-icon">🎓</span>
+    <span class="mob-tab-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span>
     <span>Training</span>
   </a>
   <a href="#audit-gratuit" class="mob-tab-item" style="color: var(--purple-l);">
-    <span class="mob-tab-icon">🔍</span>
+    <span class="mob-tab-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
     <span>AI Audit</span>
   </a>
   <a href="#faq" class="mob-tab-item">
-    <span class="mob-tab-icon">❓</span>
+    <span class="mob-tab-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg></span>
     <span>FAQ</span>
   </a>
 </nav>

@@ -51,7 +51,15 @@
     '.q-lang a{color:rgba(255,255,255,.72);transition:color .25s}' +
     '.q-lang a:hover,.q-lang a:focus-visible{color:rgba(255,255,255,.95)}' +
     '.q-lang .q-sep{min-width:0;opacity:.45;color:#fff}' +
-    '@media(max-width:900px){body>nav.q-lang{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);' +
+    /* ⚠️ 84 px et non 66, et z-index 950 et non 600.
+       La barre du bas de l'accueil culmine à ~68 px du bas (12 px de décalage
+       + 56 px de hauteur). À 66 px, le sélecteur mordait dessus — et comme
+       cette barre est en z-index 900, elle passait PAR-DESSUS : le sélecteur
+       paraissait avoir disparu sous la barre.
+       Le z-index monte aussi, sinon le seul dégagement redeviendrait faux au
+       premier changement de hauteur de la barre. */
+    '@media(max-width:900px){body>nav.q-lang{top:auto;z-index:950;' +
+    'bottom:calc(env(safe-area-inset-bottom,0px) + 84px);' +
     'right:10px;background:rgba(8,4,22,.72);backdrop-filter:blur(12px);border-radius:99px;padding:0 4px}}';
   document.head.appendChild(css);
 
