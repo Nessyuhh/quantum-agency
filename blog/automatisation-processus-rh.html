@@ -110,6 +110,49 @@ body{animation:pageIn .45s ease both}
 .art-prev span,.art-next span{font-size:.83rem;color:var(--text);font-weight:600;line-height:1.4}
 @media(max-width:600px){.art-prevnext{flex-direction:column}.art-next{text-align:left;margin-left:0}.art-prev,.art-next{max-width:100%}}
 </style>
+<style>
+/* Barre de progression : augmente le taux d'achèvement, réduit le rebond. */
+.art-progres{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);
+  transform-origin:left center;z-index:900;pointer-events:none;
+  background:linear-gradient(90deg,#7c3aed,#a855f7,#06b6d4)}
+/* Sommaire : le lecteur sait où il est et peut sauter. Utile dès 4 sections. */
+.art-sommaire{margin:0 0 2.4rem;padding:1.1rem 1.3rem;border-radius:14px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+.art-sommaire-t{margin:0 0 .6rem;font-size:.66rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:#a855f7}
+.art-sommaire ol{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+.art-sommaire a{color:#cbd5e1;text-decoration:none;font-size:.9rem;line-height:1.45}
+.art-sommaire a:hover{color:#fff}
+.art-sommaire a[aria-current]{color:#a855f7;font-weight:700}
+/* ⚠️ Paragraphes courts : 73 % des visiteurs partent en moins de dix secondes
+   si la page est difficile à lire, et 79 % balaient au lieu de lire. */
+.art-body p{margin:0 0 1.15rem;max-width:68ch}
+.art-body h2{margin:2.6rem 0 .9rem;font-size:1.42rem;font-weight:800;letter-spacing:-.02em;
+  scroll-margin-top:96px}
+.art-body h3{margin:1.8rem 0 .6rem;font-size:1.08rem;font-weight:700}
+.art-body ul,.art-body ol{margin:0 0 1.3rem;padding-left:1.3rem;display:grid;gap:.45rem}
+.art-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.9rem;
+  display:block;overflow-x:auto}
+.art-body th,.art-body td{padding:.6rem .8rem;border-bottom:1px solid rgba(255,255,255,.09);
+  text-align:left}
+.art-body th{font-weight:700;color:#e2e8f0}
+/* Navigation d'article : prolonge la session au lieu de la clore. */
+.art-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;
+  border-top:1px solid rgba(255,255,255,.09);padding-top:1.6rem}
+.art-nav a{display:flex;flex-direction:column;gap:.3rem;padding:1rem 1.1rem;border-radius:14px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;color:inherit;transition:border-color .2s}
+.art-nav a:hover{border-color:rgba(168,85,247,.45)}
+.art-nav .sens{font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:#a855f7}
+.art-nav .titre{font-size:.94rem;font-weight:700;line-height:1.35}
+.art-nav .suivant{text-align:right}
+@media(max-width:640px){
+  .art-nav{grid-template-columns:1fr}
+  .art-nav .suivant{text-align:left}
+  .art-body p{font-size:1rem}
+}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -240,5 +283,6 @@ body{animation:pageIn .45s ease both}
 var bt=document.getElementById('back-top');
 if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
 </script>
+<script src="/assets/article.js" defer></script>
 </body>
 </html>

@@ -114,6 +114,61 @@ body{animation:pageIn .45s ease both}
 <link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/blog.html">
 <link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/blog.html">
 <link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/blog.html">
+
+<!-- blog:style -->
+<style>
+.bl-pole{max-width:1180px;margin:0 auto;padding:3.5rem 5% 0}
+.bl-pole h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:0 0 1.4rem}
+.bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.bl-card{display:flex;flex-direction:column;gap:.5rem;padding:1.4rem;border-radius:16px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+.bl-card:hover{border-color:rgba(168,85,247,.45);transform:translateY(-2px)}
+.bl-cat{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#a855f7}
+.bl-card h3{font-size:1.02rem;font-weight:700;line-height:1.35;margin:0}
+.bl-card p{font-size:.85rem;color:#94a3b8;margin:0;flex:1}
+.bl-lien{font-size:.8rem;font-weight:700;color:#a855f7}
+/* Sous 640 px, une seule colonne : deux colonnes de 300 px ne tiennent pas. */
+@media(max-width:640px){.bl-pole{padding:2.5rem 6% 0}.bl-grid{grid-template-columns:1fr}}
+.bl-filtres{max-width:1180px;margin:0 auto;padding:1.5rem 5% 0;display:flex;flex-wrap:wrap;gap:.5rem}
+.bl-f{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;min-height:44px;
+  border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);
+  color:#cbd5e1;font:600 .8rem Inter,system-ui,sans-serif;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s}
+.bl-f:hover{color:#fff;border-color:rgba(168,85,247,.4)}
+.bl-f.actif{color:#fff;background:rgba(124,58,237,.18);border-color:rgba(168,85,247,.55)}
+.bl-n{font-size:.7rem;opacity:.6}
+.bl-pole[hidden]{display:none}
+@media(max-width:640px){.bl-filtres{padding:1.2rem 6% 0;overflow-x:auto;flex-wrap:nowrap;
+  scrollbar-width:none}.bl-filtres::-webkit-scrollbar{display:none}.bl-f{white-space:nowrap}}
+</style>
+<script>
+/* Filtre par thème. Les cartes ne sont jamais retirées du DOM : masquer garde
+   les 100 articles visibles pour un moteur et pour qui n'a pas de JavaScript. */
+document.addEventListener('DOMContentLoaded', function () {
+  var boutons = [].slice.call(document.querySelectorAll('.bl-f'));
+  var poles = [].slice.call(document.querySelectorAll('.bl-pole'));
+  if (!boutons.length) return;
+  function appliquer(cle) {
+    poles.forEach(function (p) {
+      p.hidden = cle !== 'tous' && p.id !== 'pole-' + cle;
+    });
+    boutons.forEach(function (b) {
+      var on = b.dataset.f === cle;
+      b.classList.toggle('actif', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    /* L'URL porte le filtre : un thème se partage et se met en favori. */
+    history.replaceState(null, '', cle === 'tous' ? location.pathname : '#' + cle);
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () { appliquer(b.dataset.f); });
+  });
+  var depart = location.hash.slice(1);
+  if (depart && document.getElementById('pole-' + depart)) appliquer(depart);
+});
+</script>
+<!-- /blog:style -->
 </head>
 <body>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -184,64 +239,664 @@ body{animation:pageIn .45s ease both}
   <a href="contact.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span><span>Contact</span></a>
 </nav>
 <main id="main-content">
-<header class="blog-hero">
-  <nav class="breadcrumb" aria-label="Fil d'Ariane">
-    <a href="index.html">Accueil</a><span>›</span><span aria-current="page">Blog</span>
+  <header class="pg-hero">
+    <div class="pg-tag">Le blog</div>
+    <h1>100 articles pour décider en connaissance de cause</h1>
+    <p class="pg-sub">Une problématique par article. Ce qui marche, ce qui ne marche pas, et à quelles conditions.</p>
+  </header>
+  <nav class="bl-filtres" aria-label="Filtrer par thème">
+    <button type="button" class="bl-f actif" data-f="tous">Tous <span class="bl-n">100</span></button><button type="button" class="bl-f" data-f="audit">Audit et diagnostic <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="automatisation">Automatisation et workflows <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="modeles">Modèles et LLM <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="conduite">Conduite du changement <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="conformite">Conformité et sécurité <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="metiers">Par métier <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="secteurs">Par secteur <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="formation">Formation et compétences <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="pilotage">ROI et pilotage <span class="bl-n">10</span></button><button type="button" class="bl-f" data-f="technique">Mise en œuvre technique <span class="bl-n">10</span></button>
   </nav>
-  <div class="pg-tag">Insights &amp; Conseils IA</div>
-  <h1>Le blog <span class="g-text">Quantum Consulting</span></h1>
-  <p class="pg-sub">Conseils pratiques, guides et analyses sur l'IA en entreprise, pour les décideurs et équipes opérationnelles.</p>
-</header>
-<section class="blog-grid" aria-label="Articles du blog">
-  <div class="blog-featured">
-    <a class="blog-card" style="cursor:default;opacity:.75">
-      <div>
-        <div class="blog-featured-badge">Article phare</div>
-        <div class="blog-cat">Audit IA</div>
-        <h2>Comment réaliser un audit IA en entreprise : le guide complet 2026</h2>
-        <p class="blog-excerpt">Méthode pas-à-pas pour auditer vos processus métier, identifier les opportunités à fort ROI et choisir les modèles adaptés à vos contraintes. De la cartographie à la feuille de route : ce qu'un directeur doit savoir avant de lancer son premier projet IA.</p>
-        <div class="blog-meta"><span>8 min de lecture</span><span>Juillet 2026</span></div>
-      </div>
-      <span class="blog-read" style="opacity:.4">Bientôt disponible</span>
-    </a>
-  </div>
-  <div>
-    <a class="blog-card" style="cursor:default;opacity:.75">
-      <div class="blog-cat">Comparatif LLM</div>
-      <h2>Claude vs GPT-4o : quel modèle choisir pour votre PME en 2026 ?</h2>
-      <p class="blog-excerpt">Comparaison neutre et factuelle des deux modèles leaders selon vos cas d'usage PME, votre budget et vos contraintes de conformité.</p>
-      <div class="blog-meta"><span>6 min</span><span>Juillet 2026</span></div>
-      <span class="blog-read" style="opacity:.4">Bientôt disponible</span>
-    </a>
-  </div>
-  <div>
-    <a class="blog-card" style="cursor:default;opacity:.75">
-      <div class="blog-cat">Automatisation</div>
-      <h2>IA et RH : 5 processus à automatiser dès maintenant</h2>
-      <p class="blog-excerpt">Recrutement, onboarding, formation, reporting RH : cinq cas concrets d'automatisation IA avec gains de temps mesurés et outils recommandés.</p>
-      <div class="blog-meta"><span>5 min</span><span>Juillet 2026</span></div>
-      <span class="blog-read" style="opacity:.4">Bientôt disponible</span>
-    </a>
-  </div>
-  <div>
-    <a class="blog-card" style="cursor:default;opacity:.75">
-      <div class="blog-cat">Conformité &amp; Souveraineté</div>
-      <h2>RGPD et IA en entreprise : déployer en conformité sans ralentir</h2>
-      <p class="blog-excerpt">Cadre pratique pour vos projets IA sous contrainte RGPD : traitement des données, modèles on-premise, LLM souverains et documentation obligatoire.</p>
-      <div class="blog-meta"><span>7 min</span><span>Juillet 2026</span></div>
-      <span class="blog-read" style="opacity:.4">Bientôt disponible</span>
-    </a>
-  </div>
-  <div>
-    <a class="blog-card" style="cursor:default;opacity:.75">
-      <div class="blog-cat">Stratégie IA</div>
-      <h2>Calculer le ROI de l'IA en PME : méthode et exemples chiffrés</h2>
-      <p class="blog-excerpt">Comment mesurer le retour sur investissement d'un projet IA : formule de calcul, KPIs par type de projet, exemples sectoriels concrets.</p>
-      <div class="blog-meta"><span>6 min</span><span>Juillet 2026</span></div>
-      <span class="blog-read" style="opacity:.4">Bientôt disponible</span>
-    </a>
-  </div>
-</section>
+  <section class="bl-pole" id="pole-audit">
+    <h2>Audit et diagnostic</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="audit" href="/blog/par-ou-commencer-ia-pme.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Par où commencer l&#x27;IA quand on dirige une PME de 20 personnes</h3>
+        <p>Un dirigeant sans service informatique ne sait pas quelle est la première action concrète.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/identifier-taches-automatisables.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Comment repérer les tâches automatisables dans son entreprise</h3>
+        <p>On sait que du temps se perd, on ne sait pas où exactement.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/audit-ia-que-contient-il.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Ce que contient réellement un audit IA, livrable par livrable</h3>
+        <p>Le mot audit recouvre tout et n&#x27;importe quoi.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/signes-entreprise-pas-prete-ia.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Sept signes qu&#x27;une entreprise n&#x27;est pas prête pour l&#x27;IA</h3>
+        <p>Investir trop tôt coûte plus cher qu&#x27;attendre.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/cartographie-processus-avant-ia.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Cartographier ses processus avant d&#x27;automatiser quoi que ce soit</h3>
+        <p>Automatiser un processus mauvais donne un processus mauvais plus rapide.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/diagnostic-donnees-entreprise.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Vos données sont-elles exploitables ? Le diagnostic en dix questions</h3>
+        <p>Tout le monde dit avoir des données, peu les ont exploitables.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/audit-gratuit-piege-ou-pas.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Un audit IA gratuit, c&#x27;est un piège commercial ?</h3>
+        <p>La gratuité éveille la méfiance, à juste titre.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/priorisation-cas-usage-ia.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Prioriser ses cas d&#x27;usage IA quand on ne peut en faire qu&#x27;un</h3>
+        <p>Le budget ne permet qu&#x27;un chantier la première année.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/erreurs-premier-projet-ia.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Les cinq erreurs qui plombent un premier projet IA</h3>
+        <p>Le premier projet décide de la suite : réussi, il en ouvre dix.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="audit" href="/blog/faut-il-data-scientist.html">
+        <span class="bl-cat">Audit et diagnostic</span>
+        <h3>Faut-il recruter un data scientist pour démarrer ?</h3>
+        <p>La question du premier recrutement bloque beaucoup de dirigeants.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-automatisation">
+    <h2>Automatisation et workflows</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="automatisation" href="/blog/n8n-vs-make-vs-zapier.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>n8n, Make ou Zapier : lequel pour une PME française</h3>
+        <p>Trois outils, trois modèles de facturation, trois pièges.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/automatiser-devis-batiment.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Automatiser la production de devis sans perdre la main dessus</h3>
+        <p>Le devis est le document le plus chronophage et le plus sensible.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/automatiser-relances-clients.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Relances clients : automatiser sans passer pour un robot</h3>
+        <p>Une relance automatique mal écrite abîme la relation.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/tri-emails-automatique.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Trier et router ses e-mails entrants automatiquement</h3>
+        <p>La boîte partagée est un point de perte quotidien.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/saisie-factures-fournisseurs.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Supprimer la saisie des factures fournisseurs</h3>
+        <p>Une saisie qui coûte plusieurs jours par mois et n&#x27;apporte rien.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/automatisation-comptes-rendus.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Comptes rendus de réunion : de l&#x27;enregistrement au compte rendu diffusé</h3>
+        <p>Le compte rendu est toujours en retard, souvent jamais écrit.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/workflow-recrutement-ia.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Automatiser le tri de candidatures sans discriminer</h3>
+        <p>Le tri automatique de CV est un terrain juridiquement miné.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/quand-ne-pas-automatiser.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Quand il ne faut surtout pas automatiser</h3>
+        <p>L&#x27;automatisation est vendue comme toujours bénéfique. Elle ne l&#x27;est pas.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/automatisation-erreurs-silencieuses.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Les pannes silencieuses : le vrai risque de l&#x27;automatisation</h3>
+        <p>Un flux qui échoue sans prévenir fait plus de dégâts qu&#x27;une panne visible.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="automatisation" href="/blog/reprendre-la-main-automatisation.html">
+        <span class="bl-cat">Automatisation et workflows</span>
+        <h3>Reprendre la main sur une automatisation qui dérive</h3>
+        <p>Six mois après, personne ne sait plus ce que fait le flux.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-modeles">
+    <h2>Modèles et LLM</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="modeles" href="/blog/choisir-modele-selon-tache.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Choisir son modèle d&#x27;IA selon la tâche, pas selon la mode</h3>
+        <p>Le meilleur modèle n&#x27;existe pas ; le meilleur pour une tâche, oui.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/modeles-ouverts-vs-proprietaires.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Modèles ouverts ou propriétaires : le vrai arbitrage</h3>
+        <p>L&#x27;ouverture est vendue comme une garantie. De quoi, exactement ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/fenetre-contexte-pourquoi-ca-compte.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>La fenêtre de contexte : pourquoi ça change tout</h3>
+        <p>Notion technique, conséquence très concrète sur ce qu&#x27;on peut faire.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/hallucinations-comment-limiter.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Les hallucinations : les comprendre pour les contenir</h3>
+        <p>Un modèle qui invente avec aplomb est plus dangereux qu&#x27;un modèle muet.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/modele-francais-souverainete.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Un modèle français change-t-il quelque chose à la souveraineté ?</h3>
+        <p>Le drapeau ne suffit pas : où sont les données, qui y accède ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/cout-reel-api-llm.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Le coût réel d&#x27;une API de modèle, au-delà du tarif affiché</h3>
+        <p>Le prix au million de tokens ne dit presque rien de la facture.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/modeles-raisonnement-quand.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Les modèles à raisonnement : quand ils valent leur coût</h3>
+        <p>Ils coûtent plus cher et sont plus lents. Pour quel gain ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/rag-explique-simplement.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Faire répondre l&#x27;IA sur VOS documents : le principe expliqué</h3>
+        <p>Comment un modèle peut-il connaître des documents internes ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/multimodal-a-quoi-ca-sert.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Modèles multimodaux : à quoi ça sert concrètement en entreprise</h3>
+        <p>Lire une image ou un PDF change beaucoup de flux métier.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="modeles" href="/blog/changer-de-modele-sans-tout-refaire.html">
+        <span class="bl-cat">Modèles et LLM</span>
+        <h3>Changer de modèle sans tout refaire</h3>
+        <p>S&#x27;attacher à un fournisseur est le risque le plus sous-estimé.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-conduite">
+    <h2>Conduite du changement</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="conduite" href="/blog/equipes-refusent-ia.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Quand les équipes refusent l&#x27;IA : comprendre avant de convaincre</h3>
+        <p>Le refus est presque toujours rationnel. Lequel ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/annoncer-projet-ia-equipes.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Annoncer un projet IA à ses équipes sans déclencher la panique</h3>
+        <p>La première annonce fixe le climat de tout le projet.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/ia-et-suppression-postes.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>L&#x27;IA va-t-elle supprimer des postes chez moi ?</h3>
+        <p>La question que tout le monde pense et que personne ne pose.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/choisir-premier-service-pilote.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Choisir le service pilote : celui qui décide de la suite</h3>
+        <p>Un pilote mal choisi enterre le sujet pour deux ans.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/sponsor-projet-ia.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Sans sponsor, un projet IA meurt : pourquoi et comment l&#x27;éviter</h3>
+        <p>Le projet sans portage s&#x27;arrête au premier arbitrage budgétaire.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/mesurer-adoption-reelle.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Mesurer l&#x27;adoption réelle, pas les connexions</h3>
+        <p>Tout le monde s&#x27;est connecté une fois. Et après ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/gouvernance-ia-pme.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Une gouvernance IA proportionnée à une PME</h3>
+        <p>Les cadres de gouvernance sont écrits pour des groupes.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/shadow-ai-en-entreprise.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>L&#x27;IA clandestine : vos équipes l&#x27;utilisent déjà</h3>
+        <p>L&#x27;usage non encadré existe avant tout projet officiel.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/former-ou-recruter.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Former ses équipes ou recruter : le calcul</h3>
+        <p>Deux stratégies, deux coûts, deux délais.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conduite" href="/blog/ia-et-management-intermediaire.html">
+        <span class="bl-cat">Conduite du changement</span>
+        <h3>Le management intermédiaire, angle mort des projets IA</h3>
+        <p>Le blocage vient rarement du terrain ni de la direction.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-conformite">
+    <h2>Conformité et sécurité</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="conformite" href="/blog/rgpd-ia-ce-qui-change.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>RGPD et IA : ce qui change vraiment pour une PME</h3>
+        <p>Le règlement existait avant l&#x27;IA. Qu&#x27;est-ce qui est nouveau ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/donnees-clients-dans-chatgpt.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Coller des données clients dans un outil d&#x27;IA : que risque-t-on ?</h3>
+        <p>Le geste est quotidien, la conséquence rarement mesurée.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/ia-act-europeen-pme.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Le règlement européen sur l&#x27;IA : ce qu&#x27;une PME doit en retenir</h3>
+        <p>Un texte long, dont l&#x27;essentiel tient en une page pour une PME.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/anonymiser-avant-envoi.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Anonymiser avant d&#x27;envoyer : méthodes et limites</h3>
+        <p>L&#x27;anonymisation est présentée comme la solution. Elle est fragile.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/modele-local-quand-necessaire.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Modèle hébergé chez soi : quand c&#x27;est vraiment nécessaire</h3>
+        <p>Le local rassure mais coûte. Quand est-ce justifié ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/journalisation-usages-ia.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Journaliser les usages IA : obligation ou précaution ?</h3>
+        <p>Savoir qui a demandé quoi, et pourquoi c&#x27;est utile.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/clause-ia-contrat-client.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Faut-il une clause IA dans ses contrats clients ?</h3>
+        <p>Si l&#x27;IA intervient dans la prestation, le client doit-il le savoir ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/secret-professionnel-et-ia.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Secret professionnel et IA : les métiers concernés</h3>
+        <p>Avocat, expert-comptable, santé : le secret change tout.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/fuite-donnees-par-lia.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Comment une fuite de données arrive par l&#x27;IA</h3>
+        <p>Les scénarios réels, pas les scénarios de film.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="conformite" href="/blog/assurance-et-risque-ia.html">
+        <span class="bl-cat">Conformité et sécurité</span>
+        <h3>Votre assurance couvre-t-elle une erreur causée par l&#x27;IA ?</h3>
+        <p>Question rarement posée avant l&#x27;incident.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-metiers">
+    <h2>Par métier</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-service-commercial.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>L&#x27;IA au service commercial : trois usages qui tiennent</h3>
+        <p>Beaucoup de promesses, peu d&#x27;usages qui survivent à six mois.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-comptabilite-pme.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Comptabilité : ce que l&#x27;IA fait bien et ce qu&#x27;elle rate</h3>
+        <p>Le chiffre exact ne tolère pas l&#x27;approximation.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-service-client.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Service client : l&#x27;IA sans dégrader la relation</h3>
+        <p>Le chatbot mal fait coûte des clients.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-ressources-humaines.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>RH : les usages IA qui ne posent pas de problème juridique</h3>
+        <p>Beaucoup d&#x27;usages RH sont encadrés ou interdits.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-marketing-contenu.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Marketing de contenu : produire plus sans produire du vide</h3>
+        <p>Le volume est facile, la valeur ne l&#x27;est pas.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-achats-fournisseurs.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Achats : comparer des offres avec l&#x27;IA</h3>
+        <p>Comparer dix propositions techniques prend des jours.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-juridique-interne.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Juridique interne : relire des contrats avec l&#x27;IA</h3>
+        <p>Gain de temps réel, risque réel aussi.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-production-industrielle.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Production : au-delà de la maintenance prédictive</h3>
+        <p>Le seul cas d&#x27;usage cité est rarement le plus accessible.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-logistique-transport.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Logistique : planification et gestion des aléas</h3>
+        <p>La planification théorique existe déjà. L&#x27;aléa, non.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="metiers" href="/blog/ia-direction-generale.html">
+        <span class="bl-cat">Par métier</span>
+        <h3>Ce qu&#x27;un dirigeant peut faire lui-même avec l&#x27;IA</h3>
+        <p>Avant de déployer, il faut avoir pratiqué.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-secteurs">
+    <h2>Par secteur</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-cabinet-expertise-comptable.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>IA en cabinet d&#x27;expertise comptable</h3>
+        <p>Volume documentaire énorme, tolérance à l&#x27;erreur nulle.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-btp-entreprise-generale.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>IA dans le bâtiment : les usages qui tiennent sur chantier</h3>
+        <p>Un chantier n&#x27;est pas un bureau : réseau, mains sales, urgence.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-commerce-detail.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Commerce de détail : prévision et réassort</h3>
+        <p>Le stock immobilise la trésorerie ; la rupture perd la vente.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-agence-communication.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Agence de communication : rester créatif quand tout le monde génère</h3>
+        <p>Quand la production devient gratuite, la valeur se déplace.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-cabinet-avocat.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Cabinet d&#x27;avocats : recherche et rédaction sous contrainte de secret</h3>
+        <p>Le secret professionnel interdit la plupart des outils grand public.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-sante-liberale.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Professions de santé libérales : le cadre avant l&#x27;outil</h3>
+        <p>Données de santé : le régime le plus strict.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-industrie-agroalimentaire.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Agroalimentaire : traçabilité et contrôle qualité</h3>
+        <p>La traçabilité est déjà une obligation lourde.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-immobilier-agence.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Agence immobilière : de l&#x27;annonce au dossier de location</h3>
+        <p>Beaucoup de saisie répétée, beaucoup de documents.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-formation-organisme.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Organisme de formation : concevoir plus vite sans perdre en qualité</h3>
+        <p>La conception pédagogique est le poste le plus coûteux.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="secteurs" href="/blog/ia-association-secteur-social.html">
+        <span class="bl-cat">Par secteur</span>
+        <h3>Associations : faire plus avec des moyens contraints</h3>
+        <p>Pas de budget informatique, beaucoup d&#x27;administratif.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-formation">
+    <h2>Formation et compétences</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="formation" href="/blog/former-equipes-par-ou-commencer.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Former ses équipes à l&#x27;IA : par où commencer</h3>
+        <p>Former tout le monde à tout ne marche jamais.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/prompt-engineering-utile-ou-mode.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Le prompt engineering : compétence durable ou effet de mode ?</h3>
+        <p>Compétence très mise en avant. Restera-t-elle ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/duree-formation-ia-efficace.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Combien de temps faut-il pour former quelqu&#x27;un à l&#x27;IA ?</h3>
+        <p>Une demi-journée ne suffit pas, cinq jours sont un luxe.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/evaluer-competences-ia.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Évaluer le niveau réel de ses équipes en IA</h3>
+        <p>L&#x27;autoévaluation est systématiquement fausse, dans les deux sens.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/entretenir-competences-ia.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Entretenir les compétences quand les outils changent tous les trois mois</h3>
+        <p>La formation ponctuelle se périme vite.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/former-dirigeant-ou-equipes.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Faut-il former le dirigeant avant les équipes ?</h3>
+        <p>Un dirigeant qui ne pratique pas ne saura pas arbitrer.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/referent-ia-interne.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Désigner un référent IA en interne : profil et mission</h3>
+        <p>Ni informaticien, ni expert : quel profil alors ?</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/apprendre-par-la-pratique-ia.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Apprendre l&#x27;IA par la pratique : un protocole en quatre semaines</h3>
+        <p>La théorie sans pratique ne produit aucun changement.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/erreurs-formation-ia.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Les formations IA qui ne servent à rien, et pourquoi</h3>
+        <p>Beaucoup de formations laissent zéro trace un mois après.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="formation" href="/blog/financer-formation-ia.html">
+        <span class="bl-cat">Formation et compétences</span>
+        <h3>Financer une formation IA : les dispositifs réellement mobilisables</h3>
+        <p>Beaucoup de dispositifs annoncés, peu accessibles à une PME.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-pilotage">
+    <h2>ROI et pilotage</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="pilotage" href="/blog/calculer-roi-ia-methode.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Calculer le retour d&#x27;un projet IA : la méthode honnête</h3>
+        <p>Les calculs de retour sur investissement sont souvent complaisants.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/combien-couter-projet-ia-pme.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Combien coûte réellement un projet IA en PME</h3>
+        <p>Les fourchettes annoncées vont de 1 à 100.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/indicateurs-suivre-projet-ia.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Les indicateurs à suivre, et ceux qui trompent</h3>
+        <p>Les indicateurs faciles à mesurer sont rarement les bons.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/quand-arreter-projet-ia.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Savoir arrêter un projet IA qui ne prend pas</h3>
+        <p>Persister coûte plus cher qu&#x27;arrêter, et c&#x27;est difficile à admettre.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/budget-ia-premiere-annee.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Quel budget IA pour une première année</h3>
+        <p>Trop peu ne produit rien, trop crée un chantier ingérable.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/interne-ou-prestataire.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Faire en interne ou passer par un prestataire</h3>
+        <p>Les deux échouent pour des raisons différentes.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/contractualiser-mission-ia.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Contractualiser une mission IA : les clauses qui comptent</h3>
+        <p>Les livrables flous sont la première cause de litige.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/mesurer-temps-gagne.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Mesurer le temps réellement gagné, pas le temps annoncé</h3>
+        <p>Le temps gagné déclaré est presque toujours surestimé.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/effet-plateau-projets-ia.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>L&#x27;effet plateau : pourquoi les gains s&#x27;arrêtent au bout de six mois</h3>
+        <p>Les premiers gains sont faciles, les suivants non.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="pilotage" href="/blog/presenter-resultats-ia-direction.html">
+        <span class="bl-cat">ROI et pilotage</span>
+        <h3>Présenter les résultats d&#x27;un projet IA à son conseil</h3>
+        <p>Les chiffres techniques n&#x27;intéressent personne au conseil.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
+  <section class="bl-pole" id="pole-technique">
+    <h2>Mise en œuvre technique</h2>
+    <div class="bl-grid">
+      <a class="bl-card" data-pole="technique" href="/blog/connecter-ia-crm.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Connecter l&#x27;IA à son CRM sans tout casser</h3>
+        <p>Le CRM est le système le plus sensible à toucher.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/ia-et-erp-existant.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Faire parler l&#x27;IA avec un ERP ancien</h3>
+        <p>Beaucoup d&#x27;ERP en place n&#x27;ont pas d&#x27;interface moderne.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/ia-microsoft-365.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Microsoft 365 : ce que Copilot fait, ce qu&#x27;il ne fait pas</h3>
+        <p>La licence est souvent achetée avant d&#x27;être comprise.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/preparer-ses-documents-ia.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Préparer ses documents pour que l&#x27;IA les exploite</h3>
+        <p>Un PDF scanné n&#x27;est pas un document exploitable.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/api-ou-interface-web.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Passer par une API ou par l&#x27;interface web : quand basculer</h3>
+        <p>L&#x27;interface web suffit longtemps, puis ne suffit plus.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/tester-une-ia-avant-deploiement.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Tester une IA avant de la déployer : protocole</h3>
+        <p>On déploie souvent sur une impression, pas sur une mesure.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/surveiller-qualite-en-production.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Surveiller la qualité d&#x27;une IA en production</h3>
+        <p>La qualité dérive sans prévenir quand le modèle change.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/cout-maintenance-solution-ia.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Ce que coûte l&#x27;entretien d&#x27;une solution IA après la mise en service</h3>
+        <p>Le coût de mise en service est visible, l&#x27;entretien ne l&#x27;est pas.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/integrer-ia-outils-metier-verticaux.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Intégrer l&#x27;IA à un logiciel métier spécialisé</h3>
+        <p>Les logiciels verticaux sont fermés et peu documentés.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+      <a class="bl-card" data-pole="technique" href="/blog/sauvegarde-reversibilite-ia.html">
+        <span class="bl-cat">Mise en œuvre technique</span>
+        <h3>Réversibilité : pouvoir revenir en arrière</h3>
+        <p>Un déploiement sans marche arrière est un pari.</p>
+        <span class="bl-lien">Lire l'article →</span>
+      </a>
+    </div>
+  </section>
 </main>
 <a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <footer role="contentinfo">
