@@ -15,15 +15,19 @@ n'est pas « une page mal réglée », c'est « je ne suis plus sur le même sit
 
 CE QUE ÇA CORRIGE
 
-1. ⚠️ LA RÈGLE QUI CASSE TOUT
+1. ⚠️ LA RÈGLE QUI CASSAIT TOUT — corrigée à la source depuis
    `nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:...}` visait
-   la barre de navigation du site. Mais elle attrape TOUS les <nav> de la page.
-   Or trois autres éléments sont des <nav> :
-     · nav.art-sommaire   → le sommaire se colle par-dessus la barre
-     · nav.art-prevnext   → la carte « article suivant » aussi
-     · nav.q-lang         → le sélecteur de langue part au CENTRE de l'écran
-                             au lieu de rester en haut à droite
-   Un seul sélecteur trop large, trois symptômes sans rapport apparent.
+   la barre du site, mais attrapait TOUS les <nav> : sommaire, navigation entre
+   articles, filtres de thème du blog, sélecteur de langue. Chacun se retrouvait
+   projeté en haut au centre, empilé sur la barre.
+
+   Exclure `.breadcrumb` nommément ne réglait qu'un cas : tout <nav> ajouté
+   ensuite retombait dans le piège. Le critère réel est structurel — la barre du
+   site et la barre mobile sont les seuls <nav> SANS classe. Le sélecteur est
+   donc devenu `nav:not([class])` dans les 131 pages, ce qui décrit l'intention
+   d'origine et se protège des ajouts futurs.
+
+   Ce script n'a donc plus à remettre ces éléments dans le flux.
 
 2. LE THÈME
    Les couleurs de `:root` passent du clair au sombre du site. C'est ce qui rend
@@ -55,40 +59,9 @@ BALISE = '<!-- correctif:mise-en-page -->'
 
 CORRECTIF = BALISE + """
 <style>
-/* ⚠️ CORRECTIF — `nav:not(.breadcrumb){position:fixed}` visait la barre du site
-   mais attrape tous les <nav>. Le sommaire, la navigation d'article et le
-   sélecteur de langue se retrouvaient projetés en haut au centre, empilés
-   par-dessus la barre. On les remet dans le flux. */
-nav.art-sommaire,
-nav.art-prevnext,
-nav.art-nav,
-nav.breadcrumb {
-  position: static;
-  transform: none;
-  top: auto; left: auto; right: auto;
-  z-index: auto;
-  width: auto;
-}
-/* ⚠️ Sous 640 px, `nav:not(.breadcrumb){display:none}` masque la barre du site
-   au profit du menu mobile — mais il masquait AUSSI le sommaire et la
-   navigation entre articles, qui disparaissaient purement et simplement sur
-   téléphone. On les réaffiche explicitement. */
-@media (max-width: 640px) {
-  nav.art-sommaire { display: block; }
-  nav.art-prevnext, nav.art-nav { display: grid; }
-  nav.breadcrumb { display: flex; }
-}
-/* Le dernier maillon du fil d'ariane était en rgba(0,0,0,.25) : du noir à 25 %
-   sur un fond quasi noir, donc invisible. */
+/* Le dernier maillon du fil d'ariane était en rgba(0,0,0,.25) — hérité du
+   gabarit clair. Sur le fond sombre du site, du noir à 25 % est invisible. */
 .breadcrumb span { color: rgba(255, 255, 255, .38); }
-/* Le sélecteur de langue, lui, doit RESTER fixe : en haut à droite, comme sur
-   le reste du site. Spécificité volontairement plus forte que la règle fautive. */
-body > nav.q-lang {
-  position: fixed;
-  top: 14px; right: 18px; left: auto;
-  transform: none;
-  z-index: 600;
-}
 </style>"""
 
 # ── 2. La palette ────────────────────────────────────────────────────────────

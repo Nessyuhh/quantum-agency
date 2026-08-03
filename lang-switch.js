@@ -34,7 +34,7 @@
   var css = document.createElement('style');
   css.textContent =
     /* ⚠️ `body>nav.q-lang` et non `.q-lang` : la barre du site est stylée par
-       `nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)}`,
+       `nav:not([class]){position:fixed;top:20px;left:50%;transform:translateX(-50%)}`,
        de spécificité (0,1,1) — supérieure à `.q-lang` (0,1,0). Elle l'emportait
        donc sur top, left, transform et z-index ; seul `right` survivait, ce qui
        projetait le sélecteur de langue AU CENTRE de l'écran, par-dessus la barre.
