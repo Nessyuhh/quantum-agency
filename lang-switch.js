@@ -33,7 +33,14 @@
 
   var css = document.createElement('style');
   css.textContent =
-    '.q-lang{position:fixed;top:14px;right:18px;z-index:600;display:flex;align-items:center;' +
+    /* ⚠️ `body>nav.q-lang` et non `.q-lang` : la barre du site est stylée par
+       `nav:not(.breadcrumb){position:fixed;top:20px;left:50%;transform:translateX(-50%)}`,
+       de spécificité (0,1,1) — supérieure à `.q-lang` (0,1,0). Elle l'emportait
+       donc sur top, left, transform et z-index ; seul `right` survivait, ce qui
+       projetait le sélecteur de langue AU CENTRE de l'écran, par-dessus la barre.
+       `body>nav.q-lang` vaut (0,2,1) et reprend la main sans !important. */
+    'body>nav.q-lang{position:fixed;top:14px;right:18px;left:auto;transform:none;z-index:600;' +
+    'display:flex;align-items:center;' +
     'gap:2px;font:700 11px/1 Inter,system-ui,sans-serif;letter-spacing:.12em}' +
     /* ⚠️ 44 px de haut minimum : c'est la cible tactile exigée par WCAG 2.2 et
        les recommandations Apple. Le repère visuel reste petit, la zone
@@ -44,7 +51,7 @@
     '.q-lang a{color:rgba(255,255,255,.72);transition:color .25s}' +
     '.q-lang a:hover,.q-lang a:focus-visible{color:rgba(255,255,255,.95)}' +
     '.q-lang .q-sep{min-width:0;opacity:.45;color:#fff}' +
-    '@media(max-width:900px){.q-lang{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);' +
+    '@media(max-width:900px){body>nav.q-lang{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);' +
     'right:10px;background:rgba(8,4,22,.72);backdrop-filter:blur(12px);border-radius:99px;padding:0 4px}}';
   document.head.appendChild(css);
 
