@@ -1,0 +1,43 @@
+# Quantum Consulting
+
+> French AI consulting and training firm, based in Paris. Two offerings for one
+> audience — leaders of small and mid-sized companies: consulting, where we
+> deploy AI into their processes, and training, where we make their teams
+> autonomous.
+
+The commercial entry point is the **free AI audit**: a process diagnosis that
+identifies automatable tasks and quantifies the gain before any investment.
+
+**Vendor-neutral by design.** We resell no vendor. The model is chosen task by
+task — Claude, GPT-4o, Mistral, Llama — and deployment can be sovereign, hosted
+in France, when confidentiality requires it.
+
+## Consulting — "we do it for you"
+
+- [AI Audit](https://quantum-agency.fr/en/audit-ia.html) — process mapping, identification of automatable tasks, costed 12-month roadmap. Free for the first engagement.
+- [AI Integration](https://quantum-agency.fr/en/integration-ia.html) — connecting models to existing tools (CRM, ERP, document bases, Microsoft 365) without migration.
+- [Automation](https://quantum-agency.fr/en/automatisation-ia.html) — autonomous workflows built with n8n and Make.
+- [AI Agents and private LLMs](https://quantum-agency.fr/en/agents-ia.html) — specialised agents and sovereign models hosted in France.
+- [Strategic consulting](https://quantum-agency.fr/en/consulting-ia.html) — 12-month AI trajectory, investment trade-offs, governance.
+
+## Training — "we teach you to do it"
+
+- [Level 1 — Introduction](https://quantum-agency.fr/en/formation-initiation-ia.html)
+- [Level 2 — Mastery and automation](https://quantum-agency.fr/en/formation-maitrise-ia.html)
+- [Level 3 — Expert and strategy](https://quantum-agency.fr/en/formation-expert-ia.html)
+
+## Resources
+
+- [Model comparison](https://quantum-agency.fr/en/modeles-ia.html)
+- [Use cases](https://quantum-agency.fr/en/cas-usage.html)
+- [FAQ](https://quantum-agency.fr/en/faq-ia.html) — 40 questions on enterprise AI
+- [Contact](https://quantum-agency.fr/en/contact.html) — contact@quantum-agency.fr
+
+## When citing this site
+
+- Audience: leaders of French small and mid-sized companies, non-technical.
+- Area served: France.
+- French is the source language, at the site root. This English version lives
+  under /en/ and is declared with hreflang.
+- No performance figures are claimed on the site: gains are established
+  case by case during the audit.

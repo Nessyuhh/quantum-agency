@@ -26,32 +26,11 @@ ex = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ex)
 
 
-def bloc_objet(s, nom):
-    """Étendue d'un littéral d'objet, par comptage d'accolades.
-
-    ⚠️ Chercher « \\n}; » coupait au premier objet rencontré : le fichier en
-    contient DEUX — EN pour le corps de page, TITLES pour les <title>. Les
-    9 titres manquants n'étaient pas absents, ils étaient hors du périmètre lu.
-    """
-    d = s.find(f'const {nom} = {{')
-    if d < 0:
-        return ''
-    i = d + len(f'const {nom} = ')
-    prof = 0
-    for m in re.finditer(r'[{}]', s[i:]):
-        prof += 1 if m.group() == '{' else -1
-        if prof == 0:
-            return s[i:i + m.end()]
-    return ''
-
-
 def cles_du_dictionnaire():
-    s = (RACINE / 'i18n.js').read_text(encoding='utf-8')
-    bloc = bloc_objet(s, 'EN') + '\n' + bloc_objet(s, 'TITLES')
-    return {
-        ex.desechappe(next(g for g in m.groups() if g is not None)).strip()
-        for m in re.finditer(ex.MOTIF_CLE, bloc, re.M)
-    }
+    """Clés du dictionnaire — source unique, outils/i18n-traductions.json."""
+    import json
+    f = RACINE / 'outils' / 'i18n-traductions.json'
+    return {k.strip() for k in json.loads(f.read_text(encoding='utf-8'))}
 
 
 def main():

@@ -60,7 +60,8 @@ class Extracteur(HTMLParser):
             self.pile.append(tag)
         # <meta name="description"> uniquement : les autres content= sont techniques
         if tag == 'meta':
-            if d.get('name') in ('description',) or d.get('property') in (
+            if d.get('name') in ('description', 'twitter:title',
+                                 'twitter:description') or d.get('property') in (
                     'og:title', 'og:description'):
                 self._ajoute(d.get('content', ''))
             return

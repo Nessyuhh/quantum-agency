@@ -1,87 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://quantum-agency.fr/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <loc>https://quantum-agency.fr/agents-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/agents-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/agents-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/agents-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/agents-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/agents-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/agents-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/agents-ia.html"/>
   </url>
   <url>
     <loc>https://quantum-agency.fr/audit-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/audit-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/audit-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/audit-ia.html"/>
   </url>
   <url>
-    <loc>https://quantum-agency.fr/integration-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <loc>https://quantum-agency.fr/en/audit-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/audit-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/audit-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/audit-ia.html"/>
   </url>
   <url>
     <loc>https://quantum-agency.fr/automatisation-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/agents-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/consulting-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/formation-initiation-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/formation-maitrise-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/formation-expert-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/faq-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/automatisation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/automatisation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/automatisation-ia.html"/>
   </url>
   <url>
-    <loc>https://quantum-agency.fr/cas-usage.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <loc>https://quantum-agency.fr/en/automatisation-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantum-agency.fr/modeles-ia.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/automatisation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/automatisation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/automatisation-ia.html"/>
   </url>
   <url>
     <loc>https://quantum-agency.fr/blog.html</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/blog.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/blog.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/blog.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/cas-usage.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/cas-usage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/cas-usage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/cas-usage.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/cas-usage.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/cas-usage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/cas-usage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/cas-usage.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/consulting-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/consulting-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/consulting-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/consulting-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/consulting-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/consulting-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/consulting-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/consulting-ia.html"/>
   </url>
   <url>
     <loc>https://quantum-agency.fr/contact.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/contact.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/faq-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/faq-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/faq-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/faq-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/faq-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/faq-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/faq-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/faq-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/formation-expert-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-expert-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-expert-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-expert-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/formation-expert-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-expert-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-expert-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-expert-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/formation-initiation-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-initiation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-initiation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-initiation-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/formation-initiation-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-initiation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-initiation-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-initiation-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/formation-maitrise-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-maitrise-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-maitrise-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-maitrise-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/formation-maitrise-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/formation-maitrise-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/formation-maitrise-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/formation-maitrise-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/integration-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/integration-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/integration-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/integration-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/integration-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/integration-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/integration-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/integration-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/modeles-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/modeles-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/modeles-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/modeles-ia.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-agency.fr/en/modeles-ia.html</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/modeles-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/modeles-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/modeles-ia.html"/>
   </url>
 </urlset>

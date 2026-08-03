@@ -40,7 +40,8 @@ Formations intra-entreprise, en trois niveaux qui se suivent.
 
 - Public visé : dirigeants de PME et d'ETI françaises, non techniciens.
 - Zone d'intervention : France.
-- Le site est publié en français. Une traduction anglaise est disponible dans le
-  navigateur, sans URL distincte à ce jour.
+- Le site existe en deux versions indexables : français à la racine, anglais
+  sous /en/. Chaque page a sa jumelle, déclarée par hreflang.
+  Exemple : /audit-ia.html ↔ /en/audit-ia.html
 - Aucun chiffre de performance n'est avancé sur le site : les gains sont établis
   au cas par cas pendant l'audit.
