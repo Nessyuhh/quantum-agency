@@ -86,6 +86,25 @@ EN_DUR = [
     ('color:#334155', 'color:#cbd5e1'),
 ]
 
+
+# ── 4. Le logo ───────────────────────────────────────────────────────────────
+# ⚠️ Les articles portaient `<a class="n-logo">Quantum Consulting</a>` — du
+# texte brut là où le reste du site affiche le logo. Encore un héritage du
+# gabarit : un visiteur arrivant sur un article ne voyait pas la marque.
+#
+# Le logo est LU depuis blog.html plutôt que recopié ici : une signature dupliquée
+# dans un script finit toujours par diverger de celle du site.
+def logo_officiel() -> str:
+    t = (RACINE / 'blog.html').read_text(encoding='utf-8')
+    m = re.search(r'<a[^>]*class="n-logo"[^>]*>.*?</a>', t, re.S)
+    if not m:
+        return ''
+    # Depuis /blog/, un href relatif « index.html » viserait /blog/index.html.
+    return m.group(0).replace('href="index.html"', 'href="/"')
+
+
+LOGO_TEXTE = re.compile(r'<a[^>]*class="n-logo"[^>]*>\s*Quantum Consulting\s*</a>')
+
 FAVICON = re.compile(r'<link rel="icon"[^>]*href="data:image/svg\+xml[^"]*"[^>]*>')
 
 
@@ -116,6 +135,12 @@ def aligner(chemin: pathlib.Path) -> list[str]:
     if 'lang-switch.js' not in s:
         s = s.replace('</body>', '<script src="/lang-switch.js" defer></script>\n</body>', 1)
         faits.append('sélecteur de langue')
+
+    if LOGO_TEXTE.search(s):
+        officiel = logo_officiel()
+        if officiel:
+            s = LOGO_TEXTE.sub(lambda _: officiel, s)
+            faits.append('logo')
 
     if FAVICON.search(s):
         s = FAVICON.sub('<link rel="icon" type="image/svg+xml" href="/favicon.svg">', s)
