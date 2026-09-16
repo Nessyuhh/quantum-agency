@@ -31,6 +31,26 @@
   var autre = enAnglais ? 'FR' : 'EN';
   var libelle = enAnglais ? 'Voir cette page en français' : 'View this page in English';
 
+  /* Pages de la nouvelle charte : un emplacement [data-lang-slot] dans la
+     barre de navigation reçoit un bouton vers l'autre langue (stylé par
+     assets/quantum.css). Les anciennes pages, sans emplacement, gardent le
+     sélecteur flottant ci-dessous. */
+  var slots = document.querySelectorAll('[data-lang-slot]');
+  if (slots.length) {
+    Array.prototype.forEach.call(slots, function (slot) {
+      var a = document.createElement('a');
+      a.className = 'q-lang-btn';
+      a.href = jumelle;
+      a.setAttribute('hreflang', autre.toLowerCase());
+      a.setAttribute('lang', autre.toLowerCase());
+      a.title = libelle;
+      a.setAttribute('aria-label', libelle);
+      a.textContent = autre;
+      slot.appendChild(a);
+    });
+    return;
+  }
+
   var css = document.createElement('style');
   css.textContent =
     /* ⚠️ `body>nav.q-lang` et non `.q-lang` : la barre du site est stylée par

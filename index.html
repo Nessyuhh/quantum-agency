@@ -31,7 +31,7 @@
 <!-- Chargée sans bloquer le rendu : media="print" + bascule sur "all" au onload. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/quantum.css">
+<link rel="stylesheet" href="/assets/quantum.css?v=2">
 
 <style>
 /* ── HERO ── */
@@ -152,7 +152,10 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </nav>
-  <a href="#audit-gratuit" class="btn btn-grad nav-cta">Audit IA gratuit →</a>
+  <div class="nav-right">
+    <a href="#audit-gratuit" class="btn btn-grad nav-cta">Audit IA gratuit →</a>
+    <span data-lang-slot></span>
+  </div>
 </header>
 
 <header class="mob-top-bar" role="banner">
@@ -160,7 +163,10 @@
     <svg aria-hidden="true"><use href="#qMark"/></svg>
     <span class="brand-word"><b>QUANTUM</b></span>
   </a>
-  <a href="#audit-gratuit" class="mob-cta-btn">Audit gratuit →</a>
+  <div class="nav-right">
+    <span data-lang-slot></span>
+    <a href="#audit-gratuit" class="mob-cta-btn">Audit gratuit →</a>
+  </div>
 </header>
 
 <main id="main-content">
@@ -407,7 +413,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js" defer></script>
-<script src="/lang-switch.js" defer></script>
+<script src="/assets/quantum.js?v=2" defer></script>
+<script src="/lang-switch.js?v=2" defer></script>
 </body>
 </html>
