@@ -112,7 +112,7 @@
     var ns = 'http://www.w3.org/2000/svg';
     edges.forEach(function (p, i) {
       var c = document.createElementNS(ns, 'circle');
-      c.setAttribute('r', '4');
+      c.setAttribute('r', '5');
       c.setAttribute('class', 'wf-packet');
       svg.appendChild(c);
       packets.to(c, {

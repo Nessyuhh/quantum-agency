@@ -71,23 +71,23 @@
 .wf-caption .hint { display: none; }
 @media (max-width: 900px) { .wf-head { flex-direction: column; align-items: flex-start; } .wf-head p { text-align: left; } .wf-caption .hint { display: block; color: var(--violet); white-space: nowrap; } }
 
-#wf text { font-family: var(--mono); fill: var(--ink-2); }
-#wf .lbl { font-size: 10px; letter-spacing: 0.16em; fill: var(--ink-3); }
+#wf text { font-family: var(--mono); fill: var(--ink); }
+#wf .lbl { font-size: 10.5px; letter-spacing: 0.16em; fill: var(--ink-2); }
 #wf .wf-in rect { fill: var(--bg); stroke: var(--line-strong); stroke-dasharray: 4 4; }
-#wf .wf-in text { font-size: 12px; fill: var(--ink-2); }
-#wf .wf-edge { fill: none; stroke: rgba(17,19,24,0.3); stroke-width: 1.5; }
+#wf .wf-in text { font-size: 12.5px; fill: var(--ink); }
+#wf .wf-edge { fill: none; stroke: rgba(17,19,24,0.5); stroke-width: 1.5; }
 #wf .wf-node rect, #wf .wf-out rect { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1; transition: stroke 0.5s, fill 0.5s; }
-#wf .wf-node .t { font-family: var(--display); font-weight: 700; font-size: 23px; letter-spacing: 0.02em; text-transform: uppercase; fill: var(--ink-3); transition: fill 0.5s; }
-#wf .wf-node .s { font-size: 10.5px; fill: var(--ink-3); transition: fill 0.5s; }
+#wf .wf-node .t { font-family: var(--display); font-weight: 700; font-size: 23px; letter-spacing: 0.02em; text-transform: uppercase; fill: var(--ink-2); transition: fill 0.5s; }
+#wf .wf-node .s { font-size: 11px; fill: var(--ink-2); transition: fill 0.5s; }
 #wf .wf-node.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
 #wf .wf-node.on .t { fill: var(--ink); }
-#wf .wf-node.on .s { fill: var(--cyan); }
+#wf .wf-node.on .s { fill: var(--violet); }
 #wf .wf-out rect { stroke-dasharray: none; }
-#wf .wf-out text { font-size: 12px; fill: var(--ink-3); transition: fill 0.5s; }
+#wf .wf-out text { font-size: 12.5px; fill: var(--ink-2); transition: fill 0.5s; }
 #wf .wf-out.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
 #wf .wf-out.on text { fill: var(--ink); }
-#wf .wf-packet { fill: url(#wfGrad); }
-#wf .branch { font-size: 10px; fill: var(--ink-3); letter-spacing: 0.1em; }
+#wf .wf-packet { fill: #7c3aed; stroke: #fff; stroke-width: 1.5; }
+#wf .branch { font-size: 10.5px; fill: var(--ink-2); letter-spacing: 0.1em; }
 
 /* ── CTA ── */
 .cta-section { background: var(--bg-2); border-top: 1px solid var(--line); }
@@ -214,7 +214,7 @@
             <desc id="wf-desc">Trois entrées désordonnées (e-mail fournisseur, facture PDF, relevé bancaire) sont réceptionnées et triées, lues par une IA, saisies dans l'ERP après validation humaine si anomalie, puis produisent une comptabilité à jour, un fournisseur informé et un tableau de bord.</desc>
             <defs>
               <linearGradient id="wfGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
+                <stop offset="0%" stop-color="#6d28d9"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#0891b2"/>
               </linearGradient>
             </defs>
 
