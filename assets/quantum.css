@@ -69,7 +69,10 @@ img, svg { display: block; max-width: 100%; }
   border: none; color: #0F1113; background: var(--grad); background-size: 200% 200%; background-position: 0% 50%;
   transition: background-position 0.5s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
-.btn-grad:hover, .btn-grad:focus-visible { background-position: 100% 50%; color: #0F1113; }
+/* Le dégradé est redéclaré au survol : `.btn:hover` pose le raccourci
+   `background: var(--ink)`, qui efface l'image de fond. Sans cette ligne, le
+   bouton devient noir avec un libellé presque noir, donc illisible. */
+.btn-grad:hover, .btn-grad:focus-visible { background: var(--grad); background-size: 200% 200%; background-position: 100% 50%; color: #0F1113; }
 .btn-line { border: none; padding: 0 0 2px; border-bottom: 1px solid var(--ink); }
 .btn-line:hover, .btn-line:focus-visible { background: none; color: var(--violet); border-color: var(--violet); }
 
