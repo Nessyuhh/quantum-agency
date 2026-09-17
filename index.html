@@ -48,6 +48,8 @@
 .hero-cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; margin-top: 52px; align-items: end; }
 .hero-lead { font-size: 1.2rem; line-height: 1.5; max-width: 40ch; color: var(--ink-2); }
 .hero-actions { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.hero-offer { margin-top: 26px; padding: 16px 18px; border: 1px solid var(--line-strong); font-size: 0.95rem; line-height: 1.5; max-width: 46ch; color: var(--ink-2); }
+.hero-offer .grad-text { font-family: var(--display); font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.02em; margin-right: 6px; }
 .hero-index { font-family: var(--mono); font-size: 0.78rem; border-top: 1px solid var(--line); }
 .hero-index div { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .hero-index i { font-style: normal; color: var(--violet); }
@@ -96,11 +98,10 @@
 .cta-section h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2.8rem, 5vw, 4.4rem); line-height: 0.9; text-transform: uppercase; margin: 18px 0 20px; }
 .cta-section .lead { color: var(--ink-2); font-size: 1.05rem; line-height: 1.6; max-width: 44ch; }
 
-#faq .sec-title { max-width: 12ch; }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"Cabinet de conseil en transformation des entreprises par l'Intelligence Artificielle","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/#site","url":"https://quantum-agency.fr/","name":"Quantum Consulting","publisher":{"@id":"https://quantum-agency.fr/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce qu'un audit IA et que couvre-t-il ?","acceptedAnswer":{"@type":"Answer","text":"L'audit IA est une analyse complète de vos processus métier pour identifier les opportunités d'automatisation, les gains rapides et les leviers à fort ROI. Il inclut une cartographie des tâches automatisables, une évaluation des outils adaptés et une feuille de route priorisée sur 12 mois."}},{"@type":"Question","name":"Quels modèles d'IA utilisez-vous ?","acceptedAnswer":{"@type":"Answer","text":"Nous travaillons avec l'ensemble de l'écosystème IA selon les besoins : Claude (Anthropic) et GPT-6 (OpenAI) pour le raisonnement complexe, Mistral Large 3 et Llama 4 pour les déploiements souverains, Google Gemini 3 et Perplexity pour la recherche documentaire, Microsoft Copilot pour les environnements Microsoft. Nous sélectionnons toujours le modèle le mieux adapté à vos contraintes techniques, budgétaires et réglementaires."}},{"@type":"Question","name":"Quelle est la durée d'une mission de consulting IA ?","acceptedAnswer":{"@type":"Answer","text":"Un audit IA complet se déroule sur 2 à 4 semaines selon la taille de votre organisation. Les missions d'intégration et d'automatisation durent généralement 1 à 3 mois. Nos accompagnements stratégiques sur 12 mois incluent des points mensuels et des ajustements continus."}},{"@type":"Question","name":"Proposez-vous des formations pour nos équipes ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Nos formations executive (de l'initiation à la maîtrise avancée) sont organisées en intra-entreprise en collaboration avec nos organismes de formation partenaires certifiés. Elles sont conçues pour les dirigeants, managers et équipes opérationnelles, avec des cas pratiques adaptés à votre secteur."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"Cabinet de conseil en transformation des entreprises par l'Intelligence Artificielle","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/#site","url":"https://quantum-agency.fr/","name":"Quantum Consulting","publisher":{"@id":"https://quantum-agency.fr/#org"}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://quantum-agency.fr/audit-ia.html#service","name":"Audit IA","description":"Cartographie des processus métier, identification des tâches automatisables et feuille de route chiffrée sur 12 mois. Premier audit gratuit.","url":"https://quantum-agency.fr/audit-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"areaServed":{"@type":"Country","name":"France"},"audience":{"@type":"BusinessAudience","name":"Dirigeants de PME et d'ETI"},"serviceType":"Conseil en intelligence artificielle"},{"@type":"Service","@id":"https://quantum-agency.fr/integration-ia.html#service","name":"Intégration IA","description":"Connexion des modèles d'IA aux outils déjà en place (CRM, ERP, bases documentaires) sans migration ni remplacement.","url":"https://quantum-agency.fr/integration-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"areaServed":{"@type":"Country","name":"France"},"audience":{"@type":"BusinessAudience","name":"Dirigeants de PME et d'ETI"},"serviceType":"Conseil en intelligence artificielle"},{"@type":"Service","@id":"https://quantum-agency.fr/automatisation-ia.html#service","name":"Automatisation des processus","description":"Flux autonomes construits avec n8n et Make pour supprimer les ressaisies et la génération manuelle de documents.","url":"https://quantum-agency.fr/automatisation-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"areaServed":{"@type":"Country","name":"France"},"audience":{"@type":"BusinessAudience","name":"Dirigeants de PME et d'ETI"},"serviceType":"Conseil en intelligence artificielle"},{"@type":"Service","@id":"https://quantum-agency.fr/agents-ia.html#service","name":"Agents IA et LLM privés","description":"Agents spécialisés et modèles souverains hébergés en France, pour les données qui ne doivent pas sortir de l'entreprise.","url":"https://quantum-agency.fr/agents-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"areaServed":{"@type":"Country","name":"France"},"audience":{"@type":"BusinessAudience","name":"Dirigeants de PME et d'ETI"},"serviceType":"Conseil en intelligence artificielle"},{"@type":"Service","@id":"https://quantum-agency.fr/consulting-ia.html#service","name":"Conseil stratégique IA","description":"Trajectoire IA à 12 mois, arbitrages d'investissement et gouvernance.","url":"https://quantum-agency.fr/consulting-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"areaServed":{"@type":"Country","name":"France"},"audience":{"@type":"BusinessAudience","name":"Dirigeants de PME et d'ETI"},"serviceType":"Conseil en intelligence artificielle"},{"@type":"Course","@id":"https://quantum-agency.fr/formation-initiation-ia.html#course","name":"Initiation à l'IA","description":"Les équipes utilisent l'IA au quotidien sans crainte et sans risque de fuite de données.","url":"https://quantum-agency.fr/formation-initiation-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"educationalLevel":"Niveau 1","inLanguage":"fr","hasCourseInstance":{"@type":"CourseInstance","courseMode":"onsite","courseWorkload":"P1D","location":{"@type":"Place","name":"Intra-entreprise, France"}}},{"@type":"Course","@id":"https://quantum-agency.fr/formation-maitrise-ia.html#course","name":"Maîtrise et automatisation","description":"Construire ses propres workflows d'automatisation sans développeur.","url":"https://quantum-agency.fr/formation-maitrise-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"educationalLevel":"Niveau 2","inLanguage":"fr","hasCourseInstance":{"@type":"CourseInstance","courseMode":"onsite","courseWorkload":"P2D","location":{"@type":"Place","name":"Intra-entreprise, France"}}},{"@type":"Course","@id":"https://quantum-agency.fr/formation-expert-ia.html#course","name":"Expert et stratégie IA","description":"Piloter une feuille de route IA sur 12 mois, chiffrée et arbitrée.","url":"https://quantum-agency.fr/formation-expert-ia.html","provider":{"@id":"https://quantum-agency.fr/#org"},"educationalLevel":"Niveau 3","inLanguage":"fr","hasCourseInstance":{"@type":"CourseInstance","courseMode":"onsite","courseWorkload":"P2D","location":{"@type":"Place","name":"Intra-entreprise, France"}}}]}
@@ -128,6 +129,7 @@
   </defs>
 </svg>
 
+<!-- @nav -->
 <header class="navbar" id="navbar" role="banner">
   <a href="/" class="brand" aria-label="Quantum Consulting, accueil">
     <svg aria-hidden="true"><use href="#qMark"/></svg>
@@ -135,30 +137,15 @@
   </a>
   <nav aria-label="Menu principal">
     <ul class="nav-links">
-      <li class="nav-dd">
-        <button class="nav-dd-btn" aria-haspopup="true">Consulting ▾</button>
-        <div class="nav-dd-menu">
-          <a href="/audit-ia.html">Audit IA <span class="nav-dd-badge">Offert</span></a>
-          <a href="/integration-ia.html">Intégration &amp; API</a>
-          <a href="/automatisation-ia.html">Automatisation Workflows</a>
-          <a href="/agents-ia.html">Agents IA Autonomes</a>
-          <a href="/consulting-ia.html">Conseil stratégique</a>
-        </div>
-      </li>
-      <li class="nav-dd">
-        <button class="nav-dd-btn" aria-haspopup="true">Formation ▾</button>
-        <div class="nav-dd-menu">
-          <a href="/formation-initiation-ia.html">Initiation Executive</a>
-          <a href="/formation-maitrise-ia.html">Maîtrise &amp; Automatisation</a>
-          <a href="/formation-expert-ia.html">Expert &amp; Stratégie IA</a>
-        </div>
-      </li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/formations.html">Formations</a></li>
+      <li><a href="/cas-usage.html">Exemples</a></li>
+      <li><a href="/faq-ia.html">FAQ</a></li>
       <li><a href="/blog.html">Blog</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
   </nav>
   <div class="nav-right">
-    <a href="#audit-gratuit" class="btn btn-grad nav-cta">Audit IA gratuit →</a>
+    <a href="/contact.html" class="btn btn-grad nav-cta">Audit gratuit →</a>
     <span data-lang-slot></span>
   </div>
 </header>
@@ -170,9 +157,10 @@
   </a>
   <div class="nav-right">
     <span data-lang-slot></span>
-    <a href="#audit-gratuit" class="mob-cta-btn">Audit gratuit →</a>
+    <a href="/contact.html" class="mob-cta-btn">Audit gratuit →</a>
   </div>
 </header>
+<!-- @/nav -->
 
 <main id="main-content">
 
@@ -192,9 +180,10 @@
             <div>
               <p class="hero-lead" data-reveal>Quantum Consulting accompagne les dirigeants de PME et d'ETI dans l'automatisation de leurs opérations, avec le modèle d'IA le mieux adapté à chaque tâche, jamais l'inverse.</p>
               <div class="hero-actions" data-reveal>
-                <a href="#audit-gratuit" class="btn btn-grad">Réserver un audit gratuit →</a>
-                <a href="#consulting" class="btn">Nos interventions</a>
+                <a href="#audit-gratuit" class="btn btn-grad">Réserver mon audit gratuit →</a>
+                <a href="/services.html" class="btn">Ce que nous faisons</a>
               </div>
+              <p class="hero-offer" data-reveal><span class="grad-text">Site vitrine offert</span> avec votre audit gratuit : vous repartez avec une feuille de route et une présence en ligne propre, sans engagement.</p>
             </div>
             <div class="hero-index" data-reveal aria-label="Nos engagements">
               <div><span>Neutralité multi-modèles</span><i>01</i></div>
@@ -297,78 +286,19 @@
     </div>
   </section>
 
-  <!-- ══════════════ 01 CONSULTING ══════════════ -->
-  <section id="consulting" class="section-alt">
+  <!-- ══════════════ OFFRES EN BREF ══════════════ -->
+  <section id="offres" class="section-alt">
     <div class="container sec-grid">
       <div>
-        <div class="sec-num grad-text">01</div>
-        <h2 class="sec-title">Nous le faisons<br>pour vous</h2>
-        <p class="sec-lead">Des interventions techniques clé en main pour automatiser vos opérations et déployer des agents IA directement dans vos outils existants.</p>
+        <p class="eyebrow">Ce que nous faisons</p>
+        <h2 class="sec-title">Trois façons<br>de vous aider</h2>
+        <p class="sec-lead">Nous intervenons chez vous, avec vos outils et vos équipes. Aucune connaissance technique n'est nécessaire de votre côté.</p>
+        <p style="margin-top:22px"><a href="/services.html" class="btn">Voir le détail des services →</a></p>
       </div>
       <div class="rows">
-        <a href="/integration-ia.html" class="row"><span class="k">01/03</span><div><h3>Intégration IA &amp; connecteurs</h3><p>Connexion des modèles les plus pertinents (Claude, GPT-6, Mistral Large 3) à vos logiciels métier (CRM, ERP, bases documentaires) sans perturber vos équipes.</p></div><span class="go">Détails →</span></a>
-        <a href="/automatisation-ia.html" class="row"><span class="k">02/03</span><div><h3>Automatisation des workflows</h3><p>Flux autonomes construits avec n8n et Make pour éliminer les ressaisies, la gestion d'emails répétitive et la génération manuelle de devis et de rapports.</p></div><span class="go">Détails →</span></a>
-        <a href="/agents-ia.html" class="row"><span class="k">03/03</span><div><h3>Agents IA &amp; modèles privés</h3><p>Agents spécialisés et modèles souverains hébergés en France, pour les données qui ne doivent jamais sortir de l'entreprise.</p></div><span class="go">Détails →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ 02 FORMATION ══════════════ -->
-  <section id="formation">
-    <div class="container sec-grid">
-      <div>
-        <div class="sec-num grad-text">02</div>
-        <h2 class="sec-title">Nous vous apprenons<br>à le faire</h2>
-        <p class="sec-lead">Formations intra-entreprise pour dirigeants, managers et collaborateurs : une autonomie durable sur l'IA, pas une démonstration.</p>
-      </div>
-      <div class="rows">
-        <a href="/formation-initiation-ia.html" class="row"><span class="k">N1</span><div><span class="meta">Niveau 1 · 1 journée</span><h3>Initiation Executive IA</h3><p>Comprendre l'écosystème IA, maîtriser le prompt engineering de base et identifier les cas d'usage immédiats de votre secteur.</p><ul><li>Découverte pratique de Claude, ChatGPT &amp; Gemini</li><li>Cas d'usage concrets par métier</li><li>Sensibilisation à la sécurité des données</li></ul></div><span class="go">Programme →</span></a>
-        <a href="/formation-maitrise-ia.html" class="row"><span class="k">N2</span><div><span class="meta">Niveau 2 · 2 jours · recommandé</span><h3>Maîtrise &amp; Automatisation</h3><p>Créer des assistants IA sur mesure, structurer des prompts complexes et concevoir ses premières automatisations sans code.</p><ul><li>Prompt engineering avancé &amp; RAG</li><li>Prise en main de n8n et Make</li><li>Atelier sur vos propres fichiers métier</li></ul></div><span class="go">Programme →</span></a>
-        <a href="/formation-expert-ia.html" class="row"><span class="k">N3</span><div><span class="meta">Niveau 3 · sur mesure</span><h3>Expert &amp; Stratégie IA</h3><p>Pour comités de direction et responsables de transformation : structurer la gouvernance IA et piloter la feuille de route globale.</p><ul><li>Stratégie de déploiement à l'échelle</li><li>Gouvernance, éthique et conformité AI Act</li><li>Coaching individuel des dirigeants</li></ul></div><span class="go">Programme →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ 03 MODÈLES ══════════════ -->
-  <section id="matrix" class="section-alt">
-    <div class="container sec-grid">
-      <div>
-        <div class="sec-num grad-text">03</div>
-        <h2 class="sec-title">Agnostique &amp;<br>multi-modèles</h2>
-        <p class="sec-lead">Nous ne dépendons d'aucun éditeur. Nous sélectionnons l'IA la plus performante pour chaque tâche, et nous en changeons quand elle est dépassée.</p>
-      </div>
-      <table class="model-table">
-        <thead><tr><th>Catégorie</th><th>Modèles mobilisés</th><th>Usage</th></tr></thead>
-        <tbody>
-          <tr><td>Analyse &amp; rédaction</td><td class="model-tags"><span class="tag on">Claude Sonnet 5</span><span class="tag">GPT-6</span></td><td>Raisonnement complexe, synthèse de documents longs, qualité rédactionnelle supérieure.</td></tr>
-          <tr><td>Souveraineté &amp; RGPD</td><td class="model-tags"><span class="tag on">Mistral Large 3</span><span class="tag">Llama 4</span></td><td>Modèles ouverts hébergeables en France pour une confidentialité absolue.</td></tr>
-          <tr><td>Workflows &amp; API</td><td class="model-tags"><span class="tag on">n8n</span><span class="tag">Make</span><span class="tag">Python</span></td><td>Orchestration robuste de vos flux de données entre tous vos outils de gestion.</td></tr>
-          <tr><td>Recherche &amp; veille</td><td class="model-tags"><span class="tag on">Perplexity</span><span class="tag">Gemini 3</span></td><td>Analyse de grandes bases documentaires et veille stratégique automatisée.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══════════════ FAQ ══════════════ -->
-  <section id="faq">
-    <div class="container sec-grid">
-      <div>
-        <p class="eyebrow">Questions fréquentes</p>
-        <h2 class="sec-title">Vos interrogations de dirigeants</h2>
-      </div>
-      <div class="faq-accordion">
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">En quoi consiste l'audit IA gratuit et que vais-je recevoir ?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">L'audit gratuit consiste en un échange stratégique de 30 minutes avec l'un de nos consultants. Nous analysons vos processus clés, identifions les opportunités d'automatisation à fort impact et vous remettons une synthèse des 3 leviers prioritaires activables dans votre PME.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Mes équipes ne sont pas techniciennes, est-ce un frein ?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">Non, au contraire. Nos interventions et nos formations sont spécialement conçues pour les non-techniciens. L'objectif de l'IA moderne est d'être aussi simple à utiliser qu'un échange d'emails.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Comment garantissez-vous la confidentialité de nos données métier ?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">Nous appliquons des principes stricts : utilisation d'API professionnelles qui ne réentraînent pas les modèles sur vos données, ou déploiement de modèles souverains (Mistral) hébergés sur des serveurs sécurisés en France.</div></div>
-        </div>
+        <a href="/services.html#audit" class="row"><span class="k">01</span><div><h3>Un audit gratuit, et un site vitrine offert</h3><p>En 30 minutes, nous repérons avec vous les tâches qui vous coûtent le plus de temps. Vous repartez avec trois priorités concrètes, et nous vous offrons un site vitrine simple pour démarrer.</p></div><span class="go">Détails →</span></a>
+        <a href="/services.html#automatiser" class="row"><span class="k">02</span><div><h3>Automatiser ce qui se répète</h3><p>Factures, relances, devis, comptes rendus : nous construisons des enchaînements qui tournent seuls, branchés sur les logiciels que vous utilisez déjà.</p></div><span class="go">Détails →</span></a>
+        <a href="/formations.html" class="row"><span class="k">03</span><div><h3>Former vos équipes</h3><p>Une journée ou deux, dans vos locaux, sur vos propres dossiers. Vos équipes utilisent l'IA le lendemain, en sachant ce qu'elles font et ce qu'elles ne doivent pas faire.</p></div><span class="go">Programmes →</span></a>
       </div>
     </div>
   </section>
@@ -378,8 +308,8 @@
     <div class="container cta-grid">
       <div>
         <p class="eyebrow">Sans engagement</p>
-        <h2>Obtenez votre <span class="grad-text">audit IA</span> gratuit</h2>
-        <p class="lead">Passez en revue vos processus métier avec un expert en 30 minutes. Identifiez les tâches automatisables et évaluez votre potentiel d'économies.</p>
+        <h2>Votre <span class="grad-text">audit gratuit</span>, et votre site offert</h2>
+        <p class="lead">Trente minutes avec l'un de nos consultants pour passer en revue votre façon de travailler. Vous repartez avec trois priorités concrètes, et nous vous offrons un site vitrine simple pour démarrer.</p>
       </div>
       <!-- data-webhook : URL de production du nœud Webhook n8n (méthode POST). -->
       <form class="audit-form" id="audit-form" data-webhook="" novalidate>
@@ -394,42 +324,47 @@
 
 </main>
 
+<!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
-  <a href="#consulting" class="mob-tab-item active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Consulting</span></a>
-  <a href="#formation" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg><span>Formation</span></a>
-  <a href="#audit-gratuit" class="mob-tab-item accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Audit IA</span></a>
-  <a href="#faq" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a>
+  <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
+  <a href="/formations.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg><span>Formations</span></a>
+  <a href="/contact.html" class="mob-tab-item accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Audit</span></a>
+  <a href="/faq-ia.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a>
 </nav>
+<!-- @/mobnav -->
 
+<!-- @footer -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <svg aria-hidden="true"><use href="#qMark"/></svg>
-        <p>Cabinet de conseil en Intelligence Artificielle &amp; Automatisation dédié aux PME et ETI françaises. Basé à Paris.</p>
+        <p>Conseil et formation en intelligence artificielle et automatisation, pour les PME et ETI. Basés à Paris, nous intervenons partout en France.</p>
       </div>
       <div class="footer-col">
-        <h3>Consulting</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="/audit-ia.html">Audit IA Processus</a></li>
-          <li><a href="/integration-ia.html">Intégration Modèles</a></li>
-          <li><a href="/automatisation-ia.html">Automatisation Workflows</a></li>
-          <li><a href="/agents-ia.html">Agents IA Autonomes</a></li>
+          <li><a href="/services.html#audit">Audit gratuit + site offert</a></li>
+          <li><a href="/services.html#automatiser">Automatiser vos tâches</a></li>
+          <li><a href="/services.html#brancher">Brancher l'IA sur vos outils</a></li>
+          <li><a href="/services.html#conseil">Conseil sur la durée</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Formation</h3>
+        <h3>Formations</h3>
         <ul>
-          <li><a href="/formation-initiation-ia.html">Initiation Executive</a></li>
-          <li><a href="/formation-maitrise-ia.html">Maîtrise &amp; Automatisation</a></li>
-          <li><a href="/formation-expert-ia.html">Expert &amp; Stratégie IA</a></li>
+          <li><a href="/formations.html#niveau-1">Niveau 1 · Découvrir</a></li>
+          <li><a href="/formations.html#niveau-2">Niveau 2 · Automatiser</a></li>
+          <li><a href="/formations.html#niveau-3">Niveau 3 · Piloter</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Contact</h3>
         <ul>
           <li><a href="mailto:contact@quantum-agency.fr">contact@quantum-agency.fr</a></li>
-          <li><a href="#audit-gratuit">Demander un audit</a></li>
+          <li><a href="/contact.html">Demander un audit</a></li>
+          <li><a href="/cas-usage.html">Exemples concrets</a></li>
+          <li><a href="/faq-ia.html">Questions fréquentes</a></li>
           <li><a href="/blog.html">Blog</a></li>
         </ul>
       </div>
@@ -440,11 +375,12 @@
     </div>
   </div>
 </footer>
+<!-- @/footer -->
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js?v=3" defer></script>
+<script src="/assets/quantum.js?v=4" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

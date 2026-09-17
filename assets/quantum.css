@@ -51,7 +51,7 @@ img, svg { display: block; max-width: 100%; }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 40px; }
 .mono { font-family: var(--mono); }
-.grad-text { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.grad-text { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; padding-top: 0.14em; padding-bottom: 0.05em; }
 
 .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); }
 

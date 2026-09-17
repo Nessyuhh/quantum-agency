@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Quantum Consulting | AI Consulting &amp; Training Firm</title>
-<meta name="description" content="Consulting and training firm specializing in Artificial Intelligence and Automation for SMEs and mid-sized companies. Get your free AI audit.">
+<meta name="description" content="Consulting and training firm specializing in Artificial Intelligence and Automation for SMEs and mid-sized companies. Get your free AI audit and a free showcase website.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Quantum Consulting">
 <link rel="canonical" href="https://quantum-agency.fr/en/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Quantum Consulting | AI Consulting &amp; Training for SMEs">
-<meta property="og:description" content="Transform your business processes with AI and automation. Audit, integration, autonomous agents and executive training.">
+<meta property="og:description" content="Transform your business processes with AI and automation. Free audit, automation, AI on your tools, training.">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Quantum Consulting">
 <meta property="og:url" content="https://quantum-agency.fr/en/">
@@ -48,6 +48,8 @@
 .hero-cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; margin-top: 52px; align-items: end; }
 .hero-lead { font-size: 1.2rem; line-height: 1.5; max-width: 40ch; color: var(--ink-2); }
 .hero-actions { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.hero-offer { margin-top: 26px; padding: 16px 18px; border: 1px solid var(--line-strong); font-size: 0.95rem; line-height: 1.5; max-width: 46ch; color: var(--ink-2); }
+.hero-offer .grad-text { font-family: var(--display); font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.02em; margin-right: 6px; }
 .hero-index { font-family: var(--mono); font-size: 0.78rem; border-top: 1px solid var(--line); }
 .hero-index div { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .hero-index i { font-style: normal; color: var(--violet); }
@@ -96,11 +98,10 @@
 .cta-section h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2.8rem, 5vw, 4.4rem); line-height: 0.9; text-transform: uppercase; margin: 18px 0 20px; }
 .cta-section .lead { color: var(--ink-2); font-size: 1.05rem; line-height: 1.6; max-width: 44ch; }
 
-#faq .sec-title { max-width: 12ch; }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"AI and automation consulting firm for SMEs and mid-sized companies","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/en/#site","url":"https://quantum-agency.fr/en/","name":"Quantum Consulting","inLanguage":"en","publisher":{"@id":"https://quantum-agency.fr/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the free AI audit consist of, and what will I receive?","acceptedAnswer":{"@type":"Answer","text":"The free audit is a 30-minute strategic conversation with one of our consultants. We analyse your key processes, identify high-impact automation opportunities and hand you a summary of the 3 priority levers you can activate in your company."}},{"@type":"Question","name":"Which AI models do you use?","acceptedAnswer":{"@type":"Answer","text":"We work across the whole AI ecosystem as needed: Claude (Anthropic) and GPT-6 (OpenAI) for complex reasoning, Mistral Large 3 and Llama 4 for sovereign deployments, Google Gemini 3 and Perplexity for document research, Microsoft Copilot for Microsoft environments. We always pick the model best suited to your technical, budget and regulatory constraints."}},{"@type":"Question","name":"My teams are not technical. Is that a problem?","acceptedAnswer":{"@type":"Answer","text":"No, quite the opposite. Our engagements and training courses are designed specifically for non-technical people. Modern AI is meant to be as easy to use as exchanging e-mails."}},{"@type":"Question","name":"How do you guarantee the confidentiality of our business data?","acceptedAnswer":{"@type":"Answer","text":"We apply strict principles: professional APIs that never retrain models on your data, or sovereign models (Mistral) deployed on secure servers in France."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"AI and automation consulting and training firm for SMEs and mid-sized companies","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/en/#site","url":"https://quantum-agency.fr/en/","name":"Quantum Consulting","inLanguage":"en","publisher":{"@id":"https://quantum-agency.fr/#org"}}]}
 </script>
 </head>
 
@@ -109,7 +110,7 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="progress-bar"></div>
 
-<!-- Logo: original geometry and gradient, kept as is. -->
+<!-- Logo : géométrie et dégradé d'origine, conservés tels quels. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="qGrad" gradientUnits="userSpaceOnUse" x1="5" y1="5" x2="57" y2="57">
@@ -125,6 +126,7 @@
   </defs>
 </svg>
 
+<!-- @nav -->
 <header class="navbar" id="navbar" role="banner">
   <a href="/en/" class="brand" aria-label="Quantum Consulting, home">
     <svg aria-hidden="true"><use href="#qMark"/></svg>
@@ -132,30 +134,15 @@
   </a>
   <nav aria-label="Main menu">
     <ul class="nav-links">
-      <li class="nav-dd">
-        <button class="nav-dd-btn" aria-haspopup="true">Consulting ▾</button>
-        <div class="nav-dd-menu">
-          <a href="/en/audit-ia.html">AI Audit <span class="nav-dd-badge">Free</span></a>
-          <a href="/en/integration-ia.html">Integration &amp; API</a>
-          <a href="/en/automatisation-ia.html">Workflow Automation</a>
-          <a href="/en/agents-ia.html">Autonomous AI Agents</a>
-          <a href="/en/consulting-ia.html">Strategic Advisory</a>
-        </div>
-      </li>
-      <li class="nav-dd">
-        <button class="nav-dd-btn" aria-haspopup="true">Training ▾</button>
-        <div class="nav-dd-menu">
-          <a href="/en/formation-initiation-ia.html">Executive Introduction</a>
-          <a href="/en/formation-maitrise-ia.html">Mastery &amp; Automation</a>
-          <a href="/en/formation-expert-ia.html">Expert &amp; AI Strategy</a>
-        </div>
-      </li>
+      <li><a href="/en/services.html">Services</a></li>
+      <li><a href="/en/formations.html">Training</a></li>
+      <li><a href="/en/cas-usage.html">Examples</a></li>
+      <li><a href="/en/faq-ia.html">FAQ</a></li>
       <li><a href="/en/blog.html">Blog</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
   </nav>
   <div class="nav-right">
-    <a href="#audit-gratuit" class="btn btn-grad nav-cta">Free AI audit →</a>
+    <a href="/en/contact.html" class="btn btn-grad nav-cta">Free audit →</a>
     <span data-lang-slot></span>
   </div>
 </header>
@@ -167,9 +154,10 @@
   </a>
   <div class="nav-right">
     <span data-lang-slot></span>
-    <a href="#audit-gratuit" class="mob-cta-btn">Free audit →</a>
+    <a href="/en/contact.html" class="mob-cta-btn">Free audit →</a>
   </div>
 </header>
+<!-- @/nav -->
 
 <main id="main-content">
 
@@ -189,9 +177,10 @@
             <div>
               <p class="hero-lead" data-reveal>Quantum Consulting helps SME and mid-cap leaders automate their operations, with the AI model best suited to each task, never the other way around.</p>
               <div class="hero-actions" data-reveal>
-                <a href="#audit-gratuit" class="btn btn-grad">Book a free audit →</a>
-                <a href="#consulting" class="btn">Our services</a>
+                <a href="#audit-gratuit" class="btn btn-grad">Book my free audit →</a>
+                <a href="/en/services.html" class="btn">What we do</a>
               </div>
+              <p class="hero-offer" data-reveal><span class="grad-text">Free showcase website</span> with your free audit: you leave with a roadmap and a clean online presence, no strings attached.</p>
             </div>
             <div class="hero-index" data-reveal aria-label="Our commitments">
               <div><span>Model-agnostic by design</span><i>01</i></div>
@@ -294,78 +283,19 @@
     </div>
   </section>
 
-  <!-- ══════════════ 01 CONSULTING ══════════════ -->
-  <section id="consulting" class="section-alt">
+  <!-- ══════════════ OFFRES EN BREF ══════════════ -->
+  <section id="offres" class="section-alt">
     <div class="container sec-grid">
       <div>
-        <div class="sec-num grad-text">01</div>
-        <h2 class="sec-title">We do it<br>for you</h2>
-        <p class="sec-lead">Turnkey technical engagements to automate your operations and deploy AI agents directly into your existing tools.</p>
+        <p class="eyebrow">What we do</p>
+        <h2 class="sec-title">Three ways<br>we can help</h2>
+        <p class="sec-lead">We work on site, with your tools and your teams. No technical knowledge is needed on your side.</p>
+        <p style="margin-top:22px"><a href="/en/services.html" class="btn">See the services in detail →</a></p>
       </div>
       <div class="rows">
-        <a href="/en/integration-ia.html" class="row"><span class="k">01/03</span><div><h3>AI integration &amp; connectors</h3><p>Connecting the most relevant models (Claude, GPT-6, Mistral Large 3) to your business software (CRM, ERP, document bases) without disrupting your teams.</p></div><span class="go">Details →</span></a>
-        <a href="/en/automatisation-ia.html" class="row"><span class="k">02/03</span><div><h3>Workflow automation</h3><p>Autonomous flows built with n8n and Make to eliminate re-entry, repetitive e-mail handling and the manual production of quotes and reports.</p></div><span class="go">Details →</span></a>
-        <a href="/en/agents-ia.html" class="row"><span class="k">03/03</span><div><h3>AI agents &amp; private models</h3><p>Specialised agents and sovereign models hosted in France, for the data that must never leave the company.</p></div><span class="go">Details →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ 02 FORMATION ══════════════ -->
-  <section id="formation">
-    <div class="container sec-grid">
-      <div>
-        <div class="sec-num grad-text">02</div>
-        <h2 class="sec-title">We teach you<br>to do it</h2>
-        <p class="sec-lead">In-house training for executives, managers and staff: lasting autonomy with AI, not a demo.</p>
-      </div>
-      <div class="rows">
-        <a href="/en/formation-initiation-ia.html" class="row"><span class="k">L1</span><div><span class="meta">Level 1 · 1 day</span><h3>Executive AI Introduction</h3><p>Understand the AI ecosystem, master basic prompt engineering and identify the immediate use cases in your sector.</p><ul><li>Hands-on discovery of Claude, ChatGPT &amp; Gemini</li><li>Concrete use cases by job function</li><li>Data security awareness</li></ul></div><span class="go">Programme →</span></a>
-        <a href="/en/formation-maitrise-ia.html" class="row"><span class="k">L2</span><div><span class="meta">Level 2 · 2 days · recommended</span><h3>Mastery &amp; Automation</h3><p>Build custom AI assistants, structure complex prompts and design your first no-code automations.</p><ul><li>Advanced prompt engineering &amp; RAG</li><li>Getting started with n8n and Make</li><li>Workshop on your own business files</li></ul></div><span class="go">Programme →</span></a>
-        <a href="/en/formation-expert-ia.html" class="row"><span class="k">L3</span><div><span class="meta">Level 3 · tailored</span><h3>Expert &amp; AI Strategy</h3><p>For executive committees and transformation leads: structure AI governance and steer the overall roadmap.</p><ul><li>Deployment strategy at scale</li><li>Governance, ethics and AI Act compliance</li><li>One-to-one executive coaching</li></ul></div><span class="go">Programme →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ 03 MODÈLES ══════════════ -->
-  <section id="matrix" class="section-alt">
-    <div class="container sec-grid">
-      <div>
-        <div class="sec-num grad-text">03</div>
-        <h2 class="sec-title">Agnostic &amp;<br>multi-model</h2>
-        <p class="sec-lead">We depend on no vendor. We select the best-performing AI for each task, and we switch when it is outperformed.</p>
-      </div>
-      <table class="model-table">
-        <thead><tr><th>Category</th><th>Models used</th><th>Purpose</th></tr></thead>
-        <tbody>
-          <tr><td>Analysis &amp; writing</td><td class="model-tags"><span class="tag on">Claude Sonnet 5</span><span class="tag">GPT-6</span></td><td>Complex reasoning, long-document synthesis, superior writing quality.</td></tr>
-          <tr><td>Sovereignty &amp; GDPR</td><td class="model-tags"><span class="tag on">Mistral Large 3</span><span class="tag">Llama 4</span></td><td>Open models that can be hosted in France for absolute confidentiality.</td></tr>
-          <tr><td>Workflows &amp; API</td><td class="model-tags"><span class="tag on">n8n</span><span class="tag">Make</span><span class="tag">Python</span></td><td>Robust orchestration of your data flows across all your management tools.</td></tr>
-          <tr><td>Research &amp; monitoring</td><td class="model-tags"><span class="tag on">Perplexity</span><span class="tag">Gemini 3</span></td><td>Analysis of large document bases and automated strategic monitoring.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══════════════ FAQ ══════════════ -->
-  <section id="faq">
-    <div class="container sec-grid">
-      <div>
-        <p class="eyebrow">Frequently asked questions</p>
-        <h2 class="sec-title">Questions leaders ask us</h2>
-      </div>
-      <div class="faq-accordion">
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">What does the free AI audit consist of, and what will I receive?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">The free audit is a 30-minute strategic conversation with one of our consultants. We analyse your key processes, identify high-impact automation opportunities and hand you a summary of the 3 priority levers you can activate in your company.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">My teams are not technical. Is that a problem?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">No, quite the opposite. Our engagements and training courses are designed specifically for non-technical people. Modern AI is meant to be as easy to use as exchanging e-mails.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">How do you guarantee the confidentiality of our business data?<span class="faq-chev">+</span></button>
-          <div class="faq-content"><div class="faq-content-inner">We apply strict principles: professional APIs that never retrain models on your data, or sovereign models (Mistral) deployed on secure servers in France.</div></div>
-        </div>
+        <a href="/en/services.html#audit" class="row"><span class="k">01</span><div><h3>A free audit, and a free showcase website</h3><p>In 30 minutes we identify with you the tasks that cost you the most time. You leave with three concrete priorities, and we give you a simple showcase website to get started.</p></div><span class="go">Details →</span></a>
+        <a href="/en/services.html#automatiser" class="row"><span class="k">02</span><div><h3>Automate what repeats</h3><p>Invoices, reminders, quotes, meeting notes: we build flows that run on their own, plugged into the software you already use.</p></div><span class="go">Details →</span></a>
+        <a href="/en/formations.html" class="row"><span class="k">03</span><div><h3>Train your teams</h3><p>One or two days, on your premises, on your own files. Your teams use AI the next day, knowing what they are doing and what they must not do.</p></div><span class="go">Programmes →</span></a>
       </div>
     </div>
   </section>
@@ -375,8 +305,8 @@
     <div class="container cta-grid">
       <div>
         <p class="eyebrow">No commitment</p>
-        <h2>Get your free <span class="grad-text">AI audit</span></h2>
-        <p class="lead">Review your business processes with an expert in 30 minutes. Identify automatable tasks and assess your savings potential.</p>
+        <h2>Your <span class="grad-text">free audit</span>, and your free website</h2>
+        <p class="lead">Thirty minutes with one of our consultants to review the way you work. You leave with three concrete priorities, and we give you a simple showcase website to get started.</p>
       </div>
       <!-- data-webhook: production URL of the n8n Webhook node (POST). -->
       <form class="audit-form" id="audit-form" data-webhook="" novalidate>
@@ -391,42 +321,47 @@
 
 </main>
 
+<!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Quick mobile navigation">
-  <a href="#consulting" class="mob-tab-item active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Consulting</span></a>
-  <a href="#formation" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg><span>Training</span></a>
-  <a href="#audit-gratuit" class="mob-tab-item accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>AI audit</span></a>
-  <a href="#faq" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a>
+  <a href="/en/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
+  <a href="/en/formations.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg><span>Training</span></a>
+  <a href="/en/contact.html" class="mob-tab-item accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Audit</span></a>
+  <a href="/en/faq-ia.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a>
 </nav>
+<!-- @/mobnav -->
 
+<!-- @footer -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <svg aria-hidden="true"><use href="#qMark"/></svg>
-        <p>Artificial Intelligence &amp; Automation consulting firm dedicated to French SMEs and mid-sized companies. Based in Paris.</p>
+        <p>Artificial intelligence and automation consulting and training for SMEs and mid-sized companies. Based in Paris, we work all over France.</p>
       </div>
       <div class="footer-col">
-        <h3>Consulting</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="/en/audit-ia.html">AI Process Audit</a></li>
-          <li><a href="/en/integration-ia.html">Model Integration</a></li>
-          <li><a href="/en/automatisation-ia.html">Workflow Automation</a></li>
-          <li><a href="/en/agents-ia.html">Autonomous AI Agents</a></li>
+          <li><a href="/en/services.html#audit">Free audit + free website</a></li>
+          <li><a href="/en/services.html#automatiser">Automate your tasks</a></li>
+          <li><a href="/en/services.html#brancher">Plug AI into your tools</a></li>
+          <li><a href="/en/services.html#conseil">Ongoing advisory</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Training</h3>
         <ul>
-          <li><a href="/en/formation-initiation-ia.html">Executive Introduction</a></li>
-          <li><a href="/en/formation-maitrise-ia.html">Mastery &amp; Automation</a></li>
-          <li><a href="/en/formation-expert-ia.html">Expert &amp; AI Strategy</a></li>
+          <li><a href="/en/formations.html#niveau-1">Level 1 · Discover</a></li>
+          <li><a href="/en/formations.html#niveau-2">Level 2 · Automate</a></li>
+          <li><a href="/en/formations.html#niveau-3">Level 3 · Steer</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Contact</h3>
         <ul>
           <li><a href="mailto:contact@quantum-agency.fr">contact@quantum-agency.fr</a></li>
-          <li><a href="#audit-gratuit">Request an audit</a></li>
+          <li><a href="/en/contact.html">Request an audit</a></li>
+          <li><a href="/en/cas-usage.html">Concrete examples</a></li>
+          <li><a href="/en/faq-ia.html">Frequently asked questions</a></li>
           <li><a href="/en/blog.html">Blog</a></li>
         </ul>
       </div>
@@ -437,11 +372,12 @@
     </div>
   </div>
 </footer>
+<!-- @/footer -->
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js?v=3" defer></script>
+<script src="/assets/quantum.js?v=4" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

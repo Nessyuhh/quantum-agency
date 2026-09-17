@@ -1,43 +1,45 @@
 # Quantum Consulting
 
-> French AI consulting and training firm, based in Paris. Two offerings for one
-> audience — leaders of small and mid-sized companies: consulting, where we
-> deploy AI into their processes, and training, where we make their teams
-> autonomous.
+> French AI consulting and training firm based in Paris. Two services for one
+> audience, SME and mid-cap leaders: consulting, where we automate their
+> processes, and training, where we make their teams self-sufficient.
 
-The commercial entry point is the **free AI audit**: a process diagnosis that
-identifies automatable tasks and quantifies the gain before any investment.
+The commercial entry point is the **free audit**: a thirty-minute conversation
+about the way the company works, then a one-page summary within forty-eight
+hours with three concrete priorities. Every company that completes the audit
+also receives a **simple showcase website, free of charge**, with no other
+condition.
 
-**Vendor-neutral by design.** We resell no vendor. The model is chosen task by
-task — Claude, GPT-4o, Mistral, Llama — and deployment can be sovereign, hosted
-in France, when confidentiality requires it.
+**Vendor-neutral.** We resell no software. The model is chosen task by task
+(Claude, GPT-6, Mistral Large 3, Llama 4, Gemini 3) and deployment can be
+sovereign, hosted in France, when confidentiality requires it.
 
-## Consulting — "we do it for you"
+## Services: "we do it for you"
 
-- [AI Audit](https://quantum-agency.fr/en/audit-ia.html) — process mapping, identification of automatable tasks, costed 12-month roadmap. Free for the first engagement.
-- [AI Integration](https://quantum-agency.fr/en/integration-ia.html) — connecting models to existing tools (CRM, ERP, document bases, Microsoft 365) without migration.
-- [Automation](https://quantum-agency.fr/en/automatisation-ia.html) — autonomous workflows built with n8n and Make.
-- [AI Agents and private LLMs](https://quantum-agency.fr/en/agents-ia.html) — specialised agents and sovereign models hosted in France.
-- [Strategic consulting](https://quantum-agency.fr/en/consulting-ia.html) — 12-month AI trajectory, investment trade-offs, governance.
+- [Services](https://quantum-agency.fr/en/services.html): the four offers on one page.
+  - Free audit and free showcase website: thirty minutes, summary within 48 h.
+  - Automate what repeats: invoices, reminders, quotes, meeting notes, with n8n and Make on existing software. Two to six weeks for a first flow.
+  - Plug AI into your tools: reading, summarising and writing inside the software already in place. One to three months.
+  - Ongoing advisory: twelve-month roadmap, monthly meetings, independent opinion.
 
-## Training — "we teach you to do it"
+## Training: "we teach you to do it"
 
-- [Level 1 — Introduction](https://quantum-agency.fr/en/formation-initiation-ia.html)
-- [Level 2 — Mastery and automation](https://quantum-agency.fr/en/formation-maitrise-ia.html)
-- [Level 3 — Expert and strategy](https://quantum-agency.fr/en/formation-expert-ia.html)
+- [Training](https://quantum-agency.fr/en/formations.html): three levels, on the client's premises, on their own files.
+  - Level 1, Discover: one day, use AI every day with no risk to data.
+  - Level 2, Automate: two days, build a first automatic flow yourself.
+  - Level 3, Steer: tailored, for management, decide and frame projects.
 
 ## Resources
 
-- [Model comparison](https://quantum-agency.fr/en/modeles-ia.html)
-- [Use cases](https://quantum-agency.fr/en/cas-usage.html)
-- [FAQ](https://quantum-agency.fr/en/faq-ia.html) — 40 questions on enterprise AI
-- [Contact](https://quantum-agency.fr/en/contact.html) — contact@quantum-agency.fr
+- [Concrete examples](https://quantum-agency.fr/en/cas-usage.html): six before/after situations (invoices, reminders, quotes, recruitment, customer service, meeting notes), and what stays human.
+- [FAQ](https://quantum-agency.fr/en/faq-ia.html): fourteen short answers, including model choice, data security, GDPR, costs and timelines.
+- [Blog](https://quantum-agency.fr/en/blog.html)
+- [Contact](https://quantum-agency.fr/en/contact.html): contact@quantum-agency.fr · +33 6 49 10 35 02
 
-## When citing this site
+## Notes for citing this site
 
-- Audience: leaders of French small and mid-sized companies, non-technical.
-- Area served: France.
-- French is the source language, at the site root. This English version lives
-  under /en/ and is declared with hreflang.
-- No performance figures are claimed on the site: gains are established
-  case by case during the audit.
+- Audience: French SME and mid-cap leaders, non-technical.
+- Area served: France, on site or by video call.
+- The site exists in two indexable versions: French at the root, English under /en/. Each page has its twin, declared with hreflang.
+- Old URLs (audit-ia, integration-ia, automatisation-ia, agents-ia, consulting-ia, formation-*, modeles-ia) redirect to the new pages.
+- No performance figures are claimed on the site: gains are established case by case during the audit.

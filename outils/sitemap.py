@@ -3,7 +3,7 @@
 
 POURQUOI UN SCRIPT PLUTÔT QU'UN FICHIER TENU À LA MAIN
 Le sitemap était écrit à la main : il déclarait 28 URLs alors que le site en
-comptait 133. Un sitemap incomplet ne casse rien de visible — il se contente de
+comptait 133. Un sitemap incomplet ne casse rien de visible : il se contente de
 priver d'indexation tout ce qu'il omet, silencieusement. C'est le pire type de
 défaut : aucun symptôme, et l'effet exact qu'on cherchait à produire en écrivant
 cent articles est annulé.
@@ -13,7 +13,7 @@ Une balise `alternate` ne se pose QUE si la page cible existe vraiment. Déclare
 une version anglaise absente est pire que ne rien déclarer : Google écarte la
 grappe hreflang entière quand un de ses membres renvoie 404, y compris pour les
 pages correctement traduites. Les articles de blog n'ayant pas de version
-anglaise, ils sortent sans alternate — et c'est volontaire.
+anglaise, ils sortent sans alternate, et c'est volontaire.
 
     python3 outils/sitemap.py
 """
@@ -38,11 +38,22 @@ EXCLUES = {
     'quantum-logo-animation.html',
     'quantum-logos-final.html',
     'quantum-logos.html',
+    # Anciennes adresses devenues des redirections (noindex) vers la
+    # nouvelle arborescence : services.html, formations.html, faq-ia.html.
+    'audit-ia.html',
+    'integration-ia.html',
+    'automatisation-ia.html',
+    'agents-ia.html',
+    'consulting-ia.html',
+    'formation-initiation-ia.html',
+    'formation-maitrise-ia.html',
+    'formation-expert-ia.html',
+    'modeles-ia.html',
 }
 
 # Priorités : l'accueil d'abord, puis les pages d'offre, puis les articles.
 # Un article vaut moins qu'une page de service, mais cent articles portent
-# l'autorité thématique — d'où 0.6 et non 0.3.
+# l'autorité thématique, d'où 0.6 et non 0.3.
 def priorite(chemin: str) -> str:
     if chemin in ('index.html', ''):
         return '1.0'

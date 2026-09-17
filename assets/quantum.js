@@ -112,13 +112,16 @@
   nodes.forEach(function (n) { n.classList.remove('on'); });
 
   var packets = gsap.timeline({ paused: true });
+  /* Les paquets sont insérés juste avant le premier cadre : ils circulent
+     derrière les nœuds, qui restent au premier plan. */
+  var firstBox = svg.querySelector('.wf-in, .wf-node, .wf-out');
   function startPackets() {
     var ns = 'http://www.w3.org/2000/svg';
     edges.forEach(function (p, i) {
       var c = document.createElementNS(ns, 'circle');
       c.setAttribute('r', '5');
       c.setAttribute('class', 'wf-packet');
-      svg.appendChild(c);
+      svg.insertBefore(c, firstBox);
       packets.to(c, {
         motionPath: { path: p, align: p, alignOrigin: [0.5, 0.5] },
         duration: 1.5 + (i % 3) * 0.4,
