@@ -172,9 +172,10 @@
      et une seule fois par visiteur tant qu'il n'a pas répondu. Réglages en tête
      de bloc, tout se change ici. */
   (function () {
-    var DELAI = 30;          // secondes avant ouverture
-    var PROFONDEUR = 0.5;    // ou cette part de la page parcourue
+    var DELAI = 45;          // secondes avant ouverture, en dernier recours
+    var PROFONDEUR = 0.6;    // ou cette part de la page parcourue
     var REPOS = 14;          // jours avant de reproposer après une fermeture
+    var GARDE = 8;           // secondes de grâce : personne n'est accueilli par une fenêtre
 
     var exclues = ['/contact.html', '/en/contact.html', '/charte/'];
     if (exclues.indexOf(location.pathname) !== -1) return;
@@ -296,6 +297,20 @@
     function auScroll() {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       if (h > 0 && window.scrollY / h >= PROFONDEUR) ouvrir();
+    }
+
+    /* Intention de départ : le curseur franchit le haut de la fenêtre, vers la
+       barre d'adresse ou l'onglet. C'est le moment le plus utile pour proposer
+       quelque chose, puisque la page allait être quittée de toute façon.
+       Le pointeur fin exclut les écrans tactiles, où ce geste n'existe pas :
+       là, le délai et le défilement prennent le relais. */
+    var depuis = Date.now();
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mouseout', function (e) {
+        if (e.relatedTarget || e.clientY > 8) return;
+        if (Date.now() - depuis < GARDE * 1000) return;
+        ouvrir();
+      });
     }
 
     minuteur = setTimeout(ouvrir, DELAI * 1000);
