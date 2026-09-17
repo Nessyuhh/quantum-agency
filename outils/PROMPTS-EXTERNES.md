@@ -103,12 +103,9 @@ reste invisible pendant des semaines sur les réseaux.
 
 ## 3. Fiche d'établissement Google
 
-Une décision m'appartient avant de lancer cette tâche : **quelle adresse
-déclarer**. Google impose une adresse réelle, vérifiée par courrier ou par
-vidéo. Une adresse fausse ou empruntée fait suspendre la fiche et cette
-suspension est difficile à lever. Le statut « zone desservie », qui masque
-l'adresse au public tout en la déclarant à Google, est le cas normal pour un
-cabinet de conseil sans accueil de clientèle.
+Le statut « zone desservie », qui déclare l'adresse à Google tout en la masquant
+au public, est le cas normal pour un cabinet de conseil sans accueil de
+clientèle. C'est celui à demander.
 
 > Contexte. Quantum Consulting est un cabinet de conseil et de formation en
 > intelligence artificielle pour les PME et ETI, basé à Paris, qui intervient
@@ -117,15 +114,26 @@ cabinet de conseil sans accueil de clientèle.
 > https://calendly.com/younes_mh/audit. Le cabinet n'accueille pas de clientèle
 > dans ses locaux : il se déplace ou travaille à distance.
 >
+> État civil de la société, à reprendre tel quel, il est vérifié au registre
+> national des entreprises :
+>
+> - Dénomination : QUANTUM CONSULTING (QC)
+> - Forme : société par actions simplifiée
+> - Siège : 229 rue Saint-Honoré, 75001 Paris, France
+> - SIREN 982 259 038, SIRET du siège 982 259 038 00015, RCS Paris
+> - TVA intracommunautaire : FR61 982 259 038
+> - Code d'activité : 70.22Z, conseil pour les affaires et autres conseils de
+>   gestion
+> - Création : 1er janvier 2024
+> - Président et directeur de la publication : Younes Miloud-Hocine
+> - Téléphone : +33 6 49 10 35 02
+> - Mentions légales publiées : https://quantum-agency.fr/mentions-legales.html
+>
 > Ce que je te demande : préparer la création d'une fiche d'établissement
-> Google en « zone desservie », c'est-à-dire avec une adresse déclarée à Google
-> mais masquée au public.
+> Google en « zone desservie », c'est-à-dire avec l'adresse ci-dessus déclarée
+> à Google mais masquée au public.
 >
-> Étape 1, avant toute action : demande-moi l'adresse postale à déclarer et le
-> numéro de téléphone à publier. Ne devine ni l'une ni l'autre, et ne reprends
-> pas une adresse trouvée sur le web.
->
-> Étape 2 : prépare et soumets-moi pour validation, en texte, avant toute
+> Étape 1 : prépare et soumets-moi pour validation, en texte, avant toute
 > saisie :
 > - la catégorie principale et les catégories secondaires que tu proposes,
 >   choisies dans la liste réelle de Google, pas inventées ;
@@ -137,13 +145,18 @@ cabinet de conseil sans accueil de clientèle.
 > La description doit être à la première personne du pluriel, sans jargon, et
 > ne contenir aucun tiret long : c'est une règle ferme de ce projet.
 >
-> Étape 3, seulement après mon accord explicite sur chaque élément : crée la
+> Étape 2, seulement après mon accord explicite sur chaque élément : crée la
 > fiche. Arrête-toi net au moment de la vérification et dis-moi ce que Google
 > demande. Ne saisis aucun code de vérification à ma place.
 >
-> Ce que je veux en retour : les propositions de l'étape 2 en un seul message,
+> Ce que je veux en retour : les propositions de l'étape 1 en un seul message,
 > puis l'état exact de la fiche après création, avec le délai annoncé pour la
 > vérification.
+>
+> Vérifie aussi, pendant que tu y es, que la page entreprise LinkedIn
+> https://www.linkedin.com/company/quantum-consulting-paris porte bien la même
+> adresse et le même site : le schéma du site la déclare comme profil officiel,
+> et Google rapproche les deux.
 
 ---
 

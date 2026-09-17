@@ -40,8 +40,13 @@ EXCLUES = {
     'quantum-logos.html',
     'charte/index.html',
     # Pages d'information (noindex) : utiles aux visiteurs, inutiles à l'index.
+    # Les déclarer ici tout en les marquant noindex ferait remonter « URL
+    # envoyée avec balise noindex » dans la Search Console, une contradiction
+    # que Google signale comme une erreur.
     'confidentialite.html',
     'en/confidentialite.html',
+    'mentions-legales.html',
+    'en/mentions-legales.html',
     # Anciennes adresses devenues des redirections (noindex) vers la
     # nouvelle arborescence : services.html, formations.html, faq-ia.html.
     'audit-ia.html',

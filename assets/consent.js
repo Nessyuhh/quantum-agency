@@ -33,15 +33,18 @@
   var CLE = 'quantum-consentement';
   var DUREE = 182 * 86400000;           /* six mois, le maximum recommandé par la CNIL */
 
+  /* Le titre dit « Cookies » et non « Mesure d'audience » : c'est le mot que
+     tout le monde reconnaît au premier coup d'œil, donc celui qui fait décider
+     vite. Le lien du pied de page porte déjà « Gérer les cookies ». */
   var anglais = document.documentElement.lang === 'en';
   var t = anglais ? {
-    titre: 'Audience measurement',
-    texte: 'We would like to measure how this site is used, with Google Analytics. Nothing is stored on your device unless you agree, and you can change your mind at any time.',
+    titre: 'Cookies',
+    texte: 'We use cookies to measure how this site is used, with Google Analytics. Nothing is stored on your device unless you agree, and you can change your mind at any time.',
     lien: 'Privacy and cookies', href: '/en/confidentialite.html',
     refuser: 'Decline', accepter: 'Accept', fermer: 'Close'
   } : {
-    titre: 'Mesure d’audience',
-    texte: 'Nous aimerions mesurer la fréquentation de ce site avec Google Analytics. Rien n’est enregistré sur votre appareil sans votre accord, et vous pouvez changer d’avis à tout moment.',
+    titre: 'Cookies',
+    texte: 'Nous utilisons des cookies pour mesurer la fréquentation de ce site avec Google Analytics. Rien n’est déposé sur votre appareil sans votre accord, et vous pouvez changer d’avis à tout moment.',
     lien: 'Confidentialité et cookies', href: '/confidentialite.html',
     refuser: 'Refuser', accepter: 'Accepter', fermer: 'Fermer'
   };

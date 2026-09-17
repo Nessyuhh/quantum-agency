@@ -16,8 +16,8 @@ RACINE = Path(__file__).resolve().parent.parent
 BLOCS = ('nav', 'mobnav', 'footer')
 
 PAGES = {
-    'index.html': ['services.html', 'formations.html', 'cas-usage.html', 'faq-ia.html', 'contact.html', 'blog.html', 'confidentialite.html', 'expertise-comptable.html'],
-    'en/index.html': ['en/services.html', 'en/formations.html', 'en/cas-usage.html', 'en/faq-ia.html', 'en/contact.html', 'en/blog.html', 'en/confidentialite.html'],
+    'index.html': ['services.html', 'formations.html', 'cas-usage.html', 'faq-ia.html', 'contact.html', 'blog.html', 'confidentialite.html', 'expertise-comptable.html', 'mentions-legales.html'],
+    'en/index.html': ['en/services.html', 'en/formations.html', 'en/cas-usage.html', 'en/faq-ia.html', 'en/contact.html', 'en/blog.html', 'en/confidentialite.html', 'en/mentions-legales.html'],
 }
 
 
