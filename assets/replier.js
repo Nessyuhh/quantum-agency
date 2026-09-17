@@ -8,7 +8,7 @@
    agents-ia. Chaque bloc occupe un écran entier, et ils sont tous déployés.
 
    Un mobile ne doit pas être un desktop empilé. On y fait défiler, donc on
-   choisit ce qu'on lit — on ne subit pas tout dans l'ordre.
+   choisit ce qu'on lit : on ne subit pas tout dans l'ordre.
 
    PROGRESSIF PAR CONSTRUCTION
    Sans JavaScript, rien ne change : tout reste ouvert, exactement comme
@@ -30,7 +30,7 @@
 
      Pourquoi ce marqueur existe : GARDES est positionnel, il ouvre les N
      premiers blocs longs quels qu'ils soient. Sur l'accueil, monter à 4 ouvrait
-     « Modèles & LLM » — une section technique — tout en laissant « Formations »
+     « Modèles & LLM » (une section technique) tout en laissant « Formations »
      replié, alors que c'est l'une des deux offres du cabinet. Le résultat
      dépendait de l'ordre du HTML, donc réordonner une section changeait
      silencieusement ce qui s'ouvre.
@@ -47,7 +47,7 @@
      Viser « .content » ne suffisait pas : sur cas-usage les blocs sont un
      niveau plus bas, dans .sectors-grid, et faq-ia n'a pas de .content du tout.
      On descend donc l'arbre et on retient tout élément ayant au moins trois
-     enfants dépassant le seuil — c'est la définition d'un mur de contenu,
+     enfants dépassant le seuil : c'est la définition d'un mur de contenu,
      quel que soit son nom de classe. */
   function conteneursCandidats() {
     var racine = document.querySelector('main') || document.body;

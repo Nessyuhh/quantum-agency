@@ -1,9 +1,9 @@
 /* ============================================================================
-   Sections d'ouverture animées — grammaire commune
+   Sections d'ouverture animées : grammaire commune
    ----------------------------------------------------------------------------
    Une seule feuille pour toutes les animations de hero : c'est le langage,
    chaque page n'en écrit que la phrase. Ce fichier existe aussi pour ne pas
-   reproduire le défaut du site — un CSS recopié dans chaque page, qui a laissé
+   reproduire le défaut du site : un CSS recopié dans chaque page, qui a laissé
    13 pages sur 14 avec un menu mobile cassé pendant des semaines.
 
    Contraintes tenues partout : SVG pur, aucune bibliothèque, aucun JavaScript,
@@ -39,7 +39,7 @@
 
 /* ── Deux cadrages, pas un ───────────────────────────────────────────────────
    Mesuré : un viewBox de 920 de large réduit à un écran de 390 px tombe à une
-   échelle de 0,39 — le texte de 13 px se rend à 5 px. Illisible, et ça reste
+   échelle de 0,39 : le texte de 13 px se rend à 5 px. Illisible, et ça reste
    illisible jusqu'à 1024 px, donc sur tablette aussi.
    Chaque animation porte donc DEUX tracés : un cadrage large en paysage, et un
    cadrage étroit en portrait où le flux descend au lieu d'aller vers la droite.
