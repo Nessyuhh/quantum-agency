@@ -197,27 +197,88 @@ langues, propriété de domaine validée dans Search Console et plan du site de
 Votre demande a été reçue ». Ils suivent maintenant l'attribut `lang` de la
 page, comme le faisait déjà la fenêtre du site offert.
 
-## 9. Ce qui reste ouvert
+## 9. Trois défauts que personne n'avait vus
+
+Trouvés en balayant le site plutôt qu'en cherchant un symptôme. Aucun ne se
+voyait depuis le site lui-même, et c'est précisément ce qui les rendait
+durables.
+
+**Aucun article n'avait de vignette de partage.** Les 105 articles désignaient
+`og-image.svg` comme image de partage. Aucun réseau social n'accepte le SVG :
+ni LinkedIn, ni X, ni WhatsApp, ni Slack. Ils déclaraient pourtant
+`twitter:card = summary_large_image`, donc promettaient une grande vignette
+sans en livrer aucune, et ce fichier datait d'avant la refonte. L'adresse
+passait en plus par `www`, qui répond 301. Corrigé par
+`outils/normaliser-partage.py`, avec les dimensions et le texte de
+remplacement. **Le cache des réseaux garde l'ancienne réponse plusieurs
+semaines** : la revalidation est le prompt 1 de `outils/PROMPTS-EXTERNES.md`.
+
+**Trois articles affichaient une question sans réponse**, à chaque fois une
+balise fermante mal écrite (`</j3>`, `</p>` à la place de `</h3>`). Sur l'un
+d'eux, deux questions s'étaient fondues en une seule avec un retour à la ligne
+au milieu d'une chaîne JSON, ce qui invalidait le bloc FAQPage entier et le
+faisait ignorer par les moteurs. La réponse manquante a été écrite, et
+`outils/resynchroniser-faq.py` régénère désormais le bloc depuis le texte
+affiché : la page est la source unique.
+
+**Le fil d'Ariane était coupé au milieu d'un mot** sur 75 pages, à soixante
+caractères, alors qu'il passe à la ligne tout seul. Et les sept articles
+retitrés gardaient l'ancien titre dans leurs données structurées, oubli de
+`reecrire-titres.py`. Corrigé dans les pages et dans le script.
+
+Deux pièges d'outillage découverts en réparant : `charte-sync.py` effaçait tous
+les `aria-current` de la page pour replacer l'onglet actif, y compris celui du
+fil d'Ariane ; et faire suivre le fil d'Ariane structuré au h1 convient à un
+article mais pas à une page de métier, où le fil nomme la catégorie et le titre
+porte une promesse. **C'est le fil affiché qui fait foi.**
+
+## 10. La page métier
+
+`expertise-comptable.html`, première page de métier. Le blog traitait déjà le
+sujet deux fois, mais sous l'angle informatif ; il manquait la page que cherche
+un associé qui veut savoir ce que nous faisons chez lui. Les cabinets sont le
+métier où le volume documentaire est le plus lourd et la tolérance à l'erreur
+la plus basse, donc le meilleur premier candidat.
+
+Trois choix à garder si d'autres métiers suivent :
+
+- **Une section entière dit ce que nous n'automatisons pas.** Sur une
+  profession réglementée, c'est le bloc qui fait la différence, pas la liste
+  des gains.
+- **Le secret professionnel est traité comme point de départ**, pas comme une
+  contrainte à contourner.
+- **Elle n'entre pas dans la barre de navigation.** Un lien dans le pied de
+  page, propagé aux 114 pages par `charte-sync.py`, plus deux liens depuis les
+  articles concernés. Si d'autres métiers arrivent, transformer cette ligne en
+  colonne « Secteurs » plutôt que de rallonger le menu.
+
+## 11. Ce qui reste ouvert
 
 **Les liens entrants sont le frein principal.** Le contenu, la technique et la
 vitesse sont au maximum de ce que le site peut faire seul ; ce qui manque pour
-se classer est la citation par d'autres sites. Aucun travail n'a été engagé.
+se classer est la citation par d'autres sites. Prompt 4 de
+`outils/PROMPTS-EXTERNES.md`.
 
 **Fiche d'établissement Google** pour les recherches locales parisiennes, non
-créée. Elle demande une adresse et une validation postale.
+créée. Prompt 3, bloqué sur une décision : quelle adresse déclarer. Une adresse
+fausse fait suspendre la fiche, et la suspension est difficile à lever.
 
 **Indexation réelle** à contrôler dans Search Console : la propriété est
 validée et le plan du site déclaré, mais rien n'a encore été relevé sur le
-nombre de pages effectivement indexées.
+nombre de pages effectivement indexées. Prompt 2.
 
-**Page comptabilité** proposée, jamais tranchée par l'utilisateur.
+**Tirets longs résiduels** dans treize scripts d'outillage anciens et sept
+maquettes de développement en `noindex`. Volontairement laissés : deux des
+occurrences de `blog-recharter.py` sont le motif de recherche qui sert
+justement à retirer les tirets longs du contenu, et les remplacer casserait la
+règle qu'elles font respecter.
 
 Pistes non traitées, par ordre d'intérêt décroissant : sous-ensemble des
 polices aux seuls caractères utilisés, minification de `quantum.js` (2 Ko),
 transitions entre pages, pôle Marchés publics BTP prévu dans
 `ARBORESCENCE.md` et jamais construit.
 
-## 10. Règles de travail, à respecter par la suite
+## 12. Règles de travail, à respecter par la suite
 
 - **Aucun tiret long**, nulle part : contenu, code, commentaires, messages de
   commit. C'est une marque de rédaction automatique pour l'utilisateur.
@@ -233,7 +294,7 @@ transitions entre pages, pôle Marchés publics BTP prévu dans
   apparus que sur le site réel, dont le cache de dix minutes qui sert l'ancien
   fichier quelques minutes après une publication.
 
-## 11. Repères de fichiers
+## 13. Repères de fichiers
 
 | Chemin | Rôle |
 |---|---|
@@ -245,6 +306,10 @@ transitions entre pages, pôle Marchés publics BTP prévu dans
 | `outils/blog-recharter.py` | Recharte l'index et les 105 articles |
 | `outils/test-formulaire.mjs` | Seize tests du Worker, sans réseau |
 | `outils/verifier-dns.sh` | Contrôle les dix enregistrements DNS |
+| `outils/normaliser-partage.py` | Images de partage et domaine nu, en contrôle avec `--verifier` |
+| `outils/resynchroniser-faq.py` | Régénère les blocs FAQPage depuis les questions affichées |
+| `outils/resynchroniser-schema.py` | Aligne titre, description et fil d'Ariane du schéma sur la page |
+| `outils/PROMPTS-EXTERNES.md` | Les quatre tâches qui demandent un compte tiers |
 | `outils/BASCULE-CLOUDFLARE.md` | Procédure de bascule du DNS |
 | `outils/sitemap.py` | Régénère `sitemap.xml` |
 
@@ -252,4 +317,11 @@ Après toute modification de la navigation ou du pied de page :
 
 ```bash
 python3 outils/charte-sync.py && python3 outils/blog-recharter.py && python3 outils/sitemap.py
+```
+
+Et avant chaque mise en ligne, trois contrôles qui échouent s'il reste quelque
+chose à corriger :
+
+```bash
+python3 outils/normaliser-partage.py --verifier && python3 outils/resynchroniser-faq.py --verifier && python3 outils/resynchroniser-schema.py --verifier
 ```
