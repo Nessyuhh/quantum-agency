@@ -33,7 +33,11 @@ def marquer_actif(html, chemin):
     html = re.sub(r'class="mob-tab-item active', 'class="mob-tab-item', html)
     html = re.sub(r'<a href="%s"( class="mob-tab-item[^"]*")' % re.escape(href),
                   lambda m: '<a href="%s" aria-current="page"%s' % (href, m.group(1).replace('mob-tab-item', 'mob-tab-item active', 1)), html)
-    html = re.sub(r'<li><a href="%s">' % re.escape(href), '<li><a href="%s" aria-current="page">' % href, html)
+    # Uniquement dans la liste de navigation : le pied de page reprend les
+    # mêmes adresses et ne doit pas être marqué.
+    html = re.sub(r'<ul class="nav-links">.*?</ul>',
+                  lambda m: m.group(0).replace('<li><a href="%s">' % href, '<li><a href="%s" aria-current="page">' % href),
+                  html, count=1, flags=re.S)
     return html
 
 

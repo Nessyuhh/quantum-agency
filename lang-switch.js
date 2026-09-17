@@ -37,6 +37,9 @@
      sélecteur flottant ci-dessous. */
   var slots = document.querySelectorAll('[data-lang-slot]');
   if (slots.length) {
+    /* Pas de jumelle déclarée (hreflang) : pas de bouton. C'est le cas des
+       articles du blog, qui n'existent qu'en français. */
+    if (!document.querySelector('link[rel="alternate"][hreflang="' + autre.toLowerCase() + '"]')) return;
     Array.prototype.forEach.call(slots, function (slot) {
       var a = document.createElement('a');
       a.className = 'q-lang-btn';
