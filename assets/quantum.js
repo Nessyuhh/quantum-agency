@@ -317,9 +317,50 @@
     window.addEventListener('scroll', auScroll, { passive: true });
   })();
 
-  /* ── Animations ── */
-  if (reduce || typeof gsap === 'undefined') return;
-  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+  /* ── Animations ──
+     GSAP et ses deux greffons pèsent près de 70 Ko. Ils ne servent qu'au flux
+     animé : on les charge quand il approche, pas au premier affichage. */
+  if (reduce) return;
+
+  var CDN = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/';
+  function script(fichier) {
+    return new Promise(function (ok, non) {
+      var e = document.createElement('script');
+      e.src = CDN + fichier;
+      e.onload = ok;
+      e.onerror = non;
+      document.head.appendChild(e);
+    });
+  }
+
+  function animer() {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    animations();
+  }
+
+  if (typeof gsap !== 'undefined') {
+    animer();
+  } else {
+    /* Le conteneur, jamais l'un des deux tracés : celui qui n'est pas affiché
+       est en display:none, et un élément masqué n'entre jamais dans le champ
+       d'un IntersectionObserver. */
+    var declencheur = document.getElementById('workflow') || document.querySelector('.hero');
+    if (!declencheur) return;
+    var charger = function () {
+      observateur.disconnect();
+      script('gsap.min.js')
+        .then(function () { return Promise.all([script('ScrollTrigger.min.js'), script('MotionPathPlugin.min.js')]); })
+        .then(animer)
+        .catch(function () { /* réseau indisponible : la page reste entière, sans mouvement */ });
+    };
+    /* 600 px d'avance : le temps de télécharger avant que la section entre. */
+    var observateur = new IntersectionObserver(function (entrees) {
+      if (entrees.some(function (e) { return e.isIntersecting; })) charger();
+    }, { rootMargin: '600px' });
+    observateur.observe(declencheur);
+  }
+
+  function animations() {
 
   /* Hero : les lignes se verrouillent en place. Quand l'écran d'entrée joue,
      on attend qu'il se lève, sinon l'animation se déroulerait derrière lui et
@@ -406,4 +447,5 @@
     onEnter: function () { if (tl.progress() === 1) packets.play(); },
     onEnterBack: function () { packets.play(); }
   });
+  }
 })();

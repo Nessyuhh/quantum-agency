@@ -30,7 +30,7 @@
 <noscript></noscript>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=11">
+<link rel="stylesheet" href="/assets/quantum.css?v=12">
 
 <style>
 /* ── HERO ── */
@@ -40,7 +40,7 @@
 .hero-body { padding-left: 40px; min-width: 0; }
 .hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(5.6rem, 14.5vw, 13rem); line-height: 0.84; text-transform: uppercase; margin: 40px 0 0; letter-spacing: -0.005em; }
 .hero h1 span { display: block; }
-.hero h1 .dim { font-weight: 500; color: var(--ink-3); }
+.hero h1 .dim { font-weight: 500; color: var(--ink-attenue); }
 /* background-clip:text ne peint que la boîte de la ligne : on l'étend vers le
    haut pour ne pas décapiter l'accent de « SYSTÈME ». */
 .hero h1 .grad-text { padding-top: 0.16em; margin-top: -0.16em; }
@@ -65,7 +65,7 @@
 #workflow { padding: 90px 0 80px; margin-top: 90px; border-top: 1px solid var(--line); }
 .wf-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 36px; }
 .wf-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 0.92; text-transform: uppercase; margin-top: 12px; max-width: 24ch; }
-.wf-head p { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; text-align: right; white-space: nowrap; }
+.wf-head > p { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; text-align: right; white-space: nowrap; }
 .wf-scroll { border: 1px solid var(--line); background: #fff; padding: 8px; }
 .wf-svg { width: 100%; height: auto; display: block; }
 .wf-mobile { display: none; max-width: 440px; margin: 0 auto; }
@@ -389,10 +389,7 @@
 </footer>
 <!-- @/footer -->
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js?v=11" defer></script>
+<script src="/assets/quantum.js?v=13" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

@@ -81,7 +81,13 @@
   --bg-2: #ECECE8;
   --ink: #111318;
   --ink-2: rgba(17, 19, 24, 0.64);
-  --ink-3: rgba(17, 19, 24, 0.42);
+  /* 0,62 et non 0,42 : à 42 % l'encre tombait à 2,7 pour 1 de contraste sur
+     les deux fonds, sous le minimum de 4,5 exigé pour du texte. Elle touchait
+     les libellés de champ, les légendes et le fil d'Ariane. */
+  --ink-3: rgba(17, 19, 24, 0.62);
+  /* Réservée au grand mot atténué du titre d'accueil : à ce corps, le seuil
+     est de 3 pour 1, et un gris plus soutenu tuerait le contraste voulu. */
+  --ink-attenue: rgba(17, 19, 24, 0.52);
   --line: rgba(17, 19, 24, 0.14);
   --line-strong: rgba(17, 19, 24, 0.45);
   --lav: #ddd6fe;
