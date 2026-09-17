@@ -4,6 +4,76 @@
    typo Big Shoulders Display / Archivo / Space Mono.
    ========================================================================== */
 
+/* ── Polices hébergées par nous ──
+   Servies depuis le site plutôt que depuis Google : deux connexions à un
+   tiers en moins sur la chaîne critique, et aucune adresse IP de visiteur
+   envoyée à Google, ce que nous conseillons nous-mêmes à nos clients.
+   Les fontes variables couvrent toutes les graisses en un fichier. */
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/polices/BigShouldersDisplay-variable-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/polices/BigShouldersDisplay-variable-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/polices/Archivo-variable-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/polices/Archivo-variable-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/polices/SpaceMono-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/polices/SpaceMono-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/polices/SpaceMono-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/polices/SpaceMono-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -273,3 +343,87 @@ body.intro-active { overflow: hidden; }
   .offre-boite p.texte { font-size: 0.93rem; margin-bottom: 16px; }
   .offre-boite .btn { align-self: stretch; }
 }
+
+/* ── Blog : index et articles ──
+   Fusionné ici plutôt que servi à part : sur mobile, chaque feuille de style
+   supplémentaire retarde le premier affichage du temps d'un aller-retour. */
+
+/* ── Index du blog ── */
+.pg-hero { padding: 150px 0 40px; max-width: var(--container); margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.pg-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); }
+.pg-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3rem, 7vw, 5.6rem); line-height: 0.9; text-transform: uppercase; margin: 16px 0 18px; max-width: 16ch; }
+.pg-sub { font-size: 1.1rem; color: var(--ink-2); max-width: 52ch; line-height: 1.55; }
+.bl-filtres { max-width: var(--container); margin: 0 auto 40px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 8px; }
+.bl-f { font-family: var(--mono); font-size: 0.72rem; padding: 0.55rem 0.9rem; border: 1px solid var(--line-strong); background: none; color: var(--ink-2); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.bl-f:hover, .bl-f.actif { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.bl-n { opacity: 0.6; margin-left: 4px; }
+.bl-pole { max-width: var(--container); margin: 0 auto; padding: 40px 40px 20px; }
+.bl-pole h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.6rem); text-transform: uppercase; line-height: 0.95; margin-bottom: 20px; }
+.bl-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+.bl-card { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: background 0.2s; }
+.bl-card:hover { background: #fff; }
+.bl-cat { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet); }
+.bl-card h3 { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1; text-transform: uppercase; }
+.bl-card p { font-size: 0.92rem; line-height: 1.55; color: var(--ink-2); flex: 1; }
+.bl-lien { font-family: var(--mono); font-size: 0.72rem; border-bottom: 1px solid var(--ink); align-self: flex-start; padding-bottom: 2px; }
+.bl-card:hover .bl-lien { color: var(--violet); border-color: var(--violet); }
+@media (max-width: 900px) { .bl-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { .pg-hero { padding: 100px 20px 30px; } .bl-filtres, .bl-pole { padding-left: 20px; padding-right: 20px; } .bl-grid { grid-template-columns: 1fr; } }
+
+/* ── Article ── */
+.art-wrap { max-width: 760px; margin: 0 auto; padding: 140px 24px 60px; }
+/* 0,75rem et non 0,7, encre à 64 % et non 42 % : à 11 px, le gris clair
+   tombait à 2,7 pour 1 de contraste, très en dessous du minimum de 4,5. */
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-2); margin-bottom: 1.6rem; }
+.breadcrumb a { color: var(--ink-2); text-decoration: none; }
+.breadcrumb a:hover { color: var(--violet); }
+.breadcrumb span[aria-current] { color: var(--ink-2); }
+.art-cat { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.9rem; }
+.art-wrap h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 0.92; text-transform: uppercase; margin-bottom: 1.2rem; }
+.art-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-2); margin-bottom: 2.2rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--ink); }
+.art-body { font-size: 1.05rem; line-height: 1.75; color: var(--ink); }
+.art-body p { margin: 0 0 1.15rem; max-width: 68ch; }
+.art-body h2 { font-family: var(--display); font-weight: 700; font-size: 1.9rem; line-height: 1; text-transform: uppercase; margin: 2.6rem 0 0.9rem; scroll-margin-top: 96px; }
+.art-body h3 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.05; text-transform: uppercase; margin: 1.8rem 0 0.6rem; }
+.art-body ul, .art-body ol { margin: 0 0 1.3rem; padding-left: 1.3rem; display: grid; gap: 0.45rem; }
+.art-body li::marker { color: var(--violet); }
+.art-body strong { font-weight: 600; }
+.art-body em { font-style: italic; }
+.art-body a { color: var(--violet); text-decoration: underline; text-underline-offset: 3px; }
+.art-body a:hover { color: var(--ink); }
+.art-body table, .art-table { width: 100%; border-collapse: collapse; margin: 0 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
+.art-body th, .art-body td, .art-table th, .art-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.art-body th, .art-table th { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; border-bottom: 1px solid var(--ink); }
+.art-reponse { border-left: 3px solid var(--violet-bright); background: #fff; padding: 1rem 1.2rem; margin: 0 0 2rem; font-size: 1.02rem; }
+.art-callout { background: #fff; border: 1px solid var(--line-strong); padding: 1.2rem 1.4rem; margin: 1.8rem 0; }
+.art-callout strong { color: var(--violet); }
+.art-cta { border: 1px solid var(--line-strong); background: #fff; padding: 1.8rem; margin: 2.6rem 0 0; }
+.art-cta h2 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; text-transform: uppercase; line-height: 1; margin: 0 0 0.6rem; }
+.art-cta p { font-size: 0.95rem; color: var(--ink-2); margin: 0 0 1.2rem; }
+.art-cta a { display: inline-flex; font-family: var(--mono); font-size: 0.78rem; font-weight: 700; padding: 0.85rem 1.25rem; background: var(--grad); color: #0F1113; text-decoration: none; }
+.art-faq { margin-top: 3rem; border-top: 1px solid var(--ink); padding-top: 2rem; }
+.art-faq .faq-q { margin-bottom: 1.4rem; }
+.art-faq .faq-q h3 { font-size: 1.25rem; margin: 0 0 0.4rem; }
+.art-faq .faq-q p { margin: 0; color: var(--ink-2); }
+.lire-aussi { margin-top: 3rem; border-top: 1px solid var(--ink); padding-top: 2rem; }
+.lire-aussi ul { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+.lire-aussi a { color: var(--violet); text-decoration: none; font-weight: 500; }
+.lire-aussi a:hover { text-decoration: underline; }
+.art-sommaire { margin: 0 0 2.4rem; padding: 1.1rem 1.3rem; border: 1px solid var(--line-strong); background: #fff; }
+.art-sommaire-t { margin: 0 0 0.6rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); }
+.art-sommaire ol { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; }
+.art-sommaire a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; line-height: 1.45; }
+.art-sommaire a:hover { color: var(--ink); }
+.art-sommaire a[aria-current] { color: var(--violet); font-weight: 600; }
+.art-progres { display: none; }
+.art-nav, .art-prevnext { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; border-top: 1px solid var(--ink); padding-top: 1.6rem; }
+.art-prevnext { max-width: 760px; margin: 2rem auto 0; padding: 1.6rem 24px 0; }
+.art-nav a, .art-prev, .art-next { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem 1.1rem; border: 1px solid var(--line-strong); text-decoration: none; color: inherit; transition: border-color 0.2s, background 0.2s; }
+.art-nav a:hover, .art-prev:hover, .art-next:hover { border-color: var(--violet); background: #fff; }
+.art-nav .sens, .art-prev::before, .art-next::after { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); }
+.art-prev::before { content: "Article précédent"; }
+.art-next::after { content: "Article suivant"; }
+.art-nav .titre, .art-prev span, .art-next span { font-size: 0.94rem; font-weight: 500; line-height: 1.35; }
+.art-nav .suivant, .art-next { text-align: right; }
+#back-top { display: none; }
+@media (max-width: 640px) { .art-nav, .art-prevnext { grid-template-columns: 1fr; } .art-nav .suivant, .art-next { text-align: left; } .art-wrap { padding-top: 100px; } }

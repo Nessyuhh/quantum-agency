@@ -18,7 +18,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 FONTS = ('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800'
          '&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap')
-VERSION = 'v=4'
+VERSION = 'v=11'
 
 MODELES = [
     (r'Claude 3\.7 Sonnet', 'Claude Sonnet 5'),
@@ -77,9 +77,8 @@ def recharter(chemin, blocs):
     ancre = '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
     morceaux = [
         ('color-scheme', '<meta name="color-scheme" content="light">'),
-        ('fonts.googleapis.com/css2?family=Big+Shoulders', '<link rel="stylesheet" href="%s" media="print" onload="this.media=\'all\'">\n<noscript><link rel="stylesheet" href="%s"></noscript>' % (FONTS, FONTS)),
+        ('rel="preload" as="font"', '<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">\n<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">'),
         ('/assets/quantum.css', '<link rel="stylesheet" href="/assets/quantum.css?%s">' % VERSION),
-        ('/assets/article.css', '<link rel="stylesheet" href="/assets/article.css?%s">' % VERSION),
     ]
     for cle, ligne in reversed(morceaux):
         if cle not in html:
