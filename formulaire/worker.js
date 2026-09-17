@@ -8,7 +8,7 @@
      DESTINATAIRE, EXPEDITEUR, ORIGINES_AUTORISEES
    ========================================================================== */
 
-const CHAMPS = ['nom', 'email', 'entreprise', 'message', 'source', 'page', 'timestamp'];
+const CHAMPS = ['nom', 'email', 'entreprise', 'message', 'source', 'page', 'timestamp', 'type'];
 
 /* Le Worker répond à des navigateurs sur nos deux domaines uniquement. Une
    origine inconnue ne reçoit aucun en-tête CORS, donc le navigateur bloque. */
@@ -44,9 +44,10 @@ function corpsEmail(d) {
   const ligne = (label, valeur) => valeur
     ? `<tr><td style="padding:6px 16px 6px 0;color:#6b7280;font:12px monospace;text-transform:uppercase;letter-spacing:.08em;vertical-align:top">${label}</td><td style="padding:6px 0;color:#111318;font:15px system-ui">${echappe(valeur)}</td></tr>`
     : '';
+  var siteOffert = d.type === 'site-offert';
   return `<div style="font-family:system-ui,sans-serif;max-width:560px">
-  <p style="font:13px monospace;letter-spacing:.1em;text-transform:uppercase;color:#6d28d9;margin:0 0 4px">Nouvelle demande d'audit</p>
-  <h1 style="font-size:22px;margin:0 0 20px;color:#111318">${echappe(d.entreprise) || 'Entreprise non précisée'}</h1>
+  <p style="font:13px monospace;letter-spacing:.1em;text-transform:uppercase;color:#6d28d9;margin:0 0 4px">${siteOffert ? 'Demande de site vitrine offert' : "Nouvelle demande d'audit"}</p>
+  <h1 style="font-size:22px;margin:0 0 20px;color:#111318">${echappe(d.entreprise) || echappe(d.email) || 'Entreprise non précisée'}</h1>
   <table style="border-collapse:collapse">
     ${ligne('Nom', d.nom)}${ligne('E-mail', d.email)}${ligne('Entreprise', d.entreprise)}
     ${ligne('Besoin', d.message)}${ligne('Page', d.page)}${ligne('Envoyé le', d.timestamp)}
@@ -81,7 +82,11 @@ export default {
     const nom = String(data.nom || '').trim();
     const email = String(data.email || '').trim();
     const entreprise = String(data.entreprise || '').trim();
-    if (!nom || !entreprise || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    /* La fenêtre du site offert ne demande qu'une adresse : exiger le nom et
+       l'entreprise la rendrait inutilisable. Le formulaire complet, lui, garde
+       ses trois champs obligatoires. */
+    const siteOffert = data.type === 'site-offert';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || (!siteOffert && (!nom || !entreprise))) {
       return reponse({ erreur: 'Champs manquants ou e-mail invalide' }, 400, origine);
     }
     if (nom.length > 120 || email.length > 160 || entreprise.length > 160 || String(data.message || '').length > 2000) {
@@ -100,7 +105,9 @@ export default {
         from: env.EXPEDITEUR,
         to: [env.DESTINATAIRE],
         reply_to: propre.email,
-        subject: `Demande d'audit : ${propre.entreprise || propre.nom}`,
+        subject: propre.type === 'site-offert'
+          ? `Site offert : ${propre.email}`
+          : `Demande d'audit : ${propre.entreprise || propre.nom}`,
         html: corpsEmail(propre),
       }),
     });

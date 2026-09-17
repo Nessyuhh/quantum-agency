@@ -76,6 +76,24 @@ await t('Resend en panne -> 502, pas de faux succès', async () => {
   resendOk = true;
 });
 
+await t('site offert : e-mail seul accepté', async () => {
+  dernierAppel = null;
+  const r = await worker.fetch(post({ email: 'jeanne@entreprise.fr', type: 'site-offert', page: '/services.html' }), env);
+  eq(r.status, 200, 'statut');
+  eq(dernierAppel.body.subject, 'Site offert : jeanne@entreprise.fr', 'sujet');
+  if (!dernierAppel.body.html.includes('site vitrine offert')) throw new Error('intitulé absent du corps');
+});
+
+await t('site offert : e-mail invalide toujours refusé', async () => {
+  const r = await worker.fetch(post({ email: 'pasunemail', type: 'site-offert' }), env);
+  eq(r.status, 400, 'statut');
+});
+
+await t('formulaire complet : nom et entreprise restent obligatoires', async () => {
+  const r = await worker.fetch(post({ email: 'jeanne@entreprise.fr' }), env);
+  eq(r.status, 400, 'statut');
+});
+
 await t('GET -> 405', async () => {
   const r = await worker.fetch(new Request('https://api.test/', { method: 'GET', headers: { Origin: 'https://quantum-agency.fr' } }), env);
   eq(r.status, 405, 'statut');

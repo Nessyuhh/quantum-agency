@@ -167,6 +167,141 @@
     });
   })();
 
+  /* ── Fenêtre du site vitrine offert ──
+     Elle s'ouvre après un délai ou à mi-page, selon ce qui arrive en premier,
+     et une seule fois par visiteur tant qu'il n'a pas répondu. Réglages en tête
+     de bloc, tout se change ici. */
+  (function () {
+    var DELAI = 30;          // secondes avant ouverture
+    var PROFONDEUR = 0.5;    // ou cette part de la page parcourue
+    var REPOS = 14;          // jours avant de reproposer après une fermeture
+
+    var exclues = ['/contact.html', '/en/contact.html', '/charte/'];
+    if (exclues.indexOf(location.pathname) !== -1) return;
+
+    var anglais = document.documentElement.lang === 'en';
+    var cle = 'quantum-site-offert';
+    var etat = null;
+    try { etat = localStorage.getItem(cle); } catch (e) { /* stockage refusé : on propose */ }
+    if (etat === 'envoye') return;
+    if (etat && Date.now() - Number(etat) < REPOS * 86400000) return;
+
+    var webhook = (document.querySelector('form[data-webhook]') || {}).getAttribute
+      ? document.querySelector('form[data-webhook]').getAttribute('data-webhook') : '';
+
+    var t = anglais ? {
+      sur: 'Free, with your audit',
+      titre: 'A showcase website, <span class="grad-text">on us</span>',
+      texte: 'Leave us your e-mail: we send you the free audit details and the showcase website that comes with it. No commitment, no sales call unless you ask for one.',
+      champ: 'Your work e-mail', envoyer: 'I want the offer →', fermer: 'Close',
+      mention: 'One e-mail, no list, no sharing with anyone.',
+      merci: 'Thank you. We write to you within one working day.',
+      erreur: 'Something went wrong. Write to us at contact@quantum-agency.fr.'
+    } : {
+      sur: 'Offert avec votre audit',
+      titre: 'Un site vitrine, <span class="grad-text">offert</span>',
+      texte: "Laissez-nous votre e-mail : nous vous envoyons le détail de l'audit gratuit et du site vitrine qui l'accompagne. Sans engagement, et sans appel commercial si vous n'en demandez pas.",
+      champ: 'Votre e-mail professionnel', envoyer: 'Je veux l\'offre →', fermer: 'Fermer',
+      mention: 'Un seul e-mail, aucune liste de diffusion, aucun partage.',
+      merci: 'Merci. Nous vous écrivons sous 24 heures ouvrées.',
+      erreur: 'Une erreur est survenue. Écrivez-nous à contact@quantum-agency.fr.'
+    };
+
+    var pop = document.createElement('div');
+    pop.className = 'offre-pop';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-modal', 'true');
+    pop.setAttribute('aria-labelledby', 'offre-titre');
+    pop.innerHTML =
+      '<div class="offre-voile"></div>' +
+      '<div class="offre-boite">' +
+        '<button type="button" class="offre-fermer" aria-label="' + t.fermer + '">✕</button>' +
+        '<p class="eyebrow">' + t.sur + '</p>' +
+        '<h2 id="offre-titre">' + t.titre + '</h2>' +
+        '<p class="texte">' + t.texte + '</p>' +
+        '<form novalidate>' +
+          '<label class="sr-only" for="offre-email">' + t.champ + '</label>' +
+          '<input id="offre-email" type="email" name="email" placeholder="' + t.champ + '" required autocomplete="email">' +
+          '<div class="piege" aria-hidden="true"><label for="offre-site">Ne pas remplir</label><input id="offre-site" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>' +
+          '<button type="submit" class="btn btn-grad">' + t.envoyer + '</button>' +
+          '<p class="offre-mention">' + t.mention + '</p>' +
+          '<div class="form-note" role="status" aria-live="polite"></div>' +
+        '</form>' +
+      '</div>';
+
+    var minuteur, ouverte = false, dernierFocus = null;
+
+    function memoriser(valeur) { try { localStorage.setItem(cle, valeur); } catch (e) { /* sans stockage, la fenêtre reviendra */ } }
+
+    function ouvrir() {
+      if (ouverte) return;
+      ouverte = true;
+      clearTimeout(minuteur);
+      window.removeEventListener('scroll', auScroll);
+      document.body.appendChild(pop);
+      requestAnimationFrame(function () { pop.classList.add('ouverte'); });
+      dernierFocus = document.activeElement;
+      pop.querySelector('#offre-email').focus({ preventScroll: true });
+    }
+
+    function fermer(memo) {
+      pop.classList.remove('ouverte');
+      if (memo !== false) memoriser(String(Date.now()));
+      setTimeout(function () { if (pop.parentNode) pop.remove(); }, 320);
+      if (dernierFocus && dernierFocus.focus) dernierFocus.focus();
+    }
+
+    pop.querySelector('.offre-fermer').addEventListener('click', function () { fermer(); });
+    pop.querySelector('.offre-voile').addEventListener('click', function () { fermer(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ouverte) fermer(); });
+
+    pop.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var champ = pop.querySelector('#offre-email');
+      var note = pop.querySelector('.form-note');
+      var btn = pop.querySelector('button[type="submit"]');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(champ.value.trim())) { champ.focus(); return; }
+      if (!/^https?:\/\//.test(webhook)) { note.textContent = t.erreur; note.className = 'form-note error'; return; }
+
+      var libelle = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = anglais ? 'Sending…' : 'Envoi en cours…';
+      fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: champ.value.trim(),
+          site_web: pop.querySelector('#offre-site').value,
+          type: 'site-offert',
+          source: 'quantum-agency.fr',
+          page: location.pathname,
+          timestamp: new Date().toISOString()
+        })
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        memoriser('envoye');
+        note.textContent = t.merci;
+        note.className = 'form-note success';
+        pop.querySelector('form').reset();
+        setTimeout(function () { fermer(false); }, 2200);
+      }).catch(function () {
+        note.textContent = t.erreur;
+        note.className = 'form-note error';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = libelle;
+      });
+    });
+
+    function auScroll() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && window.scrollY / h >= PROFONDEUR) ouvrir();
+    }
+
+    minuteur = setTimeout(ouvrir, DELAI * 1000);
+    window.addEventListener('scroll', auScroll, { passive: true });
+  })();
+
   /* ── Animations ── */
   if (reduce || typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
