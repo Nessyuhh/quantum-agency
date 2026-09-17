@@ -6,12 +6,15 @@ const env = {
   DESTINATAIRE: 'contact@quantum-agency.fr',
   EXPEDITEUR: 'Site Quantum <formulaire@quantum-agency.fr>',
   ORIGINES_AUTORISEES: 'https://quantum-agency.fr,https://www.quantum-agency.fr',
+  LIEN_RENDEZ_VOUS: 'https://calendly.com/younes_mh/audit',
 };
 
 let dernierAppel = null;
+let appels = [];
 let resendOk = true;
 globalThis.fetch = async (url, init) => {
   dernierAppel = { url, body: JSON.parse(init.body), auth: init.headers.Authorization };
+  appels.push(dernierAppel);
   return resendOk
     ? new Response('{"id":"x"}', { status: 200 })
     : new Response('boom', { status: 401 });
@@ -77,11 +80,13 @@ await t('Resend en panne -> 502, pas de faux succès', async () => {
 });
 
 await t('site offert : e-mail seul accepté', async () => {
-  dernierAppel = null;
+  appels = [];
   const r = await worker.fetch(post({ email: 'jeanne@entreprise.fr', type: 'site-offert', page: '/services.html' }), env);
   eq(r.status, 200, 'statut');
-  eq(dernierAppel.body.subject, 'Site offert : jeanne@entreprise.fr', 'sujet');
-  if (!dernierAppel.body.html.includes('site vitrine offert')) throw new Error('intitulé absent du corps');
+  /* appels[0] est la notification interne, appels[1] l'accusé au visiteur. */
+  eq(appels[0].body.to[0], 'contact@quantum-agency.fr', 'destinataire interne');
+  eq(appels[0].body.subject, 'Site offert : jeanne@entreprise.fr', 'sujet');
+  if (!appels[0].body.html.includes('site vitrine offert')) throw new Error('intitulé absent du corps');
 });
 
 await t('site offert : e-mail invalide toujours refusé', async () => {
@@ -92,6 +97,61 @@ await t('site offert : e-mail invalide toujours refusé', async () => {
 await t('formulaire complet : nom et entreprise restent obligatoires', async () => {
   const r = await worker.fetch(post({ email: 'jeanne@entreprise.fr' }), env);
   eq(r.status, 400, 'statut');
+});
+
+await t('site offert : accusé envoyé au visiteur avec le lien de rendez-vous', async () => {
+  appels = [];
+  await worker.fetch(post({ email: 'jeanne@entreprise.fr', type: 'site-offert' }), env);
+  eq(appels.length, 2, 'deux e-mails');
+  const accuse = appels[1].body;
+  eq(accuse.to[0], 'jeanne@entreprise.fr', 'destinataire');
+  eq(accuse.reply_to, 'contact@quantum-agency.fr', 'reply_to');
+  eq(accuse.subject, 'Votre site vitrine offert : ce qui vous attend', 'sujet');
+  if (!accuse.html.includes('https://calendly.com/younes_mh/audit')) throw new Error('lien de rendez-vous absent');
+  if (!accuse.html.includes('JOUR 3')) throw new Error('déroulé absent');
+});
+
+await t('demande d\'audit classique : aucun accusé au visiteur', async () => {
+  appels = [];
+  await worker.fetch(post(valide), env);
+  eq(appels.length, 1, 'un seul e-mail');
+});
+
+await t('accusé en échec : la demande reste acceptée', async () => {
+  let n = 0;
+  globalThis.fetch = async (url, init) => {
+    n++; dernierAppel = { url, body: JSON.parse(init.body) };
+    return n === 1 ? new Response('{"id":"x"}', { status: 200 }) : new Response('boom', { status: 500 });
+  };
+  const r = await worker.fetch(post({ email: 'jeanne@entreprise.fr', type: 'site-offert' }), env);
+  eq(r.status, 200, 'statut');
+  globalThis.fetch = async (url, init) => { dernierAppel = { url, body: JSON.parse(init.body) }; appels.push(dernierAppel); return new Response('{"id":"x"}', { status: 200 }); };
+});
+
+await t('plafond atteint : la demande passe, sans accusé au visiteur', async () => {
+  const compteurs = { 'ip:1.2.3.4': '3' };
+  const envPlein = Object.assign({}, env, { COMPTEURS: {
+    get: async (k) => compteurs[k] || null,
+    put: async (k, v) => { compteurs[k] = v; },
+  } });
+  appels = [];
+  const req = new Request('https://api.test/', { method: 'POST', headers: { Origin: 'https://quantum-agency.fr', 'Content-Type': 'application/json', 'CF-Connecting-IP': '1.2.3.4' }, body: JSON.stringify({ email: 'jeanne@entreprise.fr', type: 'site-offert' }) });
+  const r = await worker.fetch(req, envPlein);
+  eq(r.status, 200, 'statut');
+  eq(appels.length, 1, 'notification interne seule');
+});
+
+await t('sous le plafond : accusé envoyé et compteurs incrémentés', async () => {
+  const compteurs = {};
+  const envVide = Object.assign({}, env, { COMPTEURS: {
+    get: async (k) => compteurs[k] || null,
+    put: async (k, v) => { compteurs[k] = v; },
+  } });
+  appels = [];
+  const req = new Request('https://api.test/', { method: 'POST', headers: { Origin: 'https://quantum-agency.fr', 'Content-Type': 'application/json', 'CF-Connecting-IP': '5.6.7.8' }, body: JSON.stringify({ email: 'jeanne@entreprise.fr', type: 'site-offert' }) });
+  await worker.fetch(req, envVide);
+  eq(appels.length, 2, 'deux e-mails');
+  eq(compteurs['ip:5.6.7.8'], '1', 'compteur IP');
 });
 
 await t('GET -> 405', async () => {

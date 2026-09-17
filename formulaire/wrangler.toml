@@ -6,6 +6,13 @@ compatibility_date = "2026-07-29"
 DESTINATAIRE = "contact@quantum-agency.fr"
 EXPEDITEUR = "Site Quantum <formulaire@quantum-agency.fr>"
 ORIGINES_AUTORISEES = "https://quantum-agency.fr,https://www.quantum-agency.fr"
+LIEN_RENDEZ_VOUS = "https://calendly.com/younes_mh/audit"
 
 # Secret, jamais dans ce fichier :
 #   npx wrangler secret put RESEND_API_KEY
+# Compteurs de l'accusé envoyé au visiteur. La limite de débit native de
+# Cloudflare n'est pas appliquée sur ce compte (vérifié : une limite d'une
+# requête par minute laissait tout passer), d'où ce compteur explicite.
+[[kv_namespaces]]
+binding = "COMPTEURS"
+id = "beb525a7c0b14eb49f3f0f0ecdd26cce"
