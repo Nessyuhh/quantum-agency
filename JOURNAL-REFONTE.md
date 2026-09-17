@@ -139,6 +139,13 @@ Lighthouse sur le site en production, mobile.
 Accessibilité, bonnes pratiques et référencement à **100 partout**, contre 96
 et 92 avant.
 
+Avertissement sur ces chiffres, constaté depuis : **la performance varie
+fortement d'une mesure à l'autre** selon que le cache de Cloudflare est chaud
+ou froid. La même page a rendu 83 puis 99 sur deux passages consécutifs, et une
+page ancienne et inchangée est tombée à 82 dans la même série. Ne jamais
+conclure sur une seule mesure, et comparer une page suspecte à une page connue
+mesurée dans la foulée.
+
 Trois causes, trois corrections :
 
 1. **Deux feuilles de style bloquantes et deux connexions à Google** pour les
@@ -191,6 +198,19 @@ les cinq articles qui en manquaient.
 **Mesure d'audience** GA4 avec Consent Mode v2, page de confidentialité en deux
 langues, propriété de domaine validée dans Search Console et plan du site de
 119 adresses déclaré. Ajouts d'une autre session, commit `e3eab17`.
+
+Effet de bord mesuré ensuite : `gtag.js` pèse 158 Ko et partait avec le reste
+de la page. Il bloquait le fil principal 270 ms et **faisait tomber toutes les
+pages de 100 à 92** en performance mobile, c'est-à-dire qu'il annulait à lui
+seul une bonne partie du travail de la section 6. Il attend désormais la fin du
+chargement puis un temps de repos du navigateur, comme GSAP : 98 sur Services,
+98 sur un article, temps de blocage ramené de 270 à 100 ms. Les commandes de
+consentement et de configuration partent toujours immédiatement, `dataLayer`
+les met en file, donc aucune mesure n'est perdue. Vérifié en production : la
+requête de collecte part bien, vers le point d'entrée européen.
+
+Leçon à garder : **toute balise tierce ajoutée au site doit être remesurée**.
+Aucune n'est gratuite, et celle-ci était invisible à l'œil.
 
 **Messages du formulaire dans la langue de la page.** Les quatre messages
 étaient écrits en français en dur : un visiteur anglophone lisait « Merci !
