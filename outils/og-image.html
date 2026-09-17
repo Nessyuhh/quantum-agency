@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- Maquette de l'image de partage. Régénérer : servir le dépôt sur un port local,
+     ouvrir /outils/og-image.html et capturer en 1200 x 630, puis remplacer og-image.png.
+     Les polices doivent venir de la même origine que la page, sinon le navigateur les
+     refuse et le rendu tombe sur une police de secours. --><html lang="fr"><head><meta charset="UTF-8">
+<style>
+@font-face { font-family: 'Big Shoulders Display'; font-weight: 100 900; src: url('/assets/polices/BigShouldersDisplay-variable-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Archivo'; font-weight: 100 900; src: url('/assets/polices/Archivo-variable-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 400; src: url('/assets/polices/SpaceMono-400-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 700; src: url('/assets/polices/SpaceMono-700-latin.woff2') format('woff2'); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 630px; background: #F6F6F3; color: #111318; font-family: Archivo, sans-serif; position: relative; overflow: hidden; }
+.cadre { position: absolute; inset: 44px; border: 1px solid rgba(17,19,24,.16); }
+.contenu { position: absolute; left: 88px; top: 96px; right: 88px; }
+.marque { display: flex; align-items: center; gap: 14px; margin-bottom: 52px; }
+.marque svg { width: 46px; height: 46px; }
+.marque b { display: block; font-family: 'Big Shoulders Display'; font-weight: 700; font-size: 30px; letter-spacing: .1em; line-height: 1; }
+.marque span { display: block; font-family: 'Space Mono'; font-size: 11px; letter-spacing: .3em; color: rgba(17,19,24,.62); margin-top: 4px; }
+h1 { font-family: 'Big Shoulders Display'; font-weight: 800; font-size: 128px; line-height: .84; text-transform: uppercase; letter-spacing: -.005em; }
+h1 .dim { color: rgba(17,19,24,.52); font-weight: 500; display: block; }
+h1 .grad { display: block; background: linear-gradient(135deg,#6d28d9 0%,#a855f7 45%,#0891b2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-top: .12em; margin-top: -.12em; }
+.pied { position: absolute; left: 88px; right: 88px; bottom: 92px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.pied p { font-size: 20px; line-height: 1.45; color: rgba(17,19,24,.64); max-width: 30ch; }
+.pied .droite { font-family: 'Space Mono'; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #6d28d9; text-align: right; white-space: nowrap; }
+.barre { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: linear-gradient(90deg,#ddd6fe,#a855f7 50%,#22d3ee); }
+</style></head>
+<body>
+  <div class="cadre"></div>
+  <div class="contenu">
+    <div class="marque">
+      <svg viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="5" y1="5" x2="57" y2="57">
+          <stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient></defs>
+        <path d="M 43.68 51.78 A 23.04 23.04 0 1 1 51.78 43.68" stroke="url(#g)" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="38.4" y1="39.68" x2="56.32" y2="56.32" stroke="url(#g)" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      <div><b>QUANTUM</b><span>CONSULTING</span></div>
+    </div>
+    <h1><span class="dim">Du désordre</span><span class="grad">au système.</span></h1>
+  </div>
+  <div class="pied">
+    <p>Conseil et formation en intelligence artificielle pour les PME et ETI.</p>
+    <div class="droite">quantum-agency.fr</div>
+  </div>
+  <div class="barre"></div>
+</body></html>
