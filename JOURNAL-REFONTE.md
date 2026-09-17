@@ -167,27 +167,57 @@ non de mémoire : **GPT-6**, **Claude Sonnet 5**, **Gemini 3**, **Llama 4**,
 **Mistral Large 3**, **Mistral Small 4**. Les anciens noms ne subsistent que
 dans `archives/`, qui n'est pas indexé.
 
-## 8. Ce qui reste ouvert
+## 8. Fait après la première clôture
 
-**La bascule du DNS vers Cloudflare, non faite.** Le registre `.fr` déclare
-toujours `ns1` et `ns2.dns-parking.com`. Procédure complète dans
-`outils/BASCULE-CLOUDFLARE.md`, contrôle automatisé par
-`outils/verifier-dns.sh`. Gain attendu : suppression du cache de dix minutes
-imposé par GitHub Pages, soit 97 Ko reperdus à chaque visite répétée, meilleur
-temps de réponse serveur, et l'adresse `api.quantum-agency.fr` pour le
-formulaire. Risque principal : un enregistrement MX ou TXT oublié coupe la
-réception des e-mails sans que cela se voie tout de suite.
+**La bascule du DNS vers Cloudflare est faite.** Les serveurs de noms sont
+`walt` et `yolanda.ns.cloudflare.com`. Le temps de réponse serveur est passé de
+1110 ms à 190 ou 260 ms, et `api.quantum-agency.fr` sert le formulaire. Piège
+rencontré ensuite : `verifier-dns.sh` contrôlait les adresses IP de GitHub, qui
+ne sont plus visibles derrière le proxy ; il interroge maintenant le site en
+HTTP et garde le DNS pour le courrier. Il lui manquait aussi les deux
+enregistrements de retour de Resend sur `send.quantum-agency.fr`, absents de
+l'inventaire d'origine parce qu'il ne regardait que la racine de la zone.
 
-**Soumission à Gemini** des sujets référencement, GEO et performance, pour
-compléter. Les mesures ci-dessus servent de référence : confronter ses
-recommandations aux chiffres, pas aux opinions.
+**Soumission à Gemini** faite, en trois passes. Sa première réponse était
+entièrement fabriquée : sept affirmations données pour observées, toutes
+fausses, et une autre entreprise décrite à la place de la nôtre. La deuxième
+était honnête, la troisième inventait encore deux liens internes et proposait
+des adresses de page déjà prises par des articles du blog. Règle qui en
+découle : **toute recommandation d'un modèle externe se vérifie fichier en main
+avant d'être appliquée.** Ce qui a été retenu et appliqué : titres tournés vers
+le dirigeant sur sept articles, bloc « En bref » et questions fréquentes sur
+les cinq articles qui en manquaient.
+
+**Mesure d'audience** GA4 avec Consent Mode v2, page de confidentialité en deux
+langues, propriété de domaine validée dans Search Console et plan du site de
+119 adresses déclaré. Ajouts d'une autre session, commit `e3eab17`.
+
+**Messages du formulaire dans la langue de la page.** Les quatre messages
+étaient écrits en français en dur : un visiteur anglophone lisait « Merci !
+Votre demande a été reçue ». Ils suivent maintenant l'attribut `lang` de la
+page, comme le faisait déjà la fenêtre du site offert.
+
+## 9. Ce qui reste ouvert
+
+**Les liens entrants sont le frein principal.** Le contenu, la technique et la
+vitesse sont au maximum de ce que le site peut faire seul ; ce qui manque pour
+se classer est la citation par d'autres sites. Aucun travail n'a été engagé.
+
+**Fiche d'établissement Google** pour les recherches locales parisiennes, non
+créée. Elle demande une adresse et une validation postale.
+
+**Indexation réelle** à contrôler dans Search Console : la propriété est
+validée et le plan du site déclaré, mais rien n'a encore été relevé sur le
+nombre de pages effectivement indexées.
+
+**Page comptabilité** proposée, jamais tranchée par l'utilisateur.
 
 Pistes non traitées, par ordre d'intérêt décroissant : sous-ensemble des
 polices aux seuls caractères utilisés, minification de `quantum.js` (2 Ko),
 transitions entre pages, pôle Marchés publics BTP prévu dans
 `ARBORESCENCE.md` et jamais construit.
 
-## 9. Règles de travail, à respecter par la suite
+## 10. Règles de travail, à respecter par la suite
 
 - **Aucun tiret long**, nulle part : contenu, code, commentaires, messages de
   commit. C'est une marque de rédaction automatique pour l'utilisateur.
@@ -203,7 +233,7 @@ transitions entre pages, pôle Marchés publics BTP prévu dans
   apparus que sur le site réel, dont le cache de dix minutes qui sert l'ancien
   fichier quelques minutes après une publication.
 
-## 10. Repères de fichiers
+## 11. Repères de fichiers
 
 | Chemin | Rôle |
 |---|---|
