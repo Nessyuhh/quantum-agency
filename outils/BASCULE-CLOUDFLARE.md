@@ -59,9 +59,9 @@ Dans l'onglet **DNS** de Cloudflare, la zone doit contenir exactement ceci :
 | CNAME | `www` | nessyuhh.github.io | **Proxied** |
 | MX | `quantum-agency.fr` | mx1.improvmx.com, priorité 10 | **DNS only** (nuage gris) |
 | MX | `quantum-agency.fr` | mx2.improvmx.com, priorité 20 | **DNS only** |
-| TXT | `quantum-agency.fr` | `v=spf1 include:spf.improvmx.com ~all` | — |
-| TXT | `resend._domainkey` | la clé publique Resend, en entier | — |
-| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:contact@quantum-agency.fr; fo=1; adkim=r; aspf=r` | — |
+| TXT | `quantum-agency.fr` | `v=spf1 include:spf.improvmx.com ~all` | sans objet |
+| TXT | `resend._domainkey` | la clé publique Resend, en entier | sans objet |
+| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:contact@quantum-agency.fr; fo=1; adkim=r; aspf=r` | sans objet |
 
 Trois pièges à éviter :
 
