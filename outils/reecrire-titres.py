@@ -5,6 +5,10 @@ Un titre vit à six endroits dans une page : la balise title, le h1, les deux
 déclarations de partage social, la description et le champ headline des données
 structurées. En oublier un crée une incohérence que les moteurs remarquent.
 
+Cette première version en avait oublié deux, le fil d'Ariane structuré et la
+description du schéma, restés sur les anciens textes. Lancer ensuite
+`outils/resynchroniser-schema.py`, qui réaligne tout le schéma sur la page.
+
 Usage : python3 outils/reecrire-titres.py
 """
 import html
@@ -58,8 +62,9 @@ def remplacer(chemin, titre, description):
                    '<%s content="%s"' % (balise, html.escape(description, quote=True)), s, count=1)
     # headline des données structurées : apostrophes réelles, pas d'entités
     s = re.sub(r'"headline":"[^"]*"', '"headline":%s' % json.dumps(titre, ensure_ascii=False), s, count=1)
-    # dernier maillon du fil d'Ariane
-    s = re.sub(r'(<span aria-current="page">)[^<]*(</span>)', r'\g<1>%s\g<2>' % echappe[:60], s, count=1)
+    # Dernier maillon du fil d'Ariane, en entier : il passe à la ligne tout
+    # seul, et une coupe à soixante caractères tombait au milieu d'un mot.
+    s = re.sub(r'(<span aria-current="page">)[^<]*(</span>)', r'\g<1>%s\g<2>' % echappe, s, count=1)
 
     if s == avant:
         sys.exit('aucune modification dans %s' % chemin)
