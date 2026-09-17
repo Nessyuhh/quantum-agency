@@ -346,17 +346,24 @@
        d'un IntersectionObserver. */
     var declencheur = document.getElementById('workflow') || document.querySelector('.hero');
     if (!declencheur) return;
+    var charge = false;
     var charger = function () {
+      if (charge) return;
+      charge = true;
       observateur.disconnect();
       script('gsap.min.js')
         .then(function () { return Promise.all([script('ScrollTrigger.min.js'), script('MotionPathPlugin.min.js')]); })
         .then(animer)
         .catch(function () { /* réseau indisponible : la page reste entière, sans mouvement */ });
     };
-    /* 600 px d'avance : le temps de télécharger avant que la section entre. */
+    /* 250 px d'avance : assez pour télécharger avant que la section entre, pas
+       assez pour se déclencher au chargement, le flux étant juste sous le
+       premier écran de l'accueil. Le chargement attend en outre un moment de
+       repos du navigateur, pour ne pas concurrencer le premier affichage. */
+    var lancer = window.requestIdleCallback || function (fn) { setTimeout(fn, 200); };
     var observateur = new IntersectionObserver(function (entrees) {
-      if (entrees.some(function (e) { return e.isIntersecting; })) charger();
-    }, { rootMargin: '600px' });
+      if (entrees.some(function (e) { return e.isIntersecting; })) lancer(charger, { timeout: 1500 });
+    }, { rootMargin: '250px' });
     observateur.observe(declencheur);
   }
 

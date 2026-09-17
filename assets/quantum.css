@@ -362,7 +362,10 @@ body.intro-active { overflow: hidden; }
 .bl-filtres { max-width: var(--container); margin: 0 auto 40px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 8px; }
 .bl-f { font-family: var(--mono); font-size: 0.72rem; padding: 0.55rem 0.9rem; border: 1px solid var(--line-strong); background: none; color: var(--ink-2); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
 .bl-f:hover, .bl-f.actif { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.bl-n { opacity: 0.6; margin-left: 4px; }
+/* Le compteur d'articles héritait d'une opacité qui le faisait tomber sous le
+   seuil de contraste : la nuance passe par la couleur, pas par la transparence. */
+.bl-n { color: var(--ink-3); margin-left: 4px; }
+.bl-f:hover .bl-n, .bl-f.actif .bl-n { color: inherit; opacity: 0.75; }
 .bl-pole { max-width: var(--container); margin: 0 auto; padding: 40px 40px 20px; }
 .bl-pole h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.6rem); text-transform: uppercase; line-height: 0.95; margin-bottom: 20px; }
 .bl-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
