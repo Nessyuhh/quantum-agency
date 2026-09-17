@@ -56,6 +56,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/contact.html"/>
   </url>
   <url>
+    <loc>https://quantum-agency.fr/expertise-comptable.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://quantum-agency.fr/faq-ia.html</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>

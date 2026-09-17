@@ -6,7 +6,8 @@ Deux écarts constatés sur le blog :
 1. Le dernier maillon du fil d'Ariane était coupé à soixante caractères, en
    plein milieu d'un mot : « Audit IA en PME : le guide complet pour
    cartographier vos op ». Le fil d'Ariane passe à la ligne tout seul, rien ne
-   justifiait cette coupe. Elle est supprimée.
+   justifiait cette coupe. Elle a été supprimée, et `reecrire-titres.py` ne la
+   réintroduit plus.
 
 2. Sept articles avaient été retitrés sans que le fil d'Ariane structuré ni la
    description du schéma suivent. Un titre qui diffère entre la page et ses
@@ -45,11 +46,13 @@ def traiter(p, verifier):
     d = re.search(r'<meta name="description" content="([^"]*)"', s)
     description = html.unescape(d.group(1)) if d else None
 
-    # Fil d'Ariane visible : le dernier maillon porte le titre entier.
-    m = re.search(r'(<span aria-current="page">)([^<]*)(</span>)', s)
-    if m and m.group(2) != titre_html:
-        s = s[:m.start(2)] + titre_html + s[m.end(2):]
-        faits.append('fil d Ariane visible')
+    # Le fil d'Ariane structuré recopie le fil d'Ariane affiché, et non le h1 :
+    # sur une page de métier, le dernier maillon nomme la catégorie
+    # (« Cabinets d'expertise comptable ») là où le h1 porte une promesse
+    # (« Moins de saisie, plus de conseil »). C'est ce que le visiteur voit qui
+    # fait foi.
+    m = re.search(r'<span aria-current="page">([^<]*)</span>', s)
+    fil = html.unescape(m.group(1)).strip() if m else titre
 
     def reecrire(bloc, modifier):
         nonlocal s
@@ -73,13 +76,13 @@ def traiter(p, verifier):
                 continue
 
             if genre == 'BreadcrumbList':
-                def fil(d):
+                def ariane(d):
                     dernier = d['itemListElement'][-1]
-                    if dernier.get('name') == titre:
+                    if dernier.get('name') == fil:
                         return False
-                    dernier['name'] = titre
+                    dernier['name'] = fil
                     return True
-                if reecrire(bloc, fil):
+                if reecrire(bloc, ariane):
                     faits.append('fil d Ariane structure'); change = True; break
 
             if genre in ('BlogPosting', 'Article') and description:

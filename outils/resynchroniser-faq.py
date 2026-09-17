@@ -49,22 +49,28 @@ def traiter(p, verifier):
     for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
         if '"FAQPage"' in m.group(1):
             bloc = m
-    if bloc is None:
-        return None
 
-    try:
-        avant = len(json.loads(bloc.group(1))['mainEntity'])
-    except Exception:
-        avant = 'invalide'
-    if avant == len(paires):
-        return None
+    if bloc is None:
+        avant = 'aucun'
+    else:
+        try:
+            avant = len(json.loads(bloc.group(1))['mainEntity'])
+        except Exception:
+            avant = 'invalide'
+        if avant == len(paires):
+            return None
 
     schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}}
         for q, r in paires]}
     remplacement = '<script type="application/ld+json">%s</script>' % json.dumps(
         schema, ensure_ascii=False, separators=(',', ':'))
-    s = s[:bloc.start()] + remplacement + s[bloc.end():]
+    if bloc is None:
+        # Une page qui affiche des questions sans les déclarer se prive de
+        # l'affichage en résultat enrichi, sans que rien ne le signale.
+        s = s.replace('</head>', remplacement + '\n</head>', 1)
+    else:
+        s = s[:bloc.start()] + remplacement + s[bloc.end():]
 
     if not verifier:
         p.write_text(s, encoding='utf-8')

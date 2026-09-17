@@ -23,6 +23,7 @@ l'exige.
   - Automatiser ce qui se répète : factures, relances, devis, comptes rendus, avec n8n et Make sur les logiciels existants. Deux à six semaines pour un premier enchaînement.
   - Brancher l'IA sur vos outils : lecture, résumé et rédaction dans les logiciels déjà en place. Un à trois mois.
   - Conseil sur la durée : feuille de route à douze mois, points mensuels, avis indépendant.
+- [Cabinets d'expertise comptable](https://quantum-agency.fr/expertise-comptable.html) : collecte des pièces, saisie, relances et préparation de la revue, sur l'outil de production existant. Ce qui n'est pas automatisé y est écrit : l'écriture qui engage la signature, le jugement sur une situation, la relation client.
 
 ## Formations : « nous vous apprenons à le faire »
 

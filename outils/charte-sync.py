@@ -16,7 +16,7 @@ RACINE = Path(__file__).resolve().parent.parent
 BLOCS = ('nav', 'mobnav', 'footer')
 
 PAGES = {
-    'index.html': ['services.html', 'formations.html', 'cas-usage.html', 'faq-ia.html', 'contact.html', 'blog.html', 'confidentialite.html'],
+    'index.html': ['services.html', 'formations.html', 'cas-usage.html', 'faq-ia.html', 'contact.html', 'blog.html', 'confidentialite.html', 'expertise-comptable.html'],
     'en/index.html': ['en/services.html', 'en/formations.html', 'en/cas-usage.html', 'en/faq-ia.html', 'en/contact.html', 'en/blog.html', 'en/confidentialite.html'],
 }
 
@@ -29,7 +29,13 @@ def bloc(html, nom):
 def marquer_actif(html, chemin):
     """aria-current sur le lien dont le href correspond à la page."""
     href = '/' + chemin
-    html = html.replace('aria-current="page"', '')
+    # Le nettoyage ne porte que sur les blocs de navigation. Il effaçait
+    # auparavant tous les aria-current de la page, y compris celui du dernier
+    # maillon du fil d'Ariane, qui n'a rien à voir avec un onglet actif.
+    for nom in ('nav', 'mobnav'):
+        m = re.search(r'<!-- @%s -->.*?<!-- @/%s -->' % (nom, nom), html, re.S)
+        if m:
+            html = html[:m.start()] + m.group(0).replace('aria-current="page"', '') + html[m.end():]
     html = re.sub(r'class="mob-tab-item active', 'class="mob-tab-item', html)
     html = re.sub(r'<a href="%s"( class="mob-tab-item[^"]*")' % re.escape(href),
                   lambda m: '<a href="%s" aria-current="page"%s' % (href, m.group(1).replace('mob-tab-item', 'mob-tab-item active', 1)), html)
