@@ -31,7 +31,7 @@
 <!-- Chargée sans bloquer le rendu : media="print" + bascule sur "all" au onload. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/quantum.css?v=6">
+<link rel="stylesheet" href="/assets/quantum.css?v=8">
 
 <style>
 /* ── HERO ── */
@@ -108,7 +108,7 @@
 </script>
 </head>
 
-<body>
+<body class="intro-active">
 
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="progress-bar"></div>
@@ -128,6 +128,18 @@
     </symbol>
   </defs>
 </svg>
+
+<div id="intro-overlay" aria-hidden="true">
+  <div id="i-lockup">
+    <div id="i-q">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+        <path id="i-arc" d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#qGrad)" stroke-width="6" stroke-linecap="round"/>
+        <line id="i-tail" x1="60" y1="62" x2="88" y2="88" stroke="url(#qGrad)" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div id="i-mot"><b>QUANTUM</b><div id="i-sep"></div><span>CONSULTING</span></div>
+  </div>
+</div>
 
 <!-- @nav -->
 <header class="navbar" id="navbar" role="banner">
@@ -381,7 +393,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js?v=4" defer></script>
+<script src="/assets/quantum.js?v=8" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

@@ -82,14 +82,112 @@
     });
   }
 
+  /* ── Écran d'entrée ──
+     Le tracé du Q, le mot qui se déplie, puis le logo rejoint la barre de
+     navigation. Une seule fois par session : plaisant au premier passage,
+     pénible au troisième. sessionStorage et non localStorage, pour que le
+     charme rejoue à la prochaine visite. */
+  var entreeEnCours = false;
+
+  (function () {
+    var ov = document.getElementById('intro-overlay');
+    if (!ov) return;
+
+    var passe = reduce || window.matchMedia('(max-width: 900px)').matches;
+    try {
+      if (sessionStorage.getItem('quantum-entree-vue')) passe = true;
+      else sessionStorage.setItem('quantum-entree-vue', '1');
+    } catch (e) { /* navigation privée : l'entrée rejoue, sans conséquence */ }
+
+    if (passe) {
+      ov.remove();
+      document.body.classList.remove('intro-active');
+      return;
+    }
+
+    entreeEnCours = true;
+    var q = document.getElementById('i-q');
+    var mot = document.getElementById('i-mot');
+    var minuteries = [];
+    var attendre = function (ms, fn) { minuteries.push(setTimeout(fn, ms)); };
+
+    function fermer() {
+      ov.classList.add('fading');
+      attendre(550, function () {
+        if (ov.parentNode) ov.remove();
+        document.body.classList.remove('intro-active');
+        document.dispatchEvent(new CustomEvent('quantum:entree-finie'));
+      });
+    }
+
+    /* Une entrée dont on ne peut pas sortir est une prison : clic, touche ou
+       molette terminent la séquence immédiatement. */
+    function couper() {
+      minuteries.forEach(clearTimeout);
+      if (q.parentNode) q.remove();
+      fermer();
+    }
+    ov.addEventListener('click', couper);
+    window.addEventListener('keydown', couper, { once: true });
+    window.addEventListener('wheel', couper, { once: true, passive: true });
+
+    attendre(180, function () { document.getElementById('i-arc').classList.add('trace'); });
+    attendre(1060, function () { document.getElementById('i-tail').classList.add('trace'); });
+    attendre(1300, function () { mot.classList.add('visible'); });
+
+    attendre(2450, function () {
+      var depart = q.getBoundingClientRect();
+      var cible = document.querySelector('.navbar .brand svg');
+      mot.style.transition = 'opacity .25s ease-out';
+      mot.style.opacity = '0';
+
+      /* Le Q est sorti de l'écran d'entrée et épinglé à sa position :
+         il survit à la disparition de l'écran d'entrée pendant son trajet. */
+      q.style.position = 'fixed';
+      q.style.left = depart.left + 'px';
+      q.style.top = depart.top + 'px';
+      q.style.margin = '0';
+      q.style.zIndex = '10000';
+      document.body.appendChild(q);
+      fermer();
+
+      if (!cible) { attendre(400, function () { if (q.parentNode) q.remove(); }); return; }
+      var arrivee = cible.getBoundingClientRect();
+      var echelle = arrivee.width / depart.width;
+      var dx = (arrivee.left + arrivee.width / 2) - (depart.left + depart.width / 2);
+      var dy = (arrivee.top + arrivee.height / 2) - (depart.top + depart.height / 2);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          q.style.transition = 'transform .7s cubic-bezier(.4,0,.2,1), opacity .3s ease-in .42s';
+          q.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + echelle + ')';
+          q.style.opacity = '0';
+        });
+      });
+      attendre(760, function () { if (q.parentNode) q.remove(); });
+    });
+  })();
+
   /* ── Animations ── */
   if (reduce || typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-  /* Hero : les lignes se verrouillent en place au chargement. */
+  /* Hero : les lignes se verrouillent en place. Quand l'écran d'entrée joue,
+     on attend qu'il se lève, sinon l'animation se déroulerait derrière lui et
+     le visiteur ne verrait jamais que son résultat. */
   var reveals = document.querySelectorAll('.hero [data-reveal]');
   if (reveals.length) {
-    gsap.from(reveals, { y: 34, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.09, delay: 0.1, clearProps: 'transform,opacity' });
+    var reveler = function () {
+      gsap.from(reveals, { y: 34, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.09, delay: 0.1, clearProps: 'transform,opacity' });
+    };
+    if (entreeEnCours) {
+      gsap.set(reveals, { opacity: 0 });
+      document.addEventListener('quantum:entree-finie', function () {
+        gsap.set(reveals, { opacity: 1 });
+        reveler();
+      }, { once: true });
+    } else {
+      reveler();
+    }
   }
 
   /* Workflow animé : les arêtes se tracent, les nœuds s'allument, puis les

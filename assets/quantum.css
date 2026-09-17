@@ -209,3 +209,38 @@ footer { border-top: 1px solid var(--line); padding: 72px 0 30px; font-size: 0.8
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* ── Écran d'entrée ──
+   Fond clair, tracé du Q, puis le logo rejoint la barre de navigation.
+   Le clair enchaîne sans rupture avec le site et évite l'éblouissement du
+   passage noir vers blanc.
+   Grand écran uniquement et une fois par session : mesuré sur l'ancien site,
+   il coûtait environ 1,5 s au premier rendu et faisait tomber la note mobile
+   de 100 à 84. Le CSS ci-dessous ne s'applique que si le balisage est là. */
+#intro-overlay {
+  position: fixed; inset: 0; z-index: 9999; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.55s ease-out;
+}
+#intro-overlay.fading { opacity: 0; pointer-events: none; }
+body.intro-active { overflow: hidden; }
+#i-lockup { display: flex; align-items: center; }
+#i-q { position: relative; line-height: 0; }
+#i-q svg { width: 200px; height: 200px; }
+#i-arc { stroke-dasharray: 207.35; stroke-dashoffset: 207.35; opacity: 0.01; }
+#i-arc.trace { animation: i-arc 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes i-arc { from { stroke-dashoffset: 207.35; opacity: 0.01; } to { stroke-dashoffset: 0; opacity: 1; } }
+#i-tail { stroke-dasharray: 38.2; stroke-dashoffset: 38.2; opacity: 0; }
+#i-tail.trace { animation: i-tail 0.4s cubic-bezier(0.4, 0, 0.15, 1) forwards; }
+@keyframes i-tail { from { stroke-dashoffset: 38.2; opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
+#i-mot {
+  display: flex; flex-direction: column; gap: 0.55rem; max-width: 0; overflow: hidden;
+  margin-left: 0; opacity: 0; white-space: nowrap; color: var(--ink);
+  transition: max-width 1s cubic-bezier(0.22, 1, 0.36, 1), margin-left 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease-out;
+}
+#i-mot.visible { max-width: 520px; margin-left: 2.6rem; opacity: 1; }
+#i-mot b { font-family: var(--display); font-weight: 800; font-size: 3.4rem; line-height: 0.9; letter-spacing: 0.1em; text-transform: uppercase; }
+#i-mot span { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.52em; color: var(--ink-2); padding-left: 0.52em; }
+#i-sep { height: 1.5px; width: 0; background: var(--grad-h); transition: width 0.9s ease-out 0.35s; }
+#i-mot.visible #i-sep { width: 100%; }
+@media (max-width: 900px) { #intro-overlay { display: none; } }

@@ -38,6 +38,7 @@ EXCLUES = {
     'quantum-logo-animation.html',
     'quantum-logos-final.html',
     'quantum-logos.html',
+    'charte/index.html',
     # Anciennes adresses devenues des redirections (noindex) vers la
     # nouvelle arborescence : services.html, formations.html, faq-ia.html.
     'audit-ia.html',

@@ -1,0 +1,20 @@
+Polices de la direction artistique Quantum Consulting
+=====================================================
+
+Trois familles, toutes publiées sous SIL Open Font License 1.1 (texte complet
+dans LICENCE-OFL-1.1.txt) : usage commercial, modification et intégration dans
+un produit autorisés, revente des fichiers seuls interdite.
+
+  Big Shoulders Display   titres        Copyright The Big Shoulders Project Authors
+  Archivo                 texte         Copyright The Archivo Project Authors
+  Space Mono              données       Copyright The Space Mono Project Authors
+
+Fichiers au format woff2, sous-ensembles latin et latin étendu, tels que
+distribués par Google Fonts. Archivo et Big Shoulders Display sont des fontes
+variables : un seul fichier couvre toutes les graisses de 100 à 900.
+
+Pour les installer sur un poste, ouvrir les fichiers .woff2 n'est pas possible
+directement : télécharger les versions .ttf depuis fonts.google.com.
+
+Pour les héberger sur le site plutôt que d'appeler Google Fonts, voir la
+dernière section de charte/README.md.
