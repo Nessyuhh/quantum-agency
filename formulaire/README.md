@@ -20,30 +20,26 @@ un dépassement de quota ailleurs couperait le formulaire.
 Vérifier que `quantum-agency.fr` est bien un domaine vérifié dans Resend, et
 que `formulaire@quantum-agency.fr` peut servir d'expéditeur.
 
-## 2. Déploiement du Worker
+## 2. Déploiement, branchement et vérification
 
-Depuis ce dossier :
-
-```bash
-npx wrangler login
-npx wrangler secret put RESEND_API_KEY   # coller la clé, elle n'est jamais écrite sur le disque
-npx wrangler deploy
-```
-
-`wrangler deploy` affiche l'URL du Worker, de la forme
-`https://quantum-formulaire.<votre-sous-domaine>.workers.dev`.
-
-## 3. Brancher le site
-
-Une seule commande, à la racine du dépôt, avec l'URL obtenue :
+Une seule commande, depuis ce dossier :
 
 ```bash
-cd .. && sed -i '' 's#data-webhook=""#data-webhook="https://quantum-formulaire.VOTRE-SOUS-DOMAINE.workers.dev"#g' *.html en/*.html && grep -c 'data-webhook="https' *.html en/*.html
+./deployer.sh
 ```
 
-Les douze fichiers doivent afficher `1`.
+Le script enchaîne les cinq étapes : authentification Cloudflare (une page
+s'ouvre dans le navigateur), saisie de la clé Resend, déploiement, branchement
+des douze formulaires sur l'URL obtenue, et test d'envoi réel. Il s'arrête avec
+un message clair si une étape échoue.
 
-## 4. Vérifier
+Si le Worker est déjà déployé et qu'il ne reste qu'à brancher le site :
+
+```bash
+./brancher.sh https://quantum-formulaire.VOTRE-SOUS-DOMAINE.workers.dev
+```
+
+## 3. Vérifier à la main, si besoin
 
 ```bash
 curl -i -X POST https://quantum-formulaire.VOTRE-SOUS-DOMAINE.workers.dev \
@@ -58,7 +54,7 @@ Le formulaire ne fonctionne depuis un serveur local qu'en ajoutant
 temporairement `http://127.0.0.1:8765` à `ORIGINES_AUTORISEES` dans
 `wrangler.toml`, puis en redéployant. Penser à le retirer ensuite.
 
-## 5. Domaine propre (facultatif)
+## 4. Domaine propre (facultatif)
 
 Pour servir le Worker sur `api.quantum-agency.fr` plutôt que `workers.dev`, il
 faut que le DNS du domaine soit géré par Cloudflare. Il est aujourd'hui chez
