@@ -185,6 +185,9 @@ section { padding: 110px 0; position: relative; }
 .field input:focus { outline: none; border-image: var(--grad-h) 1; }
 .field input::placeholder { color: var(--ink-3); }
 .audit-form .btn { align-self: flex-start; margin-top: 0.4rem; }
+/* Champ piège anti-robot : hors écran plutôt que display:none, que certains
+   robots savent détecter. Jamais atteint au clavier ni annoncé. */
+.piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-note { font-family: var(--mono); font-size: 0.78rem; line-height: 1.5; }
 .form-note.success { color: #0f766e; }
 .form-note.error { color: #b91c1c; }

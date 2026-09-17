@@ -31,7 +31,7 @@
 <!-- Chargée sans bloquer le rendu : media="print" + bascule sur "all" au onload. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/quantum.css?v=5">
+<link rel="stylesheet" href="/assets/quantum.css?v=6">
 
 <style>
 /* ── HERO ── */
@@ -309,10 +309,11 @@
         <p class="lead">Thirty minutes with one of our consultants to review the way you work. You leave with three concrete priorities, and we give you a simple showcase website to get started.</p>
       </div>
       <!-- data-webhook: production URL of the n8n Webhook node (POST). -->
-      <form class="audit-form" id="audit-form" data-webhook="http://localhost:5678/webhook/demande-audit" novalidate>
+      <form class="audit-form" id="audit-form" data-webhook="" novalidate>
         <div class="field"><label for="f-name">Full name</label><input id="f-name" name="nom" type="text" placeholder="Jane Smith" required autocomplete="name"></div>
         <div class="field"><label for="f-email">Work e-mail</label><input id="f-email" name="email" type="email" placeholder="jane@company.com" required autocomplete="email"></div>
         <div class="field"><label for="f-company">Company</label><input id="f-company" name="entreprise" type="text" placeholder="Your company name" required autocomplete="organization"></div>
+        <div class="piege" aria-hidden="true"><label for="f-site-0">Ne pas remplir</label><input id="f-site-0" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
         <button type="submit" class="btn btn-grad">Book my free AI audit →</button>
         <div class="form-note" role="status" aria-live="polite"></div>
       </form>
