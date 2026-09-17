@@ -11,7 +11,7 @@
 
    CE QUI EST ICI, ET CE QUI N'Y EST PAS
    Uniquement les règles de PREMIER NIVEAU, identiques sur au moins 10 pages,
-   et dont le sélecteur n'apparaît qu'une seule fois dans la page d'origine —
+   et dont le sélecteur n'apparaît qu'une seule fois dans la page d'origine,
    condition qui garantit qu'aucun écrasement interne n'est déplacé.
    Les blocs @media restent dans les pages : leur ordre relatif au reste de la
    cascade est trop sensible pour être déplacé sans risque.

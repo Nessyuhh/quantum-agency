@@ -1,659 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/assets/commun.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AI Use Cases by Sector: commerce, industry, health, finance, HR | Quantum Consulting</title>
-<meta name="description" content="Concrete AI use cases by sector: commerce, B2B, industry, health, real estate, finance, communication, legal, HR, craftsmanship, hospitality. Measured ROI.">
+<meta name="color-scheme" content="light">
+<title>Concrete examples of AI automation in SMEs | Quantum Consulting</title>
+<meta name="description" content="Six real situations in SMEs and mid-sized companies, before and after automation: invoices, reminders, quotes, recruitment, customer service, meeting notes. And what stays human.">
 <meta name="robots" content="index, follow">
+<meta name="author" content="Quantum Consulting">
 <link rel="canonical" href="https://quantum-agency.fr/en/cas-usage.html">
-<meta property="og:title" content="AI Use Cases by Sector: 11 industries | Quantum Consulting">
-<meta property="og:description" content="Discover how AI transforms each sector concretely: measured ROI, used tools, adapted LLM models. Commerce, industry, health, finance and more.">
-<meta property="og:url" content="https://quantum-agency.fr/en/cas-usage.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://www.quantum-agency.fr/og-image.png">
+<meta property="og:title" content="Concrete examples of AI automation in SMEs | Quantum Consulting">
+<meta property="og:description" content="Six real situations in SMEs and mid-sized companies, before and after automation: invoices, reminders, quotes, recruitment, customer service, meeting notes. And what stays human.">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Quantum Consulting">
+<meta property="og:url" content="https://quantum-agency.fr/en/cas-usage.html">
+<meta property="og:image" content="https://quantum-agency.fr/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Use Cases: 11 sectors | Quantum Consulting">
-<meta name="twitter:description" content="AI in business: concrete use cases by sector, measured ROI, adapted LLM models.">
-<meta name="twitter:image" content="https://www.quantum-agency.fr/og-image.png">
-<meta name="theme-color" content="#05050a">
-<meta name="author" content="Quantum Consulting">
+<meta name="theme-color" content="#F6F6F3">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=optional"></noscript>
-<noscript><style>[data-v]{opacity:1!important;transform:none!important}</style></noscript>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Cas d'usage de l'intelligence artificielle par secteur d'activité","description":"Guide des applications concrètes de l'IA dans 11 secteurs : commerce, industrie, santé, finance, immobilier, RH, juridique, communication, artisanat, hôtellerie.","author":{"@type":"Organization","name":"Quantum Consulting"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://www.quantum-agency.fr/"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Cas d'usage IA par secteur","item":"https://www.quantum-agency.fr/cas-usage.html"}]}
-</script>
-<style>
-
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:#05050a;color:#f1f5f9;line-height:1.6;overflow-x:hidden}
-:root{--bg:#05050a;--bg2:#0c0c1a;--purple:#7c3aed;--purple-l:#a855f7;--cyan:#06b6d4;--amber:#f59e0b;--green:#22c55e;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.07)}
-
-
-@keyframes gShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-
-
-
-
-
-
-.nav-dd-trigger{display:flex;align-items:center;gap:.25rem;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;cursor:pointer;user-select:none;border:none;background:none;font-family:inherit}
-
-
-
-
-
-
-
-
-
-
-
-/* Le menu mobile et son voile ne sont stylés que dans @media(max-width:640px). Au-delà, ils n'ont AUCUNE règle et se rendent en bloc statique : la liste de liens bruts apparaissait en haut à gauche de la page. index.html y échappait parce que ses règles sont au niveau racine. Correctif additif, sans effet possible sous 640px. */@media(min-width:641px){#menu-backdrop,#mobile-menu{display:none!important}}@media(max-width:640px){nav:not([class]){top:46px}.n-inner{padding:8px 10px 8px 16px;justify-content:space-between;width:calc(100vw - 32px);gap:0}.n-links,.n-cta{display:none}.n-mob-burger{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:36px;height:36px;background:rgba(255,255,255,.08);border:none;border-radius:100px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;padding:0}.n-mob-burger span{display:block;width:14px;height:1.5px;background:rgba(255,255,255,.75);border-radius:2px}#menu-backdrop{position:fixed;inset:0;z-index:279;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .22s ease}#menu-backdrop.open{opacity:1;pointer-events:all}#mobile-menu{position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-10px) scale(.95);width:calc(100vw - 28px);max-width:360px;z-index:280;background:rgba(8,5,22,.97);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%);border:1px solid rgba(168,85,247,.22);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .26s cubic-bezier(.34,1.56,.64,1)}#mobile-menu.open{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0) scale(1)}.pmenu-head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem .75rem;border-bottom:1px solid rgba(255,255,255,.07)}.pmenu-logo{font-size:.58rem;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.22);text-transform:uppercase}.pmenu-close{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.45);font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;flex-shrink:0}.pmenu-body{padding:.4rem 0}.pmenu-sect-lbl{font-size:.54rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,85,247,.55);padding:.65rem 1.1rem .3rem}.pmenu-lnk{display:flex;align-items:center;justify-content:space-between;padding:.72rem 1.1rem;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:background .12s,color .12s;-webkit-tap-highlight-color:transparent}.pmenu-lnk:active{background:rgba(168,85,247,.12);color:#fff}.pmenu-arrow{font-size:.65rem;color:rgba(255,255,255,.18);flex-shrink:0}.pmenu-sep{height:1px;background:rgba(255,255,255,.06);margin:.3rem 0}.pmenu-cta{display:block;margin:.55rem 1rem .85rem;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;padding:.82rem 1rem;border-radius:12px;font-weight:700;font-size:.88rem;text-align:center;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.4);-webkit-tap-highlight-color:transparent;transition:opacity .15s}.pmenu-cta:active{opacity:.82}}
-#bb{display:none;position:fixed;top:auto;bottom:0;left:0;right:0;transform:none;z-index:300;background:rgba(6,4,18,.93);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.07);padding:4px 4px env(safe-area-inset-bottom);gap:0}
-.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(148,163,184,.5);padding:6px 2px;min-height:48px;border-radius:10px;-webkit-tap-highlight-color:transparent}
-
-
-
-
-@media(max-width:640px){#bb{display:flex!important}body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}}
-
-.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(124,58,237,.15),transparent 70%),radial-gradient(rgba(124,58,237,.12) 1px,transparent 1px);background-size:auto,36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 30%,black 30%,transparent 100%);pointer-events:none}
-
-
-
-.breadcrumb span{color:rgba(148,163,184,.3)}
-
-h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;max-width:800px;margin:0 auto 1.2rem}
-.pg-sub{color:var(--muted);font-size:clamp(.95rem,1.6vw,1.1rem);max-width:620px;margin:0 auto 2.5rem;line-height:1.75}
-
-@keyframes btnGlow{0%,100%{box-shadow:0 0 28px rgba(124,58,237,.4)}50%{box-shadow:0 0 52px rgba(124,58,237,.7),0 0 80px rgba(168,85,247,.2)}}
-
-.content{max-width:1100px;margin:0 auto;padding:5rem 5%}
-.content h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:.75rem}
-.content p{color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-size:.96rem}
-
-
-/* Sector filter tabs */
-.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem}
-.f-btn{padding:.45rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--muted);transition:all .2s;-webkit-tap-highlight-color:transparent}
-.f-btn:hover,.f-btn.active{border-color:rgba(168,85,247,.4);color:var(--purple-l);background:rgba(168,85,247,.08)}
-
-/* Sector cards grid */
-.sectors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));gap:2rem}
-@media(max-width:700px){.sectors-grid{grid-template-columns:1fr}}
-.sector-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:24px;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .3s}
-.sector-card:hover{border-color:rgba(168,85,247,.25);box-shadow:0 16px 48px rgba(124,58,237,.1);transform:translateY(-4px)}
-.sc-head{padding:1.8rem 2rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:1.2rem}
-.sc-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-.sc-meta{flex:1}
-.sc-title{font-size:1.05rem;font-weight:900;margin-bottom:.2rem}
-.sc-sub{font-size:.76rem;color:var(--muted);font-weight:500}
-.sc-kpi{display:flex;gap:1.2rem;padding:.85rem 2rem;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(168,85,247,.03)}
-.kpi-item{display:flex;flex-direction:column;gap:.1rem}
-.kpi-val{font-size:1rem;font-weight:900;color:var(--purple-l)}
-.kpi-lbl{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(148,163,184,.5)}
-.sc-body{padding:1.5rem 2rem 1.8rem}
-.sc-uc-title{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:rgba(148,163,184,.4);margin-bottom:.85rem}
-.uc-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.uc-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.84rem;color:var(--muted);line-height:1.55}
-.uc-list li::before{content:'→';color:var(--purple-l);font-weight:700;font-size:.8rem;margin-top:.05rem;flex-shrink:0}
-.sc-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;padding:.85rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015)}
-.sc-model{font-size:.7rem;font-weight:700;color:var(--muted)}
-.sc-model strong{color:var(--cyan)}
-.sc-cta{font-size:.74rem;font-weight:700;color:var(--purple-l);text-decoration:none;white-space:nowrap}
-.sc-cta:hover{color:#fff}
-
-
-
-.cta-sec p{color:var(--muted);max-width:520px;margin:0 auto 2rem;font-size:.95rem}
-footer{background:#000;padding:2.5rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-
-
-
-[data-v]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
-
-
-@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-body{animation:pageIn .45s ease both}
-#back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:rgba(5,5,10,.85);border:1px solid rgba(168,85,247,.3);border-radius:50%;font-size:1.1rem;color:var(--purple-l);z-index:299;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s,background .2s,box-shadow .2s;backdrop-filter:blur(14px);cursor:pointer;text-decoration:none}
-
-
-@media(max-width:640px){#back-top{bottom:calc(74px + env(safe-area-inset-bottom));right:.75rem;width:38px;height:38px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-
-
-
-@supports(animation-timeline:scroll()){#progress-bar{animation:pbGrow linear both;animation-timeline:scroll(root)}@keyframes pbGrow{to{transform:scaleX(1)}}}
-</style>
-<script src="/assets/replier.js" defer></script>
 <link rel="alternate" hreflang="fr" href="https://quantum-agency.fr/cas-usage.html">
 <link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/cas-usage.html">
 <link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/cas-usage.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/quantum.css?v=8">
+<style>
+.page-hero { padding: 150px 0 60px; }
+.page-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 0.88; text-transform: uppercase; margin: 18px 0 22px; max-width: 14ch; }
+.page-hero .lead { font-size: 1.15rem; line-height: 1.55; color: var(--ink-2); max-width: 52ch; }
+@media (max-width: 768px) { .page-hero { padding-top: 100px; } }
+
+.cta-section { background: var(--bg-2); border-top: 1px solid var(--line); }
+.cta-section h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2.8rem, 5vw, 4.4rem); line-height: 0.9; text-transform: uppercase; margin: 18px 0 20px; }
+.cta-section .lead { color: var(--ink-2); font-size: 1.05rem; line-height: 1.6; max-width: 44ch; }
+.ex-list { border-top: 1px solid var(--ink); }
+.ex { display: grid; grid-template-columns: 1fr 2fr; gap: 40px 60px; padding: 56px 0; border-bottom: 1px solid var(--line); }
+.ex .k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet); }
+.ex h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 0.92; text-transform: uppercase; margin: 12px 0 10px; }
+.ex .qui { color: var(--ink-2); font-size: 0.95rem; }
+.ex-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.ex-cols h3 { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+.ex-cols .avant h3 { color: var(--ink-3); } .ex-cols .apres h3 { color: var(--violet); } .ex-cols .humain h3 { color: var(--cyan); }
+.ex-cols p { font-size: 0.95rem; line-height: 1.6; color: var(--ink-2); }
+.ex-cols .apres p { color: var(--ink); }
+@media (max-width: 900px) { .ex { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; } .ex-cols { grid-template-columns: 1fr; gap: 20px; } }
+</style>
 </head>
+
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<div id="progress-bar" aria-hidden="true"></div>
-<nav aria-label="Main navigation">
-  <div class="n-inner">
-    <a href="index.html" class="n-logo" style="display:inline-flex;align-items:center;text-decoration:none"><svg viewBox="0 0 190 36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Quantum Consulting" style="display:block"><defs><linearGradient id="qnlg" x1="5" y1="5" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><path d="M 24.48 29.23 A 12.96 12.96 0 1 1 29.23 24.48" stroke="url(#qnlg)" stroke-width="2.2" stroke-linecap="round"/><line x1="21.6" y1="22.32" x2="31.68" y2="31.68" stroke="url(#qnlg)" stroke-width="2.2" stroke-linecap="round"/><line x1="40" y1="5" x2="40" y2="31" stroke="rgba(124,58,237,.2)" stroke-width="1"/><text x="48" y="17" font-family="'Inter',system-ui,sans-serif" font-weight="800" font-size="12" letter-spacing="2.5" fill="#e2e8f0">QUANTUM</text><text x="48" y="30" font-family="'Inter',system-ui,sans-serif" font-weight="300" font-size="7.5" letter-spacing="4.2" fill="#64748b">CONSULTING</text></svg></a>
-    <div class="n-links">
-      <div class="nav-dd">
-        <button type="button" class="nav-dd-trigger">Services</button>
-        <div class="nav-dd-menu">
-          <a href="audit-ia.html">AI Audit <span class="nav-dd-badge">Diagnostic</span></a>
-          <a href="integration-ia.html">AI Integration</a>
-          <a href="automatisation-ia.html">Automation</a>
-          <a href="agents-ia.html">AI Agents <span class="nav-dd-badge">Private LLM</span></a>
-          <div class="dd-divider"></div>
-          <a href="consulting-ia.html">Strategic Advisory →</a>
-        </div>
-      </div>
-      <div class="nav-dd">
-        <a href="formation-initiation-ia.html" class="nav-dd-trigger">Training</a>
-        <div class="nav-dd-menu">
-          <a href="formation-initiation-ia.html">Introduction to AI <span class="nav-dd-badge">Level 1</span></a>
-          <a href="formation-maitrise-ia.html">Mastery &amp; Automation <span class="nav-dd-badge">Level 2</span></a>
-          <a href="formation-expert-ia.html">Expert &amp; AI Strategy <span class="nav-dd-badge">Level 3</span></a>
-          <div class="dd-divider"></div>
-          <a href="index.html#formation">View all training →</a>
-        </div>
-      </div>
-      
-            <a href="/en/blog.html">Blog</a>
-      </div>
-    <a href="contact.html" class="n-cta">Free Audit →</a>
-    <button class="n-mob-burger" onclick="toggleMobMenu(this)" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
+<div id="progress-bar"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="qGrad" gradientUnits="userSpaceOnUse" x1="5" y1="5" x2="57" y2="57">
+      <stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <symbol id="qMark" viewBox="0 0 64 64">
+      <path d="M 43.68 51.78 A 23.04 23.04 0 1 1 51.78 43.68" stroke="url(#qGrad)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+      <line x1="38.4" y1="39.68" x2="56.32" y2="56.32" stroke="url(#qGrad)" stroke-width="5.5" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
 
-<div id="menu-backdrop" onclick="closeMobMenu()"></div>
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
-  <div class="pmenu-head">
-    <span class="pmenu-logo">Navigation</span>
-    <button class="pmenu-close" onclick="closeMobMenu()" aria-label="Close">✕</button>
-  </div>
-  <div class="pmenu-body">
-    <a href="index.html" class="pmenu-lnk" onclick="closeMobMenu()">Home <span class="pmenu-arrow">→</span></a>
-    <div class="pmenu-sep"></div>
-    <div class="pmenu-sect-lbl">Services</div>
-    <a href="audit-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">AI Audit <span class="pmenu-arrow">→</span></a>
-    <a href="integration-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">AI Integration <span class="pmenu-arrow">→</span></a>
-    <a href="automatisation-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">Automation <span class="pmenu-arrow">→</span></a>
-    <a href="agents-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">AI Agents &amp; Private LLMs <span class="pmenu-arrow">→</span></a>
-    <a href="consulting-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">Strategic Advisory <span class="pmenu-arrow">→</span></a>
-    <div class="pmenu-sep"></div>
-    <div class="pmenu-sect-lbl">Training</div>
-    <a href="formation-initiation-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">Introduction to AI <span class="pmenu-arrow">→</span></a>
-    <a href="formation-maitrise-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">Mastery &amp; Automation <span class="pmenu-arrow">→</span></a>
-    <a href="formation-expert-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">Expert &amp; AI Strategy <span class="pmenu-arrow">→</span></a>
-    <div class="pmenu-sep"></div>
-    <a href="faq-ia.html" class="pmenu-lnk" onclick="closeMobMenu()">FAQ <span class="pmenu-arrow">→</span></a>
-  </div>
-  <a href="contact.html" class="pmenu-cta" onclick="closeMobMenu()">Request a free audit →</a>
-</div>
-
-<nav id="bb" aria-label="Mobile navigation">
-  <a href="index.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span><span>Home</span></a>
-  <a href="consulting-ia.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg></span><span>Services</span></a>
-  <a href="contact.html" class="tc">Free Meeting →</a>
-  <a href="index.html#formation" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span><span>Training</span></a>
-  <a href="contact.html" class="ti"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span><span>Contact</span></a>
-</nav>
-
-<main id="main-content">
-<header class="pg-hero" id="cas-hero">
-  <div class="hero-spot" id="hero-spot" aria-hidden="true"></div>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="index.html">Home</a><span>›</span>
-    <span aria-current="page">AI use cases by sector</span>
+<!-- @nav -->
+<header class="navbar" id="navbar" role="banner">
+  <a href="/en/" class="brand" aria-label="Quantum Consulting, home">
+    <svg aria-hidden="true"><use href="#qMark"/></svg>
+    <span class="brand-word"><b>QUANTUM</b><span>CONSULTING</span></span>
+  </a>
+  <nav aria-label="Main menu">
+    <ul class="nav-links">
+      <li><a href="/en/services.html">Services</a></li>
+      <li><a href="/en/formations.html">Training</a></li>
+      <li><a href="/en/cas-usage.html" aria-current="page">Examples</a></li>
+      <li><a href="/en/faq-ia.html">FAQ</a></li>
+      <li><a href="/en/blog.html">Blog</a></li>
+    </ul>
   </nav>
-  <div class="pg-tag">11 sectors · Measured ROI</div>
-  <h1>AI in business: <span class="g-text">concrete use cases</span> by sector of activity</h1>
-  <p class="pg-sub">Real examples, measured gains, the right tools. Explore how artificial intelligence transforms each profession - from commerce to industry, from healthcare to human resources.</p>
+  <div class="nav-right">
+    <a href="/en/contact.html" class="btn btn-grad nav-cta">Free audit →</a>
+    <span data-lang-slot></span>
+  </div>
 </header>
 
-<section class="content" aria-labelledby="sectors-h">
-  <div class="filter-bar" role="group" aria-label="Filter by sector">
-    <button class="f-btn active" data-filter="all">All sectors</button>
-    <button class="f-btn" data-filter="commerce">Retail</button>
-    <button class="f-btn" data-filter="industrie">Industry</button>
-    <button class="f-btn" data-filter="services">B2B Services</button>
-    <button class="f-btn" data-filter="sante">Healthcare</button>
-    <button class="f-btn" data-filter="finance">Finance</button>
-    <button class="f-btn" data-filter="rh">HR</button>
-    <button class="f-btn" data-filter="juridique">Legal</button>
+<header class="mob-top-bar" role="banner">
+  <a href="/en/" class="brand" aria-label="Quantum Consulting, home">
+    <svg aria-hidden="true"><use href="#qMark"/></svg>
+    <span class="brand-word"><b>QUANTUM</b></span>
+  </a>
+  <div class="nav-right">
+    <span data-lang-slot></span>
+    <a href="/en/contact.html" class="mob-cta-btn">Free audit →</a>
   </div>
+</header>
+<!-- @/nav -->
 
-  <div class="sectors-grid" id="sectors-grid">
+<main id="main-content">
 
-    <!-- COMMERCE & RETAIL -->
-    <article class="sector-card" data-sector="commerce" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(34,197,94,.12);color:#4ade80">🛒</div>
-        <div class="sc-meta">
-          <div class="sc-title">Retail &amp; E-commerce</div>
-          <div class="sc-sub">Distribution · E-commerce · POS · Brands</div>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Concrete examples</p>
+      <h1>Before, <span class="grad-text">after</span></h1>
+      <p class="lead">Six situations we meet in SMEs and mid-sized companies, and what changes once the flow is in place. Every time, a person keeps control of what matters.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="ex-list">
+      <article class="ex">
+        <div><p class="k">Example 01</p><h2>Supplier invoices</h2><p class="qui">Accounting, administration.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>Invoices arrive by e-mail, as PDFs, sometimes by post. Someone opens them, re-types them into the accounting software, checks the amount, files the document. Typing errors surface at bank reconciliation.</p></div>
+          <div class="apres"><h3>After</h3><p>The invoice is read on arrival, checked against the purchase order, entered into your software and filed. The supplier receives an acknowledgement. You get a summary every morning.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>Any invoice out of the ordinary (unexpected amount, unknown supplier) is set aside and shown to you with an explanation. You validate.</p></div>
         </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">+23%</span><span class="kpi-lbl">average basket</span></div>
-        <div class="kpi-item"><span class="kpi-val">−40%</span><span class="kpi-lbl">support cost</span></div>
-        <div class="kpi-item"><span class="kpi-val">×3</span><span class="kpi-lbl">content creation speed</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Customized product recommendation AI agent in real-time (GPT-4o Vision)</li>
-          <li>Automatic generation of product sheets, SEO descriptions and visuals (Claude + DALL-E)</li>
-          <li>Multilingual SAV chatbot with access to catalog and order history</li>
-          <li>Predictive analysis of stock and replenishment trends (Gemini 1.5 Pro)</li>
-          <li>Automatic detection of negative reviews and generation of empathetic responses</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · GPT-4o Vision · Gemini 1.5</strong></span>
-        <a href="agents-ia.html" class="sc-cta">See AI agents →</a>
-      </div>
-    </article>
-
-    <!-- SERVICES B2B -->
-    <article class="sector-card" data-sector="services" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(168,85,247,.15);color:#c084fc">💼</div>
-        <div class="sc-meta">
-          <div class="sc-title">Business Services (B2B)</div>
-          <div class="sc-sub">Consulting firms · Agencies · IT services · BPO</div>
+      </article>
+      <article class="ex">
+        <div><p class="k">Example 02</p><h2>Customer reminders</h2><p class="qui">Sales, accounts receivable.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>Unpaid invoices are tracked in a spreadsheet. Reminders go out when someone remembers, in a tone that varies with the person and the mood of the day. Some customers are never reminded.</p></div>
+          <div class="apres"><h3>After</h3><p>At day 7, 21 and 35, a reminder goes out automatically, in the tone you approved, with the right amount and the right invoice attached. The tracking table updates itself.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>Important or sensitive customers are flagged before sending: you decide to call rather than write. Escalating to collections remains a human decision.</p></div>
         </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−60%</span><span class="kpi-lbl">reporting time</span></div>
-        <div class="kpi-item"><span class="kpi-val">+45%</span><span class="kpi-lbl">productivité consulting</span></div>
-        <div class="kpi-item"><span class="kpi-val">×4</span><span class="kpi-lbl">proposal pace</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Generation of reports and presentations from raw data (Claude + Codestral)</li>
-          <li>Daily competitive intelligence agent with executive summary (Perplexity API)</li>
-          <li>Drafting of customized commercial proposals in 15 minutes (Claude 3.5)</li>
-          <li>Contract analysis and extraction of risk clauses (Mistral Large on-premise)</li>
-          <li>Document research assistant on internal library (RAG Gemini 1.5 Pro)</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · Perplexity · Mistral Large</strong></span>
-        <a href="automatisation-ia.html" class="sc-cta">See automation →</a>
-      </div>
-    </article>
-
-    <!-- INDUSTRIE -->
-    <article class="sector-card" data-sector="industrie" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(245,158,11,.12);color:#fbbf24">🏭</div>
-        <div class="sc-meta">
-          <div class="sc-title">Industry &amp; Manufacturing</div>
-          <div class="sc-sub">Manufacturing · Supply chain · Maintenance · Quality</div>
+      </article>
+      <article class="ex">
+        <div><p class="k">Example 03</p><h2>Quotes</h2><p class="qui">Sales, trades, engineering offices.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>Every quote request takes an hour: reread the request, find the prices, lay it out, send it. Requests pile up at the end of the day and some wait several days.</p></div>
+          <div class="apres"><h3>After</h3><p>The request is read, the elements extracted, a quote is prepared from your price list and your previous quotes, in your usual template. It waits for you, ready to review.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>Nothing leaves without your review. Atypical requests (unusual job, customer to negotiate with) are shown separately, with the points to watch.</p></div>
         </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−35%</span><span class="kpi-lbl">unplanned stops</span></div>
-        <div class="kpi-item"><span class="kpi-val">+28%</span><span class="kpi-lbl">supply chain efficiency</span></div>
-        <div class="kpi-item"><span class="kpi-val">×2</span><span class="kpi-lbl">quality control speed</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Predictive maintenance via IoT sensor data analysis (fine-tuned Llama model)</li>
-          <li>Automated visual quality control on production line (GPT-4o Vision)</li>
-          <li>Supply chain optimization and anomaly detection agent for suppliers</li>
-          <li>Auto-generated technical documentation from machine specs (Claude)</li>
-          <li>Technician field assistant chatbot with access to internal manuals (RAG Mistral)</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Llama 3.1 · GPT-4o Vision · Mistral</strong></span>
-        <a href="agents-ia.html" class="sc-cta">See AI agents →</a>
-      </div>
-    </article>
-
-    <!-- SANTÉ -->
-    <article class="sector-card" data-sector="sante" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(239,68,68,.1);color:#f87171">🏥</div>
-        <div class="sc-meta">
-          <div class="sc-title">Health &amp; Social Care</div>
-          <div class="sc-sub">Clinics · Hospitals · Doctors · Paramedics</div>
+      </article>
+      <article class="ex">
+        <div><p class="k">Example 04</p><h2>Recruitment</h2><p class="qui">Human resources, leaders who recruit alone.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>Applications arrive by e-mail and on job boards. Screening happens when there is time; the best candidates have sometimes signed elsewhere by the time they are called back.</p></div>
+          <div class="apres"><h3>After</h3><p>Each application is received, summarised in ten lines against your criteria, and ranked. Candidates get an answer the same day. You look at a short, up-to-date list with each person's strengths.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>You decide whom to meet. No automatic rejection: the decision about a person stays yours, and the screening criteria are written down and checkable.</p></div>
         </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−50%</span><span class="kpi-lbl">admin doctor time</span></div>
-        <div class="kpi-item"><span class="kpi-val">+30%</span><span class="kpi-lbl">patient satisfaction</span></div>
-        <div class="kpi-item"><span class="kpi-val">100%</span><span class="kpi-lbl">HDS compliance</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automatic transcription and structuring of consultations (Whisper + Claude, HDS)</li>
-          <li>Support for writing standardized medical reports (Mistral on-premise)</li>
-          <li>Patient demand pre-triage agent and guidance to proper care</li>
-          <li>Medical literature analysis for clinical decision support (RAG Gemini)</li>
-          <li>Automation of CPAM billing and administrative procedures</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Mistral on-premise · Claude · Gemini 1.5</strong></span>
-        <a href="agents-ia.html" class="sc-cta">Sovereign LLM →</a>
-      </div>
-    </article>
-
-    <!-- IMMOBILIER -->
-    <article class="sector-card" data-sector="services" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(6,182,212,.1);color:#22d3ee">🏢</div>
-        <div class="sc-meta">
-          <div class="sc-title">Real Estate &amp; Property Tech</div>
-          <div class="sc-sub">Agencies · Promoters · Managers · Notaries</div>
+      </article>
+      <article class="ex">
+        <div><p class="k">Example 05</p><h2>Customer service</h2><p class="qui">Support, after-sales, front desk.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>The same questions come back by e-mail and phone: lead times, opening hours, order tracking, documents to send back. Genuinely complex requests wait behind the simple ones.</p></div>
+          <div class="apres"><h3>After</h3><p>Routine requests get a precise, immediate answer, based on your own documents. Complex requests are sorted by urgency and passed to the right person, with the context already summarised.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>An unhappy customer, a complaint, an ambiguous request: these cases are detected and handed to a person, never handled by the machine alone.</p></div>
         </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−70%</span><span class="kpi-lbl">ad writing time</span></div>
-        <div class="kpi-item"><span class="kpi-val">+40%</span><span class="kpi-lbl">qualified leads</span></div>
-        <div class="kpi-item"><span class="kpi-val">×5</span><span class="kpi-lbl">mandate pace</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automatic generation of optimized real estate ads with SEO from property characteristics</li>
-          <li>Lead qualification agent 24/7 with automatic scoring by buyer criteria</li>
-          <li>Contract analysis and synthesis of sales promises (Claude 3.5)</li>
-          <li>Commented AI virtual tour + real-time buyer questions</li>
-          <li>Automated market monitoring: price trends, new competing products (Perplexity)</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · GPT-4o · Perplexity</strong></span>
-        <a href="automatisation-ia.html" class="sc-cta">See automation →</a>
-      </div>
-    </article>
-
-    <!-- FINANCE -->
-    <article class="sector-card" data-sector="finance" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(34,197,94,.1);color:#4ade80">📊</div>
-        <div class="sc-meta">
-          <div class="sc-title">Finance, Banking &amp; Insurance</div>
-          <div class="sc-sub">Banks · CGP · Insurers · Fintech</div>
+      </article>
+      <article class="ex">
+        <div><p class="k">Example 06</p><h2>Meeting notes</h2><p class="qui">Management, project leads, any team that meets.</p></div>
+        <div class="ex-cols">
+          <div class="avant"><h3>Before</h3><p>Someone takes notes, writes them up that evening or the next day, forgets a decision, sends the notes too late. Agreed actions get lost.</p></div>
+          <div class="apres"><h3>After</h3><p>The meeting is recorded with the participants' consent. The notes are written within the hour: decisions, actions, owners, deadlines. Everyone receives theirs.</p></div>
+          <div class="humain"><h3>What stays human</h3><p>The notes are reviewed by the facilitator before sending. Confidential topics are excluded from the recording, and recordings never leave your tools.</p></div>
         </div>
+      </article>
       </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−55%</span><span class="kpi-lbl">credit analysis time</span></div>
-        <div class="kpi-item"><span class="kpi-val">+90%</span><span class="kpi-lbl">fraud detection</span></div>
-        <div class="kpi-item"><span class="kpi-val">100%</span><span class="kpi-lbl">EU data compliance</span></div>
+    </div>
+  </section>
+  <section class="cta-section" id="audit-gratuit">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">No commitment</p>
+        <h2>Your <span class="grad-text">free audit</span>, and your free website</h2>
+        <p class="lead">Thirty minutes with one of our consultants to review the way you work. You leave with three concrete priorities, and we give you a simple showcase website to get started.</p>
       </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Credit file analysis and automated risk scoring (DeepSeek R1 on-premise)</li>
-          <li>Regulatory compliance agent: real-time DORA, MiCA, CSRD monitoring (Perplexity)</li>
-          <li>Generation of customized financial reports for each client (Claude + Mistral)</li>
-          <li>Detection of transactional anomalies and fraud prevention (Llama fine-tuned)</li>
-          <li>Patrimonial advice chatbot: frequent questions, simulations, product orientation</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Mistral EU · DeepSeek R1 · Llama 3</strong></span>
-        <a href="agents-ia.html" class="sc-cta">Sovereign LLM →</a>
-      </div>
-    </article>
-
-    <!-- COMMUNICATION -->
-    <article class="sector-card" data-sector="services" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(168,85,247,.12);color:#c084fc">📣</div>
-        <div class="sc-meta">
-          <div class="sc-title">Communication &amp; Marketing</div>
-          <div class="sc-sub">Agencies · Marketing departments · Startups · Publishers</div>
-        </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">×6</span><span class="kpi-lbl">content volume</span></div>
-        <div class="kpi-item"><span class="kpi-val">−65%</span><span class="kpi-lbl">creation cost</span></div>
-        <div class="kpi-item"><span class="kpi-val">+35%</span><span class="kpi-lbl">average engagement</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automated editorial workflow: brief → SEO article → network summary → newsletter (Claude)</li>
-          <li>Email marketing personalization agent by behavioral segment</li>
-          <li>Generation of visuals and advertising declinations from a brief (GPT-4o)</li>
-          <li>Content performance analysis and A/B optimization recommendations</li>
-          <li>Real-time press and network sentiment analysis (Perplexity)</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · GPT-4o · Perplexity</strong></span>
-        <a href="automatisation-ia.html" class="sc-cta">See automation →</a>
-      </div>
-    </article>
-
-    <!-- JURIDIQUE -->
-    <article class="sector-card" data-sector="juridique" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(245,158,11,.1);color:#fbbf24">⚖️</div>
-        <div class="sc-meta">
-          <div class="sc-title">Legal &amp; Compliance</div>
-          <div class="sc-sub">Law firms · Legal departments · Notaries</div>
-        </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−70%</span><span class="kpi-lbl">contract review time</span></div>
-        <div class="kpi-item"><span class="kpi-val">×3</span><span class="kpi-lbl">file capacity</span></div>
-        <div class="kpi-item"><span class="kpi-val">0</span><span class="kpi-lbl">data to cloud USA</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automatic analysis and extraction of key contract clauses (Mistral on-premise France)</li>
-          <li>Drafting of initial contract templates based on models (Claude)</li>
-          <li>AI-assisted jurisprudential research based on internal documentary database (RAG)</li>
-          <li>Legislative and regulatory sectoral monitoring agent (Perplexity)</li>
-          <li>Automatic client file synthesis for preparing pleadings</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Mistral France · Claude 3.5 · Perplexity</strong></span>
-        <a href="agents-ia.html" class="sc-cta">Sovereign LLM →</a>
-      </div>
-    </article>
-
-    <!-- RH -->
-    <article class="sector-card" data-sector="rh" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(6,182,212,.1);color:#22d3ee">👥</div>
-        <div class="sc-meta">
-          <div class="sc-title">Human Resources</div>
-          <div class="sc-sub">HR · Recruitment agencies · GPEC · Training</div>
-        </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−50%</span><span class="kpi-lbl">sourcing time</span></div>
-        <div class="kpi-item"><span class="kpi-val">×2</span><span class="kpi-lbl">Qualified CVs</span></div>
-        <div class="kpi-item"><span class="kpi-val">+40%</span><span class="kpi-lbl">onboarding satisfaction</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automatic screening and scoring of CVs according to job criteria grid (Claude)</li>
-          <li>Generation of job descriptions, job postings and personalized job offers</li>
-          <li>AI onboarding agent: collaborator FAQ, internal policy, tool access (RAG)</li>
-          <li>Analysis of annual interview verbatims and thematic synthesis for HR</li>
-          <li>Automatic detection of training needs based on evaluations</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · Gemini 1.5 · Mistral</strong></span>
-        <a href="integration-ia.html" class="sc-cta">See integration →</a>
-      </div>
-    </article>
-
-    <!-- ARTISANAT -->
-    <article class="sector-card" data-sector="services" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(245,158,11,.12);color:#fbbf24">🔨</div>
-        <div class="sc-meta">
-          <div class="sc-title">Craftsmanship &amp; Construction</div>
-          <div class="sc-sub">Plumbers · Electricians · Masons · Architects</div>
-        </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">−80%</span><span class="kpi-lbl">quote time</span></div>
-        <div class="kpi-item"><span class="kpi-val">+55%</span><span class="kpi-lbl">transformation rate</span></div>
-        <div class="kpi-item"><span class="kpi-val">×3</span><span class="kpi-lbl">5-star reviews</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Automatic generation of detailed quotes from photos and project description</li>
-          <li>24/7 customer chatbot for appointment scheduling, emergencies and common questions</li>
-          <li>Drafting of intervention reports and site summaries (voice → text)</li>
-          <li>Automated customer satisfaction tracking and Google review solicitation after intervention</li>
-          <li>Material sourcing agent: real-time price comparison among suppliers</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>Claude 3.5 · GPT-4o Vision · Mistral Small</strong></span>
-        <a href="automatisation-ia.html" class="sc-cta">See automation →</a>
-      </div>
-    </article>
-
-    <!-- HÔTELLERIE -->
-    <article class="sector-card" data-sector="services" data-v>
-      <div class="sc-head">
-        <div class="sc-icon" style="background:rgba(34,197,94,.1);color:#4ade80">🏨</div>
-        <div class="sc-meta">
-          <div class="sc-title">Hospitality &amp; Restaurant</div>
-          <div class="sc-sub">Hotels · Restaurants · Tourism · Events</div>
-        </div>
-      </div>
-      <div class="sc-kpi">
-        <div class="kpi-item"><span class="kpi-val">+25%</span><span class="kpi-lbl">RevPAR</span></div>
-        <div class="kpi-item"><span class="kpi-val">−45%</span><span class="kpi-lbl">no-shows</span></div>
-        <div class="kpi-item"><span class="kpi-val">+60%</span><span class="kpi-lbl">positive reviews</span></div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-uc-title">Concrete applications</div>
-        <ul class="uc-list">
-          <li>Multilingual AI concierge 24/7: local recommendations, in-room requests (GPT-4o)</li>
-          <li>Dynamic pricing assisted by AI according to occupancy rate and local events</li>
-          <li>Automated review management : detection, categorization, personalized response (Claude)</li>
-          <li>Conversational reservation agent on WhatsApp and website (make.com + Claude)</li>
-          <li>Customer preference analysis for personalized stay and automatic up-sell</li>
-        </ul>
-      </div>
-      <div class="sc-footer">
-        <span class="sc-model">Models: <strong>GPT-4o · Claude 3.5 · Mistral Small</strong></span>
-        <a href="agents-ia.html" class="sc-cta">See AI agents →</a>
-      </div>
-    </article>
-
-  </div><!-- /sectors-grid -->
-</section>
+      <form class="audit-form" data-webhook="" novalidate>
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" name="nom" type="text" placeholder="Jane Smith" required autocomplete="name"></div>
+        <div class="field"><label for="f-email">Work e-mail</label><input id="f-email" name="email" type="email" placeholder="jane@company.com" required autocomplete="email"></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="entreprise" type="text" placeholder="Your company name" required autocomplete="organization"></div>
+        <div class="piege" aria-hidden="true"><label for="f-site-0">Ne pas remplir</label><input id="f-site-0" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="btn btn-grad">Book my free audit →</button>
+        <div class="form-note" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
 </main>
 
-<section class="cta-sec" aria-labelledby="cta-h">
-  <h2 id="cta-h" data-v>Your sector, your constraints, your ROI</h2>
-  <p data-v data-d="1">These figures are indicative. The reality of your ROI depends on your specific context: data volume, existing processes, technical stack, GDPR constraints. A 2-day audit will give you a reliable estimate.</p>
-  <a href="audit-ia.html" class="btn" data-v data-d="2">Request an AI audit →</a>
-</section>
+<!-- @mobnav -->
+<nav class="mob-bottom-nav" aria-label="Quick mobile navigation">
+  <a href="/en/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
+  <a href="/en/formations.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg><span>Training</span></a>
+  <a href="/en/contact.html" class="mob-tab-item accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Audit</span></a>
+  <a href="/en/faq-ia.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a>
+</nav>
+<!-- @/mobnav -->
 
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Back to top">↑</a>
-<footer role="contentinfo">
-  <p>© 2026 Quantum Consulting · AI Consulting Firm · Business Transformation · Paris, France</p>
-  <div style="display:flex;gap:1rem 1.5rem;flex-wrap:wrap">
-    <a href="index.html">Home</a>
-    <a href="audit-ia.html">AI Audit</a>
-    <a href="integration-ia.html">AI Integration</a>
-    <a href="automatisation-ia.html">Automation</a>
-    <a href="agents-ia.html">AI Agents</a>
-    <a href="consulting-ia.html">Strategic Advisory</a>
-    <a href="modeles-ia.html">Model comparison</a>
-    <a href="cas-usage.html">Use cases</a>
-    <a href="faq-ia.html">AI FAQ</a>
-    <a href="formation-initiation-ia.html">Level 1 training</a>
-    <a href="formation-maitrise-ia.html">Level 2 training</a>
-    <a href="contact.html">Contact</a>
-    <a href="faq-ia.html">AI FAQ</a>
-    <a href="cas-usage.html">Use cases</a>
-    <a href="modeles-ia.html">AI models</a>
-    <a href="blog.html">Blog</a>
-    <a href="https://www.linkedin.com/company/quantum-consulting-paris" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<!-- @footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg aria-hidden="true"><use href="#qMark"/></svg>
+        <p>Artificial intelligence and automation consulting and training for SMEs and mid-sized companies. Based in Paris, we work all over France.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/en/services.html#audit">Free audit + free website</a></li>
+          <li><a href="/en/services.html#automatiser">Automate your tasks</a></li>
+          <li><a href="/en/services.html#brancher">Plug AI into your tools</a></li>
+          <li><a href="/en/services.html#conseil">Ongoing advisory</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Training</h3>
+        <ul>
+          <li><a href="/en/formations.html#niveau-1">Level 1 · Discover</a></li>
+          <li><a href="/en/formations.html#niveau-2">Level 2 · Automate</a></li>
+          <li><a href="/en/formations.html#niveau-3">Level 3 · Steer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:contact@quantum-agency.fr">contact@quantum-agency.fr</a></li>
+          <li><a href="/en/contact.html">Request an audit</a></li>
+          <li><a href="/en/cas-usage.html">Concrete examples</a></li>
+          <li><a href="/en/faq-ia.html">Frequently asked questions</a></li>
+          <li><a href="/en/blog.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Quantum Consulting. All rights reserved.</p>
+      <p>Paris, France</p>
+    </div>
   </div>
 </footer>
-<script>
-(function(){
-  var els=document.querySelectorAll('[data-v]');
-  if(!els.length)return;
-  function check(){var vh=window.innerHeight;els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<vh-40&&r.bottom>40)el.classList.add('in-view');else el.classList.remove('in-view');});}
-  window.addEventListener('scroll',check,{passive:true});check();
-})();
-// Sector filter
-var btns=document.querySelectorAll('.f-btn');
-var cards=document.querySelectorAll('.sector-card');
-btns.forEach(function(btn){
-  btn.addEventListener('click',function(){
-    btns.forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');
-    var f=btn.getAttribute('data-filter');
-    cards.forEach(function(card){
-      if(f==='all'||card.getAttribute('data-sector')===f){
-        card.style.display='';
-      } else {
-        card.style.display='none';
-      }
-    });
-  });
-});
-document.querySelectorAll('.btn').forEach(function(btn){
-  btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect();var x=(e.clientX-r.left-r.width/2)*0.1;var y=(e.clientY-r.top-r.height/2)*0.1;btn.style.transform='translate('+x+'px,'+y+'px) scale(1.05)';});
-  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
-});
-var bt=document.getElementById('back-top');
-if(bt)window.addEventListener('scroll',function(){bt.classList.toggle('visible',scrollY>500)},{passive:true});
-var hero=document.getElementById('cas-hero'),spot=document.getElementById('hero-spot');
-if(hero&&spot){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();spot.style.background='radial-gradient(600px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(168,85,247,.1),transparent 60%)';});hero.addEventListener('mouseleave',function(){spot.style.background='';});}
-</script>
-<script>
-function toggleMobMenu(btn){
-  var m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop');
-  var open=m.classList.toggle('open');
-  bd.classList.toggle('open',open);
-  m.setAttribute('aria-hidden',String(!open));
-  if(open){m.removeAttribute('inert');}else{m.setAttribute('inert','');}
-  if(btn)btn.setAttribute('aria-expanded',String(open));
-  document.body.style.overflow=open?'hidden':'';
-}
-function closeMobMenu(){
-  var m=document.getElementById('mobile-menu'),bd=document.getElementById('menu-backdrop');
-  m.classList.remove('open');bd.classList.remove('open');
-  m.setAttribute('aria-hidden','true');m.setAttribute('inert','');
-  document.body.style.overflow='';
-  var b=document.querySelector('.n-mob-burger');
-  if(b)b.setAttribute('aria-expanded','false');
-}
-</script>
-<script src="/lang-switch.js" defer></script>
-<script src="/lang-switch.js" defer></script>
+<!-- @/footer -->
+
+<script src="/assets/quantum.js?v=8" defer></script>
+<script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

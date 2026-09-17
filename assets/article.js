@@ -1,5 +1,5 @@
 /* ============================================================================
-   Lecture d'article — sommaire, progression, navigation
+   Lecture d'article : sommaire, progression, navigation
    ----------------------------------------------------------------------------
    POURQUOI CE FICHIER EXISTE, CHIFFRES À L'APPUI
    · 73 % des visiteurs quittent une page en moins de dix secondes si elle est
@@ -33,7 +33,7 @@
 
   /* ── Sommaire ────────────────────────────────────────────────────────────
      Utile à partir de QUATRE sections. En dessous il encombre plus qu'il
-     n'aide — c'est le seuil retenu par les études d'usage. */
+     n'aide : c'est le seuil retenu par les études d'usage. */
   var titres = [].slice.call(corps.querySelectorAll('h2'))
     .filter(function (h) { return !h.closest('.art-faq'); });
 

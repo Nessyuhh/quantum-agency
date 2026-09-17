@@ -1,0 +1,11 @@
+name = "quantum-formulaire"
+main = "worker.js"
+compatibility_date = "2026-07-29"
+
+[vars]
+DESTINATAIRE = "contact@quantum-agency.fr"
+EXPEDITEUR = "Site Quantum <formulaire@quantum-agency.fr>"
+ORIGINES_AUTORISEES = "https://quantum-agency.fr,https://www.quantum-agency.fr"
+
+# Secret, jamais dans ce fichier :
+#   npx wrangler secret put RESEND_API_KEY
