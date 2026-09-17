@@ -39,6 +39,9 @@ EXCLUES = {
     'quantum-logos-final.html',
     'quantum-logos.html',
     'charte/index.html',
+    # Pages d'information (noindex) : utiles aux visiteurs, inutiles à l'index.
+    'confidentialite.html',
+    'en/confidentialite.html',
     # Anciennes adresses devenues des redirections (noindex) vers la
     # nouvelle arborescence : services.html, formations.html, faq-ia.html.
     'audit-ia.html',

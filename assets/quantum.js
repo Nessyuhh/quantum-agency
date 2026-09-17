@@ -70,6 +70,8 @@
           form.reset();
           note.textContent = 'Merci ! Votre demande a été reçue. Nous vous recontactons sous 24h.';
           note.className = 'form-note success';
+          /* Conversion GA4 : ne part que si le visiteur a accepté la mesure (consent.js). */
+          if (window.quantumSuivre) window.quantumSuivre('generate_lead', { form: 'audit', page: location.pathname });
         })
         .catch(function () {
           note.textContent = 'Une erreur est survenue. Écrivez-nous directement à contact@quantum-agency.fr.';
@@ -236,6 +238,13 @@
 
     function ouvrir() {
       if (ouverte) return;
+      /* Une sollicitation à la fois : tant que la bannière de consentement est
+         affichée, la fenêtre attend quinze secondes de plus. */
+      if (document.querySelector('.consent.ouverte')) {
+        clearTimeout(minuteur);
+        minuteur = setTimeout(ouvrir, 15000);
+        return;
+      }
       ouverte = true;
       clearTimeout(minuteur);
       window.removeEventListener('scroll', auScroll);
@@ -281,6 +290,7 @@
       }).then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         memoriser('envoye');
+        if (window.quantumSuivre) window.quantumSuivre('generate_lead', { form: 'site-offert', page: location.pathname });
         note.textContent = t.merci;
         note.className = 'form-note success';
         pop.querySelector('form').reset();

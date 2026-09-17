@@ -18,7 +18,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 FONTS = ('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800'
          '&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap')
-VERSION = 'v=11'
+VERSION = 'v=15'
 
 MODELES = [
     (r'Claude 3\.7 Sonnet', 'Claude Sonnet 5'),
@@ -102,6 +102,10 @@ def recharter(chemin, blocs):
     if '/assets/quantum.js' not in html:
         html = html.replace('<script src="/lang-switch.js" defer></script>',
                             '<script src="/assets/quantum.js?%s" defer></script>\n<script src="/lang-switch.js?%s" defer></script>' % (VERSION, VERSION), 1)
+    # Consentement et mesure d'audience : toujours avant quantum.js, qui s'en sert.
+    if '/assets/consent.js' not in html:
+        html = re.sub(r'(<script src="/assets/quantum\.js[^"]*" defer></script>)',
+                      r'<script src="/assets/consent.js?v=1" defer></script>\n\1', html, count=1)
     html = html.replace('href="/index.html"', 'href="/"')
 
     # 3. Texte : modèles et tirets
