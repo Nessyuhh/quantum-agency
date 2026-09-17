@@ -1,5 +1,5 @@
 /* ============================================================================
-   Quantum Consulting — comportements partagés
+   Quantum Consulting : comportements partagés
    Navigation, progression, FAQ, formulaire d'audit, animations (GSAP).
    Sans GSAP ou avec prefers-reduced-motion, la page reste complète : les
    états finaux sont ceux du CSS, les scripts n'ajoutent que le mouvement.
@@ -52,7 +52,7 @@
       data.timestamp = new Date().toISOString();
 
       if (!/^https?:\/\//.test(url)) {
-        note.textContent = 'Formulaire pas encore connecté — écrivez-nous directement à contact@quantum-agency.fr en attendant.';
+        note.textContent = 'Formulaire pas encore connecté. Écrivez-nous directement à contact@quantum-agency.fr en attendant.';
         note.className = 'form-note error';
         console.warn('[Quantum] data-webhook non configuré sur le formulaire.');
         return;
@@ -95,7 +95,11 @@
   /* Workflow animé : les arêtes se tracent, les nœuds s'allument, puis les
      paquets circulent en boucle. L'état « tout allumé » est celui du CSS :
      on le retire ici avant d'animer, jamais l'inverse. */
-  var svg = document.getElementById('wf');
+  /* Deux tracés (horizontal desktop, vertical mobile) : on anime celui que
+     le CSS affiche, l'autre garde son état final. */
+  var svg = Array.prototype.filter.call(document.querySelectorAll('.wf-svg'), function (el) {
+    return getComputedStyle(el).display !== 'none';
+  })[0];
   if (!svg) return;
 
   var edges = Array.prototype.slice.call(svg.querySelectorAll('.wf-edge'));

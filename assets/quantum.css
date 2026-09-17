@@ -1,5 +1,5 @@
 /* ============================================================================
-   Quantum Consulting — design system
+   Quantum Consulting : design system
    Fond clair, palette tirée du dégradé du logo (lavande → violet → cyan),
    typo Big Shoulders Display / Archivo / Space Mono.
    ========================================================================== */
@@ -149,7 +149,7 @@ section { padding: 110px 0; position: relative; }
 .row:hover .go { color: var(--violet); border-color: var(--violet); }
 .row ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 14px 0 0; }
 .row ul li { font-size: 0.85rem; color: var(--ink-2); padding-left: 1rem; position: relative; }
-.row ul li::before { content: '—'; position: absolute; left: 0; color: var(--violet-bright); }
+.row ul li::before { content: '–'; position: absolute; left: 0; color: var(--violet-bright); }
 .row .meta { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 8px; }
 @media (max-width: 760px) { .row { grid-template-columns: 1fr; gap: 8px; padding: 26px 0; } .row .k { padding-top: 0; } .row .go { align-self: flex-start; margin-top: 8px; } }
 

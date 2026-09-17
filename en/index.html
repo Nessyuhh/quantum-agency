@@ -31,7 +31,7 @@
 <!-- Chargée sans bloquer le rendu : media="print" + bascule sur "all" au onload. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/quantum.css?v=2">
+<link rel="stylesheet" href="/assets/quantum.css?v=3">
 
 <style>
 /* ── HERO ── */
@@ -65,29 +65,31 @@
 .wf-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 36px; }
 .wf-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 0.92; text-transform: uppercase; margin-top: 12px; max-width: 24ch; }
 .wf-head p { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; text-align: right; white-space: nowrap; }
-.wf-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); background: #fff; }
-#wf { width: 100%; min-width: 980px; height: auto; display: block; }
+.wf-scroll { border: 1px solid var(--line); background: #fff; padding: 8px; }
+.wf-svg { width: 100%; height: auto; display: block; }
+.wf-mobile { display: none; max-width: 440px; margin: 0 auto; }
+@media (max-width: 820px) { .wf-desktop { display: none; } .wf-mobile { display: block; } }
 .wf-caption { display: flex; justify-content: space-between; gap: 24px; margin-top: 16px; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3); line-height: 1.5; }
-.wf-caption .hint { display: none; }
-@media (max-width: 900px) { .wf-head { flex-direction: column; align-items: flex-start; } .wf-head p { text-align: left; } .wf-caption .hint { display: block; color: var(--violet); white-space: nowrap; } }
+@media (max-width: 900px) { .wf-head { flex-direction: column; align-items: flex-start; } .wf-head p { text-align: left; } }
 
-#wf text { font-family: var(--mono); fill: var(--ink); }
-#wf .lbl { font-size: 10.5px; letter-spacing: 0.16em; fill: var(--ink-2); }
-#wf .wf-in rect { fill: var(--bg); stroke: var(--line-strong); stroke-dasharray: 4 4; }
-#wf .wf-in text { font-size: 12.5px; fill: var(--ink); }
-#wf .wf-edge { fill: none; stroke: rgba(17,19,24,0.5); stroke-width: 1.5; }
-#wf .wf-node rect, #wf .wf-out rect { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1; transition: stroke 0.5s, fill 0.5s; }
-#wf .wf-node .t { font-family: var(--display); font-weight: 700; font-size: 23px; letter-spacing: 0.02em; text-transform: uppercase; fill: var(--ink-2); transition: fill 0.5s; }
-#wf .wf-node .s { font-size: 11px; fill: var(--ink-2); transition: fill 0.5s; }
-#wf .wf-node.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
-#wf .wf-node.on .t { fill: var(--ink); }
-#wf .wf-node.on .s { fill: var(--violet); }
-#wf .wf-out rect { stroke-dasharray: none; }
-#wf .wf-out text { font-size: 12.5px; fill: var(--ink-2); transition: fill 0.5s; }
-#wf .wf-out.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
-#wf .wf-out.on text { fill: var(--ink); }
-#wf .wf-packet { fill: #7c3aed; stroke: #fff; stroke-width: 1.5; }
-#wf .branch { font-size: 10.5px; fill: var(--ink-2); letter-spacing: 0.1em; }
+.wf-svg text { font-family: var(--mono); fill: var(--ink); }
+.wf-svg .lbl { font-size: 10.5px; letter-spacing: 0.16em; fill: var(--ink-2); }
+.wf-svg .wf-in rect { fill: var(--bg); stroke: var(--line-strong); stroke-dasharray: 4 4; }
+.wf-svg .wf-in text { font-size: 12.5px; fill: var(--ink); }
+.wf-svg .wf-edge { fill: none; stroke: rgba(17,19,24,0.5); stroke-width: 1.5; }
+.wf-svg .wf-node rect, .wf-svg .wf-out rect { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1; transition: stroke 0.5s, fill 0.5s; }
+.wf-svg .wf-node .t { font-family: var(--display); font-weight: 700; font-size: 23px; letter-spacing: 0.02em; text-transform: uppercase; fill: var(--ink-2); transition: fill 0.5s; }
+.wf-svg .wf-node .s { font-size: 11px; fill: var(--ink-2); transition: fill 0.5s; }
+.wf-svg .wf-node.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
+.wf-svg .wf-node.on .t { fill: var(--ink); }
+.wf-svg .wf-node.on .s { fill: var(--violet); }
+.wf-svg .wf-out rect { stroke-dasharray: none; }
+.wf-svg .wf-out text { font-size: 12.5px; fill: var(--ink-2); transition: fill 0.5s; }
+.wf-svg .wf-out.on rect { stroke: url(#wfGrad); stroke-width: 2; fill: #fff; }
+.wf-svg .wf-out.on text { fill: var(--ink); }
+.wf-svg .wf-packet { fill: #7c3aed; stroke: #fff; stroke-width: 1.5; }
+.wf-svg .branch { font-size: 10.5px; fill: var(--ink-2); letter-spacing: 0.1em; }
+.wf-svg .wf-small { font-size: 20px; }
 
 /* ── CTA ── */
 .cta-section { background: var(--bg-2); border-top: 1px solid var(--line); }
@@ -98,7 +100,7 @@
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"AI and automation consulting firm for SMEs and mid-sized companies","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/en/#site","url":"https://quantum-agency.fr/en/","name":"Quantum Consulting","inLanguage":"en","publisher":{"@id":"https://quantum-agency.fr/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the free AI audit consist of, and what will I receive?","acceptedAnswer":{"@type":"Answer","text":"The free audit is a 30-minute strategic conversation with one of our consultants. We analyse your key processes, identify high-impact automation opportunities and hand you a summary of the 3 priority levers you can activate in your company."}},{"@type":"Question","name":"Which AI models do you use?","acceptedAnswer":{"@type":"Answer","text":"We work across the whole AI ecosystem as needed: Claude (Anthropic) and GPT-6 (OpenAI) for complex reasoning, Mistral Large 3 and Llama 4 for sovereign deployments, Google Gemini 3 and Perplexity for document research, Microsoft Copilot for Microsoft environments. We always pick the model best suited to your technical, budget and regulatory constraints."}},{"@type":"Question","name":"My teams are not technical — is that a problem?","acceptedAnswer":{"@type":"Answer","text":"No, quite the opposite. Our engagements and training courses are designed specifically for non-technical people. Modern AI is meant to be as easy to use as exchanging e-mails."}},{"@type":"Question","name":"How do you guarantee the confidentiality of our business data?","acceptedAnswer":{"@type":"Answer","text":"We apply strict principles: professional APIs that never retrain models on your data, or sovereign models (Mistral) deployed on secure servers in France."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantum-agency.fr/#org","name":"Quantum Consulting","url":"https://quantum-agency.fr/","description":"AI and automation consulting firm for SMEs and mid-sized companies","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"contactPoint":{"@type":"ContactPoint","telephone":"+33649103502","email":"contact@quantum-agency.fr","contactType":"customer service"},"sameAs":["https://www.linkedin.com/company/quantum-consulting-paris"]},{"@type":"WebSite","@id":"https://quantum-agency.fr/en/#site","url":"https://quantum-agency.fr/en/","name":"Quantum Consulting","inLanguage":"en","publisher":{"@id":"https://quantum-agency.fr/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the free AI audit consist of, and what will I receive?","acceptedAnswer":{"@type":"Answer","text":"The free audit is a 30-minute strategic conversation with one of our consultants. We analyse your key processes, identify high-impact automation opportunities and hand you a summary of the 3 priority levers you can activate in your company."}},{"@type":"Question","name":"Which AI models do you use?","acceptedAnswer":{"@type":"Answer","text":"We work across the whole AI ecosystem as needed: Claude (Anthropic) and GPT-6 (OpenAI) for complex reasoning, Mistral Large 3 and Llama 4 for sovereign deployments, Google Gemini 3 and Perplexity for document research, Microsoft Copilot for Microsoft environments. We always pick the model best suited to your technical, budget and regulatory constraints."}},{"@type":"Question","name":"My teams are not technical. Is that a problem?","acceptedAnswer":{"@type":"Answer","text":"No, quite the opposite. Our engagements and training courses are designed specifically for non-technical people. Modern AI is meant to be as easy to use as exchanging e-mails."}},{"@type":"Question","name":"How do you guarantee the confidentiality of our business data?","acceptedAnswer":{"@type":"Answer","text":"We apply strict principles: professional APIs that never retrain models on your data, or sovereign models (Mistral) deployed on secure servers in France."}}]}]}
 </script>
 </head>
 
@@ -113,6 +115,9 @@
     <linearGradient id="qGrad" gradientUnits="userSpaceOnUse" x1="5" y1="5" x2="57" y2="57">
       <stop offset="0%" stop-color="#ddd6fe"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
+    <linearGradient id="wfGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
     <symbol id="qMark" viewBox="0 0 64 64">
       <path d="M 43.68 51.78 A 23.04 23.04 0 1 1 51.78 43.68" stroke="url(#qGrad)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
       <line x1="38.4" y1="39.68" x2="56.32" y2="56.32" stroke="url(#qGrad)" stroke-width="5.5" stroke-linecap="round"/>
@@ -121,7 +126,7 @@
 </svg>
 
 <header class="navbar" id="navbar" role="banner">
-  <a href="/en/" class="brand" aria-label="Quantum Consulting — Home">
+  <a href="/en/" class="brand" aria-label="Quantum Consulting, home">
     <svg aria-hidden="true"><use href="#qMark"/></svg>
     <span class="brand-word"><b>QUANTUM</b><span>CONSULTING</span></span>
   </a>
@@ -156,7 +161,7 @@
 </header>
 
 <header class="mob-top-bar" role="banner">
-  <a href="/en/" class="brand" aria-label="Quantum Consulting — Home">
+  <a href="/en/" class="brand" aria-label="Quantum Consulting, home">
     <svg aria-hidden="true"><use href="#qMark"/></svg>
     <span class="brand-word"><b>QUANTUM</b></span>
   </a>
@@ -172,7 +177,7 @@
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero-top">
-        <div class="rail">AI consulting &amp; training — Paris — 2026</div>
+        <div class="rail">AI consulting &amp; training · Paris · 2026</div>
         <div class="hero-body">
           <p class="eyebrow" data-reveal>SMEs &amp; mid-caps · automation · artificial intelligence</p>
           <h1>
@@ -182,7 +187,7 @@
           </h1>
           <div class="hero-cols">
             <div>
-              <p class="hero-lead" data-reveal>Quantum Consulting helps SME and mid-cap leaders automate their operations — with the AI model best suited to each task, never the other way around.</p>
+              <p class="hero-lead" data-reveal>Quantum Consulting helps SME and mid-cap leaders automate their operations, with the AI model best suited to each task, never the other way around.</p>
               <div class="hero-actions" data-reveal>
                 <a href="#audit-gratuit" class="btn btn-grad">Book a free audit →</a>
                 <a href="#consulting" class="btn">Our services</a>
@@ -208,18 +213,13 @@
             <p class="eyebrow">What we build, concretely</p>
             <h2>A flow that runs on its own, from receipt to payment.</h2>
           </div>
-          <p>Fig. 01 — Supplier invoices</p>
+          <p>Fig. 01 · Supplier invoices</p>
         </div>
 
         <div class="wf-scroll">
-          <svg id="wf" viewBox="0 0 1200 420" role="img" aria-labelledby="wf-title wf-desc">
+          <svg id="wf" class="wf-svg wf-desktop" viewBox="0 0 1200 420" role="img" aria-labelledby="wf-title wf-desc">
             <title id="wf-title">Example of an automated workflow: supplier invoice processing</title>
             <desc id="wf-desc">Three messy inputs (supplier e-mail, PDF invoice, bank statement) are received and sorted, read by an AI, entered into the ERP after human validation if an anomaly is found, then produce up-to-date accounting, an informed supplier and a dashboard.</desc>
-            <defs>
-              <linearGradient id="wfGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#6d28d9"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#0891b2"/>
-              </linearGradient>
-            </defs>
 
             <text class="lbl" x="30" y="62">INPUTS</text>
             <text class="lbl" x="300" y="170">PROCESSING</text>
@@ -254,10 +254,41 @@
             <g class="wf-out on" data-step="5"><rect x="1010" y="208" width="180" height="54"/><text x="1030" y="240">Supplier informed</text></g>
             <g class="wf-out on" data-step="5"><rect x="1010" y="316" width="180" height="54"/><text x="1030" y="348">Dashboard</text></g>
           </svg>
+          <!-- Tracé vertical (mobile) : mêmes étapes, même script. -->
+          <svg class="wf-svg wf-mobile" viewBox="0 0 400 940" role="img" aria-label="Example of an automated workflow: supplier invoice processing">
+            <text class="lbl" x="20" y="32">INPUTS</text>
+            <text class="lbl" x="20" y="214">PROCESSING</text>
+            <text class="lbl" x="255" y="724">OUTPUTS</text>
+
+            <path class="wf-edge" data-step="1" d="M105,94 C105,150 200,170 200,230"/>
+            <path class="wf-edge" data-step="1" d="M295,94 C295,150 200,170 200,230"/>
+            <path class="wf-edge" data-step="1" d="M200,158 L200,230"/>
+            <path class="wf-edge" data-step="2" d="M200,306 L200,350"/>
+            <path class="wf-edge" data-step="3" d="M300,426 C300,450 285,450 285,470"/>
+            <path class="wf-edge" data-step="3" d="M285,534 C285,560 300,570 300,600"/>
+            <path class="wf-edge" data-step="4" d="M100,426 L100,600"/>
+            <path class="wf-edge" data-step="5" d="M200,676 C200,704 40,700 40,763 L60,763"/>
+            <path class="wf-edge" data-step="5" d="M200,676 C200,704 40,700 40,823 L60,823"/>
+            <path class="wf-edge" data-step="5" d="M200,676 C200,704 40,700 40,883 L60,883"/>
+            <text class="branch" x="200" y="456" text-anchor="middle">IF ANOMALY</text>
+
+            <g class="wf-in" transform="rotate(-4 105 71)"><rect x="20" y="48" width="170" height="46"/><text x="36" y="76">Supplier e-mail</text></g>
+            <g class="wf-in" transform="rotate(3 295 71)"><rect x="210" y="48" width="170" height="46"/><text x="226" y="76">PDF invoice</text></g>
+            <g class="wf-in" transform="rotate(-2 200 135)"><rect x="115" y="112" width="170" height="46"/><text x="131" y="140">Bank statement</text></g>
+
+            <g class="wf-node on" data-step="1"><rect x="60" y="230" width="280" height="76"/><text class="t" x="80" y="264">Receive &amp; sort</text><text class="s" x="80" y="288">AI · classification</text></g>
+            <g class="wf-node on" data-step="2"><rect x="60" y="350" width="280" height="76"/><text class="t" x="80" y="384">AI extraction</text><text class="s" x="80" y="408">Claude Sonnet 5 · Mistral</text></g>
+            <g class="wf-node on" data-step="3"><rect x="180" y="470" width="200" height="64"/><text class="t wf-small" x="196" y="498">Human validation</text><text class="s" x="196" y="520">only when in doubt</text></g>
+            <g class="wf-node on" data-step="4"><rect x="60" y="600" width="280" height="76"/><text class="t" x="80" y="634">ERP entry</text><text class="s" x="80" y="658">n8n → your ERP</text></g>
+
+            <g class="wf-out on" data-step="5"><rect x="60" y="740" width="280" height="46"/><text x="78" y="768">Books up to date</text></g>
+            <g class="wf-out on" data-step="5"><rect x="60" y="800" width="280" height="46"/><text x="78" y="828">Supplier informed</text></g>
+            <g class="wf-out on" data-step="5"><rect x="60" y="860" width="280" height="46"/><text x="78" y="888">Dashboard</text></g>
+          </svg>
         </div>
         <div class="wf-caption">
-          <span>Every node is a real tool — an AI model, n8n, your ERP — connected to what you already use. Zero re-entry, human control only where it matters.</span>
-          <span class="hint">← scroll →</span>
+          <span>Every node is a real tool (an AI model, n8n, your ERP) connected to what you already use. Zero re-entry, human control only where it matters.</span>
+          
         </div>
       </div>
     </div>
@@ -272,7 +303,7 @@
         <p class="sec-lead">Turnkey technical engagements to automate your operations and deploy AI agents directly into your existing tools.</p>
       </div>
       <div class="rows">
-        <a href="/en/integration-ia.html" class="row"><span class="k">01/03</span><div><h3>AI integration &amp; connectors</h3><p>Connecting the most relevant models — Claude, GPT-6, Mistral Large 3 — to your business software (CRM, ERP, document bases) without disrupting your teams.</p></div><span class="go">Details →</span></a>
+        <a href="/en/integration-ia.html" class="row"><span class="k">01/03</span><div><h3>AI integration &amp; connectors</h3><p>Connecting the most relevant models (Claude, GPT-6, Mistral Large 3) to your business software (CRM, ERP, document bases) without disrupting your teams.</p></div><span class="go">Details →</span></a>
         <a href="/en/automatisation-ia.html" class="row"><span class="k">02/03</span><div><h3>Workflow automation</h3><p>Autonomous flows built with n8n and Make to eliminate re-entry, repetitive e-mail handling and the manual production of quotes and reports.</p></div><span class="go">Details →</span></a>
         <a href="/en/agents-ia.html" class="row"><span class="k">03/03</span><div><h3>AI agents &amp; private models</h3><p>Specialised agents and sovereign models hosted in France, for the data that must never leave the company.</p></div><span class="go">Details →</span></a>
       </div>
@@ -328,7 +359,7 @@
           <div class="faq-content"><div class="faq-content-inner">The free audit is a 30-minute strategic conversation with one of our consultants. We analyse your key processes, identify high-impact automation opportunities and hand you a summary of the 3 priority levers you can activate in your company.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">My teams are not technical — is that a problem?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">My teams are not technical. Is that a problem?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">No, quite the opposite. Our engagements and training courses are designed specifically for non-technical people. Modern AI is meant to be as easy to use as exchanging e-mails.</div></div>
         </div>
         <div class="faq-item">
@@ -410,7 +441,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" defer></script>
-<script src="/assets/quantum.js?v=2" defer></script>
-<script src="/lang-switch.js?v=2" defer></script>
+<script src="/assets/quantum.js?v=3" defer></script>
+<script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

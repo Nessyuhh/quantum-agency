@@ -1,5 +1,5 @@
 /* ============================================================================
-   Sélecteur de langue — deux liens, rien de plus.
+   Sélecteur de langue : deux liens, rien de plus.
    ----------------------------------------------------------------------------
    REMPLACE i18n.js ET SON DICTIONNAIRE DE 229 Ko.
 
@@ -55,7 +55,7 @@
   css.textContent =
     /* ⚠️ `body>nav.q-lang` et non `.q-lang` : la barre du site est stylée par
        `nav:not([class]){position:fixed;top:20px;left:50%;transform:translateX(-50%)}`,
-       de spécificité (0,1,1) — supérieure à `.q-lang` (0,1,0). Elle l'emportait
+       de spécificité (0,1,1), supérieure à `.q-lang` (0,1,0). Elle l'emportait
        donc sur top, left, transform et z-index ; seul `right` survivait, ce qui
        projetait le sélecteur de langue AU CENTRE de l'écran, par-dessus la barre.
        `body>nav.q-lang` vaut (0,2,1) et reprend la main sans !important. */
@@ -73,7 +73,7 @@
     '.q-lang .q-sep{min-width:0;opacity:.45;color:#fff}' +
     /* ⚠️ 84 px et non 66, et z-index 950 et non 600.
        La barre du bas de l'accueil culmine à ~68 px du bas (12 px de décalage
-       + 56 px de hauteur). À 66 px, le sélecteur mordait dessus — et comme
+       + 56 px de hauteur). À 66 px, le sélecteur mordait dessus, et comme
        cette barre est en z-index 900, elle passait PAR-DESSUS : le sélecteur
        paraissait avoir disparu sous la barre.
        Le z-index monte aussi, sinon le seul dégagement redeviendrait faux au
