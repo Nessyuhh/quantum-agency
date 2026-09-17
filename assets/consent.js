@@ -20,7 +20,10 @@
 
    Pour envoyer un événement depuis le reste du site :
      window.quantumSuivre('generate_lead', { form: 'audit' });
-   Il ne part que si la balise est chargée, jamais avant.
+   Il ne part que si la mesure est autorisée, jamais avant.
+
+   La balise elle-même est chargée après le chargement de la page, pendant un
+   temps de repos du navigateur : voir quandLeNavigateurSouffle plus bas.
    ========================================================================== */
 (function () {
   'use strict';
@@ -57,19 +60,35 @@
   gtag('set', 'ads_data_redaction', true);
   gtag('set', 'url_passthrough', false);
 
+  /* Le script de mesure pèse 158 Ko et bloque le fil principal 270 ms quand il
+     part avec le reste : il faisait à lui seul tomber toutes les pages de 100 à
+     92 en performance mobile. Il attend donc la fin du chargement, puis un
+     temps de repos du navigateur. Les commandes, elles, partent tout de suite :
+     dataLayer les garde en file et la balise les traite à son arrivée, donc
+     rien n'est perdu, la vue est seulement datée d'une seconde plus tard. */
+  function quandLeNavigateurSouffle(faire) {
+    var lancer = function () {
+      (window.requestIdleCallback || function (f) { setTimeout(f, 200); })(faire, { timeout: 3000 });
+    };
+    if (document.readyState === 'complete') lancer();
+    else window.addEventListener('load', lancer, { once: true });
+  }
+
   var chargee = false;
   function chargerBalise() {
     if (chargee) return;
     chargee = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
-    document.head.appendChild(s);
     gtag('js', new Date());
     gtag('config', ID, {
       anonymize_ip: true,
       allow_google_signals: false,
       allow_ad_personalization_signals: false
+    });
+    quandLeNavigateurSouffle(function () {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+      document.head.appendChild(s);
     });
   }
 
