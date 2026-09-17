@@ -190,20 +190,20 @@
       ? document.querySelector('form[data-webhook]').getAttribute('data-webhook') : '';
 
     var t = anglais ? {
-      sur: 'Free, with your audit',
+      sur: 'No commitment',
       titre: 'A showcase website, <span class="grad-text">on us</span>',
-      texte: 'Leave us your e-mail: we send you the free audit details and the showcase website that comes with it. No commitment, no sales call unless you ask for one.',
-      champ: 'Your work e-mail', envoyer: 'I want the offer →', fermer: 'Close',
-      mention: 'One e-mail, no list, no sharing with anyone.',
-      merci: 'Thank you. We write to you within one working day.',
+      texte: 'Your business, your services, how to reach you. A simple site, put online under your name, and it is yours to keep. Leave us your e-mail and we send you the details and the timeline.',
+      champ: 'Your work e-mail', envoyer: 'I want my free website →', fermer: 'Close',
+      mention: 'One e-mail, no mailing list, no sharing with anyone.',
+      merci: 'Thank you. We send you the details within one working day.',
       erreur: 'Something went wrong. Write to us at contact@quantum-agency.fr.'
     } : {
-      sur: 'Offert avec votre audit',
+      sur: 'Sans engagement',
       titre: 'Un site vitrine, <span class="grad-text">offert</span>',
-      texte: "Laissez-nous votre e-mail : nous vous envoyons le détail de l'audit gratuit et du site vitrine qui l'accompagne. Sans engagement, et sans appel commercial si vous n'en demandez pas.",
-      champ: 'Votre e-mail professionnel', envoyer: 'Je veux l\'offre →', fermer: 'Fermer',
+      texte: "Votre activité, vos services, comment vous joindre. Un site simple, mis en ligne à votre nom, et il est à vous. Laissez-nous votre e-mail, nous vous envoyons le détail et les délais.",
+      champ: 'Votre e-mail professionnel', envoyer: 'Je veux mon site offert →', fermer: 'Fermer',
       mention: 'Un seul e-mail, aucune liste de diffusion, aucun partage.',
-      merci: 'Merci. Nous vous écrivons sous 24 heures ouvrées.',
+      merci: 'Merci. Nous vous envoyons le détail sous 24 heures ouvrées.',
       erreur: 'Une erreur est survenue. Écrivez-nous à contact@quantum-agency.fr.'
     };
 
