@@ -2,6 +2,13 @@ name = "quantum-formulaire"
 main = "worker.js"
 compatibility_date = "2026-07-29"
 
+# Adresse propre plutôt que workers.dev : le formulaire appelle un sous-domaine
+# du site, donc une origine de confiance pour le navigateur comme pour le
+# visiteur qui inspecte les requêtes.
+[[routes]]
+pattern = "api.quantum-agency.fr"
+custom_domain = true
+
 [vars]
 DESTINATAIRE = "contact@quantum-agency.fr"
 EXPEDITEUR = "Site Quantum <formulaire@quantum-agency.fr>"

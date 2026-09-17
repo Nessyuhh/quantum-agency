@@ -129,15 +129,10 @@ quelques heures. Rien n'est perdu.
 
 ---
 
-## Après la bascule, si vous voulez l'adresse propre pour le formulaire
+## Fait : le formulaire répond sur api.quantum-agency.fr
 
-Une fois la zone active chez Cloudflare :
-
-1. Dans `formulaire/wrangler.toml`, ajouter la route du Worker sur
-   `api.quantum-agency.fr/*`.
-2. Redéployer : `cd formulaire && wrangler deploy`.
-3. Rebrancher le site : `./formulaire/brancher.sh https://api.quantum-agency.fr`.
-4. Ajouter la nouvelle origine dans `ORIGINES_AUTORISEES` si nécessaire, puis
-   valider et pousser.
-
-Dites-le-moi à ce moment-là, je m'en charge.
+La bascule a eu lieu le 17 septembre 2026. Le Worker est déclaré en domaine
+personnalisé dans `formulaire/wrangler.toml`, Cloudflare a créé
+l'enregistrement `api` tout seul, et les douze formulaires du site pointent
+dessus. L'ancienne adresse en `workers.dev` continue de répondre, sans être
+utilisée par le site.
