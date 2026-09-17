@@ -37,9 +37,25 @@
     }
   };
 
-  /* ── Formulaire d'audit → webhook n8n (URL dans data-webhook du <form>) ── */
+  /* ── Formulaire d'audit ──
+     L'URL du service qui reçoit la demande est dans data-webhook du <form>.
+     Les messages suivent la langue de la page : un visiteur anglophone qui
+     lisait « Merci ! Votre demande a été reçue » ne savait pas si son envoi
+     avait abouti. */
   var form = document.querySelector('form[data-webhook]');
   if (form) {
+    var enAnglais = document.documentElement.lang === 'en';
+    var messages = enAnglais ? {
+      absent: 'This form is not connected yet. Write to us at contact@quantum-agency.fr in the meantime.',
+      envoi: 'Sending…',
+      succes: 'Thank you. We have received your request and will get back to you within one working day.',
+      erreur: 'Something went wrong. Write to us at contact@quantum-agency.fr.'
+    } : {
+      absent: 'Formulaire pas encore connecté. Écrivez-nous directement à contact@quantum-agency.fr en attendant.',
+      envoi: 'Envoi en cours…',
+      succes: 'Merci ! Votre demande a été reçue. Nous vous recontactons sous 24h.',
+      erreur: 'Une erreur est survenue. Écrivez-nous directement à contact@quantum-agency.fr.'
+    };
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var url = form.getAttribute('data-webhook') || '';
@@ -52,7 +68,7 @@
       data.timestamp = new Date().toISOString();
 
       if (!/^https?:\/\//.test(url)) {
-        note.textContent = 'Formulaire pas encore connecté. Écrivez-nous directement à contact@quantum-agency.fr en attendant.';
+        note.textContent = messages.absent;
         note.className = 'form-note error';
         console.warn('[Quantum] data-webhook non configuré sur le formulaire.');
         return;
@@ -60,7 +76,7 @@
 
       var label = btn.textContent;
       btn.disabled = true;
-      btn.textContent = 'Envoi en cours…';
+      btn.textContent = messages.envoi;
       note.textContent = '';
       note.className = 'form-note';
 
@@ -68,13 +84,13 @@
         .then(function (res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           form.reset();
-          note.textContent = 'Merci ! Votre demande a été reçue. Nous vous recontactons sous 24h.';
+          note.textContent = messages.succes;
           note.className = 'form-note success';
           /* Conversion GA4 : ne part que si le visiteur a accepté la mesure (consent.js). */
           if (window.quantumSuivre) window.quantumSuivre('generate_lead', { form: 'audit', page: location.pathname });
         })
         .catch(function () {
-          note.textContent = 'Une erreur est survenue. Écrivez-nous directement à contact@quantum-agency.fr.';
+          note.textContent = messages.erreur;
           note.className = 'form-note error';
         })
         .then(function () {
