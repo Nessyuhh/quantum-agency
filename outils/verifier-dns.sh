@@ -4,9 +4,13 @@
 #   ./outils/verifier-dns.sh            interroge le résolveur public
 #   ./outils/verifier-dns.sh ns.exemple interroge un serveur précis
 #
-# À lancer AVANT la bascule vers Cloudflare, pour la photo de référence, puis
-# APRÈS l'import chez Cloudflare, avant de changer les serveurs de noms chez
-# Hostinger. Les deux sorties doivent être identiques.
+# Les contrôles de courrier passent par le DNS, ceux du site par une vraie
+# requête : derrière le proxy Cloudflare, les adresses IP du domaine sont
+# celles de Cloudflare et ne disent plus rien de l'hébergement.
+#
+# Un résolveur local peut garder l'ancienne délégation en cache pendant une
+# journée. Pour un résultat fiable pendant une bascule, interroger un résolveur
+# public : ./outils/verifier-dns.sh 1.1.1.1
 
 set -uo pipefail
 DOMAINE="quantum-agency.fr"
@@ -31,10 +35,25 @@ verifier() {
 printf '\nZone de %s %s\n\n' "$DOMAINE" "${SERVEUR:+(via $SERVEUR)}"
 
 printf ' SITE\n'
-for ip in 185.199.108.153 185.199.109.153 185.199.110.153 185.199.111.153; do
-  verifier "A $ip" A "$DOMAINE" "$ip"
-done
-verifier "CNAME www" CNAME "www.$DOMAINE" "nessyuhh.github.io"
+# Derrière le proxy Cloudflare, le DNS ne rend plus les adresses de GitHub :
+# il rend celles du réseau de Cloudflare. Vérifier les adresses n'a donc plus
+# de sens, seule compte la réponse réelle du site.
+verifier_http() {
+  local libelle="$1" url="$2" attendu="$3"
+  local code
+  code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "$url" 2>/dev/null)"
+  if [ "$code" = "$attendu" ]; then
+    printf '  \033[32m✓\033[0m %-34s %s\n' "$libelle" "$code"
+    ok=$((ok+1))
+  else
+    printf '  \033[31m✗\033[0m %-34s attendu %s, obtenu %s\n' "$libelle" "$attendu" "${code:-aucune réponse}"
+    ko=$((ko+1))
+  fi
+}
+verifier_http "accueil" "https://$DOMAINE/" 200
+verifier_http "une page intérieure" "https://$DOMAINE/services.html" 200
+verifier_http "version anglaise" "https://$DOMAINE/en/" 200
+verifier_http "www redirige" "https://www.$DOMAINE/" 301
 
 printf '\n RÉCEPTION DES E-MAILS\n'
 verifier "MX principal" MX "$DOMAINE" "mx1.improvmx.com"
@@ -44,6 +63,10 @@ verifier "SPF" TXT "$DOMAINE" "include:spf.improvmx.com"
 printf '\n ENVOI DEPUIS LE FORMULAIRE\n'
 verifier "DKIM Resend" TXT "resend._domainkey.$DOMAINE" "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIHcnZKX57fO3tKxVCAT"
 verifier "DMARC" TXT "_dmarc.$DOMAINE" "v=DMARC1"
+# Retours de Resend : sans eux, les rejets et les plaintes ne reviennent pas,
+# et la réputation du domaine se dégrade sans que rien ne le signale.
+verifier "MX de retour Resend" MX "send.$DOMAINE" "feedback-smtp.eu-west-1.amazonses.com"
+verifier "SPF de retour Resend" TXT "send.$DOMAINE" "include:amazonses.com"
 
 printf '\n SERVEURS DE NOMS\n'
 printf '  %s\n' "$(dig +short NS "$DOMAINE" $AT | tr '\n' ' ')"
