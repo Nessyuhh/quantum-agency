@@ -1,6 +1,6 @@
 name = "quantum-formulaire"
 main = "worker.js"
-compatibility_date = "2026-09-01"
+compatibility_date = "2026-07-29"
 
 [vars]
 DESTINATAIRE = "contact@quantum-agency.fr"
