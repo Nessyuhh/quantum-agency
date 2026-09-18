@@ -33,20 +33,24 @@
   var CLE = 'quantum-consentement';
   var DUREE = 182 * 86400000;           /* six mois, le maximum recommandé par la CNIL */
 
-  /* La bannière que tout le monde connaît : une phrase, un lien, deux boutons
-     de même poids. Le détail (quoi, pourquoi, combien de temps) est sur la
-     page de confidentialité, pas dans la bannière : personne ne la lit. */
+  /* Formulation reprise de la bannière de Tesla, sans la phrase sur les
+     transferts hors du pays ni la personnalisation des publicités, que nous
+     ne faisons pas. Un titre, une phrase, un lien, deux boutons de même poids.
+     Le détail (quoi, pourquoi, combien de temps) est sur la page de
+     confidentialité. */
   var anglais = document.documentElement.lang === 'en';
   var t = anglais ? {
-    titre: 'Cookies',
-    texte: 'This site uses cookies to measure its audience.',
-    lien: 'Learn more', href: '/en/confidentialite.html',
-    refuser: 'Decline all', accepter: 'Accept all', fermer: 'Close'
+    titre: 'Help us improve our website with cookies',
+    texte: 'We use cookies to analyze website performance and improve your experience.',
+    avantLien: 'See ', lien: 'cookie settings', apresLien: ' to learn more.',
+    href: '/en/confidentialite.html',
+    refuser: 'Reject', accepter: 'Accept', fermer: 'Close'
   } : {
-    titre: 'Cookies',
-    texte: 'Ce site utilise des cookies pour mesurer son audience.',
-    lien: 'En savoir plus', href: '/confidentialite.html',
-    refuser: 'Tout refuser', accepter: 'Tout accepter', fermer: 'Fermer'
+    titre: 'Aidez-nous à améliorer notre site grâce aux cookies',
+    texte: 'Nous utilisons des cookies pour analyser les performances du site et améliorer votre expérience.',
+    avantLien: 'Consultez les ', lien: 'paramètres relatifs aux cookies', apresLien: ' pour en savoir plus.',
+    href: '/confidentialite.html',
+    refuser: 'Rejeter', accepter: 'Accepter', fermer: 'Fermer'
   };
 
   /* ── Consent Mode : tout refusé tant que le visiteur n'a rien dit ── */
@@ -126,6 +130,7 @@
     '.consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:9600;max-width:440px;background:var(--bg,#F6F6F3);color:var(--ink,#111318);border:1px solid var(--line-strong,rgba(17,19,24,.45));padding:20px 22px;font-family:var(--text,system-ui,sans-serif);box-shadow:0 18px 40px rgba(17,19,24,.14);transform:translateY(12px);opacity:0;transition:transform .35s var(--ease,ease),opacity .35s var(--ease,ease)}' +
     '.consent.ouverte{transform:none;opacity:1}' +
     '.consent p{margin:0;font-size:.92rem;line-height:1.5}' +
+    '.consent .consent-titre{font-weight:600;margin-bottom:4px}' +
     '.consent p a{color:inherit;text-decoration:underline;text-underline-offset:3px}' +
     '.consent-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}' +
     '.consent-actions .btn{flex:1 1 120px;padding:.75rem 1rem}' +
@@ -139,12 +144,13 @@
     boite = document.createElement('div');
     boite.className = 'consent';
     boite.setAttribute('role', 'dialog');
-    boite.setAttribute('aria-label', t.titre);
+    boite.setAttribute('aria-labelledby', 'consent-titre');
     boite.innerHTML =
-      '<p>' + t.texte + ' <a href="' + t.href + '">' + t.lien + '</a></p>' +
+      '<p class="consent-titre" id="consent-titre">' + t.titre + '</p>' +
+      '<p>' + t.texte + ' ' + t.avantLien + '<a href="' + t.href + '">' + t.lien + '</a>' + t.apresLien + '</p>' +
       '<div class="consent-actions">' +
-        '<button type="button" class="btn" data-choix="non">' + t.refuser + '</button>' +
         '<button type="button" class="btn" data-choix="oui">' + t.accepter + '</button>' +
+        '<button type="button" class="btn" data-choix="non">' + t.refuser + '</button>' +
       '</div>';
     boite.addEventListener('click', function (e) {
       var b = e.target.closest('[data-choix]');
