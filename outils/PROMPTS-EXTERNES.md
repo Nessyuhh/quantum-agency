@@ -118,7 +118,7 @@ clientèle. C'est celui à demander.
 > national des entreprises :
 >
 > - Dénomination : QUANTUM CONSULTING (QC)
-> - Forme : société par actions simplifiée
+> - Forme : société par actions simplifiée unipersonnelle (SASU)
 > - Siège : 229 rue Saint-Honoré, 75001 Paris, France
 > - SIREN 982 259 038, SIRET du siège 982 259 038 00015, RCS Paris
 > - TVA intracommunautaire : FR61 982 259 038

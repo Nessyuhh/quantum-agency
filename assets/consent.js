@@ -33,20 +33,20 @@
   var CLE = 'quantum-consentement';
   var DUREE = 182 * 86400000;           /* six mois, le maximum recommandé par la CNIL */
 
-  /* Le titre dit « Cookies » et non « Mesure d'audience » : c'est le mot que
-     tout le monde reconnaît au premier coup d'œil, donc celui qui fait décider
-     vite. Le lien du pied de page porte déjà « Gérer les cookies ». */
+  /* La bannière que tout le monde connaît : une phrase, un lien, deux boutons
+     de même poids. Le détail (quoi, pourquoi, combien de temps) est sur la
+     page de confidentialité, pas dans la bannière : personne ne la lit. */
   var anglais = document.documentElement.lang === 'en';
   var t = anglais ? {
     titre: 'Cookies',
-    texte: 'We use cookies to measure how this site is used, with Google Analytics. Nothing is stored on your device unless you agree, and you can change your mind at any time.',
-    lien: 'Privacy and cookies', href: '/en/confidentialite.html',
-    refuser: 'Decline', accepter: 'Accept', fermer: 'Close'
+    texte: 'This site uses cookies to measure its audience.',
+    lien: 'Learn more', href: '/en/confidentialite.html',
+    refuser: 'Decline all', accepter: 'Accept all', fermer: 'Close'
   } : {
     titre: 'Cookies',
-    texte: 'Nous utilisons des cookies pour mesurer la fréquentation de ce site avec Google Analytics. Rien n’est déposé sur votre appareil sans votre accord, et vous pouvez changer d’avis à tout moment.',
-    lien: 'Confidentialité et cookies', href: '/confidentialite.html',
-    refuser: 'Refuser', accepter: 'Accepter', fermer: 'Fermer'
+    texte: 'Ce site utilise des cookies pour mesurer son audience.',
+    lien: 'En savoir plus', href: '/confidentialite.html',
+    refuser: 'Tout refuser', accepter: 'Tout accepter', fermer: 'Fermer'
   };
 
   /* ── Consent Mode : tout refusé tant que le visiteur n'a rien dit ── */
@@ -125,10 +125,9 @@
   style.textContent =
     '.consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:9600;max-width:440px;background:var(--bg,#F6F6F3);color:var(--ink,#111318);border:1px solid var(--line-strong,rgba(17,19,24,.45));padding:20px 22px;font-family:var(--text,system-ui,sans-serif);box-shadow:0 18px 40px rgba(17,19,24,.14);transform:translateY(12px);opacity:0;transition:transform .35s var(--ease,ease),opacity .35s var(--ease,ease)}' +
     '.consent.ouverte{transform:none;opacity:1}' +
-    '.consent .eyebrow{margin:0 0 8px}' +
     '.consent p{margin:0;font-size:.92rem;line-height:1.5}' +
     '.consent p a{color:inherit;text-decoration:underline;text-underline-offset:3px}' +
-    '.consent-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}' +
+    '.consent-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}' +
     '.consent-actions .btn{flex:1 1 120px;padding:.75rem 1rem}' +
     '@media(max-width:768px){.consent{bottom:84px;max-width:none}}' +
     '@media(prefers-reduced-motion:reduce){.consent{transition:none}}';
@@ -140,10 +139,9 @@
     boite = document.createElement('div');
     boite.className = 'consent';
     boite.setAttribute('role', 'dialog');
-    boite.setAttribute('aria-labelledby', 'consent-titre');
+    boite.setAttribute('aria-label', t.titre);
     boite.innerHTML =
-      '<p class="eyebrow" id="consent-titre">' + t.titre + '</p>' +
-      '<p>' + t.texte + ' <a href="' + t.href + '">' + t.lien + '</a>.</p>' +
+      '<p>' + t.texte + ' <a href="' + t.href + '">' + t.lien + '</a></p>' +
       '<div class="consent-actions">' +
         '<button type="button" class="btn" data-choix="non">' + t.refuser + '</button>' +
         '<button type="button" class="btn" data-choix="oui">' + t.accepter + '</button>' +
