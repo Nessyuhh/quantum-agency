@@ -143,7 +143,7 @@ def aligner(chemin: pathlib.Path) -> list[str]:
             faits.append('logo')
 
     if FAVICON.search(s):
-        s = FAVICON.sub('<link rel="icon" type="image/svg+xml" href="/favicon.svg">', s)
+        s = FAVICON.sub('<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">\n<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">\n<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">', s)
         faits.append('favicon')
 
     if s != avant:
