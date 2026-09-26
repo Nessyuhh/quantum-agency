@@ -81,73 +81,69 @@ Le fichier de tests couvre les neuf cas ci-dessus sans appeler le réseau :
 node ../outils/test-formulaire.mjs
 ```
 
-## Chatbot
+## Assistant du site (chatbot), gratuit
 
 Le même Worker sert l'assistant du site sur la route `/chat`
-(`formulaire/chat.js`). Le navigateur envoie la conversation, le Worker
-ajoute le texte intégral du site (`/llms-full.txt`, relu au plus une fois par
-heure) et interroge Claude, puis renvoie la réponse en flux.
+(`formulaire/chat.js`). **Tout est gratuit, et le reste par construction.**
 
 ```
-Navigateur  ──POST /chat──▶  Worker  ──▶  API Claude (claude-opus-5)
-            ◀──── flux SSE ────┘
+Navigateur ──POST /chat──▶ Worker ──1──▶ Groq, offre gratuite (Llama 3.3 70B)
+                             │    └─2──▶ Workers AI, offre gratuite (Mistral Small 3.1)
+           ◀── flux SSE ─────┘
+           sinon 503 : la fenêtre répond seule, recherche dans le site (navigateur)
 ```
 
-Garde-fous en place :
+1. Le Worker cherche dans `assets/chat-index-fr.json` (ou `-en`) les passages
+   du site qui répondent à la question, avec le moteur partagé
+   `assets/chat-recherche.js`.
+2. Il fait rédiger la réponse par un modèle gratuit, à partir de ces passages
+   seulement : Groq d'abord, Workers AI si Groq a atteint son quota.
+3. Si aucun modèle ne répond, la fenêtre du site cherche elle-même la
+   meilleure question-réponse du site et la cite, ou oriente vers le contact.
 
-- **Origine** : seules nos deux adresses de site sont servies, comme pour le formulaire.
-- **Coût** : 40 messages par adresse IP et par heure, 1 500 par jour pour
-  tout le site. Si le compteur est indisponible, le chat refuse plutôt que de
-  dépenser sans compter. Le préfixe (consignes et contenu du site) est mis en
-  cache côté Claude : relu à un dixième du prix.
-- **Conversation** : 16 messages au plus, 1 200 caractères par message,
-  12 000 au total ; au-delà, les plus anciens sont oubliés.
-- **Contenu** : le modèle ne répond qu'à partir du site, n'invente ni prix ni
-  engagement, et renvoie vers l'audit pour le reste. Les consignes sont en
-  tête de `chat.js`.
-- **Refus** : en cas de refus de sécurité du modèle, la requête est rejouée
-  automatiquement sur un modèle de repli (`fallbacks: "default"`), sinon le
-  visiteur reçoit un message poli avec l'adresse de contact.
-- **Page** : la réponse n'est jamais insérée comme du HTML, seuls nos propres
-  liens deviennent cliquables.
+Pourquoi c'est gratuit :
 
-Tests, sans réseau :
+- **Groq**, offre gratuite sans carte bancaire : au-delà du quota, l'API
+  répond 429, elle ne facture pas. Ne jamais ajouter de moyen de paiement au
+  compte Groq.
+- **Workers AI**, offre gratuite du compte Cloudflare, 10 000 unités par
+  jour : au-delà, la requête échoue, elle n'est pas facturée sur l'offre
+  gratuite de Workers.
+- Nos plafonds restent en dessous des quotas, au cas où l'un des comptes
+  passerait un jour sur une offre payante : 900 réponses Groq et 90 réponses
+  Workers AI par jour, 25 messages par adresse IP et par heure.
 
-```bash
-cd formulaire && npm ci && cd .. && node outils/test-chat.mjs
-```
+Tests, sans réseau : `node outils/test-chat.mjs`.
+
+La base de connaissance se régénère depuis les pages :
+`python3 outils/chat-index.py`.
 
 ### Mise en service
 
-Le bouton du chat est masqué tant que `CHATBOT_ACTIF` vaut `false` en tête du
-bloc « Chatbot » de `assets/quantum.js`. On peut l'essayer sur n'importe
-quelle page en ajoutant `?chat=1` à l'adresse.
-
-Prompt à transmettre à une session connectée aux comptes Anthropic et
-Cloudflare :
+Le bouton est déjà actif sur le site. Tant que le Worker n'est pas redéployé,
+la route `/chat` n'existe pas et l'assistant répond par la recherche locale :
+il fonctionne, mais il cite au lieu de rédiger. Pour qu'il rédige :
 
 > Contexte. Le site https://quantum-agency.fr (dépôt Nessyuhh/quantum-agency)
-> a un chatbot servi par le Cloudflare Worker `quantum-formulaire`, sur
-> `https://api.quantum-agency.fr/chat`. Le code est dans `formulaire/`. Il
-> manque la clé d'API Claude et le déploiement.
+> a un assistant servi par le Cloudflare Worker `quantum-formulaire`, route
+> `https://api.quantum-agency.fr/chat`, code dans `formulaire/`. Tout doit
+> rester gratuit : aucun moyen de paiement, nulle part.
 >
-> 1. Sur https://platform.claude.com, dans l'organisation de Quantum
->    Consulting, crée une clé d'API nommée `quantum-agency-chatbot`, dans un
->    espace de travail dédié au site, avec une limite de dépense mensuelle que
->    tu me proposes avant de la fixer (point de départ suggéré : 50 dollars).
->    Montre-moi chaque écran avant de valider. Ne colle jamais la clé dans un
->    fichier ni dans la conversation.
-> 2. Depuis `formulaire/` : `npm ci`, puis `npx wrangler secret put
->    ANTHROPIC_API_KEY` en me laissant coller la clé moi-même, puis
->    `npx wrangler deploy`.
-> 3. Vérifie avec :
->    `curl -N -X POST https://api.quantum-agency.fr/chat -H 'Origin: https://quantum-agency.fr' -H 'Content-Type: application/json' -d '{"langue":"fr","messages":[{"role":"user","content":"Que contient l audit gratuit ?"}]}'`
->    Attendu : une suite de lignes `data: {"t":...}` puis `data: {"fin":true}`.
+> 1. Crée un compte gratuit sur https://console.groq.com, sans carte
+>    bancaire, et une clé d'API nommée `quantum-agency-site`. Montre-moi
+>    chaque écran avant de valider. Si une étape demande un paiement,
+>    arrête-toi. Ne colle jamais la clé dans un fichier ni dans la
+>    conversation.
+> 2. Depuis `formulaire/` : `npx wrangler secret put GROQ_API_KEY` en me
+>    laissant coller la clé moi-même, puis `npx wrangler deploy`. Le fichier
+>    `wrangler.toml` déclare déjà la liaison Workers AI. Vérifie dans le
+>    tableau de bord Cloudflare que le compte est sur l'offre gratuite de
+>    Workers (« Workers Free ») et dis-le-moi.
+> 3. Vérifie :
+>    `curl -N -X POST https://api.quantum-agency.fr/chat -H 'Origin: https://quantum-agency.fr' -H 'Content-Type: application/json' -d '{"langue":"fr","messages":[{"role":"user","content":"Que contient le site vitrine offert ?"}]}'`
+>    Attendu : des lignes `data: {"t":...}` puis `data: {"fin":true,...}`.
 >    Une origine étrangère doit répondre 403.
-> 4. Dans `assets/quantum.js`, passe `CHATBOT_ACTIF` à `true`, commite avec un
->    message en français sans tiret long, et pousse.
-> 5. Ouvre le site sur ordinateur et sur téléphone, pose deux questions au
->    chat, et envoie-moi une capture de chaque.
+> 4. Ouvre le site sur ordinateur et sur téléphone, pose deux questions à
+>    l'assistant, et envoie-moi une capture de chaque.
 >
-> Ne modifie aucun autre fichier. Si une étape demande un paiement ou
-> l'acceptation de conditions, arrête-toi et demande-moi.
+> Ne modifie aucun fichier du dépôt.

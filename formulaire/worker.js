@@ -1,7 +1,7 @@
 /* ============================================================================
    Formulaire d'audit : réception des demandes et envoi par e-mail.
    Cloudflare Worker, appelé par assets/quantum.js (POST JSON).
-   La route /chat, le chatbot du site, est dans chat.js.
+   La route /chat, l'assistant du site, est dans chat.js.
 
    Secrets attendus (wrangler secret put) :
      RESEND_API_KEY   clé Resend dédiée à ce site
@@ -133,7 +133,7 @@ export default {
     if (request.method !== 'POST') return new Response('Méthode non autorisée', { status: 405 });
     if (!origine) return new Response('Origine non autorisée', { status: 403 });
 
-    /* Chatbot du site : même origine autorisée, même Worker, route dédiée. */
+    /* Assistant du site : même origine autorisée, même Worker, route dédiée. */
     if (new URL(request.url).pathname === '/chat') return discuter(request, env, ctx, entetes(origine));
 
     let data;

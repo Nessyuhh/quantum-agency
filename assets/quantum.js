@@ -560,9 +560,9 @@
      fenêtre de discussion (script et styles) ne se télécharge qu'au premier
      survol ou au premier clic, donc elle ne coûte rien au visiteur qui ne
      s'en sert pas, ni à la note de performance.
-     À passer à true une fois le Worker muni de sa clé : voir
-     formulaire/README.md, section « Chatbot ». */
-  var CHATBOT_ACTIF = false;
+     Entièrement gratuit : modèles d'IA en offre gratuite, et à défaut une
+     recherche dans le site faite par le navigateur. Voir formulaire/chat.js. */
+  var CHATBOT_ACTIF = true;
   (function () {
     if (!CHATBOT_ACTIF && !/[?&]chat=1\b/.test(location.search)) return;
     if (/^\/(outils|apercus|archives|charte)\//.test(location.pathname)) return;
@@ -570,6 +570,8 @@
     b.type = 'button';
     b.className = 'chat-lanceur';
     b.setAttribute('aria-haspopup', 'dialog');
+    /* Nom explicite : sur téléphone, le libellé visible est masqué. */
+    b.setAttribute('aria-label', anglaisPage ? 'Ask our assistant a question' : 'Poser une question à notre assistant');
     b.innerHTML = '<svg aria-hidden="true" viewBox="0 0 64 64"><use href="#qMark"/></svg><span>' + (anglaisPage ? 'Ask us' : 'Une question ?') + '</span>';
     document.body.appendChild(b);
 

@@ -4,8 +4,8 @@ Six tâches demandent un accès à un compte tiers, donc une autre session
 Claude Code, connectée à ce compte. Chaque bloc ci-dessous se copie tel quel :
 il est écrit pour être lu par une session qui ne sait rien de ce projet.
 
-Ordre d'intérêt : 5 d'abord, c'est la sécurité ; puis 1 avant 2, les deux
-avant 3 et 4 ; 6 quand le chatbot doit être mis en service.
+Ordre d'intérêt : 5 d'abord, c'est la sécurité ; 6 pour que l'assistant
+rédige ses réponses ; puis 1 avant 2, les deux avant 3 et 4.
 
 Règle commune, rappelée dans chaque prompt : **rien ne se crée ni ne s'envoie
 sans l'accord explicite de l'utilisateur**, prise de compte comprise.
@@ -276,7 +276,7 @@ régler qu'au niveau de Cloudflare, qui est devant le site.
 
 ---
 
-## 6. Mise en service du chatbot
+## 6. Assistant du site : clé Groq gratuite et déploiement
 
-Voir `formulaire/README.md`, section « Chatbot » : la procédure complète y
-est, avec le prompt à transmettre.
+Le prompt est dans `formulaire/README.md`, section « Assistant du site
+(chatbot), gratuit », partie « Mise en service ».

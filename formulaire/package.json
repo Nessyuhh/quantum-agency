@@ -1,9 +1,0 @@
-{
-  "name": "quantum-formulaire",
-  "private": true,
-  "type": "module",
-  "description": "Worker Cloudflare de quantum-agency.fr : formulaire d'audit et chatbot",
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.128.0"
-  }
-}

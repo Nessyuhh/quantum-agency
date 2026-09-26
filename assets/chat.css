@@ -34,6 +34,8 @@
 .chat-msg ul { padding-left: 1.1rem; display: grid; gap: 0.25rem; }
 .chat-msg li::marker { color: var(--violet); }
 .chat-msg a { color: var(--violet); text-underline-offset: 3px; word-break: break-word; }
+.chat-sources { margin-top: 0.7em; padding-top: 0.55em; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.66rem; line-height: 1.5; color: var(--ink-3); }
+.chat-sources a { color: var(--ink-2); }
 .chat-assistant { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--violet-bright); }
 .chat-user { align-self: flex-end; background: var(--ink); color: var(--bg); }
 .chat-erreur { border-left-color: #b91c1c; color: #7f1d1d; }

@@ -351,15 +351,26 @@ caractères, ils étaient coupés dans les résultats. `llms-full.txt`, génér�
 `outils/llms-full.py` depuis les pages : le texte intégral pour les
 assistants, et la base de connaissance du chatbot.
 
-**Chatbot.** Route `/chat` du Worker existant (`formulaire/chat.js`), Claude
-répond à partir de `llms-full.txt` uniquement, en flux. Plafonds par adresse
-IP et par jour, refus si le compteur est muet, préfixe mis en cache.
-Côté site, seul un bouton est chargé ; la fenêtre (`assets/chat.js`,
-`assets/chat.css`) ne se télécharge qu'au premier survol. La réponse n'est
-jamais insérée comme du HTML. Masqué tant que `CHATBOT_ACTIF` vaut `false` :
-la mise en service demande une clé d'API, procédure dans
-`formulaire/README.md`. Essai possible sur toute page avec `?chat=1`.
-Mention ajoutée à la page de confidentialité, dans les deux langues.
+**Assistant du site, gratuit.** Contrainte posée par l'utilisateur : rien de
+payant. Une première version appelait Claude ; elle a été retirée. La version
+retenue est une chaîne entièrement gratuite, dans le Worker existant
+(`formulaire/chat.js`) : le Worker choisit dans le site les passages utiles,
+puis fait rédiger la réponse par Groq (offre gratuite, Llama 3.3 70B), ou
+par Workers AI (offre gratuite du compte Cloudflare, Mistral Small 3.1) quand
+Groq a atteint son quota. Les deux offres refusent au-delà du quota, elles ne
+facturent pas, et nos plafonds restent en dessous. Si aucun modèle ne répond,
+la fenêtre cherche elle-même dans le site et cite la réponse : le visiteur a
+toujours quelque chose.
+
+La base de connaissance, `assets/chat-index-*.json`, est générée depuis les
+pages par `outils/chat-index.py` : les 500 questions-réponses du site (FAQ,
+page métier, articles) et les sections des pages de services. Le moteur de
+recherche, `assets/chat-recherche.js`, sert au Worker comme au navigateur.
+
+Côté site, seul le bouton est chargé ; la fenêtre ne se télécharge qu'au
+premier survol, la base qu'à l'ouverture. La réponse n'est jamais insérée
+comme du HTML. Mise en service des modèles : `formulaire/README.md`. Mention
+ajoutée à la page de confidentialité, dans les deux langues.
 
 ## 12. Règles de travail, à respecter par la suite
 
@@ -398,19 +409,21 @@ Mention ajoutée à la page de confidentialité, dans les deux langues.
 | `outils/securiser.py` | CSP, référent, gestionnaires en ligne, noindex des pages de travail |
 | `outils/verifier-securite.sh` | En-têtes et fichiers internes, en production |
 | `outils/llms-full.py` | Régénère `llms-full.txt` depuis les pages |
-| `outils/test-chat.mjs` | Onze tests du chatbot, sans réseau |
-| `formulaire/chat.js` | Route `/chat` du Worker |
-| `assets/chat.js`, `assets/chat.css` | Fenêtre du chatbot, chargée à la demande |
+| `outils/test-chat.mjs` | Onze tests de l'assistant, sans réseau |
+| `outils/chat-index.py` | Régénère la base de connaissance de l'assistant |
+| `formulaire/chat.js` | Route `/chat` du Worker : Groq, puis Workers AI |
+| `assets/chat-recherche.js` | Moteur de recherche partagé, Worker et navigateur |
+| `assets/chat.js`, `assets/chat.css` | Fenêtre de l'assistant, chargée à la demande |
 
 Après toute modification de la navigation ou du pied de page :
 
 ```bash
-python3 outils/charte-sync.py && python3 outils/blog-recharter.py && python3 outils/sitemap.py && python3 outils/securiser.py && python3 outils/llms-full.py
+python3 outils/charte-sync.py && python3 outils/blog-recharter.py && python3 outils/sitemap.py && python3 outils/securiser.py && python3 outils/llms-full.py && python3 outils/chat-index.py
 ```
 
 Et avant chaque mise en ligne, trois contrôles qui échouent s'il reste quelque
 chose à corriger :
 
 ```bash
-python3 outils/normaliser-partage.py --verifier && python3 outils/resynchroniser-faq.py --verifier && python3 outils/resynchroniser-schema.py --verifier && python3 outils/securiser.py --verifier && python3 outils/llms-full.py --verifier
+python3 outils/normaliser-partage.py --verifier && python3 outils/resynchroniser-faq.py --verifier && python3 outils/resynchroniser-schema.py --verifier && python3 outils/securiser.py --verifier && python3 outils/llms-full.py --verifier && python3 outils/chat-index.py --verifier
 ```
