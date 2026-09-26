@@ -1,0 +1,67 @@
+/* ============================================================================
+   Quantum Consulting : fenêtre du chatbot
+   Chargée à la demande avec assets/chat.js. Mêmes règles que le reste de la
+   charte : fond clair, angles vifs, filets, le dégradé du logo comme seule
+   couleur.
+   ========================================================================== */
+.chat {
+  position: fixed; right: 24px; bottom: 24px; z-index: 960;
+  width: min(400px, calc(100vw - 32px)); height: min(620px, calc(100vh - 110px));
+  display: flex; flex-direction: column; padding: 0; margin: 0;
+  background: var(--bg); border: 1px solid var(--ink); color: var(--ink);
+  box-shadow: 6px 6px 0 var(--violet-bright);
+  opacity: 0; transform: translateY(16px); transform-origin: bottom right;
+  transition: opacity 0.25s var(--ease), transform 0.3s var(--ease);
+}
+.chat.chat-visible { opacity: 1; transform: none; }
+.chat[hidden] { display: none; }
+/* Filet dégradé en tête : la barre de progression du site, en miniature. */
+.chat::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--grad-h); }
+
+.chat-tete { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 14px 14px 18px; border-bottom: 1px solid var(--line); }
+.chat-marque { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.chat-marque svg { width: 30px; height: 30px; flex-shrink: 0; }
+.chat-tete h2 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.03em; }
+.chat-etat { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+.chat-occupe .chat-etat { color: var(--violet); }
+.chat-actions { display: flex; gap: 6px; }
+.chat-bouton { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--line); color: var(--ink-2); font-family: var(--mono); font-size: 0.95rem; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.chat-bouton:hover, .chat-bouton:focus-visible { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.chat-fil { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 18px 18px 8px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+.chat-msg { max-width: 88%; font-size: 0.92rem; line-height: 1.55; padding: 10px 13px; }
+.chat-msg p + p, .chat-msg p + ul, .chat-msg ul + p { margin-top: 0.5em; }
+.chat-msg ul { padding-left: 1.1rem; display: grid; gap: 0.25rem; }
+.chat-msg li::marker { color: var(--violet); }
+.chat-msg a { color: var(--violet); text-underline-offset: 3px; word-break: break-word; }
+.chat-assistant { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--violet-bright); }
+.chat-user { align-self: flex-end; background: var(--ink); color: var(--bg); }
+.chat-erreur { border-left-color: #b91c1c; color: #7f1d1d; }
+/* Curseur de frappe pendant que la réponse arrive. */
+.chat-frappe:empty::after, .chat-frappe > :last-child::after { content: ''; display: inline-block; width: 0.5em; height: 1em; margin-left: 2px; vertical-align: -0.15em; background: var(--grad); animation: chat-curseur 0.9s steps(2) infinite; }
+@keyframes chat-curseur { 50% { opacity: 0; } }
+
+.chat-pistes { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px 10px; }
+.chat-pistes:empty { display: none; }
+.chat-piste { font-family: var(--mono); font-size: 0.68rem; line-height: 1.35; text-align: left; padding: 7px 10px; background: none; border: 1px solid var(--line-strong); color: var(--ink); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.chat-piste:hover, .chat-piste:focus-visible { background: var(--ink); color: var(--bg); }
+
+.chat-form { display: flex; align-items: flex-end; gap: 8px; margin: 0 14px; padding: 10px 0 10px; border-top: 1px solid var(--ink); }
+.chat-form textarea { flex: 1; resize: none; min-height: 40px; max-height: 140px; border: none; background: none; color: var(--ink); font-family: var(--text); font-size: 1rem; line-height: 1.45; padding: 9px 4px; border-radius: 0; }
+.chat-form textarea:focus { outline: none; }
+.chat-form textarea::placeholder { color: var(--ink-3); }
+.chat-envoyer { width: 44px; height: 44px; flex-shrink: 0; border: none; background: var(--grad); background-size: 200% 200%; color: #0F1113; font-family: var(--mono); font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: background-position 0.4s var(--ease); }
+.chat-envoyer:hover, .chat-envoyer:focus-visible { background-position: 100% 50%; }
+.chat-envoyer:disabled { opacity: 0.5; cursor: wait; }
+.chat-mention { font-family: var(--mono); font-size: 0.6rem; line-height: 1.45; color: var(--ink-3); padding: 0 14px 12px; }
+.chat-mention a { color: var(--ink-2); }
+
+/* Téléphone : plein écran, au-dessus de la navigation basse. */
+@media (max-width: 768px) {
+  .chat { inset: 0; width: auto; height: auto; border: none; box-shadow: none; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 9600; }
+  .chat-form textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat { transition: none; }
+  .chat-frappe:empty::after, .chat-frappe > :last-child::after { animation: none; }
+}

@@ -2,12 +2,14 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Blog IA : conseils et insights | Quantum Consulting</title>
+<title>Blog IA pour dirigeants de PME : méthodes et guides | Quantum</title>
 <meta name="description" content="Conseils pratiques, guides et analyses sur l'IA en entreprise. Audit IA, automatisation, conformité RGPD, comparatifs LLM, à destination des décideurs et équipes opérationnelles.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://quantum-agency.fr/blog.html">
-<meta property="og:title" content="Blog IA : conseils et insights | Quantum Consulting">
+<meta property="og:title" content="Blog IA pour dirigeants de PME : méthodes et guides | Quantum">
 <meta property="og:description" content="Guides, analyses et conseils pratiques sur l'IA en entreprise par les consultants de Quantum Consulting.">
 <meta property="og:url" content="https://quantum-agency.fr/blog.html">
 <meta property="og:type" content="website">
@@ -18,7 +20,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Quantum Consulting">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Blog IA : conseils et insights | Quantum Consulting">
+<meta name="twitter:title" content="Blog IA pour dirigeants de PME : méthodes et guides | Quantum">
 <meta name="twitter:description" content="Guides, analyses et conseils pratiques sur l'IA en entreprise par les consultants de Quantum Consulting.">
 <meta name="twitter:image" content="https://quantum-agency.fr/og-image.png">
 <meta name="theme-color" content="#F6F6F3">
@@ -29,7 +31,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Blog","name":"Blog IA, Quantum Consulting","url":"https://quantum-agency.fr/blog.html","description":"Conseils pratiques, guides et analyses sur l'Intelligence Artificielle en entreprise.","publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"}}
 </script>
@@ -38,32 +40,7 @@
 <link rel="alternate" hreflang="en" href="https://quantum-agency.fr/en/blog.html">
 <link rel="alternate" hreflang="x-default" href="https://quantum-agency.fr/blog.html">
 
-<script>
-/* Filtre par thème. Les cartes ne sont jamais retirées du DOM : masquer garde
-   les 100 articles visibles pour un moteur et pour qui n'a pas de JavaScript. */
-document.addEventListener('DOMContentLoaded', function () {
-  var boutons = [].slice.call(document.querySelectorAll('.bl-f'));
-  var poles = [].slice.call(document.querySelectorAll('.bl-pole'));
-  if (!boutons.length) return;
-  function appliquer(cle) {
-    poles.forEach(function (p) {
-      p.hidden = cle !== 'tous' && p.id !== 'pole-' + cle;
-    });
-    boutons.forEach(function (b) {
-      var on = b.dataset.f === cle;
-      b.classList.toggle('actif', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    /* L'URL porte le filtre : un thème se partage et se met en favori. */
-    history.replaceState(null, '', cle === 'tous' ? location.pathname : '#' + cle);
-  }
-  boutons.forEach(function (b) {
-    b.addEventListener('click', function () { appliquer(b.dataset.f); });
-  });
-  var depart = location.hash.slice(1);
-  if (depart && document.getElementById('pole-' + depart)) appliquer(depart);
-});
-</script>
+<script src="/assets/blog-filtre.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -771,7 +748,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </section>
 </main>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -827,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </footer>
 <!-- @/footer -->
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=16" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

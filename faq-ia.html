@@ -2,6 +2,8 @@
 <html lang="fr" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Questions fréquentes sur l'IA en entreprise | Quantum Consulting</title>
@@ -31,7 +33,7 @@
 <noscript></noscript>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <style>
 .page-hero { padding: 150px 0 60px; }
 .page-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 0.88; text-transform: uppercase; margin: 18px 0 22px; max-width: 14ch; }
@@ -110,59 +112,59 @@
     <div class="container">
       <div class="faq-accordion">
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Par où commencer, si nous n'y connaissons rien ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Par où commencer, si nous n'y connaissons rien ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Par l'audit gratuit. Trente minutes d'échange sur votre façon de travailler, et vous recevez trois priorités concrètes. Vous n'avez rien à préparer et rien à installer.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Que contient exactement le site vitrine offert ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Que contient exactement le site vitrine offert ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Un site simple qui présente votre entreprise : qui vous êtes, ce que vous faites, comment vous joindre. Il est mis en ligne à votre nom et vous en gardez la propriété. Il est offert sans condition : vous pouvez le demander seul, ou avec l'audit gratuit si vous voulez aussi savoir quoi automatiser chez vous.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Nos équipes ne sont pas techniques. Est-ce un problème ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Nos équipes ne sont pas techniques. Est-ce un problème ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Non, c'est le cas de la plupart de nos clients. Nos interventions et nos formations sont conçues pour des personnes qui n'ont jamais écrit une ligne de code et n'en écriront jamais.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Concrètement, qu'est-ce que vous automatisez ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Concrètement, qu'est-ce que vous automatisez ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Ce qui se répète : factures, relances, devis, tri des candidatures, réponses aux questions courantes, comptes rendus. Vous trouverez six exemples détaillés sur la page Exemples concrets.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Devons-nous changer nos logiciels ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Devons-nous changer nos logiciels ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Non. Nous nous branchons sur ce que vous utilisez déjà : logiciel de comptabilité, gestion commerciale, messagerie, documents partagés. Si un outil vous manque vraiment, nous vous le dirons, mais ce n'est pas le point de départ.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Qu'est-ce qu'un modèle d'IA, et lequel utilisez-vous ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Qu'est-ce qu'un modèle d'IA, et lequel utilisez-vous ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Un modèle d'IA est le programme qui lit, résume ou rédige un texte. Il en existe plusieurs, et aucun n'est le meilleur partout. Nous choisissons pour chaque usage celui qui convient : Claude (Anthropic) ou GPT-6 (OpenAI) pour l'analyse et la rédaction, Mistral Large 3 ou Llama 4 quand vos données doivent rester hébergées en France, Gemini 3 ou Perplexity pour la recherche documentaire. Nous ne sommes liés à aucun éditeur.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Nos données sont-elles en sécurité ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Nos données sont-elles en sécurité ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Nous utilisons des accès professionnels qui n'utilisent pas vos données pour entraîner les modèles, et, quand c'est nécessaire, des modèles hébergés en France sur des serveurs sécurisés. Ce qui doit rester dans l'entreprise y reste, et nous l'écrivons noir sur blanc.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Et le RGPD, le règlement sur la protection des données ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Et le RGPD, le règlement sur la protection des données ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Nous l'appliquons à chaque projet : quelles données sont traitées, par quel outil, où elles sont stockées, pendant combien de temps. Vous repartez avec cette documentation. Nous suivons aussi le règlement européen sur l'intelligence artificielle, qui s'applique progressivement aux entreprises.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">L'IA va-t-elle se tromper ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">L'IA va-t-elle se tromper ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Oui, parfois. C'est pour cela que chaque enchaînement que nous construisons prévoit ce qui se passe en cas de doute : la tâche est mise de côté et présentée à une personne, avec l'explication. Rien d'important ne part sans validation humaine.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Est-ce que cela remplace des postes ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Est-ce que cela remplace des postes ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Dans les entreprises que nous accompagnons, cela libère du temps sur les tâches que personne n'aime faire. Ce temps est réinvesti dans le commercial, la relation client, la qualité. Nous en parlons ouvertement avec vous et vos équipes dès le départ.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Combien de temps prend une mission ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Combien de temps prend une mission ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">L'audit gratuit : trente minutes, synthèse sous quarante-huit heures. Un premier enchaînement automatique : deux à six semaines. Brancher l'IA sur plusieurs outils : un à trois mois. Le conseil sur la durée : douze mois, avec un point mensuel.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Combien ça coûte ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Combien ça coûte ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">L'audit et le site vitrine sont gratuits. Pour le reste, nous chiffrons après l'audit, sur la base des priorités retenues, avec un devis fixe : pas de facturation au temps passé sans plafond.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Les formations peuvent-elles être financées ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Les formations peuvent-elles être financées ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Nos formations sont organisées avec nos organismes de formation partenaires certifiés. Nous vous aidons à monter le dossier de prise en charge auprès de votre organisme financeur, quand votre situation le permet.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Intervenez-vous partout en France ?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Intervenez-vous partout en France ?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Oui. Nous sommes basés à Paris et nous intervenons dans vos locaux partout en France, ou en visio quand c'est plus simple pour vous.</div></div>
         </div>
       </div>
@@ -243,7 +245,7 @@
 <!-- @/footer -->
 
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=16" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Tester une IA avant de la déployer : protocole | Quantum Consulting</title>
 <meta name="description" content="On déploie souvent sur une impression, pas sur une mesure. Un jeu de test constitué en une…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tester une IA avant de la déployer : protocole","description":"On déploie souvent sur une impression, pas sur une mesure. Un jeu de test constitué en une…","url":"https://quantum-agency.fr/blog/tester-une-ia-avant-deploiement.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/tester-une-ia-avant-deploiement.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Mise en œuvre technique","about":{"@type":"Thing","name":"Mise en œuvre technique"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Tester une IA avant de la déployer : protocole","item":"https://quantum-agency.fr/blog/tester-une-ia-avant-deploiement.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment savoir si mon cas d'usage est assez précis ?","acceptedAnswer":{"@type":"Answer","text":"Si vous pouvez décrire le processus actuel en moins de 10 étapes claires et mesurer son efficacité actuelle, le cas est suffisamment précis. Par exemple, « extraire l'adresse et le numéro de facture de 50 factures PDF par mois » est un cas valable. En revanche, « optimiser la gestion des clients » est trop vague."}},{"@type":"Question","name":"Faut-il nettoyer les données avant le test ?","acceptedAnswer":{"@type":"Answer","text":"Non. L'IA doit gérer les données telles qu'elles arrivent dans votre entreprise. Nettoyer les données pour le test fausserait les résultats. Si l'outil ne fonctionne pas avec des données brutes, il ne fonctionnera pas en production."}},{"@type":"Question","name":"Quels outils utiliser pour un test rapide ?","acceptedAnswer":{"@type":"Answer","text":"Pour un test ponctuel, utilisez des outils sans code comme Make (ex-Integromat) ou n8n pour automatiser des tâches simples. Pour des tâches de traitement de texte ou de classification, Claude ou GPT-6 via leur interface web suffisent. Évitez les solutions nécessitant une intégration complexe ou un déploiement serveur."}},{"@type":"Question","name":"Combien de temps faut-il prévoir pour configurer l'outil ?","acceptedAnswer":{"@type":"Answer","text":"Prévoyez 1 à 2 heures pour configurer un outil simple (ex : un classifieur de leads avec une instruction claire). Si la configuration dépasse 4 heures, l'outil est probablement trop complexe pour un test en une journée. Dans ce cas, simplifiez le cas d'usage ou choisissez un autre outil."}},{"@type":"Question","name":"Comment mesurer la qualité des résultats de l'IA ?","acceptedAnswer":{"@type":"Answer","text":"Comparez-les systématiquement avec une référence manuelle fiable. Par exemple, pour un outil de classification, comptez le nombre d'étiquettes correctes. Pour un outil d'extraction, vérifiez la justesse des données extraites. Utilisez un tableau Excel pour noter les erreurs et les écarts, même si c'est fastidieux."}}]}</script>
@@ -225,7 +227,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -282,7 +283,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=16" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

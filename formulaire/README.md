@@ -80,3 +80,74 @@ Le fichier de tests couvre les neuf cas ci-dessus sans appeler le réseau :
 ```bash
 node ../outils/test-formulaire.mjs
 ```
+
+## Chatbot
+
+Le même Worker sert l'assistant du site sur la route `/chat`
+(`formulaire/chat.js`). Le navigateur envoie la conversation, le Worker
+ajoute le texte intégral du site (`/llms-full.txt`, relu au plus une fois par
+heure) et interroge Claude, puis renvoie la réponse en flux.
+
+```
+Navigateur  ──POST /chat──▶  Worker  ──▶  API Claude (claude-opus-5)
+            ◀──── flux SSE ────┘
+```
+
+Garde-fous en place :
+
+- **Origine** : seules nos deux adresses de site sont servies, comme pour le formulaire.
+- **Coût** : 40 messages par adresse IP et par heure, 1 500 par jour pour
+  tout le site. Si le compteur est indisponible, le chat refuse plutôt que de
+  dépenser sans compter. Le préfixe (consignes et contenu du site) est mis en
+  cache côté Claude : relu à un dixième du prix.
+- **Conversation** : 16 messages au plus, 1 200 caractères par message,
+  12 000 au total ; au-delà, les plus anciens sont oubliés.
+- **Contenu** : le modèle ne répond qu'à partir du site, n'invente ni prix ni
+  engagement, et renvoie vers l'audit pour le reste. Les consignes sont en
+  tête de `chat.js`.
+- **Refus** : en cas de refus de sécurité du modèle, la requête est rejouée
+  automatiquement sur un modèle de repli (`fallbacks: "default"`), sinon le
+  visiteur reçoit un message poli avec l'adresse de contact.
+- **Page** : la réponse n'est jamais insérée comme du HTML, seuls nos propres
+  liens deviennent cliquables.
+
+Tests, sans réseau :
+
+```bash
+cd formulaire && npm ci && cd .. && node outils/test-chat.mjs
+```
+
+### Mise en service
+
+Le bouton du chat est masqué tant que `CHATBOT_ACTIF` vaut `false` en tête du
+bloc « Chatbot » de `assets/quantum.js`. On peut l'essayer sur n'importe
+quelle page en ajoutant `?chat=1` à l'adresse.
+
+Prompt à transmettre à une session connectée aux comptes Anthropic et
+Cloudflare :
+
+> Contexte. Le site https://quantum-agency.fr (dépôt Nessyuhh/quantum-agency)
+> a un chatbot servi par le Cloudflare Worker `quantum-formulaire`, sur
+> `https://api.quantum-agency.fr/chat`. Le code est dans `formulaire/`. Il
+> manque la clé d'API Claude et le déploiement.
+>
+> 1. Sur https://platform.claude.com, dans l'organisation de Quantum
+>    Consulting, crée une clé d'API nommée `quantum-agency-chatbot`, dans un
+>    espace de travail dédié au site, avec une limite de dépense mensuelle que
+>    tu me proposes avant de la fixer (point de départ suggéré : 50 dollars).
+>    Montre-moi chaque écran avant de valider. Ne colle jamais la clé dans un
+>    fichier ni dans la conversation.
+> 2. Depuis `formulaire/` : `npm ci`, puis `npx wrangler secret put
+>    ANTHROPIC_API_KEY` en me laissant coller la clé moi-même, puis
+>    `npx wrangler deploy`.
+> 3. Vérifie avec :
+>    `curl -N -X POST https://api.quantum-agency.fr/chat -H 'Origin: https://quantum-agency.fr' -H 'Content-Type: application/json' -d '{"langue":"fr","messages":[{"role":"user","content":"Que contient l audit gratuit ?"}]}'`
+>    Attendu : une suite de lignes `data: {"t":...}` puis `data: {"fin":true}`.
+>    Une origine étrangère doit répondre 403.
+> 4. Dans `assets/quantum.js`, passe `CHATBOT_ACTIF` à `true`, commite avec un
+>    message en français sans tiret long, et pousse.
+> 5. Ouvre le site sur ordinateur et sur téléphone, pose deux questions au
+>    chat, et envoie-moi une capture de chaque.
+>
+> Ne modifie aucun autre fichier. Si une étape demande un paiement ou
+> l'acceptation de conditions, arrête-toi et demande-moi.

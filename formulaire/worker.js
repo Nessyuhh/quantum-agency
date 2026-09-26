@@ -1,12 +1,15 @@
 /* ============================================================================
    Formulaire d'audit : réception des demandes et envoi par e-mail.
    Cloudflare Worker, appelé par assets/quantum.js (POST JSON).
+   La route /chat, le chatbot du site, est dans chat.js.
 
    Secrets attendus (wrangler secret put) :
      RESEND_API_KEY   clé Resend dédiée à ce site
    Variables (wrangler.toml) :
      DESTINATAIRE, EXPEDITEUR, ORIGINES_AUTORISEES
    ========================================================================== */
+
+import { discuter } from './chat.js';
 
 const CHAMPS = ['nom', 'email', 'entreprise', 'message', 'source', 'page', 'timestamp', 'type'];
 
@@ -119,7 +122,7 @@ function envoyer(env, message) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const origine = origineAutorisee(request, env);
 
     if (request.method === 'OPTIONS') {
@@ -129,6 +132,9 @@ export default {
     }
     if (request.method !== 'POST') return new Response('Méthode non autorisée', { status: 405 });
     if (!origine) return new Response('Origine non autorisée', { status: 403 });
+
+    /* Chatbot du site : même origine autorisée, même Worker, route dédiée. */
+    if (new URL(request.url).pathname === '/chat') return discuter(request, env, ctx, entetes(origine));
 
     let data;
     try {

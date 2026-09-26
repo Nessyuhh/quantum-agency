@@ -1,6 +1,39 @@
+# Quantum Consulting : quantum-agency.fr
+
 User-agent: *
 Allow: /
+# Pages de travail, maquettes et outillage : rien à indexer.
+Disallow: /outils/
+Disallow: /formulaire/
+Disallow: /archives/
+Disallow: /apercus/
+Disallow: /_animation-ref/
+Disallow: /charte/
+Disallow: /*.md$
+Disallow: /*.sh$
+
+# Moteurs de réponse et assistants : bienvenus. Ils citent le site quand on
+# les interroge sur l'IA en PME, c'est un canal d'acquisition à part entière.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: MistralAI-User
+User-agent: CCBot
+Allow: /
+Disallow: /outils/
+Disallow: /formulaire/
+Disallow: /archives/
+Disallow: /apercus/
+Disallow: /_animation-ref/
+Disallow: /charte/
 
 Sitemap: https://quantum-agency.fr/sitemap.xml
 
-# Les modèles de langage : voir /llms.txt
+# Résumé du site pour les modèles de langage : /llms.txt et /llms-full.txt

@@ -1,0 +1,7 @@
+# Signaler une faille de sécurité sur quantum-agency.fr
+# Report a security vulnerability on quantum-agency.fr
+Contact: mailto:contact@quantum-agency.fr
+Expires: 2027-09-26T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://quantum-agency.fr/.well-known/security.txt
+Policy: https://quantum-agency.fr/mentions-legales.html

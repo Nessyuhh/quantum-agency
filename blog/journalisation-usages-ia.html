@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Journaliser les usages IA : obligation ou précaution ? | Quantum Consulting</title>
 <meta name="description" content="Savoir qui a demandé quoi, et pourquoi c&#x27;est utile. Ce qu&#x27;il faut garder, combien de temps, et à quoi ça…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Journaliser les usages IA : obligation ou précaution ?","description":"Savoir qui a demandé quoi, et pourquoi c'est utile. Ce qu'il faut garder, combien de temps, et à quoi ça…","url":"https://quantum-agency.fr/blog/journalisation-usages-ia.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/journalisation-usages-ia.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Conformité et sécurité","about":{"@type":"Thing","name":"Conformité et sécurité"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Journaliser les usages IA : obligation ou précaution ?","item":"https://quantum-agency.fr/blog/journalisation-usages-ia.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Dois-je journaliser les appels à un modèle utilisé uniquement pour du brainstorming interne ?","acceptedAnswer":{"@type":"Answer","text":"Si les entrées ne contiennent aucune donnée personnelle ou confidentielle, un journal léger conservé trente jours suffit pour retrouver une idée ou ajuster le paramétrage. Au-delà, la valeur ajoutée diminue tandis que la charge de stockage augmente."}},{"@type":"Question","name":"Quel format de fichier est le plus adapté pour un archivage à long terme ?","acceptedAnswer":{"@type":"Answer","text":"Un fichier CSV compressé (gzip) accompagné d’un fichier de métadonnées JSON décrivant les colonnes et le schéma assure une lisibilité future indépendamment de l’outil utilisé. Évitez les formats propriétaires qui peuvent devenir obsolètes."}},{"@type":"Question","name":"Puis-je utiliser le même journal pour plusieurs modèles différents ?","acceptedAnswer":{"@type":"Answer","text":"Oui, à condition d’inclure le champ « model » permettant de distinguer les entrées. Un schéma commun simplifie les requêtes d’audit et les tableaux de bord de suivi."}},{"@type":"Question","name":"Est‑ce que le journaling ralentit significativement le temps de réponse ?","acceptedAnswer":{"@type":"Answer","text":"L’insertion d’une ligne dans une base locale ajoute généralement moins de cinquante millisecondes, négligeable devant le temps d’inférence du modèle. Seul un volume extrêmement élevé ou une base distante mal configurée pourrait impacter la latence."}}]}</script>
@@ -188,7 +190,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -245,7 +246,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=16" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

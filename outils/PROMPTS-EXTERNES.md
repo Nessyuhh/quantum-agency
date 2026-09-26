@@ -1,10 +1,11 @@
 # Prompts pour les manipulations hors du site
 
-Quatre tâches demandent un accès à un compte tiers, donc une autre session
+Six tâches demandent un accès à un compte tiers, donc une autre session
 Claude Code, connectée à ce compte. Chaque bloc ci-dessous se copie tel quel :
 il est écrit pour être lu par une session qui ne sait rien de ce projet.
 
-Ordre d'intérêt : 1 avant 2, les deux avant 3 et 4.
+Ordre d'intérêt : 5 d'abord, c'est la sécurité ; puis 1 avant 2, les deux
+avant 3 et 4 ; 6 quand le chatbot doit être mis en service.
 
 Règle commune, rappelée dans chaque prompt : **rien ne se crée ni ne s'envoie
 sans l'accord explicite de l'utilisateur**, prise de compte comprise.
@@ -215,3 +216,67 @@ sont au maximum de ce que le site peut faire seul.
 > Écarte d'emblée tout ce qui relève de l'achat de liens, des fermes de liens
 > et des échanges réciproques automatisés : Google les sanctionne et le risque
 > n'est pas compensé par le gain.
+
+---
+
+## 5. En-têtes de sécurité et fichiers internes, sur Cloudflare
+
+GitHub Pages ne permet pas d'envoyer d'en-têtes HTTP, et sert tous les
+fichiers du dépôt, y compris l'outillage. Le site pose déjà sa politique de
+sécurité du contenu par une balise dans chaque page ; ce qui reste ne peut se
+régler qu'au niveau de Cloudflare, qui est devant le site.
+
+> Contexte. Le site statique https://quantum-agency.fr est hébergé sur GitHub
+> Pages, derrière Cloudflare (serveurs de noms walt et
+> yolanda.ns.cloudflare.com, proxy actif). Le sous-domaine
+> api.quantum-agency.fr est un Cloudflare Worker, à ne pas toucher. Chaque page
+> porte déjà une balise meta Content-Security-Policy complète ; il manque ce
+> qu'une balise ne peut pas porter, et deux fuites à fermer.
+>
+> Ce que je te demande, dans le tableau de bord Cloudflare de la zone
+> quantum-agency.fr, après m'avoir montré chaque réglage avant de
+> l'enregistrer :
+>
+> 1. SSL/TLS : mode « Full (strict) » si le certificat GitHub est valide,
+>    sinon « Full » et dis-le-moi ; « Always Use HTTPS » activé ; version
+>    minimale de TLS 1.2 ; TLS 1.3 activé.
+> 2. HSTS (SSL/TLS, Edge Certificates) : activé, max-age 12 mois
+>    (31536000), includeSubDomains activé, preload **désactivé** pour
+>    l'instant, nosniff activé. Avant d'activer includeSubDomains, liste les
+>    sous-domaines de la zone et vérifie que chacun répond en HTTPS.
+> 3. Règle de transformation « Modify Response Header », nommée « En-têtes de
+>    sécurité », appliquée au nom d'hôte quantum-agency.fr uniquement (pas
+>    api.quantum-agency.fr), qui pose ces en-têtes :
+>    - X-Content-Type-Options : nosniff
+>    - X-Frame-Options : DENY
+>    - Content-Security-Policy : frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+>    - Referrer-Policy : strict-origin-when-cross-origin
+>    - Permissions-Policy : camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+>    - Cross-Origin-Opener-Policy : same-origin
+>    - X-Permitted-Cross-Domain-Policies : none
+>    L'en-tête CSP ci-dessus s'ajoute à la balise des pages, il ne la remplace
+>    pas : le navigateur applique les deux, et c'est voulu.
+> 4. Règle de sécurité personnalisée (WAF, Custom rules), nommée « Fichiers
+>    internes », action « Block », avec cette expression :
+>    (http.host eq "quantum-agency.fr" and (starts_with(http.request.uri.path, "/outils/") or starts_with(http.request.uri.path, "/formulaire/") or starts_with(http.request.uri.path, "/archives/") or starts_with(http.request.uri.path, "/apercus/") or starts_with(http.request.uri.path, "/_animation-ref/") or ends_with(http.request.uri.path, ".md") or ends_with(http.request.uri.path, ".sh") or ends_with(http.request.uri.path, ".py") or ends_with(http.request.uri.path, ".toml") or ends_with(http.request.uri.path, ".mjs")))
+>    Attention : /llms.txt et /llms-full.txt doivent rester accessibles, ce
+>    sont des .txt, l'expression ne les touche pas.
+> 5. Vérifie, sans rien changer sans mon accord, que les réglages suivants
+>    sont **désactivés** : « Block AI Scrapers and Crawlers » (Security, Bots)
+>    et toute règle qui bloquerait GPTBot, ClaudeBot ou PerplexityBot. Le site
+>    veut être lu par les assistants : c'est un canal d'acquisition. Dis-moi
+>    aussi si « Bot Fight Mode » est actif ; s'il l'est, ne le coupe pas, mais
+>    signale-le.
+>
+> Contrôle final : depuis le dépôt, `./outils/verifier-securite.sh` doit
+> passer entièrement au vert, sauf si la dernière version du site n'est pas
+> encore publiée. Colle-moi sa sortie.
+>
+> Ne modifie ni le DNS, ni le Worker, ni aucun fichier du site.
+
+---
+
+## 6. Mise en service du chatbot
+
+Voir `formulaire/README.md`, section « Chatbot » : la procédure complète y
+est, avec le prompt à transmettre.

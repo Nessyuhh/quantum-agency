@@ -9,16 +9,228 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Progression + fond de la barre de navigation ── */
+  var anglaisPage = document.documentElement.lang === 'en';
+  var racine = document.documentElement;
+
+  /* ── Barre de navigation évolutive ──
+     Trois états, posés sur <html data-nav> pour que le CSS règle d'un coup la
+     barre d'ordinateur, celle du téléphone et la navigation basse :
+       haut    : en tête de page, transparente, logo complet ;
+       milieu  : pendant la lecture, compacte, avec le repère de section ;
+       bas     : le pied de page approche, elle s'inverse et propose de
+                 remonter, puisque c'est la question du visiteur à cet endroit.
+     Sur téléphone, elle s'efface quand on descend et revient dès qu'on
+     remonte : l'écran est trop petit pour une barre qui ne sert pas.
+     Tout est calculé une fois par image, jamais à chaque évènement. */
   var bar = document.getElementById('progress-bar');
   var navbar = document.getElementById('navbar');
-  function onScroll() {
-    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
-    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
+  var pied = document.querySelector('footer');
+  var dernierY = window.scrollY;
+  var enAttente = false;
+
+  /* Bouton de retour en haut, ajouté ici plutôt que dans les 124 pages : il
+     n'existe que pour l'état « bas », qui n'existe que si le script tourne. */
+  document.querySelectorAll('.navbar .nav-right, .mob-top-bar .nav-right').forEach(function (zone) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'nav-haut';
+    b.setAttribute('aria-label', anglaisPage ? 'Back to top' : 'Revenir en haut de la page');
+    b.textContent = '↑';
+    zone.appendChild(b);
+  });
+
+  function etatNav() {
+    enAttente = false;
+    var y = window.scrollY;
+    var vue = window.innerHeight;
+    var h = racine.scrollHeight - vue;
+    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+
+    var etat = 'milieu';
+    if (y < 40) etat = 'haut';
+    else if ((pied && pied.getBoundingClientRect().top < vue * 0.85) || h - y < 60) etat = 'bas';
+    if (racine.dataset.nav !== etat) racine.dataset.nav = etat;
+
+    /* Seuil de 6 px : un doigt qui tremble ne doit pas faire clignoter la barre. */
+    var dy = y - dernierY;
+    if (Math.abs(dy) > 6) {
+      var cachee = dy > 0 && y > 240 && etat === 'milieu';
+      racine.classList.toggle('nav-cachee', cachee);
+      dernierY = y;
+    }
+    if (navbar) navbar.classList.toggle('scrolled', etat !== 'haut');
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  function auDefilement() {
+    if (!enAttente) { enAttente = true; requestAnimationFrame(etatNav); }
+  }
+  window.addEventListener('scroll', auDefilement, { passive: true });
+  window.addEventListener('resize', auDefilement, { passive: true });
+  etatNav();
+
+  /* ── Repère de section ──
+     Dans l'état « milieu », la barre dit où l'on est : numéro et nom de la
+     section lue. Le nom vient du sur-titre de la section, à défaut de son
+     titre ; sur un article, des intertitres. Masqué aux lecteurs d'écran,
+     qui ont déjà les titres : ce serait une annonce en double. */
+  (function () {
+    if (!navbar || !('IntersectionObserver' in window)) return;
+    var cibles = [];
+    var art = document.querySelector('.art-body');
+    if (art) {
+      cibles = [].slice.call(art.querySelectorAll('h2')).map(function (h) { return { el: h, nom: h.textContent }; });
+    } else {
+      document.querySelectorAll('main section').forEach(function (s) {
+        if (s.parentElement.closest('main section')) return;
+        var t = s.getAttribute('data-repere') || (s.querySelector('.eyebrow, .pg-tag') || s.querySelector('h2, h1') || {}).textContent;
+        if (t) cibles.push({ el: s, nom: t });
+      });
+    }
+    if (cibles.length < 2) return;
+
+    var repere = document.createElement('div');
+    repere.className = 'nav-repere';
+    repere.setAttribute('aria-hidden', 'true');
+    repere.innerHTML = '<span class="nav-repere-n"></span><span class="nav-repere-t"></span>';
+    navbar.querySelector('.brand').insertAdjacentElement('afterend', repere);
+    var n = repere.firstChild, t = repere.lastChild;
+    var total = String(cibles.length).padStart(2, '0');
+
+    var obs = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = cibles.findIndex(function (c) { return c.el === e.target; });
+        if (i < 0) return;
+        n.textContent = String(i + 1).padStart(2, '0') + ' / ' + total;
+        t.textContent = cibles[i].nom.replace(/\s+/g, ' ').trim();
+        repere.classList.remove('bascule');
+        void repere.offsetWidth;
+        repere.classList.add('bascule');
+      });
+    }, { rootMargin: art ? '0px 0px -70% 0px' : '-40% 0px -55% 0px' });
+    cibles.forEach(function (c) { obs.observe(c.el); });
+  })();
+
+  /* ── Délégation des clics ──
+     Plus aucun gestionnaire écrit dans le HTML (onclick) : c'est ce qui permet
+     à la politique de sécurité du contenu d'interdire tout script en ligne,
+     la protection la plus efficace contre l'injection de code. */
+  document.addEventListener('click', function (e) {
+    var cible = e.target.closest && e.target.closest('.faq-trigger, .nav-haut, #back-top');
+    if (!cible) return;
+    if (cible.classList.contains('faq-trigger')) { window.toggleFaq(cible); return; }
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  /* ── Apparitions au défilement ──
+     Sans bibliothèque : un seul IntersectionObserver, et des transitions CSS
+     sur l'opacité et la transformation, les deux seules propriétés que le
+     navigateur anime sans recalculer la page.
+     Règle qui protège la performance : rien de ce qui est visible au premier
+     affichage n'est jamais masqué. Seuls les éléments sous la ligne de
+     flottaison reçoivent l'état d'attente, donc le premier rendu et le plus
+     grand élément affiché, que Google mesure, restent immédiats. */
+  (function () {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var SELECTEURS = [
+      'main section h2', '.sec-title', '.wf-head', '.row', '.bl-card', '.bl-pole h2',
+      '.faq-item', '.svc', '.fiche', '.promesse', '.art-body h2', '.art-callout',
+      '.art-cta', '.art-faq', '.lire-aussi', '.audit-form', 'main [data-reveal]',
+      'main section .eyebrow', '.rows', '.bl-grid', '.faq-accordion', '.footer-grid'
+    ].join(',');
+    /* Les conteneurs ne s'effacent pas : seul leur filet supérieur se trace,
+       leurs enfants apparaissent un à un. */
+    var FILETS = '.rows, .bl-grid, .faq-accordion, .footer-grid';
+    var vue = window.innerHeight;
+    var retenus = [].slice.call(document.querySelectorAll(SELECTEURS)).filter(function (el) {
+      if (el.closest('.hero, #intro-overlay, .offre-pop')) return false;
+      return el.getBoundingClientRect().top > vue * 0.92;
+    });
+    /* Un élément déjà porté par un parent animé ne s'anime pas une seconde
+       fois : deux fondus imbriqués se lisent comme un défaut. */
+    var elements = retenus.filter(function (el) {
+      if (el.matches(FILETS)) return true;
+      var p = el.parentElement;
+      while (p && p !== document.body) {
+        if (retenus.indexOf(p) !== -1 && !p.matches(FILETS)) return false;
+        p = p.parentElement;
+      }
+      return true;
+    });
+    if (!elements.length) return;
+
+    /* Décalage en cascade entre voisins d'un même parent, plafonné : au-delà
+       de six, l'attente devient une gêne plutôt qu'un rythme. */
+    var rangs = new Map();
+    elements.forEach(function (el) {
+      var p = el.parentElement;
+      var r = rangs.get(p) || 0;
+      rangs.set(p, r + 1);
+      el.style.setProperty('--qa-rang', Math.min(r, 6));
+      if (el.matches(FILETS)) el.classList.add('qa-filet');
+      else el.classList.add(/^(H1|H2)$/.test(el.tagName) || el.classList.contains('sec-title') ? 'qa-titre' : 'qa-av');
+    });
+
+    /* Un titre masqué par clip-path n'a plus de surface visible, donc
+       l'observateur ne le verrait jamais entrer : on observe son parent. */
+    var guetteurs = new Map();
+    elements.forEach(function (el) {
+      var g = el.classList.contains('qa-titre') ? el.parentElement : el;
+      if (!guetteurs.has(g)) guetteurs.set(g, []);
+      guetteurs.get(g).push(el);
+    });
+    var obs = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        (guetteurs.get(e.target) || []).forEach(function (el) {
+          el.classList.add('qa-vu');
+          decoder(el);
+        });
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+    guetteurs.forEach(function (_, g) { obs.observe(g); });
+  })();
+
+  /* ── Décodage des libellés ──
+     Les sur-titres et les numéros en chasse fixe se décodent à leur arrivée,
+     comme une sortie de modèle qui se stabilise. 450 ms, texte exact à la fin,
+     et le texte d'origine reste dans la page pour les moteurs. */
+  var GLYPHES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/<>';
+  function decoder(zone) {
+    if (reduce) return;
+    var cibles = zone.matches('.eyebrow, .k') ? [zone] : [].slice.call(zone.querySelectorAll('.eyebrow, .k'));
+    cibles.forEach(function (el) {
+      if (el.dataset.decode || el.children.length) return;
+      el.dataset.decode = '1';
+      var fin = el.textContent;
+      var debut = performance.now();
+      (function image(t) {
+        var p = Math.min((t - debut) / 450, 1);
+        var fixes = Math.floor(fin.length * p);
+        var s = fin.slice(0, fixes);
+        for (var i = fixes; i < fin.length; i++) {
+          s += /\s/.test(fin[i]) ? fin[i] : GLYPHES[(Math.random() * GLYPHES.length) | 0];
+        }
+        el.textContent = s;
+        if (p < 1) requestAnimationFrame(image); else el.textContent = fin;
+      })(debut);
+    });
+  }
+
+  /* ── Lueur sous le pointeur ──
+     Sur les rangées et les cartes, un halo aux couleurs du logo suit la
+     souris. Une variable CSS par déplacement, aucun recalcul de mise en page.
+     Pointeur fin seulement : sur écran tactile, il n'y a rien à suivre. */
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('pointermove', function (e) {
+      var c = e.target.closest && e.target.closest('.row, .bl-card, .svc, .art-nav a, .art-prev, .art-next');
+      if (!c) return;
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
 
   /* ── FAQ ── */
   window.toggleFaq = function (btn) {
@@ -343,12 +555,60 @@
     window.addEventListener('scroll', auScroll, { passive: true });
   })();
 
+  /* ── Chatbot ──
+     Seul le bouton est posé au chargement : quelques centaines d'octets. La
+     fenêtre de discussion (script et styles) ne se télécharge qu'au premier
+     survol ou au premier clic, donc elle ne coûte rien au visiteur qui ne
+     s'en sert pas, ni à la note de performance.
+     À passer à true une fois le Worker muni de sa clé : voir
+     formulaire/README.md, section « Chatbot ». */
+  var CHATBOT_ACTIF = false;
+  (function () {
+    if (!CHATBOT_ACTIF && !/[?&]chat=1\b/.test(location.search)) return;
+    if (/^\/(outils|apercus|archives|charte)\//.test(location.pathname)) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chat-lanceur';
+    b.setAttribute('aria-haspopup', 'dialog');
+    b.innerHTML = '<svg aria-hidden="true" viewBox="0 0 64 64"><use href="#qMark"/></svg><span>' + (anglaisPage ? 'Ask us' : 'Une question ?') + '</span>';
+    document.body.appendChild(b);
+
+    var charge = null;
+    function charger() {
+      if (charge) return charge;
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/assets/chat.css?v=1';
+      document.head.appendChild(css);
+      charge = new Promise(function (ok, non) {
+        var js = document.createElement('script');
+        js.src = '/assets/chat.js?v=1';
+        js.onload = ok;
+        js.onerror = non;
+        document.head.appendChild(js);
+      });
+      return charge;
+    }
+    b.addEventListener('pointerenter', charger, { once: true });
+    b.addEventListener('focus', charger, { once: true });
+    b.addEventListener('click', function () {
+      charger().then(function () { window.quantumChat.ouvrir(b); });
+    });
+    /* Une conversation en cours rouvre la fenêtre d'une page à l'autre. */
+    try {
+      if (sessionStorage.getItem('quantum-chat-ouvert') === '1') charger().then(function () { window.quantumChat.ouvrir(b, true); });
+    } catch (e) { /* stockage refusé : la fenêtre reste fermée */ }
+  })();
+
   /* ── Animations ──
      GSAP et ses deux greffons pèsent près de 70 Ko. Ils ne servent qu'au flux
      animé : on les charge quand il approche, pas au premier affichage. */
   if (reduce) return;
 
-  var CDN = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/';
+  /* Servis depuis le site, comme les polices : une connexion à un tiers de
+     moins, aucune dépendance à la disponibilité d'un CDN, et la politique de
+     sécurité peut interdire tout script venu d'ailleurs. Version 3.12.5. */
+  var CDN = '/assets/vendor/gsap/';
   function script(fichier) {
     return new Promise(function (ok, non) {
       var e = document.createElement('script');

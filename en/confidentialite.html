@@ -2,6 +2,8 @@
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Privacy and cookies | Quantum Consulting</title>
@@ -31,7 +33,7 @@
 <noscript></noscript>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <style>
 .page-hero { padding: 150px 0 60px; }
 .page-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 0.88; text-transform: uppercase; margin: 18px 0 22px; max-width: 14ch; }
@@ -121,6 +123,7 @@
       <h2>What we collect, and why</h2>
       <p><strong>The audit form.</strong> When you request an audit, we receive your name, your e-mail address, your company name and, if you filled it in, your message. We use them to reply to you and prepare the conversation, nothing else. They reach us by e-mail, through a sending service (Resend) and a technical relay (Cloudflare), then stay in our mailbox. We keep them for three years after our last exchange, then delete them.</p>
       <p><strong>The free showcase website offer.</strong> If you leave your e-mail address in that window, we use it to send you the details and to answer you. One e-mail, no mailing list, no sharing. Same retention period.</p>
+      <p id="chatbot"><strong>The website assistant.</strong> When you write to the assistant, your messages and the page you are on are sent, through our technical relay (Cloudflare), to the Claude AI model from Anthropic, a company based in the United States, which writes the answer. We do not record conversations. Anthropic processes them to produce the answer, does not use them to train its models, and keeps them for a limited period under its commercial terms. The current conversation is kept in your browser for the session, so it follows you from page to page. Do not share sensitive data in it.</p>
       <p><strong>Technical logs.</strong> The site is hosted on GitHub Pages and served through Cloudflare. Like any server, they briefly record technical information (IP address, page requested, browser) for security and reliability. We do not use them to track anyone.</p>
 
       <h2>Audience measurement</h2>
@@ -138,6 +141,7 @@
         <tbody>
           <tr><td>quantum-consentement</td><td>Remembers your answer to the banner (local storage, not a cookie)</td><td>6 months</td><td>Always</td></tr>
           <tr><td>quantum-site-offert</td><td>Avoids showing the free website window again (local storage)</td><td>14 days</td><td>Always</td></tr>
+          <tr><td>quantum-chat</td><td>Keeps the current conversation with the assistant (session storage)</td><td>Until the tab is closed</td><td>If you use the assistant</td></tr>
           <tr><td>_ga, _ga_*</td><td>Google Analytics: tells your browser apart to count visits</td><td>13 months</td><td>With your consent</td></tr>
         </tbody>
       </table>
@@ -152,7 +156,7 @@
         <li>We do not follow your browsing on other websites.</li>
       </ul>
 
-      <p class="maj">Last updated: 17 September 2026. This page will evolve with the site; the date tells you when.</p>
+      <p class="maj">Last updated: 26 September 2026. This page will evolve with the site; the date tells you when.</p>
     </div>
   </section>
 
@@ -213,7 +217,7 @@
 <!-- @/footer -->
 
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=16" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>
