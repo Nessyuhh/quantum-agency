@@ -123,7 +123,7 @@
       <h2>What we collect, and why</h2>
       <p><strong>The audit form.</strong> When you request an audit, we receive your name, your e-mail address, your company name and, if you filled it in, your message. We use them to reply to you and prepare the conversation, nothing else. They reach us by e-mail, through a sending service (Resend) and a technical relay (Cloudflare), then stay in our mailbox. We keep them for three years after our last exchange, then delete them.</p>
       <p><strong>The free showcase website offer.</strong> If you leave your e-mail address in that window, we use it to send you the details and to answer you. One e-mail, no mailing list, no sharing. Same retention period.</p>
-      <p id="chatbot"><strong>The website assistant.</strong> When you write to the assistant, your messages are sent to our technical relay (Cloudflare), which finds the relevant passages of the website and has an AI model write the answer: Groq's, or failing that Cloudflare's. Both providers are based in the United States. They do not use messages to train their models and do not keep them, except temporarily for the security of their service (up to thirty days at Groq). We do not record conversations. If these services are unavailable, the answer is looked up directly in your browser and nothing is sent. The current conversation is kept in your browser for the session, so it follows you from page to page. Do not share sensitive data in it.</p>
+      <p id="chatbot"><strong>Jarvis, the website assistant.</strong> When you write to Jarvis, your messages are sent to our technical relay (Cloudflare), which finds the relevant passages of the website and has an AI model on a free plan write the answer: models hosted by Groq, where applicable Z.ai's (Zhipu AI), or Cloudflare's. Groq and Cloudflare are based in the United States, Z.ai outside the European Union. These providers process messages to produce the answer and may keep them temporarily for the security of their service (up to thirty days at Groq). We do not record conversations. If these services are unavailable, the answer is looked up directly in your browser and nothing is sent. The current conversation is kept in your browser for the session, so it follows you from page to page. Do not share sensitive data in it.</p>
       <p><strong>Technical logs.</strong> The site is hosted on GitHub Pages and served through Cloudflare. Like any server, they briefly record technical information (IP address, page requested, browser) for security and reliability. We do not use them to track anyone.</p>
 
       <h2>Audience measurement</h2>
@@ -141,7 +141,7 @@
         <tbody>
           <tr><td>quantum-consentement</td><td>Remembers your answer to the banner (local storage, not a cookie)</td><td>6 months</td><td>Always</td></tr>
           <tr><td>quantum-site-offert</td><td>Avoids showing the free website window again (local storage)</td><td>14 days</td><td>Always</td></tr>
-          <tr><td>quantum-chat</td><td>Keeps the current conversation with the assistant (session storage)</td><td>Until the tab is closed</td><td>If you use the assistant</td></tr>
+          <tr><td>quantum-chat</td><td>Keeps the current conversation with Jarvis (session storage)</td><td>Until the tab is closed</td><td>If you use the assistant</td></tr>
           <tr><td>_ga, _ga_*</td><td>Google Analytics: tells your browser apart to count visits</td><td>13 months</td><td>With your consent</td></tr>
         </tbody>
       </table>
@@ -217,7 +217,7 @@
 <!-- @/footer -->
 
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=16" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

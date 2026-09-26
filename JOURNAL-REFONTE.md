@@ -351,16 +351,19 @@ caractères, ils étaient coupés dans les résultats. `llms-full.txt`, génér�
 `outils/llms-full.py` depuis les pages : le texte intégral pour les
 assistants, et la base de connaissance du chatbot.
 
-**Assistant du site, gratuit.** Contrainte posée par l'utilisateur : rien de
-payant. Une première version appelait Claude ; elle a été retirée. La version
-retenue est une chaîne entièrement gratuite, dans le Worker existant
-(`formulaire/chat.js`) : le Worker choisit dans le site les passages utiles,
-puis fait rédiger la réponse par Groq (offre gratuite, Llama 3.3 70B), ou
-par Workers AI (offre gratuite du compte Cloudflare, Mistral Small 3.1) quand
-Groq a atteint son quota. Les deux offres refusent au-delà du quota, elles ne
-facturent pas, et nos plafonds restent en dessous. Si aucun modèle ne répond,
-la fenêtre cherche elle-même dans le site et cite la réponse : le visiteur a
-toujours quelque chose.
+**Jarvis, l'assistant du site, gratuit.** Contrainte posée par
+l'utilisateur : rien de payant. Une première version appelait Claude ; elle a
+été retirée. La version retenue est une chaîne de modèles en offre gratuite,
+dans le Worker existant (`formulaire/chat.js`, tableau `CHAINE`) : le Worker
+choisit dans le site les passages utiles, puis fait rédiger la réponse par
+Groq (Llama 3.3 70B, puis Qwen 3.8, puis GPT-OSS 120B), par Z.ai
+(GLM-4.7-Flash, facultatif, les messages sortant alors de l'Union
+européenne), puis par Workers AI (Mistral Small 3.1). Chaque offre refuse
+au-delà de son quota, aucune ne facture, et nos plafonds restent en dessous.
+Si aucun modèle ne répond, la fenêtre cherche elle-même dans le site et cite
+la réponse. Constat de la recherche : le quota gratuit dépend de
+l'hébergeur, pas de l'origine du modèle ; DeepSeek, par exemple, n'a pas
+d'offre gratuite par API. Le nom Jarvis a été choisi par l'utilisateur.
 
 La base de connaissance, `assets/chat-index-*.json`, est générée depuis les
 pages par `outils/chat-index.py` : les 500 questions-réponses du site (FAQ,
@@ -409,9 +412,9 @@ ajoutée à la page de confidentialité, dans les deux langues.
 | `outils/securiser.py` | CSP, référent, gestionnaires en ligne, noindex des pages de travail |
 | `outils/verifier-securite.sh` | En-têtes et fichiers internes, en production |
 | `outils/llms-full.py` | Régénère `llms-full.txt` depuis les pages |
-| `outils/test-chat.mjs` | Onze tests de l'assistant, sans réseau |
+| `outils/test-chat.mjs` | Seize tests de l'assistant, sans réseau |
 | `outils/chat-index.py` | Régénère la base de connaissance de l'assistant |
-| `formulaire/chat.js` | Route `/chat` du Worker : Groq, puis Workers AI |
+| `formulaire/chat.js` | Route `/chat` du Worker : chaîne de modèles gratuits |
 | `assets/chat-recherche.js` | Moteur de recherche partagé, Worker et navigateur |
 | `assets/chat.js`, `assets/chat.css` | Fenêtre de l'assistant, chargée à la demande |
 

@@ -18,7 +18,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 FONTS = ('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800'
          '&family=Archivo:wght@400;500&family=Space+Mono:wght@400;700&display=swap')
-VERSION = 'v=16'
+VERSION = 'v=17'
 
 MODELES = [
     (r'Claude 3\.7 Sonnet', 'Claude Sonnet 5'),

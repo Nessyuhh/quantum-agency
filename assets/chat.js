@@ -1,5 +1,5 @@
 /* ============================================================================
-   Quantum Consulting : fenêtre du chatbot
+   Quantum Consulting : fenêtre de Jarvis, l'assistant du site
    Chargé à la demande par quantum.js, jamais au premier affichage.
    La réponse est rédigée par un modèle d'IA gratuit, en flux, depuis
    https://api.quantum-agency.fr/chat (voir formulaire/chat.js). Si le service
@@ -22,9 +22,9 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var T = anglais ? {
-    titre: 'Quantum assistant', sous: 'AI, answers based on our website',
-    accueil: 'Hello. Ask us anything about our services, our training courses or AI in your company. We answer in a few seconds.',
-    champ: 'Your question', envoyer: 'Send', fermer: 'Close the assistant', effacer: 'New conversation',
+    titre: 'Jarvis', sous: 'Quantum AI assistant',
+    accueil: 'Hello, I am Jarvis, the assistant of Quantum Consulting. Ask me anything about our services, our training courses or AI in your company.',
+    champ: 'Your question', envoyer: 'Send', fermer: 'Close Jarvis', effacer: 'New conversation',
     mention: 'Answers written by an AI from the content of our website. They may contain mistakes. Do not share sensitive data.',
     local: 'Here is what our website says:', suite: 'Read more', sources: 'Sources:',
     rien: 'We do not have a precise answer to that on our website. The simplest way is to ask us directly: https://quantum-agency.fr/en/contact.html or contact@quantum-agency.fr.',
@@ -32,9 +32,9 @@
     erreur: 'The assistant is unavailable. Write to us at contact@quantum-agency.fr.',
     suggestions: ['What does the free audit include?', 'What can you automate for us?', 'Is our data safe?']
   } : {
-    titre: 'Assistant Quantum', sous: 'IA, réponses fondées sur notre site',
-    accueil: "Bonjour. Posez-nous vos questions sur nos services, nos formations ou l'IA dans votre entreprise. Nous répondons en quelques secondes.",
-    champ: 'Votre question', envoyer: 'Envoyer', fermer: "Fermer l'assistant", effacer: 'Nouvelle conversation',
+    titre: 'Jarvis', sous: 'Assistant IA de Quantum',
+    accueil: "Bonjour, je suis Jarvis, l'assistant de Quantum Consulting. Posez-moi vos questions sur nos services, nos formations ou l'IA dans votre entreprise.",
+    champ: 'Votre question', envoyer: 'Envoyer', fermer: 'Fermer Jarvis', effacer: 'Nouvelle conversation',
     mention: "Réponses rédigées par une IA à partir du contenu de notre site. Elles peuvent comporter des erreurs. Ne partagez pas de données sensibles.",
     local: 'Voici ce que dit notre site :', suite: 'Lire la suite', sources: 'Sources :',
     rien: "Nous n'avons pas de réponse précise à cela sur notre site. Le plus simple est de nous poser la question directement : https://quantum-agency.fr/contact.html ou contact@quantum-agency.fr.",

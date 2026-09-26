@@ -555,7 +555,7 @@
     window.addEventListener('scroll', auScroll, { passive: true });
   })();
 
-  /* ── Chatbot ──
+  /* ── Jarvis, l'assistant du site ──
      Seul le bouton est posé au chargement : quelques centaines d'octets. La
      fenêtre de discussion (script et styles) ne se télécharge qu'au premier
      survol ou au premier clic, donc elle ne coûte rien au visiteur qui ne
@@ -571,8 +571,8 @@
     b.className = 'chat-lanceur';
     b.setAttribute('aria-haspopup', 'dialog');
     /* Nom explicite : sur téléphone, le libellé visible est masqué. */
-    b.setAttribute('aria-label', anglaisPage ? 'Ask our assistant a question' : 'Poser une question à notre assistant');
-    b.innerHTML = '<svg aria-hidden="true" viewBox="0 0 64 64"><use href="#qMark"/></svg><span>' + (anglaisPage ? 'Ask us' : 'Une question ?') + '</span>';
+    b.setAttribute('aria-label', anglaisPage ? 'Ask Jarvis, our AI assistant' : 'Poser une question à Jarvis, notre assistant IA');
+    b.innerHTML = '<svg aria-hidden="true" viewBox="0 0 64 64"><use href="#qMark"/></svg><span>' + (anglaisPage ? 'Ask Jarvis' : 'Demander à Jarvis') + '</span>';
     document.body.appendChild(b);
 
     var charge = null;
@@ -580,11 +580,11 @@
       if (charge) return charge;
       var css = document.createElement('link');
       css.rel = 'stylesheet';
-      css.href = '/assets/chat.css?v=1';
+      css.href = '/assets/chat.css?v=2';
       document.head.appendChild(css);
       charge = new Promise(function (ok, non) {
         var js = document.createElement('script');
-        js.src = '/assets/chat.js?v=1';
+        js.src = '/assets/chat.js?v=2';
         js.onload = ok;
         js.onerror = non;
         document.head.appendChild(js);
