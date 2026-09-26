@@ -38,16 +38,19 @@ TRAVAIL_PAGES = {
 
 GA = 'https://www.googletagmanager.com'
 API = 'https://api.quantum-agency.fr'
+CF_STATS = 'https://static.cloudflareinsights.com'
 CSP = '; '.join([
     "default-src 'self'",
-    f"script-src 'self' {GA}",
+    # Cloudflare injecte sa balise de statistiques (Web Analytics, sans cookie)
+    # dans les pages : elle est autorisée pour que ces mesures continuent.
+    f"script-src 'self' {GA} {CF_STATS}",
     # Les styles en ligne restent permis : chaque page porte son bloc <style>
     # et le script pose des variables CSS. Un style ne peut pas exécuter de
     # code, le risque n'a rien de comparable avec celui d'un script.
     "style-src 'self' 'unsafe-inline'",
     f"img-src 'self' data: {GA} https://*.google-analytics.com",
     "font-src 'self'",
-    f"connect-src 'self' {API} https://*.google-analytics.com https://*.analytics.google.com {GA}",
+    f"connect-src 'self' {API} https://*.google-analytics.com https://*.analytics.google.com {GA} https://cloudflareinsights.com",
     "manifest-src 'self'",
     "frame-src 'none'",
     "worker-src 'none'",
