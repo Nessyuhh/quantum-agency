@@ -7,9 +7,9 @@
 
 Le point d'entrée commercial est l'**audit gratuit** : trente minutes d'échange
 sur la façon de travailler de l'entreprise, puis une synthèse d'une page sous
-quarante-huit heures avec trois priorités concrètes. Toute entreprise qui
-réalise l'audit reçoit en plus un **site vitrine simple, offert**, sans autre
-condition.
+quarante-huit heures avec trois priorités concrètes. Les PME et ETI qui nous
+contactent peuvent aussi demander un **site vitrine simple, offert**, seul ou
+avec l'audit, sans condition ni engagement.
 
 **Neutralité assumée.** Nous ne sommes revendeurs d'aucun éditeur. Le modèle est
 choisi tâche par tâche (Claude, GPT-6, Mistral Large 3, Llama 4, Gemini 3) et le
@@ -40,6 +40,10 @@ l'exige.
 - [Contact](https://quantum-agency.fr/contact.html) : contact@quantum-agency.fr · +33 6 49 10 35 02
 - Siège : Quantum Consulting (QC), société par actions simplifiée unipersonnelle (SASU), 229 rue Saint-Honoré, 75001 Paris, France. SIREN 982 259 038.
 - [Mentions légales](https://quantum-agency.fr/mentions-legales.html) · [Confidentialité](https://quantum-agency.fr/confidentialite.html)
+
+## Texte intégral
+
+- [llms-full.txt](https://quantum-agency.fr/llms-full.txt) : le texte des pages principales et la liste commentée des articles, en un seul fichier Markdown.
 
 ## À savoir pour citer ce site
 

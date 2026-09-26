@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Les pannes silencieuses : le vrai risque de l&#x27;automatisation | Quantum Consulting</title>
 <meta name="description" content="Un flux qui échoue sans prévenir fait plus de dégâts qu&#x27;une panne visible. Comment rendre une automatisation bavarde quand elle…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Les pannes silencieuses : le vrai risque de l'automatisation","description":"Un flux qui échoue sans prévenir fait plus de dégâts qu'une panne visible. Comment rendre une automatisation bavarde quand elle…","url":"https://quantum-agency.fr/blog/automatisation-erreurs-silencieuses.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/automatisation-erreurs-silencieuses.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Automatisation et workflows","about":{"@type":"Thing","name":"Automatisation et workflows"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Les pannes silencieuses : le vrai risque de l'automatisation","item":"https://quantum-agency.fr/blog/automatisation-erreurs-silencieuses.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment savoir si mon flux actuel envoie réellement des erreurs ?","acceptedAnswer":{"@type":"Answer","text":"Exécutez le flux en mode test avec une entrée volontairement incorrecte (par exemple un champ obligatoire vide) et observez si une entrée de journal apparaît avec le niveau « error ». Si aucun message n’est enregistré, votre configuration ne capture pas les échecs."}},{"@type":"Question","name":"Faut-il préférer un outil cloud ou une solution auto‑hébergée pour la journalisation ?","acceptedAnswer":{"@type":"Answer","text":"Un service cloud simplifie la mise en place et l’évolutivité, mais vous dépendez d’un tiers pour la disponibilité des logs. Une solution auto‑hébergée comme Elasticsearch offre un contrôle total sur la rétention et la sécurité, à condition de disposer des compétences d’administration nécessaires."}},{"@type":"Question","name":"Quelle est la fréquence raisonnable pour tester les mécanismes d’alerte ?","acceptedAnswer":{"@type":"Answer","text":"Il est recommandé de réaliser un test d’alerte complet au moins une fois par mois, ainsi qu’à chaque modification majeure du workflow (ajout d’un nœud, changement d’API ou mise à jour de dépendance). Cela permet de détecter une régression avant qu’elle n’impacte la production."}}]}</script>
@@ -158,7 +160,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -215,7 +216,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

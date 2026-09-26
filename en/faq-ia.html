@@ -2,6 +2,8 @@
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Frequently asked questions about AI in business | Quantum Consulting</title>
@@ -31,7 +33,7 @@
 <noscript></noscript>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <style>
 .page-hero { padding: 150px 0 60px; }
 .page-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 0.88; text-transform: uppercase; margin: 18px 0 22px; max-width: 14ch; }
@@ -110,59 +112,59 @@
     <div class="container">
       <div class="faq-accordion">
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Where do we start, if we know nothing about it?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Where do we start, if we know nothing about it?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">With the free audit. Thirty minutes talking about the way you work, and you receive three concrete priorities. Nothing to prepare, nothing to install.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">What exactly does the free showcase website include?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">What exactly does the free showcase website include?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">A simple site that presents your company: who you are, what you do, how to reach you. It goes online under your name and you keep ownership. It is free with no conditions: ask for it on its own, or together with the free audit if you also want to know what to automate.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Our teams are not technical. Is that a problem?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Our teams are not technical. Is that a problem?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">No, that is the case for most of our clients. Our engagements and training courses are designed for people who have never written a line of code and never will.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Concretely, what do you automate?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Concretely, what do you automate?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">What repeats: invoices, reminders, quotes, application screening, answers to routine questions, meeting notes. You will find six detailed examples on the Concrete examples page.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Do we have to change our software?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Do we have to change our software?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">No. We plug into what you already use: accounting software, sales management, e-mail, shared documents. If a tool is genuinely missing we will tell you, but that is not the starting point.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">What is an AI model, and which one do you use?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">What is an AI model, and which one do you use?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">An AI model is the program that reads, summarises or writes text. There are several, and none is the best everywhere. We pick the right one for each use: Claude (Anthropic) or GPT-6 (OpenAI) for analysis and writing, Mistral Large 3 or Llama 4 when your data must stay hosted in France, Gemini 3 or Perplexity for document research. We are tied to no vendor.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Is our data safe?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Is our data safe?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">We use professional access that does not use your data to train the models and, when necessary, models hosted in France on secure servers. What must stay inside the company stays there, and we put it in writing.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">What about the GDPR?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">What about the GDPR?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">We apply it to every project: which data is processed, by which tool, where it is stored, for how long. You leave with that documentation. We also follow the European AI Act, which is progressively applying to companies.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Will the AI make mistakes?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Will the AI make mistakes?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Yes, sometimes. That is why every flow we build plans for what happens when in doubt: the task is set aside and shown to a person, with an explanation. Nothing important leaves without human validation.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Does this replace jobs?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Does this replace jobs?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">In the companies we work with, it frees time from the tasks nobody likes doing. That time goes back into sales, customer relations, quality. We discuss it openly with you and your teams from the start.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">How long does an engagement take?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">How long does an engagement take?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">The free audit: thirty minutes, summary within forty-eight hours. A first automatic flow: two to six weeks. Plugging AI into several tools: one to three months. Ongoing advisory: twelve months, with a monthly meeting.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">How much does it cost?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">How much does it cost?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">The audit and the showcase website are free. For the rest, we quote after the audit, based on the priorities retained, with a fixed price: no open-ended billing by the hour.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Can the training be funded?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Can the training be funded?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Our training courses are run with our certified training partners. We help you put together the funding application with your training body, when your situation allows it.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">Do you work all over France?<span class="faq-chev">+</span></button>
+          <button class="faq-trigger" aria-expanded="false">Do you work all over France?<span class="faq-chev">+</span></button>
           <div class="faq-content"><div class="faq-content-inner">Yes. We are based in Paris and we work on your premises anywhere in France, or by video call when that is simpler for you.</div></div>
         </div>
       </div>
@@ -242,7 +244,7 @@
 <!-- @/footer -->
 
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>

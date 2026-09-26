@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Faire répondre l&#x27;IA sur VOS documents : le principe expliqué | Quantum Consulting</title>
 <meta name="description" content="Comment un modèle peut-il connaître des documents internes ? Le principe sans jargon, et ses limites…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Faire répondre l'IA sur VOS documents : le principe expliqué","description":"Comment un modèle peut-il connaître des documents internes ? Le principe sans jargon, et ses limites…","url":"https://quantum-agency.fr/blog/rag-explique-simplement.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/rag-explique-simplement.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Modèles et LLM","about":{"@type":"Thing","name":"Modèles et LLM"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Faire répondre l'IA sur VOS documents : le principe expliqué","item":"https://quantum-agency.fr/blog/rag-explique-simplement.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quel volume de documents puis-je indexer sans ralentir le système ?","acceptedAnswer":{"@type":"Answer","text":"Pour un serveur modeste (2 vCPU, 4 Go RAM), un index de quelques centaines de mégaoctets de texte reste réactif. Au‑delà de plusieurs gigaoctets, il convient de prévoir une solution de recherche plus robuste ou de répartir l’index sur plusieurs nœuds."}},{"@type":"Question","name":"Dois-je former le modèle moi‑même sur mes données ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le principe décrit utilise le modèle tel quel ; il ne fait que lire le contexte fourni au moment de la requête. Un entraînement spécifique (fine‑tuning) serait coûteux et n’apporterait pas d’amélioration notable tant que la recherche d’extraits reste performante."}},{"@type":"Question","name":"Et si mes documents sont majoritairement des tableaux Excel avec des formules ?","acceptedAnswer":{"@type":"Answer","text":"Dans ce cas, l’extraction de texte brut ne préserve pas la logique de calcul, donc le modèle ne pourra pas reproduire les résultats attendus. Il vaut mieux exporter les valeurs calculées en tant que rapports texte ou utiliser un outil dédié à l’interprétation de tableurs plutôt que de compter sur un modèle de langage."}},{"@type":"Question","name":"Quel niveau de confidentialité garantit cette approche ?","acceptedAnswer":{"@type":"Answer","text":"Puisque les documents restent dans votre propre infrastructure (ou dans un service cloud que vous contrôlez) et que seules les extraits pertinents sont envoyés au modèle via API, vous pouvez choisir un modèle hébergé en interne ou un fournisseur respectant le RGPD pour éviter toute sortie de données sensibles."}},{"@type":"Question","name":"Combien de temps faut-il pour mettre en place un premier prototype fonctionnel ?","acceptedAnswer":{"@type":"Answer","text":"Avec des outils comme n8n et un service de recherche léger, un prototype basique peut être opérationnel en une journée à deux jours, essentiellement consacré à la configuration de l’extraction de texte et du premier workflow d’indexation."}}]}</script>
@@ -194,7 +196,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -251,7 +252,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

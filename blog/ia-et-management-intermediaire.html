@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Le management intermédiaire, angle mort des projets IA | Quantum Consulting</title>
 <meta name="description" content="Le blocage vient rarement du terrain ni de la direction. Pourquoi cette strate résiste, et ce qui la…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Le management intermédiaire, angle mort des projets IA","description":"Le blocage vient rarement du terrain ni de la direction. Pourquoi cette strate résiste, et ce qui la…","url":"https://quantum-agency.fr/blog/ia-et-management-intermediaire.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/ia-et-management-intermediaire.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Conduite du changement","about":{"@type":"Thing","name":"Conduite du changement"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Le management intermédiaire, angle mort des projets IA","item":"https://quantum-agency.fr/blog/ia-et-management-intermediaire.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment convaincre un manager intermédiaire qui voit l’IA comme une menace à son autorité ?","acceptedAnswer":{"@type":"Answer","text":"Commencez par lui offrir un rôle de co‑concepteur plutôt que d’utilisateur final. Impliquez-le dès la définition du cas d’usage, montrez‑lui comment l’outil pourra lui fournir des indicateurs qu’il pourra présenter à sa hiérarchie, et valorisez publiquement les améliorations qu’il a permis de réaliser."}},{"@type":"Question","name":"Quels outils sont les plus adaptés pour un premier pilote sans compétences en data science ?","acceptedAnswer":{"@type":"Answer","text":"Pour des workflows d’automatisation basés sur des données structurées, n8n et Make permettent de créer des scénarios visuels sans écrire de code. Si le besoin concerne l’analyse de texte ou la génération de réponses, des modèles accessibles via API comme Mistral ou GPT‑4o peuvent être intégrés dans ces mêmes plateformes."}},{"@type":"Question","name":"Dans quels cas vaut‑il mieux renoncer à un projet d’IA destiné aux équipes opérationnelles ?","acceptedAnswer":{"@type":"Answer","text":"Lorsque le processus visé est hautement tacite, dépend fortement du jugement humain et ne produit pas de données numériques exploitables, l’ajout d’un modèle d’IA risque de générer plus de complexité que de valeur. Dans ce contexte, il est préférable d’améliorer le procédé par de la formation ou de la réorganisation plutôt que d’insister sur une solution d’IA."}},{"@type":"Question","name":"Comment mesurer rapidement le gain d’un pilote d’automatisation sans attendre des mois ?","acceptedAnswer":{"@type":"Answer","text":"Définissez un indicateur simple lié au temps ou à la fréquence d’erreur (par exemple, minutes gagné par jour ou nombre de saisies corrigées). Recueillez ces données avant le lancement du pilote et comparez‑les après deux à quatre semaines d’utilisation ; une amélioration de l’ordre de 10 à 20 % est généralement suffisante pour justifier une extension."}}]}</script>
@@ -163,7 +165,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -220,7 +221,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

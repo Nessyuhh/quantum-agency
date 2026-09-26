@@ -1,0 +1,344 @@
+/* ============================================================================
+   Quantum Consulting : fenêtre de Jarvis, l'assistant du site
+   Chargé à la demande par quantum.js, jamais au premier affichage.
+   La réponse est rédigée par un modèle d'IA gratuit, en flux, depuis
+   https://api.quantum-agency.fr/chat (voir formulaire/chat.js). Si le service
+   ne répond pas ou que les quotas gratuits du jour sont atteints, la fenêtre
+   répond seule en cherchant dans les questions-réponses du site
+   (assets/chat-recherche.js) : le visiteur a toujours une réponse.
+
+   Sécurité : le texte du modèle n'est jamais inséré comme du HTML. Il passe
+   par textContent, et seules les adresses de nos domaines deviennent des
+   liens, construits élément par élément. Une réponse manipulée ne peut donc
+   pas injecter de code dans la page.
+   ========================================================================== */
+(function () {
+  'use strict';
+  if (window.quantumChat) return;
+
+  var API = 'https://api.quantum-agency.fr/chat';
+  var CLE = 'quantum-chat';
+  var anglais = document.documentElement.lang === 'en';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var T = anglais ? {
+    titre: 'Jarvis', sous: 'Quantum AI assistant',
+    accueil: 'Hello, I am Jarvis, the assistant of Quantum Consulting. Ask me anything about our services, our training courses or AI in your company.',
+    champ: 'Your question', envoyer: 'Send', fermer: 'Close Jarvis', effacer: 'New conversation',
+    mention: 'Answers written by an AI from the content of our website. They may contain mistakes. Do not share sensitive data.',
+    local: 'Here is what our website says:', suite: 'Read more', sources: 'Sources:',
+    rien: 'We do not have a precise answer to that on our website. The simplest way is to ask us directly: https://quantum-agency.fr/en/contact.html or contact@quantum-agency.fr.',
+    confid: 'Privacy', attente: 'Writing…',
+    erreur: 'The assistant is unavailable. Write to us at contact@quantum-agency.fr.',
+    suggestions: ['What does the free audit include?', 'What can you automate for us?', 'Is our data safe?']
+  } : {
+    titre: 'Jarvis', sous: 'Assistant IA de Quantum',
+    accueil: "Bonjour, je suis Jarvis, l'assistant de Quantum Consulting. Posez-moi vos questions sur nos services, nos formations ou l'IA dans votre entreprise.",
+    champ: 'Votre question', envoyer: 'Envoyer', fermer: 'Fermer Jarvis', effacer: 'Nouvelle conversation',
+    mention: "Réponses rédigées par une IA à partir du contenu de notre site. Elles peuvent comporter des erreurs. Ne partagez pas de données sensibles.",
+    local: 'Voici ce que dit notre site :', suite: 'Lire la suite', sources: 'Sources :',
+    rien: "Nous n'avons pas de réponse précise à cela sur notre site. Le plus simple est de nous poser la question directement : https://quantum-agency.fr/contact.html ou contact@quantum-agency.fr.",
+    confid: 'Confidentialité', attente: 'Rédaction…',
+    erreur: "L'assistant est indisponible. Écrivez-nous à contact@quantum-agency.fr.",
+    suggestions: ["Que contient l'audit gratuit ?", 'Que pouvez-vous automatiser chez nous ?', 'Nos données sont-elles en sécurité ?']
+  };
+
+  var historique = [];
+  try { historique = JSON.parse(sessionStorage.getItem(CLE) || '[]') || []; } catch (e) { historique = []; }
+  function memoriser() {
+    try { sessionStorage.setItem(CLE, JSON.stringify(historique.slice(-16))); } catch (e) { /* sans stockage, la conversation vit le temps de la page */ }
+  }
+  function etatOuvert(v) {
+    try { sessionStorage.setItem('quantum-chat-ouvert', v ? '1' : '0'); } catch (e) { /* idem */ }
+  }
+
+  /* ── Construction ── */
+  function el(tag, cls, texte) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (texte) e.textContent = texte;
+    return e;
+  }
+
+  var panneau = el('div', 'chat');
+  panneau.setAttribute('role', 'dialog');
+  panneau.setAttribute('aria-modal', 'false');
+  panneau.setAttribute('aria-labelledby', 'chat-titre');
+  panneau.hidden = true;
+
+  var tete = el('header', 'chat-tete');
+  var marque = el('div', 'chat-marque');
+  marque.innerHTML = '<svg aria-hidden="true" viewBox="0 0 64 64"><use href="#qMark"/></svg>';
+  var noms = el('div');
+  var h = el('h2', '', T.titre); h.id = 'chat-titre';
+  var etat = el('p', 'chat-etat', T.sous);
+  noms.appendChild(h); noms.appendChild(etat); marque.appendChild(noms);
+  var actions = el('div', 'chat-actions');
+  var bEffacer = el('button', 'chat-bouton', '↺'); bEffacer.type = 'button'; bEffacer.setAttribute('aria-label', T.effacer); bEffacer.title = T.effacer;
+  var bFermer = el('button', 'chat-bouton', '✕'); bFermer.type = 'button'; bFermer.setAttribute('aria-label', T.fermer);
+  actions.appendChild(bEffacer); actions.appendChild(bFermer);
+  tete.appendChild(marque); tete.appendChild(actions);
+
+  var fil = el('div', 'chat-fil');
+  fil.setAttribute('role', 'log');
+  fil.setAttribute('aria-live', 'polite');
+  fil.setAttribute('aria-relevant', 'additions');
+
+  var pistes = el('div', 'chat-pistes');
+
+  var form = el('form', 'chat-form');
+  form.setAttribute('novalidate', '');
+  var lab = el('label', 'sr-only', T.champ); lab.htmlFor = 'chat-champ';
+  var champ = el('textarea'); champ.id = 'chat-champ'; champ.rows = 1; champ.maxLength = 1200; champ.placeholder = T.champ; champ.setAttribute('autocomplete', 'off');
+  var bEnvoyer = el('button', 'chat-envoyer'); bEnvoyer.type = 'submit'; bEnvoyer.setAttribute('aria-label', T.envoyer); bEnvoyer.textContent = '→';
+  form.appendChild(lab); form.appendChild(champ); form.appendChild(bEnvoyer);
+
+  var pied = el('p', 'chat-mention', T.mention + ' ');
+  var lienConf = el('a', '', T.confid);
+  lienConf.href = anglais ? '/en/confidentialite.html#chatbot' : '/confidentialite.html#chatbot';
+  pied.appendChild(lienConf);
+
+  panneau.appendChild(tete); panneau.appendChild(fil); panneau.appendChild(pistes); panneau.appendChild(form); panneau.appendChild(pied);
+  document.body.appendChild(panneau);
+
+  /* ── Rendu d'un message ──
+     Paragraphes et puces reconnus dans le texte brut ; liens seulement vers
+     nos domaines et l'adresse e-mail du cabinet. */
+  var LIENS = /(https:\/\/(?:quantum-agency\.fr|calendly\.com\/younes_mh)[^\s)<>"']*|contact@quantum-agency\.fr)/g;
+  function enrichir(parent, texte) {
+    var dernier = 0, m;
+    LIENS.lastIndex = 0;
+    while ((m = LIENS.exec(texte))) {
+      var url = m[0].replace(/[.,;:!?]+$/, '');
+      if (m.index > dernier) parent.appendChild(document.createTextNode(texte.slice(dernier, m.index)));
+      var a = el('a', '', url.replace(/^https:\/\/quantum-agency\.fr/, '') || '/');
+      a.href = url.indexOf('@') > 0 ? 'mailto:' + url : url;
+      if (url.indexOf('calendly') !== -1) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      parent.appendChild(a);
+      dernier = m.index + url.length;
+    }
+    if (dernier < texte.length) parent.appendChild(document.createTextNode(texte.slice(dernier)));
+  }
+  function rendre(bulle, texte) {
+    bulle.textContent = '';
+    var liste = null;
+    texte.split(/\n+/).forEach(function (ligne) {
+      var puce = /^\s*(?:[-*•]|\d+[.)])\s+(.*)$/.exec(ligne);
+      if (puce) {
+        if (!liste) { liste = el('ul'); bulle.appendChild(liste); }
+        var li = el('li'); enrichir(li, puce[1].replace(/\*\*/g, '')); liste.appendChild(li);
+      } else if (ligne.trim()) {
+        liste = null;
+        var p = el('p'); enrichir(p, ligne.replace(/\*\*/g, '')); bulle.appendChild(p);
+      }
+    });
+  }
+  function bulle(role, texte) {
+    var b = el('div', 'chat-msg chat-' + role);
+    if (texte) rendre(b, texte);
+    fil.appendChild(b);
+    fil.scrollTop = fil.scrollHeight;
+    return b;
+  }
+
+  function afficherPistes() {
+    pistes.textContent = '';
+    if (historique.length) return;
+    T.suggestions.forEach(function (s) {
+      var b = el('button', 'chat-piste', s); b.type = 'button';
+      b.addEventListener('click', function () { poser(s); });
+      pistes.appendChild(b);
+    });
+  }
+  function reconstruire() {
+    fil.textContent = '';
+    bulle('assistant', T.accueil);
+    historique.forEach(function (m) { bulle(m.role, m.content); });
+    afficherPistes();
+  }
+
+  /* ── Recherche locale, pour répondre sans le service ──
+     Le moteur et la base (environ 80 Ko compressés) ne se chargent qu'à
+     l'ouverture de la fenêtre. */
+  var moteur = null;
+  var pret = null;
+  function preparer() {
+    if (pret) return pret;
+    pret = new Promise(function (ok) {
+      if (window.QuantumRecherche) return ok();
+      var js = document.createElement('script');
+      js.src = '/assets/chat-recherche.js?v=1';
+      js.onload = ok;
+      js.onerror = ok;
+      document.head.appendChild(js);
+    }).then(function () {
+      return fetch('/assets/chat-index-' + (anglais ? 'en' : 'fr') + '.json?v=1').then(function (r) { return r.json(); });
+    }).then(function (base) {
+      if (window.QuantumRecherche) moteur = window.QuantumRecherche.creer(base);
+    }).catch(function () { /* sans base, le message de contact reste la réponse */ });
+    return pret;
+  }
+
+  function ajouterSources(b, liste) {
+    liste = (liste || []).filter(function (s) { return /^https:\/\/quantum-agency\.fr\//.test(s.u); });
+    if (!liste.length) return;
+    var p = el('p', 'chat-sources', T.sources + ' ');
+    liste.forEach(function (s, i) {
+      var a = el('a', '', s.t);
+      a.href = s.u;
+      if (i) p.appendChild(document.createTextNode(' · '));
+      p.appendChild(a);
+    });
+    b.appendChild(p);
+  }
+
+  /* Réponse sans IA : la meilleure question-réponse du site, citée telle
+     quelle et annoncée comme telle, avec le lien vers la page. */
+  function repondreLocalement(question) {
+    return preparer().then(function () {
+      var r = moteur ? moteur.chercher(question, 1)[0] : null;
+      /* Assez sûr seulement si la plupart des mots de la question sont
+         trouvés : mieux vaut orienter vers nous qu'une réponse à côté. */
+      if (!r || r.score < 4 || r.couverture < 0.6) return { texte: T.rien, sources: [] };
+      return { texte: T.local + '\n' + r.entree.r, sources: [{ t: r.entree.t, u: r.entree.u }] };
+    });
+  }
+
+  /* ── Échange ── */
+  var enCours = false;
+  function occupe(v) {
+    enCours = v;
+    bEnvoyer.disabled = v;
+    panneau.classList.toggle('chat-occupe', v);
+    etat.textContent = v ? T.attente : T.sous;
+  }
+
+  function poser(question) {
+    question = String(question || '').trim();
+    if (!question || enCours) return;
+    historique.push({ role: 'user', content: question.slice(0, 1200) });
+    memoriser();
+    pistes.textContent = '';
+    bulle('user', question);
+    champ.value = '';
+    ajuster();
+    occupe(true);
+
+    var reponse = bulle('assistant', '');
+    reponse.classList.add('chat-frappe');
+    var texte = '';
+    var tampon = '';
+
+    var fini = false;
+    function terminer(t, sources) {
+      fini = true;
+      texte = t;
+      rendre(reponse, texte);
+      ajouterSources(reponse, sources);
+      historique.push({ role: 'assistant', content: texte });
+      memoriser();
+      fil.scrollTop = fil.scrollHeight;
+    }
+    function seul() {
+      return repondreLocalement(question).then(function (r) { terminer(r.texte, r.sources); });
+    }
+
+    var sources = [];
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: historique, langue: anglais ? 'en' : 'fr' })
+    }).then(function (res) {
+      var type = res.headers.get('Content-Type') || '';
+      /* Service absent, quota du jour atteint, plafond horaire : la
+         recherche locale répond, sans message d'erreur. */
+      if (!res.ok || type.indexOf('text/event-stream') !== 0) return seul();
+      var lecteur = res.body.getReader();
+      var dec = new TextDecoder();
+      /* Les morceaux sont regroupés par image d'affichage : le texte s'écrit
+         de façon fluide sans reconstruire la bulle à chaque fragment. */
+      var prevu = false;
+      function peindre() {
+        prevu = false;
+        if (fini) return; // la version finale, sources comprises, est déjà affichée
+        rendre(reponse, texte);
+        fil.scrollTop = fil.scrollHeight;
+      }
+      function lire() {
+        return lecteur.read().then(function (r) {
+          if (r.done) return;
+          tampon += dec.decode(r.value, { stream: true });
+          var blocs = tampon.split('\n\n');
+          tampon = blocs.pop();
+          blocs.forEach(function (bloc) {
+            var ev;
+            try { ev = JSON.parse(bloc.replace(/^data: /, '')); } catch (e) { return; }
+            if (ev.t) texte += ev.t;
+            if (ev.sources) sources = ev.sources;
+          });
+          if (!prevu) { prevu = true; requestAnimationFrame(peindre); }
+          return lire();
+        });
+      }
+      return lire().then(function () {
+        if (!texte.trim()) return seul();
+        terminer(texte, sources);
+        if (window.quantumSuivre) window.quantumSuivre('chat_message', { page: location.pathname });
+      });
+    }).catch(function () {
+      return texte.trim() ? terminer(texte, sources) : seul();
+    }).catch(function () {
+      rendre(reponse, T.erreur);
+      reponse.classList.add('chat-erreur');
+      historique.pop();
+      memoriser();
+    }).then(function () {
+      reponse.classList.remove('chat-frappe');
+      occupe(false);
+      if (window.matchMedia('(pointer: fine)').matches) champ.focus();
+    });
+  }
+
+  function ajuster() {
+    champ.style.height = 'auto';
+    champ.style.height = Math.min(champ.scrollHeight, 140) + 'px';
+  }
+  champ.addEventListener('input', ajuster);
+  champ.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); poser(champ.value); }
+  });
+  form.addEventListener('submit', function (e) { e.preventDefault(); poser(champ.value); });
+
+  /* ── Ouverture, fermeture ── */
+  var lanceur = null;
+  function ouvrir(depuis, silencieux) {
+    lanceur = depuis || lanceur;
+    if (!panneau.hidden) return;
+    reconstruire();
+    preparer();
+    panneau.hidden = false;
+    document.documentElement.classList.add('chat-ouvert');
+    if (lanceur) lanceur.setAttribute('aria-expanded', 'true');
+    etatOuvert(true);
+    requestAnimationFrame(function () { panneau.classList.add('chat-visible'); });
+    if (!silencieux) champ.focus({ preventScroll: true });
+  }
+  function fermer() {
+    panneau.classList.remove('chat-visible');
+    document.documentElement.classList.remove('chat-ouvert');
+    if (lanceur) { lanceur.setAttribute('aria-expanded', 'false'); lanceur.focus({ preventScroll: true }); }
+    etatOuvert(false);
+    setTimeout(function () { panneau.hidden = true; }, reduce ? 0 : 260);
+  }
+  bFermer.addEventListener('click', fermer);
+  bEffacer.addEventListener('click', function () {
+    if (enCours) return;
+    historique = [];
+    memoriser();
+    reconstruire();
+    champ.focus();
+  });
+  panneau.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermer(); });
+
+  window.quantumChat = { ouvrir: ouvrir, fermer: fermer };
+})();

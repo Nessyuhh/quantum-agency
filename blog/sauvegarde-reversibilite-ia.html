@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Réversibilité : pouvoir revenir en arrière | Quantum Consulting</title>
 <meta name="description" content="Un déploiement sans marche arrière est un pari. Ce qu&#x27;il faut conserver pour pouvoir…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Réversibilité : pouvoir revenir en arrière","description":"Un déploiement sans marche arrière est un pari. Ce qu'il faut conserver pour pouvoir…","url":"https://quantum-agency.fr/blog/sauvegarde-reversibilite-ia.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/sauvegarde-reversibilite-ia.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Mise en œuvre technique","about":{"@type":"Thing","name":"Mise en œuvre technique"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Réversibilité : pouvoir revenir en arrière","item":"https://quantum-agency.fr/blog/sauvegarde-reversibilite-ia.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment vérifier que mon fournisseur d'IA garantit la réversibilité ?","acceptedAnswer":{"@type":"Answer","text":"Demandez une clause contractuelle explicite sur l’export des données (format, fréquence, délai) et un test de migration simulé avant signature. Exigez aussi un accès à un environnement de recette où vous pouvez désactiver l’IA sans impact."}},{"@type":"Question","name":"Mon équipe n'a pas de compétences techniques pour gérer la réversibilité, que faire ?","acceptedAnswer":{"@type":"Answer","text":"Externalisez la documentation et la gestion des versions à un prestataire spécialisé, mais conservez la maîtrise des données. Par exemple, un consultant peut vous aider à configurer un système de traçabilité avec n8n, tandis que vos équipes restent responsables des décisions finales."}},{"@type":"Question","name":"Peut-on rendre réversible un projet d'IA déjà en production ?","acceptedAnswer":{"@type":"Answer","text":"C’est possible, mais coûteux. Priorisez les décisions critiques (ex : tarifs, stocks) et ajoutez progressivement des couches de traçabilité. Par exemple, commencez par logger les prompts dans un fichier Excel partagé, puis automatisez la capture avec un outil comme Make."}},{"@type":"Question","name":"Quels outils permettent de tester la réversibilité sans risquer la production ?","acceptedAnswer":{"@type":"Answer","text":"Une copie de recette suffit dans la plupart des cas : le même enchaînement de tâches, alimenté par des données de test, sur un espace séparé. Les plateformes d’automatisation comme n8n ou Make permettent de dupliquer un scénario et de le faire tourner à vide. Nous conseillons d’y répéter une fois par trimestre le geste qui compte vraiment, couper l’IA et vérifier que le travail repart à la main, sans que personne n’ait à improviser."}},{"@type":"Question","name":"Un petit budget, comment faire pour sécuriser la réversibilité sans tout casser ?","acceptedAnswer":{"@type":"Answer","text":"Commencez par un projet pilote sur un processus non critique (ex : génération de rapports internes). Utilisez des outils open source comme Ollama pour héberger localement un LLM, ce qui évite les dépendances externes. Documentez chaque étape avec des captures d’écran et des sauvegardes manuelles des données."}}]}</script>
@@ -190,7 +192,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -247,7 +248,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

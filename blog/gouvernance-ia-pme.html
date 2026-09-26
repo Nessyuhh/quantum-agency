@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Une gouvernance IA proportionnée à une PME | Quantum Consulting</title>
 <meta name="description" content="Les cadres de gouvernance sont écrits pour des groupes. Le strict nécessaire : trois règles, un référent, une…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Une gouvernance IA proportionnée à une PME","description":"Les cadres de gouvernance sont écrits pour des groupes. Le strict nécessaire : trois règles, un référent, une…","url":"https://quantum-agency.fr/blog/gouvernance-ia-pme.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/gouvernance-ia-pme.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Conduite du changement","about":{"@type":"Thing","name":"Conduite du changement"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Une gouvernance IA proportionnée à une PME","item":"https://quantum-agency.fr/blog/gouvernance-ia-pme.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment choisir le premier cas d'usage IA dans une PME ?","acceptedAnswer":{"@type":"Answer","text":"Commencez par identifier une tâche répétitive qui consomme plus de deux heures par semaine à un employé et dont le résultat est facilement vérifiable. Par exemple, la génération de réponses standards aux questions fréquentes dans un service après‑vente. Testez le modèle sur un échantillon limité de 20 cas avant d’étendre son usage."}},{"@type":"Question","name":"Quel budget prévoir pour une expérimentation IA sans risque ?","acceptedAnswer":{"@type":"Answer","text":"Une expérimentation raisonnable ne devrait pas dépasser 5 % du budget annuel de formation du service concerné. Pour une PME de 50 personnes, cela représente généralement entre 1 000 et 3 000 euros, couvrant principalement les licences d’API et le temps du référent interne."}},{"@type":"Question","name":"Faut-il former toute l'équipe ou seulement quelques personnes ?","acceptedAnswer":{"@type":"Answer","text":"Il suffit de former le référent et les utilisateurs directs qui interagissent avec le modèle, soit généralement trois à cinq personnes. Une formation de deux heures, complétée par un guide de bonne pratique d’une page, permet d’assurer une utilisation conforme aux règles établies."}},{"@type":"Question","name":"Que faire si le modèle produit des réponses biaisées ?","acceptedAnswer":{"@type":"Answer","text":"Arrêtez immédiatement l’usage en production et revenez à la règle de traçabilité des données pour identifier la source du biais. Ensuite, enrichissez ou corrigez le jeu de données d’entraînement, puis relancez un test pilote avant de rétablir le service."}}]}</script>
@@ -170,7 +172,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -227,7 +228,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

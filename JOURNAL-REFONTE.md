@@ -298,6 +298,83 @@ polices aux seuls caractères utilisés, minification de `quantum.js` (2 Ko),
 transitions entre pages, pôle Marchés publics BTP prévu dans
 `ARBORESCENCE.md` et jamais construit.
 
+## 11 bis. Sécurité, mouvement et chatbot, 26 septembre 2026
+
+**Sondage de départ, en production.** Aucun en-tête de sécurité (ni HSTS, ni
+CSP, ni protection contre l'affichage dans un cadre), 150 gestionnaires
+d'évènements écrits dans le HTML, GSAP chargé depuis un CDN tiers, et tout
+l'outillage servi publiquement : ce journal, le code du Worker, les scripts de
+déploiement. Le dépôt étant public, ces fichiers ne sont pas secrets, mais un
+site n'a pas à les servir.
+
+**Sécurité, ce qui se règle depuis le dépôt.** `outils/securiser.py` pose dans
+chaque page une politique de sécurité du contenu stricte (aucun script en
+ligne, scripts du seul site et de Google Analytics) et une politique de
+référent, retire les gestionnaires `onclick` (remplacés par une délégation de
+clics dans `quantum.js`), sort le filtre du blog dans `assets/blog-filtre.js`
+et pose `noindex` sur les pages de travail qui n'en avaient pas. Il se relance
+sans risque et a un mode `--verifier`. GSAP est servi depuis
+`assets/vendor/gsap/`. `robots.txt` ferme les dossiers internes et accueille
+nommément les robots des assistants, `/.well-known/security.txt` dit où
+signaler une faille.
+
+**Sécurité, ce qui demande Cloudflare.** HSTS, `frame-ancestors`, les autres
+en-têtes et le blocage des fichiers internes : prompt 5 de
+`outils/PROMPTS-EXTERNES.md`. `outils/verifier-securite.sh` contrôle le
+résultat en production ; il échoue tant que ce prompt n'est pas exécuté.
+
+**Barre de navigation à trois états.** `haut`, `milieu`, `bas`, posés sur
+`<html data-nav>`. En lecture, elle se compacte et affiche le numéro et le nom
+de la section lue ; en approchant du pied de page, elle s'inverse en encre
+pleine et propose de remonter. Sur téléphone, elle s'efface en descendant et
+revient en remontant. Tout est ajouté par le script : aucune des 124 pages n'a
+changé de balisage pour cela.
+
+**Apparitions au défilement, sans bibliothèque.** Un seul
+`IntersectionObserver`, opacité et transformation uniquement. Règle qui
+protège la performance : **rien de ce qui est visible au premier affichage
+n'est masqué**, seuls les éléments sous la ligne de flottaison attendent. Les
+titres montent derrière un masque, les filets se tracent, les sur-titres se
+décodent. Piège rencontré : un élément masqué par `clip-path` n'a plus de
+surface, l'observateur ne le voit jamais entrer ; on observe son parent.
+S'y ajoutent les transitions entre pages du navigateur (`@view-transition`)
+et deux animations liées au défilement en CSS pur, là où le navigateur les
+connaît.
+
+Mesuré en local, avant et après, dans les mêmes conditions : aucune perte.
+L'accueil reste à 99 avec GSAP bloqué, 0 ms de blocage.
+
+**Référencement.** Organisation déclarée aussi comme `ProfessionalService`,
+avec logo matriciel (`logo-512.png`, tracé d'origine), domaines d'expertise et
+coordonnées. Titres de l'accueil, des services et du blog ramenés sous 70
+caractères, ils étaient coupés dans les résultats. `llms-full.txt`, généré par
+`outils/llms-full.py` depuis les pages : le texte intégral pour les
+assistants, et la base de connaissance du chatbot.
+
+**Jarvis, l'assistant du site, gratuit.** Contrainte posée par
+l'utilisateur : rien de payant. Une première version appelait Claude ; elle a
+été retirée. La version retenue est une chaîne de modèles en offre gratuite,
+dans le Worker existant (`formulaire/chat.js`, tableau `CHAINE`) : le Worker
+choisit dans le site les passages utiles, puis fait rédiger la réponse par
+Groq (Llama 3.3 70B, puis Qwen 3.8, puis GPT-OSS 120B), par Z.ai
+(GLM-4.7-Flash, facultatif, les messages sortant alors de l'Union
+européenne), puis par Workers AI (Mistral Small 3.1). Chaque offre refuse
+au-delà de son quota, aucune ne facture, et nos plafonds restent en dessous.
+Si aucun modèle ne répond, la fenêtre cherche elle-même dans le site et cite
+la réponse. Constat de la recherche : le quota gratuit dépend de
+l'hébergeur, pas de l'origine du modèle ; DeepSeek, par exemple, n'a pas
+d'offre gratuite par API. Le nom Jarvis a été choisi par l'utilisateur.
+
+La base de connaissance, `assets/chat-index-*.json`, est générée depuis les
+pages par `outils/chat-index.py` : les 500 questions-réponses du site (FAQ,
+page métier, articles) et les sections des pages de services. Le moteur de
+recherche, `assets/chat-recherche.js`, sert au Worker comme au navigateur.
+
+Côté site, seul le bouton est chargé ; la fenêtre ne se télécharge qu'au
+premier survol, la base qu'à l'ouverture. La réponse n'est jamais insérée
+comme du HTML. Mise en service des modèles : `formulaire/README.md`. Mention
+ajoutée à la page de confidentialité, dans les deux langues.
+
 ## 12. Règles de travail, à respecter par la suite
 
 - **Aucun tiret long**, nulle part : contenu, code, commentaires, messages de
@@ -332,16 +409,24 @@ transitions entre pages, pôle Marchés publics BTP prévu dans
 | `outils/PROMPTS-EXTERNES.md` | Les quatre tâches qui demandent un compte tiers |
 | `outils/BASCULE-CLOUDFLARE.md` | Procédure de bascule du DNS |
 | `outils/sitemap.py` | Régénère `sitemap.xml` |
+| `outils/securiser.py` | CSP, référent, gestionnaires en ligne, noindex des pages de travail |
+| `outils/verifier-securite.sh` | En-têtes et fichiers internes, en production |
+| `outils/llms-full.py` | Régénère `llms-full.txt` depuis les pages |
+| `outils/test-chat.mjs` | Seize tests de l'assistant, sans réseau |
+| `outils/chat-index.py` | Régénère la base de connaissance de l'assistant |
+| `formulaire/chat.js` | Route `/chat` du Worker : chaîne de modèles gratuits |
+| `assets/chat-recherche.js` | Moteur de recherche partagé, Worker et navigateur |
+| `assets/chat.js`, `assets/chat.css` | Fenêtre de l'assistant, chargée à la demande |
 
 Après toute modification de la navigation ou du pied de page :
 
 ```bash
-python3 outils/charte-sync.py && python3 outils/blog-recharter.py && python3 outils/sitemap.py
+python3 outils/charte-sync.py && python3 outils/blog-recharter.py && python3 outils/sitemap.py && python3 outils/securiser.py && python3 outils/llms-full.py && python3 outils/chat-index.py
 ```
 
 Et avant chaque mise en ligne, trois contrôles qui échouent s'il reste quelque
 chose à corriger :
 
 ```bash
-python3 outils/normaliser-partage.py --verifier && python3 outils/resynchroniser-faq.py --verifier && python3 outils/resynchroniser-schema.py --verifier
+python3 outils/normaliser-partage.py --verifier && python3 outils/resynchroniser-faq.py --verifier && python3 outils/resynchroniser-schema.py --verifier && python3 outils/securiser.py --verifier && python3 outils/llms-full.py --verifier && python3 outils/chat-index.py --verifier
 ```

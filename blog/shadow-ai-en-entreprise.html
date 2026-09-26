@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>L&#x27;IA clandestine : vos équipes l&#x27;utilisent déjà | Quantum Consulting</title>
 <meta name="description" content="L&#x27;usage non encadré existe avant tout projet officiel. Comment le constater sans surveiller, et quoi en…">
@@ -30,7 +32,7 @@
 <meta name="color-scheme" content="light">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"L'IA clandestine : vos équipes l'utilisent déjà","description":"L'usage non encadré existe avant tout projet officiel. Comment le constater sans surveiller, et quoi en…","url":"https://quantum-agency.fr/blog/shadow-ai-en-entreprise.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://quantum-agency.fr/blog/shadow-ai-en-entreprise.html"},"inLanguage":"fr","datePublished":"2026-08-03","dateModified":"2026-08-03","author":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"publisher":{"@type":"Organization","name":"Quantum Consulting","url":"https://quantum-agency.fr/"},"articleSection":"Conduite du changement","about":{"@type":"Thing","name":"Conduite du changement"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://quantum-agency.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://quantum-agency.fr/blog.html"},{"@type":"ListItem","position":3,"name":"L'IA clandestine : vos équipes l'utilisent déjà","item":"https://quantum-agency.fr/blog/shadow-ai-en-entreprise.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment savoir si des salariés partagent des données confidentielles sur ChatGPT ?","acceptedAnswer":{"@type":"Answer","text":"Sans outil de surveillance réseau avancé, il est impossible de lire le contenu exact des échanges individuels. En revanche, l'analyse des journaux de connexions de votre routeur permet d'identifier la fréquence et le volume des transferts vers les serveurs des éditeurs d'IA. Le moyen le plus rapide reste de sensibiliser les équipes lors d'un point d'équipe en rappelant la différence entre version gratuite grand public et version entreprise sécurisée."}},{"@type":"Question","name":"Faut-il interdire totalement l'accès aux IA génératives sur les postes de travail ?","acceptedAnswer":{"@type":"Answer","text":"Une interdiction stricte est inefficace d'un point de vue technique et pénalisante d'un point de vue opérationnel. Les collaborateurs contournent la restriction en utilisant leurs téléphones personnels ou des connexions hors réseau. Il est préférable de tolérer l'usage sur des périmètres précis tout en fixant une ligne rouge absolue sur la saisie de données nominatives, financières ou stratégiques."}},{"@type":"Question","name":"Quelle est la différence en matière de sécurité entre GPT-6, Claude et Mistral ?","acceptedAnswer":{"@type":"Answer","text":"La sécurité dépend moins du modèle lui-même que du canal d'accès souscrit. Les interfaces web gratuites réutilisent généralement les données saisies pour entraîner leurs futurs algorithmes. À l'inverse, l'accès via API ou via des abonnements payants d'entreprise (Enterprise/Business) chez OpenAI, Anthropic ou le français Mistral AI garantit contractuellement que vos données ne sont ni stockées de manière permanente, ni réutilisées pour l'apprentissage."}},{"@type":"Question","name":"Quel est le coût minimal pour sécuriser l'usage de l'IA dans une PME de 50 salariés ?","acceptedAnswer":{"@type":"Answer","text":"Il n'est pas nécessaire d'investir dans des développements sur mesure. Le coût de départ se limite à la souscription de comptes professionnels sécurisés pour les collaborateurs clés (environ 20 à 30 euros par utilisateur et par mois) et à une journée de formation pratique dispensée à l'ensemble du personnel pour établir les règles de souveraineté des données et de validation des résultats."}}]}</script>
@@ -222,7 +224,6 @@
   <div></div>
   <a href="claude-vs-gpt4o.html" class="art-next"><span>Claude vs GPT-6 : quel modèle choisir pour votre PME en 2025 ?</span></a>
 </nav>
-<a href="#" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Retour en haut">↑</a>
 <!-- @mobnav -->
 <nav class="mob-bottom-nav" aria-label="Navigation mobile rapide">
   <a href="/services.html" class="mob-tab-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2v2h-4V4h4zm6 14H4V8h16v12z"/></svg><span>Services</span></a>
@@ -279,7 +280,7 @@
 <!-- @/footer -->
 <script src="/assets/article.js" defer></script>
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=4" defer></script>
 </body>
 </html>

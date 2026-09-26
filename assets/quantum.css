@@ -436,3 +436,156 @@ body.intro-active { overflow: hidden; }
 .art-nav .suivant, .art-next { text-align: right; }
 #back-top { display: none; }
 @media (max-width: 640px) { .art-nav, .art-prevnext { grid-template-columns: 1fr; } .art-nav .suivant, .art-next { text-align: left; } .art-wrap { padding-top: 100px; } }
+
+/* ============================================================================
+   Barre de navigation évolutive
+   Trois états posés par quantum.js sur <html data-nav="haut|milieu|bas">.
+   Sans script, l'attribut manque et la barre garde son état d'origine.
+   ========================================================================== */
+.navbar { transition: background 0.35s var(--ease), border-color 0.35s var(--ease), padding 0.35s var(--ease), color 0.35s var(--ease), transform 0.35s var(--ease); }
+.brand-word span { transition: max-height 0.35s var(--ease), opacity 0.25s var(--ease), margin 0.35s var(--ease); max-height: 1.2em; }
+.brand svg { transition: width 0.35s var(--ease), height 0.35s var(--ease); }
+
+/* Milieu : compacte, le sous-titre du logo se replie, le repère de section
+   apparaît. */
+[data-nav="milieu"] .navbar { padding-top: 10px; padding-bottom: 10px; background: rgba(246, 246, 243, 0.985); border-bottom-color: var(--line); }
+[data-nav="milieu"] .navbar .brand svg { width: 28px; height: 28px; }
+[data-nav="milieu"] .navbar .brand-word span { max-height: 0; opacity: 0; margin-top: 0; }
+
+.nav-repere { display: none; }
+@media (min-width: 1200px) {
+  .nav-repere {
+    display: flex; align-items: baseline; gap: 12px; margin-left: 28px; margin-right: auto; padding-left: 20px;
+    border-left: 1px solid var(--line); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    max-width: 40ch; white-space: nowrap; opacity: 0; transform: translateY(-4px); pointer-events: none;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .nav-repere-n { color: var(--violet); flex-shrink: 0; }
+  .nav-repere-t { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; }
+  [data-nav="milieu"] .nav-repere { opacity: 1; transform: none; }
+  .nav-repere.bascule .nav-repere-t { animation: qa-repere 0.45s var(--ease); }
+}
+@keyframes qa-repere { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* Bas : la barre s'inverse, encre pleine, et propose de remonter. On sait
+   qu'on est arrivé au bout sans avoir à le chercher. */
+.nav-haut { display: none; }
+[data-nav="bas"] .navbar { padding-top: 10px; padding-bottom: 10px; background: var(--ink); border-bottom-color: var(--ink); color: var(--bg); }
+[data-nav="bas"] .navbar .brand { color: var(--bg); }
+[data-nav="bas"] .navbar .brand svg { width: 28px; height: 28px; }
+[data-nav="bas"] .navbar .brand-word span { max-height: 0; opacity: 0; margin-top: 0; }
+[data-nav="bas"] .navbar .nav-links a, [data-nav="bas"] .navbar .nav-dd-btn { color: rgba(246, 246, 243, 0.72); }
+[data-nav="bas"] .navbar .nav-links a:hover, [data-nav="bas"] .navbar .nav-links a[aria-current] { color: var(--bg); }
+[data-nav="bas"] .q-lang-btn { color: var(--bg); border-color: rgba(246, 246, 243, 0.4); }
+[data-nav="bas"] .q-lang-btn:hover { background: var(--bg); color: var(--ink); }
+[data-nav="bas"] .nav-haut {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 40px;
+  font-family: var(--mono); font-size: 0.95rem; font-weight: 700; background: none; cursor: pointer;
+  border: 1px solid rgba(246, 246, 243, 0.4); color: var(--bg); animation: qa-repere 0.4s var(--ease);
+  transition: background 0.2s, color 0.2s;
+}
+[data-nav="bas"] .nav-haut:hover, [data-nav="bas"] .nav-haut:focus-visible { background: var(--bg); color: var(--ink); }
+
+/* Téléphone : même logique, et la barre haute s'efface en descendant. */
+@media (max-width: 768px) {
+  .mob-top-bar { transition: transform 0.35s var(--ease), background 0.35s var(--ease), padding 0.35s var(--ease); }
+  [data-nav="haut"] .mob-top-bar { background: rgba(246, 246, 243, 0.97); }
+  [data-nav="milieu"] .mob-top-bar { padding-top: 0.55rem; padding-bottom: 0.55rem; }
+  .nav-cachee .mob-top-bar { transform: translateY(-100%); }
+  [data-nav="bas"] .mob-top-bar { background: var(--ink); border-bottom-color: var(--ink); }
+  [data-nav="bas"] .mob-top-bar .brand { color: var(--bg); }
+  [data-nav="bas"] .mob-top-bar .nav-haut { min-height: 36px; min-width: 40px; font-size: 0.85rem; }
+}
+/* Écran d'entrée : la barre reste dans son état d'origine tant qu'il joue. */
+.intro-active .nav-repere { opacity: 0 !important; }
+
+/* ============================================================================
+   Apparitions au défilement
+   Les classes ne sont posées que par le script, et seulement sous la ligne de
+   flottaison : sans JavaScript, ou pour tout ce qui est visible à l'arrivée,
+   rien n'est jamais masqué.
+   ========================================================================== */
+.qa-av {
+  opacity: 0; transform: translate3d(0, 28px, 0);
+  transition: opacity 0.8s var(--ease), transform 0.9s var(--ease);
+  transition-delay: calc(var(--qa-rang, 0) * 70ms);
+}
+.qa-av.qa-vu { opacity: 1; transform: none; }
+
+/* Les titres montent derrière un masque, comme une ligne qu'on imprime. */
+.qa-titre {
+  clip-path: inset(0 0 100% 0); transform: translate3d(0, 0.35em, 0);
+  transition: clip-path 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: calc(var(--qa-rang, 0) * 70ms);
+}
+.qa-titre.qa-vu { clip-path: inset(-0.3em -0.2em -0.3em -0.2em); transform: none; }
+
+/* Les filets de tête se tracent de gauche à droite : la signature de la
+   charte, des filets plutôt que des ombres, devient le mouvement lui-même. */
+.qa-filet { position: relative; border-top-color: transparent !important; }
+.qa-filet::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--ink);
+  transform: scaleX(0); transform-origin: left center; transition: transform 1.1s var(--ease);
+}
+.bl-grid.qa-filet::before { left: -1px; }
+.footer-grid.qa-filet::before { background: none; }
+.qa-filet.qa-vu::before { transform: scaleX(1); }
+
+/* Halo aux couleurs du logo sous le pointeur, sur les éléments cliquables. */
+@media (pointer: fine) {
+  .row, .bl-card, .svc, .art-prev, .art-next, .art-nav a { background-image: radial-gradient(360px circle at var(--mx, -400px) var(--my, -400px), rgba(168, 85, 247, 0.09), rgba(34, 211, 238, 0.04) 45%, transparent 70%); }
+}
+
+/* ── Défilement piloté par CSS ──
+   Là où le navigateur sait lier une animation au défilement, il le fait
+   hors du fil principal : zéro JavaScript, zéro coût. Ailleurs, rien ne
+   change. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Le mot « Système. » voit son dégradé glisser pendant qu'on quitte le haut de page. */
+    .hero h1 .grad-text { background-size: 220% 100%; animation: qa-degrade linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    /* Le schéma du flux se pose en arrivant. */
+    .wf-scroll { animation: qa-pose linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  }
+}
+@keyframes qa-degrade { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes qa-pose { from { transform: scale(0.965); opacity: 0.4; } to { transform: none; opacity: 1; } }
+
+/* ── Transitions entre pages ──
+   Le navigateur fond l'ancienne page dans la nouvelle, la barre de
+   navigation reste immobile. Aucune bibliothèque, et un navigateur qui ne
+   connaît pas cette règle l'ignore simplement. */
+@view-transition { navigation: auto; }
+.navbar, .mob-top-bar { view-transition-name: barre; }
+.mob-bottom-nav { view-transition-name: barre-basse; }
+::view-transition-old(root) { animation: 0.22s var(--ease) both qa-vt-sortie; }
+::view-transition-new(root) { animation: 0.38s var(--ease) both qa-vt-entree; }
+@keyframes qa-vt-sortie { to { opacity: 0; } }
+@keyframes qa-vt-entree { from { opacity: 0; transform: translateY(10px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .qa-av, .qa-titre { opacity: 1; transform: none; clip-path: none; }
+  .qa-filet::before { transform: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* ============================================================================
+   Chatbot : le bouton seulement. La fenêtre a sa propre feuille, chat.css,
+   chargée au premier survol.
+   ========================================================================== */
+.chat-lanceur {
+  position: fixed; right: 24px; bottom: 24px; z-index: 950;
+  display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px 11px 12px;
+  background: var(--bg); color: var(--ink); border: 1px solid var(--ink); cursor: pointer;
+  font-family: var(--mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em;
+  box-shadow: 4px 4px 0 var(--violet-bright);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+.chat-lanceur svg { width: 22px; height: 22px; }
+.chat-lanceur:hover, .chat-lanceur:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--cyan-bright); }
+.chat-ouvert .chat-lanceur, body:has(.offre-pop.ouverte) .chat-lanceur { opacity: 0; pointer-events: none; }
+@media (max-width: 768px) {
+  .chat-lanceur { right: 12px; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); padding: 10px; }
+  .chat-lanceur span { display: none; }
+}
+@media print { .chat-lanceur { display: none; } }

@@ -23,3 +23,9 @@ LIEN_RENDEZ_VOUS = "https://calendly.com/younes_mh/audit"
 [[kv_namespaces]]
 binding = "COMPTEURS"
 id = "beb525a7c0b14eb49f3f0f0ecdd26cce"
+
+# Workers AI, pour l'assistant du site : offre gratuite du compte, 10 000
+# unités par jour. Sur l'offre gratuite de Workers, un dépassement échoue,
+# il n'est jamais facturé. Voir chat.js.
+[ai]
+binding = "AI"

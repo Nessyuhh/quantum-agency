@@ -2,6 +2,8 @@
 <html lang="fr" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://api.quantum-agency.fr https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.quantum-agency.fr; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Confidentialité et cookies | Quantum Consulting</title>
@@ -31,7 +33,7 @@
 <noscript></noscript>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/BigShouldersDisplay-variable-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/polices/Archivo-variable-latin.woff2">
-<link rel="stylesheet" href="/assets/quantum.css?v=14">
+<link rel="stylesheet" href="/assets/quantum.css?v=15">
 <style>
 .page-hero { padding: 150px 0 60px; }
 .page-hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 0.88; text-transform: uppercase; margin: 18px 0 22px; max-width: 14ch; }
@@ -121,6 +123,7 @@
       <h2>Ce que nous collectons, et pourquoi</h2>
       <p><strong>Le formulaire d'audit.</strong> Quand vous demandez un audit, nous recevons votre nom, votre adresse e-mail, le nom de votre entreprise et, si vous l'avez rempli, votre message. Ces informations servent à vous répondre et à préparer l'échange, rien d'autre. Elles nous parviennent par e-mail, via un service d'envoi (Resend) et un relais technique (Cloudflare), puis restent dans notre messagerie. Nous les conservons trois ans après notre dernier échange, puis nous les supprimons.</p>
       <p><strong>La proposition de site vitrine offert.</strong> Si vous laissez votre adresse e-mail dans cette fenêtre, nous l'utilisons pour vous envoyer le détail de l'offre et vous répondre. Un seul e-mail, aucune liste de diffusion, aucun partage. Même durée de conservation.</p>
+      <p id="chatbot"><strong>Jarvis, l'assistant du site.</strong> Quand vous écrivez à Jarvis, vos messages sont transmis à notre relais technique (Cloudflare), qui recherche les passages utiles du site et fait rédiger la réponse par un modèle d'IA en offre gratuite : ceux hébergés par Groq, le cas échéant celui de Z.ai (Zhipu AI), ou celui de Cloudflare. Groq et Cloudflare sont établis aux États-Unis, Z.ai hors de l'Union européenne. Ces prestataires traitent les messages pour produire la réponse et peuvent les conserver temporairement pour la sécurité de leur service (jusqu'à trente jours chez Groq). Nous n'enregistrons pas les conversations. Si ces services ne sont pas disponibles, la réponse est cherchée directement dans votre navigateur, sans que rien ne soit envoyé. La conversation en cours est gardée dans votre navigateur, le temps de la session, pour vous suivre d'une page à l'autre. N'y indiquez pas de données sensibles.</p>
       <p><strong>Les journaux techniques.</strong> Le site est hébergé par GitHub Pages et servi par Cloudflare. Comme tout serveur, ils enregistrent brièvement des informations techniques (adresse IP, page demandée, navigateur) pour assurer la sécurité et le bon fonctionnement. Nous n'y accédons pas à des fins de suivi.</p>
 
       <h2>La mesure d'audience</h2>
@@ -138,6 +141,7 @@
         <tbody>
           <tr><td>quantum-consentement</td><td>Mémorise votre réponse à la bannière (stockage local, pas un cookie)</td><td>6 mois</td><td>Toujours</td></tr>
           <tr><td>quantum-site-offert</td><td>Évite de vous reproposer la fenêtre du site offert (stockage local)</td><td>14 jours</td><td>Toujours</td></tr>
+          <tr><td>quantum-chat</td><td>Garde la conversation en cours avec Jarvis (stockage de session)</td><td>Fermeture de l'onglet</td><td>Si vous utilisez l'assistant</td></tr>
           <tr><td>_ga, _ga_*</td><td>Google Analytics : distingue votre navigateur pour compter les visites</td><td>13 mois</td><td>Avec votre accord</td></tr>
         </tbody>
       </table>
@@ -152,7 +156,7 @@
         <li>Nous ne suivons pas votre navigation sur d'autres sites.</li>
       </ul>
 
-      <p class="maj">Dernière mise à jour : 17 septembre 2026. Cette page évoluera avec le site ; la date vous dit quand.</p>
+      <p class="maj">Dernière mise à jour : 26 septembre 2026. Cette page évoluera avec le site ; la date vous dit quand.</p>
     </div>
   </section>
 
@@ -214,7 +218,7 @@
 <!-- @/footer -->
 
 <script src="/assets/consent.js?v=6" defer></script>
-<script src="/assets/quantum.js?v=15" defer></script>
+<script src="/assets/quantum.js?v=17" defer></script>
 <script src="/lang-switch.js?v=3" defer></script>
 </body>
 </html>
