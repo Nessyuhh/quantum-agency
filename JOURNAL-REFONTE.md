@@ -318,6 +318,12 @@ sans risque et a un mode `--verifier`. GSAP est servi depuis
 nommément les robots des assistants, `/.well-known/security.txt` dit où
 signaler une faille.
 
+**Ce que Cloudflare ajoute aux pages**, constaté en production après la
+mise en ligne : le décodeur d'adresses e-mail (même origine, autorisé), sa
+balise de statistiques Web Analytics (autorisée dans la politique de
+sécurité) et un script en ligne de détection des robots, dont le contenu
+change à chaque requête : il reste bloqué, sans effet pour le visiteur.
+
 **Sécurité, ce qui demande Cloudflare.** HSTS, `frame-ancestors`, les autres
 en-têtes et le blocage des fichiers internes : prompt 5 de
 `outils/PROMPTS-EXTERNES.md`. `outils/verifier-securite.sh` contrôle le
