@@ -346,6 +346,10 @@
       attendre(550, function () {
         if (ov.parentNode) ov.remove();
         document.body.classList.remove('intro-active');
+        /* Le drapeau retombe ici : les animations chargées en différé, après
+           la fin de l'écran d'entrée, ne doivent pas attendre un évènement
+           déjà émis, sous peine de laisser le hero masqué. */
+        entreeEnCours = false;
         document.dispatchEvent(new CustomEvent('quantum:entree-finie'));
       });
     }
@@ -665,7 +669,9 @@
     var reveler = function () {
       gsap.from(reveals, { y: 34, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.09, delay: 0.1, clearProps: 'transform,opacity' });
     };
-    if (entreeEnCours) {
+    /* Deuxième garde-fou : si l'écran d'entrée n'est plus dans la page, sa
+       séquence est finie, quoi que dise le drapeau. */
+    if (entreeEnCours && document.getElementById('intro-overlay')) {
       gsap.set(reveals, { opacity: 0 });
       document.addEventListener('quantum:entree-finie', function () {
         gsap.set(reveals, { opacity: 1 });
