@@ -27,6 +27,9 @@
   var pied = document.querySelector('footer');
   var dernierY = window.scrollY;
   var enAttente = false;
+  /* Vrai dès le premier défilement : sert à ne pas rejouer une animation
+     d'entrée après coup, ce qui se lirait comme un rechargement. */
+  var aDefile = false;
 
   /* Bouton de retour en haut, ajouté ici plutôt que dans les 124 pages : il
      n'existe que pour l'état « bas », qui n'existe que si le script tourne. */
@@ -61,6 +64,7 @@
     if (navbar) navbar.classList.toggle('scrolled', etat !== 'haut');
   }
   function auDefilement() {
+    aDefile = true;
     if (!enAttente) { enAttente = true; requestAnimationFrame(etatNav); }
   }
   window.addEventListener('scroll', auDefilement, { passive: true });
@@ -664,8 +668,13 @@
   /* Hero : les lignes se verrouillent en place. Quand l'écran d'entrée joue,
      on attend qu'il se lève, sinon l'animation se déroulerait derrière lui et
      le visiteur ne verrait jamais que son résultat. */
+  /* GSAP est charge en differe, au moment ou le flux approche : il arrive donc
+     souvent apres que le visiteur a commence a descendre. Rejouer le fondu du
+     hero a cet instant donne l'impression que la section se recharge sous les
+     yeux. L'entree ne joue donc qu'au chargement, avant tout defilement ;
+     sinon on garde l'etat final du CSS, qui est deja le bon. */
   var reveals = document.querySelectorAll('.hero [data-reveal]');
-  if (reveals.length) {
+  if (reveals.length && !aDefile) {
     var reveler = function () {
       gsap.from(reveals, { y: 34, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.09, delay: 0.1, clearProps: 'transform,opacity' });
     };
