@@ -6,6 +6,13 @@
       <stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
   </defs>
-  <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#fg)" stroke-width="6" stroke-linecap="round" fill="none"/>
-  <line x1="60" y1="62" x2="88" y2="88" stroke="url(#fg)" stroke-width="6" stroke-linecap="round"/>
+  <!-- Fond plein, comme dans le .ico et l'icone tactile : sans lui, l'extremite
+       claire du degrade se confond avec les interfaces sombres et il ne reste
+       que le cyan, ce qui fait lire l'icone en vert dans la vue des onglets. -->
+  <rect width="100" height="100" rx="22" fill="#0D0720"/>
+  <!-- Couleur de repli apres l'appel au degrade : un navigateur qui ne resout
+       pas url(#fg) dans un SVG d'icone dessine alors la marque en violet,
+       jamais dans une couleur hors charte. -->
+  <path d="M 68 81.2 A 36 36 0 1 1 81.2 68" stroke="url(#fg) #A855F7" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <line x1="60" y1="62" x2="88" y2="88" stroke="url(#fg) #A855F7" stroke-width="6" stroke-linecap="round"/>
 </svg>
