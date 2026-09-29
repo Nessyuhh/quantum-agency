@@ -32,6 +32,15 @@ l'exige.
   - Niveau 2, Automatiser : deux journées, construire soi-même un premier enchaînement automatique.
   - Niveau 3, Piloter : sur mesure, pour la direction, décider et encadrer les projets.
 
+## Services en ligne édités par Quantum Consulting
+
+Des outils automatiques, construits sur des données publiques officielles et mis à jour chaque jour.
+
+- [Filon](https://filon.quantum-agency.fr/) : les appels d'offres publics ouverts par métier et par département (BOAMP), alerte email chaque matin, gratuite pour un département. Montage de dossiers de candidature dès 290 € HT. Index machine : [filon.quantum-agency.fr/llms.txt](https://filon.quantum-agency.fr/llms.txt).
+- [Filon Aides BTP](https://radar.quantum-agency.fr/aides) : simulateur des aides pour les entreprises du bâtiment et des travaux publics, et montage des demandes payé seulement si l'aide est versée (15 % HT). Guides : [aide GNR du BTP 2026](https://radar.quantum-agency.fr/aides/aide-gnr-btp) (0,20 € par litre, 4 000 € par période) et [subventions Prévention TPE du BTP](https://radar.quantum-agency.fr/aides/subvention-prevention-tpe-btp) (TOP BTP 50 %, Stop Amiante 70 %).
+- [Alerte Créance](https://alerte-creance.quantum-agency.fr/) : les entreprises en redressement ou liquidation judiciaire par département (BODACC), avec la date limite de déclaration de créance, et une alerte email quand un client entre en procédure. Index machine : [alerte-creance.quantum-agency.fr/llms.txt](https://alerte-creance.quantum-agency.fr/llms.txt).
+- [Radar Société](https://radar.quantum-agency.fr/) : surveillance des clients, fournisseurs et concurrents au registre (procédure collective, dirigeant, siège, cession).
+
 ## Ressources
 
 - [Exemples concrets](https://quantum-agency.fr/cas-usage.html) : six situations avant/après (factures, relances, devis, recrutement, service client, comptes rendus), et ce qui reste humain.
